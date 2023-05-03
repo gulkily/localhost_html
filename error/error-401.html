@@ -1,0 +1,546 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml"></link>
+<title>401</title>
+<style type="text/css">
+<!--
+/* begin css/default.css */
+.tag-flag,
+.tag-troll,
+.tag-spam,
+.tag-remove,
+.tag-slash,
+.tag-abuse {
+/* negative (red) tags */
+	color: #403000;
+	font-weight: bold;
+}
+
+.tag-remove {
+/* remove tag */
+	font-weight: bold;
+}
+
+.tag-approve,
+.tag-accept,
+.tag-friend,
+.tag-attend,
+.tag-like,
+.tag-vouch {
+/* positive (green) tags */
+	color: #403000;
+	font-weight: bold;
+}
+
+.tag-hide {
+	color: gray;
+}
+
+div.reply {
+/* creates indented effect for sub-replies */
+	margin-left: 2%;
+	padding-left: 3em;
+}
+
+.item-textart {
+/* textart items get monospace font */
+	font-family: monospace;
+	font-size: 12pt;
+}
+
+.tag-aolart {
+/* aol art in 10-point arial font */
+    font-family: Arial;
+    font-size: 10pt;
+}
+
+div.txt {
+	padding-left: 1em;
+}
+
+.byadmin {
+/* text by admin, displayed in red for users' sake */
+	color: red;
+}
+
+.signed {
+/* signed things are displayed in gold */
+    border-color: gold;
+}
+
+
+#eventLocation {
+/* event form */
+	background-color: #fff0ef;
+	padding: 5pt;
+}
+
+#eventDate {
+/* event form */
+	background-color: #fff0ef;
+	padding: 5pt;
+}
+
+#loadingIndicator, #spanLoadingIndicator, #ariaAlert {
+	color: #403000;
+	background-color: #fff0ef;
+	padding: 3pt;
+	position: fixed;
+	top: 0;
+	left: 0;
+	margin: 0;
+	font-family: tahoma, arial, sans-serif;
+	font-weight: bold;
+}
+#loadingIndicator a {
+	/* style for links in loading indicator */
+}
+.notification {
+	color: #403000;
+	background-color: #fff0ef;
+	padding: 3pt;
+	font-weight: bold;
+	padding: 3pt;
+}
+noscript, .noscript {
+	color: red;
+}
+.menubar a, .titlebar a, .topmenubar a {
+	text-decoration: none;
+	color: #403000;
+}
+nobr {
+	white-space:nowrap;
+}
+input[type=button], button, input[type=submit] {
+	color: #403000;
+	background-color: #fff0ef
+}
+/* end css/default.css */
+
+/* dragging.css */
+
+/* should be called inline-block.css ? */
+
+/* makes some dialogs horizontal */
+table.dialog { /* inline-table table-block */
+	display: inline-block;
+	vertical-align: top;
+}
+form {
+	display: inline;
+}
+
+/*
+#topmenu.dialog {
+	position: fixed !important;
+	top: 0;
+	right: 0;
+}
+*/
+
+/* / dragging.css */
+
+.dialog .txt {
+	max-width: 30em;
+}
+
+/* theme/hypercode/additional.css */
+
+* {
+	border-radius: 5pt !important;
+	font-family: georgia, "times new roman", serif !important;
+}
+input, textarea {
+	background-color: white !important;
+	border: 2pt solid #404040 !important;
+	margin-top: 2pt !important;
+}
+#serverResponse {
+	display: none;
+}
+.titlebar {
+	background-image: linear-gradient(to bottom right, #ffffff, #fff0ef) !important;
+}
+
+/* / theme/hypercode/additional.css */
+/* theme/chicago/additional.css */
+body {
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	background-color: #fff0ef;
+}
+input {
+}
+input[type=text], input[type=password], select, option, textarea {
+	background-color: #fff0ef;
+	color: #403000;
+}
+#txtClock {
+	border: 1pt inset #fff0ef;
+}
+@media (prefers-color-scheme: dark) {
+
+}
+.beginner {
+}
+.dialog {
+	box-shadow: 5pt 5pt 0 rgba(0, 20, 20, 0.3);
+	border: #c0c0c0 outset 2pt;
+	background-color: #fff0ef;
+	border-radius: 1pt;
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	margin-right: 8pt;
+	margin-bottom: 8pt;
+}
+.statusbar td {
+	border: 1pt inset #fff0ef;
+}
+textarea {
+    font-family: Fixedsys, "Courier New", Courier, monospace;
+    font-size: 12pt;
+}
+
+.txt {
+/* regular text */
+	font-family: "Times New Roman", Times, sans-serif;
+	/*font-family: Tahoma, Arial, Helvetica, sans-serif;*/
+	font-size: 14pt;
+}
+a:focus, a:active {
+    color: red !important;
+    border-radius: 1pt;
+}
+textarea:focus {
+}
+input:focus {
+}
+#serverResponse {
+/* response messages from the server */
+    background-color: #fff0ef;
+    color: #403000;
+    padding: 5pt;
+    border: 0;
+	box-shadow: 5pt 5pt 0 rgba(0, 20, 20, 0.5);
+}
+#txtClock {
+	border: 1pt inset #fff0ef;
+	background-color: #fff0ef;
+}
+.fileHashShort {
+	text-decoration: underline dotted;
+}
+#spanDialogControls a {
+	color: #fff0efText;
+}
+.titlebarButtons {
+	float: right;
+}
+button.close, button.skip {
+	border: 0;
+	margin: 0;
+	font-weight: bold;
+}
+button:hover {
+	color: red;
+}
+#spanDialogControls a {
+	color: #403000;
+}
+/* / theme/chicago/additional.css */
+/* pre_time_sans.css */
+
+pre time {
+	font-family: helvetica, arial, sans-serif;
+}
+
+/* /pre_time_sans.css */
+
+-->
+</style>
+</head>
+<body link="#403000" vlink="#403000" text="#403000" bgcolor="#fff0ef" background="/hypercode_bg.jpg">
+<!-- InjectJs2: loading_begin -->
+
+
+<!-- html/utils/scriptinject.template (main,config/template/perl/get_page_header.pl,140) -->
+<script language=javascript><!--
+// begin loading_begin.js
+
+//var loadingIndicatorWaitToShowMin = 1500;
+//var loadingIndicatorWaitToHideMin = 500;
+
+function addLoadingIndicator (strMessage) { // adds loading indicator bar (to top of page, depending on style)
+// function ShowLoadingIndicator ()
+	//alert('DEBUG: addLoadingIndicator(' + strMessage + ')');
+	if (!strMessage) {
+		//alert('DEBUG: strMessage = ' + strMessage);
+		strMessage = 'Meditate...';
+	}
+	//alert('DEBUG: addLoadingIndicator: strMessage = ' + strMessage);
+
+	if (!document.createElement) {
+		//alert('DEBUG: addLoadingIndicator: warning: no document.createElement');
+		return '';
+		// #todo improve compatibility here
+	}
+
+	if (window.loadingIndicator) {
+	    //alert('DEBUG: addLoadingIndicator: warning: loading indicator already exists');
+	    return '';
+	}
+	window.loadingIndicator = 1;
+
+	//alert('DEBUG: addLoadingIndicator: sanity checks passed!');
+	var spanLoadingIndicator = document.createElement('span');
+	if (spanLoadingIndicator) {
+		spanLoadingIndicator.setAttribute('id', 'loadingIndicator');
+		spanLoadingIndicator.innerHTML = strMessage;
+		spanLoadingIndicator.zIndex = 1337;
+		document.body.appendChild(spanLoadingIndicator);
+		window.loadingIndicator = spanLoadingIndicator;
+	}
+
+	return '';
+
+} // addLoadingIndicator()
+
+function GetMeditateMessage() {
+	var message = 'Meditate...';
+	//return 'Meditate...';
+
+	return message;
+}
+
+function ShowPreNavigateNotification () { // displays 'Meditate...' message
+	// OnUnload ()
+	//alert('DEBUG: ShowPreNavigateNotification() begin');
+
+	if (window.blockPreNavigateNotification) {
+		//alert('DEBUG: ShowPreNavigateNotification() blocked by window.blockPreNavigateNotification');
+		window.blockPreNavigateNotification = 0;
+		return '';
+	}
+
+	if (document.title.indexOf('...') == -1) {
+		document.title = document.title + '...';
+	}
+
+	//document.body.style.opacity="0.8";
+	if (event.target == location.href) {
+	} else {
+		if (document.getElementById) {
+			var ariaAlert;
+			ariaAlert = document.getElementById('ariaAlert');
+
+			if (!ariaAlert) {
+				ariaAlert = document.createElement('p');
+				ariaAlert.setAttribute('role', 'alert');
+				ariaAlert.setAttribute('id', 'ariaAlert');
+				ariaAlert.innerHTML = GetMeditateMessage();
+				ariaAlert.style.opacity = '1';
+				ariaAlert.style.zIndex = '1337';
+				//document.body.appendChild(ariaAlert);
+				document.body.insertBefore(ariaAlert, document.body.firstChild);
+			}
+		} else {
+			//#todo
+		}
+	}
+
+	return ''; // true would show a confirmation
+} // ShowPreNavigateNotification()
+
+if (document.createElement) {
+	//alert('DEBUG: loading_begin.js: createElement feature check PASSED!');
+	var d = new Date();
+	var loadingIndicatorStart = d.getTime() * 1;
+
+	addLoadingIndicator('Meditate...');
+} else {
+	//alert('DEBUG: loading_begin.js: createElement feature check FAILED!');
+}
+// end loading_begin.js
+
+// -->
+</script>
+<!-- / html/utils/scriptinject.template (main,config/template/perl/get_page_header.pl,140) -->
+
+<b>
+<!-- template/topmenu2.template -->
+<table cellspacing=0 cellpadding=3 border=0 bgcolor="#fff0ef" class=dialog id=topmenu>
+	<tr bgcolor="#fff0ef" class=topmenubar>
+		<td colspan=2>
+			<big>
+				<big>
+<!-- menuitem.template -->
+<a accesskey=w href="/write.html"><u>W</u>rite</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=s href="/settings.html"><u>S</u>ettings</a>
+<!-- / menuitem.template -->
+</big>
+				<span class=advanced></span>
+				<span class=admin> </span>
+				<span id=controls></span>
+				<span id=spnClock></span>
+			</big>
+		</td>
+	</tr>
+	<tr bgcolor="#fff0ef" class=titlebar>
+		<td>
+			<small>
+				<font color="#403000"><b>Welcome</b></font>
+			</small>
+		</td>
+		<td align=right>
+			<small>
+				
+			</small>
+		</td>
+	</tr>
+</table>
+<!-- / topmenu2.template -->
+</b>
+<p><MAIN ID=maincontent><A NAME=maincontent></A>
+
+
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+
+		
+
+		
+
+		<tbody class=content><title>Welcome to Authorization Required</title>
+
+<table width="99%" height="99%" border="0">
+
+<tr><td align=center valign=middle>
+
+<h1>Welcome to Authorization Required</h1>
+
+<p>It looks like you may be trying to log in?</p>
+
+<p id=message>Please contact an administrator to access this resource.</p>
+
+</td></tr>
+
+</table>
+
+<!-- 401.template -->
+</tbody>
+
+		
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+</main>
+<span id=messages></span>
+<img src="/p.gif" alt="" height=1 width=1>
+<br><noscript>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=Notice cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>Notice</b></font> <a href=#Notice>#</a><a name=Notice></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+
+		<tbody class=content><tr class=content><td><b class=noscript>*</b> Some features may require JavaScript</td></tr></tbody>
+
+		
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+</noscript></body></html>
+<!-- InjectJs2: loading_end -->
+
+
+<!-- html/utils/scriptinject.template (main,config/template/perl/page_footer.pl,42) -->
+<script language=javascript><!--
+// begin loading_end.js
+
+function HideLoadingIndicator () {
+	var loadingIndicator = window.loadingIndicator;
+
+	if (!loadingIndicator) {
+		if (document.getElementById) {
+			loadingIndicator = document.getElementById('loadingIndicator');
+			if (!loadingIndicator && document.getElementsByClassName) {
+				var allNotificationElements = document.getElementsByClassName('notification');
+				if (allNotificationElements) {
+					loadingIndicator = allNotificationElementsp[0];
+				}
+			}
+		} else {
+		    // #todo forms fallback
+		}
+	}
+
+	if (!loadingIndicator) {
+	    //alert('DEBUG: HideLoadingIndicator: warning: loadingIndicator is FALSE');
+	    return '';
+	}
+
+	if (window.loadingIndicatorShowTimeout) {
+		clearTimeout(loadingIndicatorShowTimeout);
+	}
+
+	loadingIndicator.innerHTML = 'Ready.';
+	loadingIndicator.style.backgroundColor = '#fff0ef';
+
+	setTimeout('window.loadingIndicator.style.opacity = "0.9"', 500);
+	setTimeout('window.loadingIndicator.style.opacity = "0.7"', 2000);
+	setTimeout('window.loadingIndicator.style.opacity = "0.6"', 3000);
+	setTimeout('window.loadingIndicator.style.opacity = "0.5"', 4000);
+
+	window.loadingIndicator = loadingIndicator;
+	//loadingIndicator.setAttribute('onclick', 'this.remove()');
+	setTimeout('if (window.loadingIndicator && window.loadingIndicator.remove) { window.loadingIndicator.remove(); } else { if (window.loadingIndicator.style) { window.loadingIndicator.style.display = "none"; } }', 5000); //#todo fix this long line
+	// #todo this causes a page shift in ie4 and ie6
+
+	// } else {
+	// 	if (loadingIndicator) { loadingIndicator.style.display = 'none' }
+	// }
+	return '';
+} // HideLoadingIndicator()
+
+function WaitForOpenPgp () {
+	//alert('debug: WaitForOpenPgp()');
+	var d = new Date();
+	if (window.openPgpJsLoadBegin && window.openpgp) {
+		HideLoadingIndicator();
+	} else {
+		setTimeout('if (window.WaitForOpenPgp) { WaitForOpenPgp() }', 500);
+	}
+} // WaitForOpenPgp()
+
+// #todo see if this is still necessary
+//if (!window.OnLoadEverything && window.HideLoadingIndicator) {
+//	HideLoadingIndicator();
+//}
+
+// end loading_end.js
+
+// -->
+</script>
+<!-- / html/utils/scriptinject.template (main,config/template/perl/page_footer.pl,42) -->
