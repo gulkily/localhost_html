@@ -1,34 +1,36 @@
-    193 GetDialogX2
-    106 IndexTextFile
-     52 GetPageFooter
-     51 RenderField
-     47 GetTargetPath
-     47 GetString
-     44 PutHtmlFile
-     44 GetTemplate
-     26 GetConfig
-     16 AuthorHasTag
-     12 GetItemTemplateBody
+    525 GetDialogX2
+    281 RenderField
+    182 IndexTextFile
+    138 GetPageFooter
+    134 PutHtmlFile
+    111 GetString
+    109 GetTargetPath
+    106 GetTemplate
+     85 GetConfig
+     62 GetResultSetAsDialog
+     29 GetItemTemplateBody
+     24 InjectJs
+     19 AuthorHasTag
+     18 GetScriptTemplate
+     17 str_replace
      11 GetThreadListing
-     10 InjectJs
-      9 GetItemPage
-      8 str_replace
+     11 GetItemPage
+      8 RenameFile
+      8 IsFingerprint
+      8 GetAuthorRepliesDialog
+      7 WriteMessage
       6 IndexFile
-      5 GetResultSetAsDialog
-      4 RenameFile
-      4 IsFingerprint
-      4 GetScriptTemplate
-      4 GetAuthorRepliesDialog
+      6 AddAttributeToTag
+      5 DBAddVoteRecord
+      4 SqliteQuery
       4 EnsureDirsThatShouldExist
-      4 AddAttributeToTag
+      3 MakePage
       3 GetPageHeader
       3 GetMenuTemplate
       2 SqliteQueryCachedShell
-      2 SqliteQuery
-      2 MakePage
+      2 GetDialogX
       2 GetAvatar
       1 GetTimestampWidget
       1 GetMyCacheVersion
-      1 GetDialogX
       1 EnsureSubdirs
       1 DBAddItemAttribute
