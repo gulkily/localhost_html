@@ -1,0 +1,1879 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml"></link>
+<title>read</title>
+<style type="text/css">
+<!--
+/* begin css/default.css */
+.tag-flag,
+.tag-troll,
+.tag-spam,
+.tag-remove,
+.tag-slash,
+.tag-abuse {
+/* negative (red) tags */
+	color: #403000;
+	font-weight: bold;
+}
+
+.tag-remove {
+/* remove tag */
+	font-weight: bold;
+}
+
+.tag-approve,
+.tag-accept,
+.tag-friend,
+.tag-attend,
+.tag-like,
+.tag-vouch {
+/* positive (green) tags */
+	color: #403000;
+	font-weight: bold;
+}
+
+.tag-hide {
+	color: gray;
+}
+
+div.reply {
+/* creates indented effect for sub-replies */
+	margin-left: 2%;
+	padding-left: 3em;
+}
+
+.item-textart {
+/* textart items get monospace font */
+	font-family: monospace;
+	font-size: 12pt;
+}
+
+.tag-aolart {
+/* aol art in 10-point arial font */
+    font-family: Arial;
+    font-size: 10pt;
+}
+
+div.txt {
+	padding-left: 1em;
+}
+
+.byadmin {
+/* text by admin, displayed in red for users' sake */
+	color: red;
+}
+
+.signed {
+/* signed things are displayed in gold */
+    border-color: gold;
+}
+
+
+#eventLocation {
+/* event form */
+	background-color: #fff0ef;
+	padding: 5pt;
+}
+
+#eventDate {
+/* event form */
+	background-color: #fff0ef;
+	padding: 5pt;
+}
+
+#loadingIndicator, #spanLoadingIndicator, #ariaAlert {
+	color: #403000;
+	background-color: #fff0ef;
+	padding: 3pt;
+	position: fixed;
+	top: 0;
+	left: 0;
+	margin: 0;
+	font-family: tahoma, arial, sans-serif;
+	font-weight: bold;
+}
+#loadingIndicator a {
+	/* style for links in loading indicator */
+}
+.notification {
+	color: #403000;
+	background-color: #fff0ef;
+	padding: 3pt;
+	font-weight: bold;
+	padding: 3pt;
+}
+noscript, .noscript {
+	color: red;
+}
+.menubar a, .titlebar a, .topmenubar a {
+	text-decoration: none;
+	color: #403000;
+}
+nobr {
+	white-space:nowrap;
+}
+input[type=button], button, input[type=submit] {
+	color: #403000;
+	background-color: #fff0ef
+}
+/* end css/default.css */
+
+/* theme/hypercode/additional.css */
+
+* {
+	border-radius: 5pt !important;
+	font-family: georgia, "times new roman", serif !important;
+}
+input, textarea {
+	background-color: white !important;
+	border: 2pt solid #404040 !important;
+	margin-top: 2pt !important;
+}
+#serverResponse {
+	display: none;
+}
+.titlebar {
+	background-image: linear-gradient(to bottom right, #ffffff, #fff0ef) !important;
+}
+#loadingIndicator, #ariaAlert {
+	background-color: yellow;
+	border-radius: 0 !important;
+}
+#spanSignAs {
+	float: right;
+}
+
+/* / theme/hypercode/additional.css */
+/* theme/chicago/additional.css */
+body {
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	background-color: #fff0ef;
+}
+input {
+}
+input[type=text], input[type=password], select, option, textarea {
+	background-color: #fff0ef;
+	color: #403000;
+}
+#txtClock {
+	border: 1pt inset #fff0ef;
+}
+@media (prefers-color-scheme: dark) {
+
+}
+.beginner {
+}
+.dialog {
+	box-shadow: 5pt 5pt 0 rgba(0, 20, 20, 0.3);
+	border: #c0c0c0 outset 2pt;
+	background-color: #fff0ef;
+	border-radius: 1pt;
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	margin-right: 8pt;
+	margin-bottom: 8pt;
+}
+.statusbar td {
+	border: 1pt inset #fff0ef;
+}
+textarea {
+    font-family: Fixedsys, "Courier New", Courier, monospace;
+    font-size: 12pt;
+}
+
+.txt {
+/* regular text */
+	font-family: "Times New Roman", Times, sans-serif;
+	/*font-family: Tahoma, Arial, Helvetica, sans-serif;*/
+	font-size: 14pt;
+}
+a:focus, a:active {
+    color: red !important;
+    border-radius: 1pt;
+}
+textarea:focus {
+}
+input:focus {
+}
+#serverResponse {
+/* response messages from the server */
+    background-color: #fff0ef;
+    color: #403000;
+    padding: 5pt;
+    border: 0;
+	box-shadow: 5pt 5pt 0 rgba(0, 20, 20, 0.5);
+}
+#txtClock {
+	border: 1pt inset #fff0ef;
+	background-color: #fff0ef;
+}
+.fileHashShort {
+	text-decoration: underline dotted;
+}
+#spanDialogControls a {
+	color: #fff0efText;
+}
+.titlebarButtons {
+	float: right;
+}
+button.close, button.skip {
+	border: 0;
+	margin: 0;
+	font-weight: bold;
+}
+button:hover {
+	color: red;
+}
+#spanDialogControls a {
+	color: #403000;
+}
+/* / theme/chicago/additional.css */
+/* pre_time_sans.css */
+
+pre time {
+	font-family: helvetica, arial, sans-serif;
+}
+
+/* /pre_time_sans.css */
+
+-->
+</style>
+</head>
+<body link="#403000" vlink="#403000" text="#403000" bgcolor="#fff0ef" background="/hypercode_bg.jpg">
+<b>
+<!-- template/topmenu2.template -->
+<table cellspacing=0 cellpadding=3 border=0 bgcolor="#fff0ef" class=dialog id=topmenu>
+	<tr bgcolor="#fff0ef" class=topmenubar>
+		<td colspan=2>
+			<big>
+				<big>
+<!-- menuitem.template -->
+<a accesskey=w href="/write.html"><u>W</u>rite</a>
+<!-- / menuitem.template -->
+</big>
+				<span class=advanced></span>
+				<span class=admin> </span>
+				<span id=controls></span>
+				<span id=spnClock></span>
+			</big>
+		</td>
+	</tr>
+	<tr bgcolor="#fff0ef" class=titlebar>
+		<td>
+			<small>
+				<font color="#403000"><b>Welcome</b></font>
+			</small>
+		</td>
+		<td align=right>
+			<small>
+				
+			</small>
+		</td>
+	</tr>
+</table>
+<!-- / topmenu2.template -->
+</b>
+<p>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=page_intro cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>read</b></font> <a href=#page_intro>#</a><a name=page_intro></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+
+		<tbody class=content><tr class=content><td>Newest items on the board with at least one <b>#approve</b>.</td></tr></tbody>
+
+		
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+
+<!-- item_list.template -->
+<span class=itemList>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=f9d25f7e cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>Guest has registered (public key)</b></font> <a href=#f9d25f7e>#</a><a name=f9d25f7e></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/like.html"><font color="#403000">#</font>like</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/pubkey.html"><font color="#403000">#</font>pubkey</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">[This item is a public key.]<br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/f9/d2/f9d25f7e.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683107984 title="05:59:44">05:59</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>f9d25f7e</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=f9d25f7e1ac9fcc254f77bb49f2dda12ccd71986"
+	class="tag-like">like(1)</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=f9d25f7e1ac9fcc254f77bb49f2dda12ccd71986"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=3cd89467 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>Guest has registered (public key)</b></font> <a href=#3cd89467>#</a><a name=3cd89467></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/pubkey.html"><font color="#403000">#</font>pubkey</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">[This item is a public key.]<br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/3c/d8/3cd89467.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683113438 title="07:30:38">07:30</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>3cd89467</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=3cd894679d9b2790df5c6fb927759fd23d188f0f"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=3cd894679d9b2790df5c6fb927759fd23d188f0f"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=d06217be cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>add calendar page</b></font> <a href=#d06217be>#</a><a name=d06217be></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/like.html"><font color="#403000">#</font>like</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/83/50/83504f78.html">Operator, please</a><br><br>add calendar page<br><a href="/fb/98/fb985590.html">fb985590..</a><br><br>ok, I added calendar page and a link in the menu.<br><br>===<br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/d0/62/d06217be.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683111032 title="06:50:32">06:50</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>d06217be</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=d06217be81bff5cec40227b0643706b959b9116d"
+	class="tag-like">like(1)</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=d06217be81bff5cec40227b0643706b959b9116d"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=5a404ddf cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>add notarization chain</b></font> <a href=#5a404ddf>#</a><a name=5a404ddf></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/like.html"><font color="#403000">#</font>like</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/94/9f/949fd52b.html">Operator, please</a><br><br>add notarization chain<br><a href="/8f/db/8fdb1234.html">8fdb1234..</a><br><br>ok, I added a notarization chain page.<br><br>===<br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/5a/40/5a404ddf.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683110921 title="06:48:41">06:48</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>5a404ddf</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=5a404ddfba8d540e48b42984579a43e811607701"
+	class="tag-like">like(1)</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=5a404ddfba8d540e48b42984579a43e811607701"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=cf75d7fa cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>add people page</b></font> <a href=#cf75d7fa>#</a><a name=cf75d7fa></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/like.html"><font color="#403000">#</font>like</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/fe/60/fe6015bf.html">Operator, please</a><br><br>add people page<br><a href="/70/2b/702b9194.html">702b9194..</a><br><br>ok, I added a people page. there may not be much on it at first.<br><br>===<br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/cf/75/cf75d7fa.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683110768 title="06:46:08">06:46</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>cf75d7fa</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=cf75d7fa5c45eab693f72b11187bb01eaa739138"
+	class="tag-like">like(1)</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=cf75d7fa5c45eab693f72b11187bb01eaa739138"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=8a81397e cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>add tags page</b></font> <a href=#8a81397e>#</a><a name=8a81397e></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/like.html"><font color="#403000">#</font>like</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/ea/64/ea646801.html">Operator, please</a><br><br>add tags page<br><a href="/11/72/11727d95.html">11727d95..</a><br><br>ok, I added a basic tags page, including item-descriptive tags and hashtags<br><br>===<br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/8a/81/8a81397e.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683110640 title="06:44:00">06:44</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>8a81397e</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=8a81397e472c9a6dd013b3f5255bd7c15dd447ee"
+	class="tag-like">like(1)</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=8a81397e472c9a6dd013b3f5255bd7c15dd447ee"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=d22b48dc cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>Guest has registered (public key)</b></font> <a href=#d22b48dc>#</a><a name=d22b48dc></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/pubkey.html"><font color="#403000">#</font>pubkey</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">[This item is a public key.]<br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/d2/2b/d22b48dc.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683108089 title="06:01:29">06:01</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>d22b48dc</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=d22b48dc80159b36066f4ff7432e1814a40004ac"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=d22b48dc80159b36066f4ff7432e1814a40004ac"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=6edfbfc1 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/ac/a5/aca5c344.html">aca5c344..</a><br><br>[Operator]<span class=admin><br>
+-- <br>
+<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/6e/df/6edfbfc1.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683107775 title="05:56:15">05:56</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>6edfbfc1</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=6edfbfc10e8d916ebb89dd6b17354b99eb76c867"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=6edfbfc10e8d916ebb89dd6b17354b99eb76c867"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=c525c057 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>note the time of day and time</b></font> <a href=#c525c057>#</a><a name=c525c057></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/6e/df/6edfbfc1.html">6edfbfc1..</a><br><br>note the time of day and time<br><a href="/ad/06/ad06da08.html">ad06da08..</a><br><br>I did not understand that query<br><br>===<br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/c5/25/c525c057.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683107779 title="05:56:19">05:56</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>c525c057</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=c525c057b9cfcd7f5eabeaf75212f9a9367065b4"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=c525c057b9cfcd7f5eabeaf75212f9a9367065b4"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=35bc49c3 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/6e/df/6edfbfc1.html">6edfbfc1..</a><br><br>[Operator]<span class=admin><br>
+-- <br>
+<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/35/bc/35bc49c3.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683107813 title="05:56:53">05:56</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>35bc49c3</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=35bc49c3fa2760dbd08781292c7ec5fd0826b7c5"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=35bc49c3fa2760dbd08781292c7ec5fd0826b7c5"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=840604a0 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>add javascript support</b></font> <a href=#840604a0>#</a><a name=840604a0></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/35/bc/35bc49c3.html">35bc49c3..</a><br><br>add javascript support<br><a href="/d2/c1/d2c1b3f4.html">d2c1b3f4..</a><br><br>ok, I added a basic javascript, including live timestamps, in-place voting buttons, and a settings page<br><br>===<br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/84/06/840604a0.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683107822 title="05:57:02">05:57</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>840604a0</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=840604a0d00e4aeb0f4c7f39cb0f51a8e18000f0"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=840604a0d00e4aeb0f4c7f39cb0f51a8e18000f0"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=546dd5e2 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/6e/df/6edfbfc1.html">6edfbfc1..</a><br><br>[Operator]<span class=admin><br>
+-- <br>
+<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/54/6d/546dd5e2.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683107918 title="05:58:38">05:58</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>546dd5e2</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=546dd5e2534f38a3cf4bfcf49ac3d2fe04c619bb"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=546dd5e2534f38a3cf4bfcf49ac3d2fe04c619bb"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=18bc1452 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>add profile page</b></font> <a href=#18bc1452>#</a><a name=18bc1452></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/54/6d/546dd5e2.html">546dd5e2..</a><br><br>add profile page<br><a href="/e1/3e/e13e31e4.html">e13e31e4..</a><br><br>ok, I added profile page with basic cookie authentication.<br><br>===<br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/18/bc/18bc1452.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683107922 title="05:58:42">05:58</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>18bc1452</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=18bc14520605e30856c8f2a5653981599ebf4194"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=18bc14520605e30856c8f2a5653981599ebf4194"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=66edbb35 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/54/6d/546dd5e2.html">546dd5e2..</a><br><br>[Operator]<span class=admin><br>
+-- <br>
+<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/66/ed/66edbb35.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683107960 title="05:59:20">05:59</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>66edbb35</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=66edbb35de1ecd9815e3077b1769c9008fed5f64"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=66edbb35de1ecd9815e3077b1769c9008fed5f64"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=637f69a7 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>add OpenPGP.js to profiles</b></font> <a href=#637f69a7>#</a><a name=637f69a7></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/66/ed/66edbb35.html">66edbb35..</a><br><br>add OpenPGP.js to profiles<br><a href="/02/cf/02cf637e.html">02cf637e..</a><br><br>ok, I added basic OpenPGP.js integration to the profiles.<br><br>===<br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/63/7f/637f69a7.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683107966 title="05:59:26">05:59</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>637f69a7</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=637f69a7390108721efdfb5780aa9a220c929c36"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=637f69a7390108721efdfb5780aa9a220c929c36"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=35c4b5bf cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>adfadfa</b></font> <a href=#35c4b5bf>#</a><a name=35c4b5bf></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">adfadfa<span class=admin><br>
+-- <br>
+<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/35/c4/35c4b5bf.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683108139 title="06:02:19">06:02</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>35c4b5bf</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=35c4b5bf26400637400ae6fdffee9a7f2d8e6713"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=35c4b5bf26400637400ae6fdffee9a7f2d8e6713"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=d78beb77 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/f9/d2/f9d25f7e.html">Guest has regist</a><br><br>#like<span class=admin><br>
+-- <br>
+<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/d7/8b/d78beb77.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683108257 title="06:04:17">06:04</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>d78beb77</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=d78beb775793be097f09630afc286edd20dc6630"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=d78beb775793be097f09630afc286edd20dc6630"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=ea646801 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>Operator, please...</b></font> <a href=#ea646801>#</a><a name=ea646801></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">[Operator]<br><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/ea/64/ea646801.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683110633 title="06:43:53">06:43</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>ea646801</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=ea6468010b13bddfa2bae314cb916893670dd81f"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=ea6468010b13bddfa2bae314cb916893670dd81f"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=fe6015bf cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>Operator, please...</b></font> <a href=#fe6015bf>#</a><a name=fe6015bf></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">[Operator]<br><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/fe/60/fe6015bf.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683110760 title="06:46:00">06:46</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>fe6015bf</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=fe6015bfc7f3bf1cc2216cf0df0118e5147d5c6b"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=fe6015bfc7f3bf1cc2216cf0df0118e5147d5c6b"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=949fd52b cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>Operator, please...</b></font> <a href=#949fd52b>#</a><a name=949fd52b></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">[Operator]<br><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/94/9f/949fd52b.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683110913 title="06:48:33">06:48</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>949fd52b</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=949fd52bf9f02506bd7ddc083fbb7e6d1c4bd3de"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=949fd52bf9f02506bd7ddc083fbb7e6d1c4bd3de"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=83504f78 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>Operator, please...</b></font> <a href=#83504f78>#</a><a name=83504f78></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">[Operator]<br><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/83/50/83504f78.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683111024 title="06:50:24">06:50</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>83504f78</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=83504f781981cd0dec42d31388d303ea04c1bbc5"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=83504f781981cd0dec42d31388d303ea04c1bbc5"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=f379e6cc cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>#like</b></font> <a href=#f379e6cc>#</a><a name=f379e6cc></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/d0/62/d06217be.html">add calendar pag</a><br>#like<br><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/f3/79/f379e6cc.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683111043 title="06:50:43">06:50</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>f379e6cc</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=f379e6ccf346db6301c9ed92c0a72450c87e838a"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=f379e6ccf346db6301c9ed92c0a72450c87e838a"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=a8aa1c0a cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>#like</b></font> <a href=#a8aa1c0a>#</a><a name=a8aa1c0a></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/5a/40/5a404ddf.html">add notarization</a><br>#like<br><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/a8/aa/a8aa1c0a.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683111048 title="06:50:48">06:50</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>a8aa1c0a</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=a8aa1c0a94ddcbc89b42e6b60df18eeaff150179"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=a8aa1c0a94ddcbc89b42e6b60df18eeaff150179"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=b15f6cfd cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>#like</b></font> <a href=#b15f6cfd>#</a><a name=b15f6cfd></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/cf/75/cf75d7fa.html">add people page</a><br>#like<br><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/b1/5f/b15f6cfd.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683111054 title="06:50:54">06:50</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>b15f6cfd</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=b15f6cfde74eb63bdb8743ee7b0ecf041f6f7bad"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=b15f6cfde74eb63bdb8743ee7b0ecf041f6f7bad"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=1a0963eb cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>#like</b></font> <a href=#1a0963eb>#</a><a name=1a0963eb></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/8a/81/8a81397e.html">add tags page</a><br>#like<br><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/1a/09/1a0963eb.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683111059 title="06:50:59">06:50</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>1a0963eb</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=1a0963eb24fb2895e092f8dfefef891f6a28bde8"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=1a0963eb24fb2895e092f8dfefef891f6a28bde8"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies></span>
+<!-- / item_list.template -->
+<span class=advanced>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=readsql cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>read.sql</b></font> <a href=#readsql>#</a><a name=readsql></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+
+		<tbody class=content><tr class=content><td><pre>SELECT
+	item_title,
+	item_flat.author_key AS author_id,
+	add_timestamp,
+	tags_list,
+	file_hash,
+	file_path,
+	item_type
+FROM 
+	item_flat
+	LEFT JOIN author_score
+	    ON (item_flat.author_key = author_score.author_key)
+WHERE
+	item_score &gt;= 0
+ORDER BY
+	(add_timestamp * item_score) DESC
+<br></pre></td></tr></tbody>
+
+		
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+</span></main>
+<span id=messages></span>
+<img src="/p.gif" alt="" height=1 width=1>
+</body></html>
