@@ -266,7 +266,7 @@ pre time {
 -->
 </style>
 </head>
-<body link="#403000" vlink="#403000" text="#403000" bgcolor="#fff0ef" background="/hypercode_bg.jpg" link="#403000" vlink="#403000" text="#403000" bgcolor="#fff0ef" background="/hypercode_bg.jpg" onbeforeunload="if (window.ShowPreNavigateNotification){ ShowPreNavigateNotification();}" onclick="if (window.ShowPreNavigateNotification && event.target && (event.target.tagName == 'A') && !(event.target.onclick)) { ShowPreNavigateNotification(); }" onload="if (window.OnLoadEverything) { OnLoadEverything(); }" >
+<body link="#403000" vlink="#403000" text="#403000" bgcolor="#fff0ef" background="/hypercode_bg.jpg" onbeforeunload="if (window.ShowPreNavigateNotification){ ShowPreNavigateNotification();}" onclick="if (window.ShowPreNavigateNotification && event.target && (event.target.tagName == 'A') && !(event.target.onclick)) { ShowPreNavigateNotification(); }" onload="if (window.OnLoadEverything) { OnLoadEverything(); }" >
 <!-- InjectJs2: loading_begin -->
 
 
@@ -442,15 +442,15 @@ if (document.createElement) {
 		<tbody class=content><tr class=content><td>
 <!-- write.template -->
 <fieldset>
-    <form method=post action="/post.html" method=GET id=compose class=submit name=compose target=_top>
+    <form action="/post.html" method=GET id=compose class=submit name=compose target=_top>
         <span id=writeintro></span>
         <span class=beginner><label for="comment" class=beginner>Write something here:</label><br></span>
         <textarea onkeydown="if (window.translitKey) { translitKey(event, this); } else { return true; }" onkeyup="if (window.CommentOnChange) { return CommentOnChange(this, 'compose'); } else { return true; }" onchange="if (window.CommentOnChange) { return CommentOnChange(this, 'compose'); } else { return true; }" 
             class=txtarea
             id=comment
             title="Enter some text to share."
-            rows=15
-            cols=50
+            rows=9
+            cols=32
             name=comment
             autofocus
             wrap=soft
