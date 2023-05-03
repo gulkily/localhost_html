@@ -1,0 +1,13 @@
+>>eaa2e794b4591078b39d21869fcb5fbaf2b74bdb
+
+controls 1
+be53fd360c02f75a7a860c3f9b77bf5993e71865
+
+=================
+Rejoice always
+Pray without ceasing
+Give thanks in all circumstances
+=================
+pollyanna 3efcbfcf
+=================
+echo 1 > config/setting/html/menu_layer_controls

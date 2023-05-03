@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml"></link>
-<title>Profile</title>
+<title>Posts by or for Guest</title>
 <style type="text/css">
 <!--
 /* begin css/default.css */
@@ -376,12 +376,12 @@ pre time {
 
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=profile cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=AuthorInformation cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#fff0ef" class=titlebar>
-	<td>
-		<font color="#403000"><b>Profile</b></font> <a href=#profile>#</a><a name=profile></a><br>
+	<td colspan=2>
+		<font color="#403000"><b>Author Information</b></font> <a href=#AuthorInformation>#</a><a name=AuthorInformation></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -392,64 +392,225 @@ pre time {
 
 		
 
-		<tbody class=content><tr class=content><td>
-<!-- form/profile.template -->
-<form action="/profile.html" name=frmProfile class=frmProfile>
-	<fieldset id=fldRegistration>
-		<p id=pRegButton>
-			<input id=btnRegister onclick="if (window.btnRegister_Click) { return btnRegister_Click(this); }" 
-				type=submit
-				name=btnRegister
-				value="Register"
-			>
-			<span class=beginner>
-				<br>Register; Sign In; Create Profile.<br>
-			</span>
-		</p>
+		<tbody class=content>
+<!-- author_info.template -->
+<tr class=beginner>
+	<td colspan=2>
+		<p id=pUserHint>This page about author listed below.</p>
+		<!-- this text is used by templating engine -->
+	</td>
+</tr>
 
-		<p id=pSigningIndicator>
-			<span id=lblSigningIndicator>
-				<noscript>*</noscript>
-				<script>
-				<!--
-				document.write('...'); // #todo this should be filled in
-				// -->
-				</script>
-			</span>
-		</p>
+<tr>
+	<th colspan=2 bgcolor="#fff0ef">
+		<font size=5><!-- avatar-username.template --><span class=avatar><span class=username><font color="#403000>"
+			<b><i>Guest+</i></b></font></span></span><!-- / avatar-username.template --></font>
+	</th>
+</tr>
 
-		<hr>
-
-		<span>
-
-			<p id=pCurrentProfileIndicator>
-				<b><span id=lblHandle></span></b><br>
-				<span id=lblFingerprint></span><br>
-			</p>
-
-			<p id=spanProfileLink></p>
-
-			<hr id=pCurrentProfileIndicatorSeparator>
-		</span>
-
-		<p id=pExitButton>
-			<input
-				type=submit
-				name=btnSignOut
-				onclick="if (window.btnSignOut_Click) { return btnSignOut_Click(this); }"
-				id=btnSignOut
-				value="Exit"
-			>
-		</p>
-	</fieldset>
-</form>
-<!-- / form/profile.template -->
-</td></tr></tbody>
+<tr><td>last seen:</td><td>*</td></tr>
+<tr><td>fingerprint:</td><td><tt>7D9BA4B54B9065AA</tt></td></tr>
+<tr><td>notes:</td><td><b><span id=itsyou>*</span></b></td></tr>
+<tr class=advanced><td>actions:</td><td><b><span id=profileVoteButtons><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'1e3815845a3e95f3ed979b014b45917d819f62ce\n#person');
+						}" 
+	href="/post.html?comment=%23person&replyto=1e3815845a3e95f3ed979b014b45917d819f62ce"
+	>person</a>
+<!-- / vote_button.template --></span></b></td></tr>
+<tr><td>score:</td><td>1</td></tr>
+<tr class=advanced><td>items:</td><td>1</td></tr>
+<tr class=advanced><td>description:</td><td>pubkey (1)
+</td></tr>
+<tr class=advanced><td>registration:</td><td><b><tt><a href="/1e/38/1e381584.html">1e381584..</a></tt></b></td></tr>
+<tr><td>write:</td><td><b><tt><a href="/1e/38/1e381584.html#reply">Message</a></tt></b></td></tr>
+<!-- / author_info.template --></tbody>
 
 		
 	</table>
 </font>
 <!-- / default/template/html/window/standard.template -->
+
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td colspan=3>
+		<font color="#403000"><b>Topics by Author Guest</b></font> <a href=#TopicsbyAuthorGuest>#</a><a name=TopicsbyAuthorGuest></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th style="cursor: pointer" onclick="if (window.SortTable) { SortTable(this); } else { }" align=left>item_title</th>
+<!-- / header_column.template -->
+
+<!-- header_column.template -->
+<th style="cursor: pointer" onclick="if (window.SortTable) { SortTable(this); } else { }" align=left>add_timestamp</th>
+<!-- / header_column.template -->
+
+<!-- header_column.template -->
+<th style="cursor: pointer" onclick="if (window.SortTable) { SortTable(this); } else { }" class=advanced align=left>file_hash<br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr bgcolor="#fff0ef"><td><b><a href="/1e/38/1e381584.html">Guest has registered (public key)</a></b></td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683122934.70945 title="10:08:54">10:08</time><!-- / timestamp_time.template --></td>
+<td class=advanced>1e381584</td>
+</tr>
+</tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td colspan=3>
+		1 item(s)
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=Archive cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>Archive</b></font> <a href=#Archive>#</a><a name=Archive></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+
+		<tbody class=content><tr class=content><td><a href="/author/7D9BA4B54B9065AA.zip">7D9BA4B54B9065AA.zip</a></td></tr></tbody>
+
+		
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<hr 5>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=Count cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>Count</b></font> <a href=#Count>#</a><a name=Count></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+
+		<tbody class=content><tr class=content><td>Items on page: 1</td></tr></tbody>
+
+		
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+
+<!-- item_list.template -->
+<span class=itemList>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=1e381584 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>Guest has registered (public key)</b></font> <a href=#1e381584>#</a><a name=1e381584></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/pubkey.html"><font color="#403000">#</font>pubkey</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">[This item is a public key.]<br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/1e/38/1e381584.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683122935 title="10:08:55">10:08</time><!-- / timestamp_time.template --></a>;
+<a class=avatar href="/author/7D9BA4B54B9065AA/index.html"><!-- avatar-username.template --><span class=avatar><span class=username><font color="#403000>"
+			<b><i>Guest+</i></b></font></span></span><!-- / avatar-username.template --></a>;
+<span class=advanced>
+	<span class=fileHashShort>1e381584</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'1e3815845a3e95f3ed979b014b45917d819f62ce\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=1e3815845a3e95f3ed979b014b45917d819f62ce"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'1e3815845a3e95f3ed979b014b45917d819f62ce\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=1e3815845a3e95f3ed979b014b45917d819f62ce"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies></span>
+<!-- / item_list.template -->
 </main>
 <span id=messages></span>
 <img src="/p.gif" alt="" height=1 width=1>
@@ -479,104 +640,11 @@ pre time {
 </font>
 <!-- / default/template/html/window/standard.template -->
 </noscript>
-<!-- InjectJs: avatar settings utils profile timestamp fresh table_sort -->
+<!-- InjectJs: settings timestamp voting utils profile itsyou fresh fresh table_sort -->
 
 
-<!-- html/utils/scriptinject.template (main,config/template/perl/page/profile.pl,80) -->
+<!-- html/utils/scriptinject.template (main,config/template/perl/get_read_page.pl,472) -->
 <script language=javascript><!--
-// == begin avatar.js
-
-var configJsOpenPgp = 1; // this is templated from config/setting/admin/js/openpgp
-
-function setAva () { // sets avatar widgets (and italicizes Profile link)
-	//alert('DEBUG: setAva() begins');
-
-	if (document.getElementById && String.fromCharCode) {
-		var myidBox = document.getElementById('myid'); // displays username (if preference is set)
-		var signinBox = document.getElementById('signin'); // Profile link
-
-		//var gt = String.fromCharCode(62);
-		var gt = unescape('%3E');
-
-		if (myidBox && signinBox && window.localStorage) { // check for elements and features
-			var myAvatar = localStorage.getItem('avatar');
-
-			// #todo add provision for cookie auth here too
-
-			if (!myAvatar) { // less error prone than checking for == null, i think
-				// no avatar, probably not signed in
-				signinBox.innerHTML = '<a href="/profile.html"' + gt + 'Register</a' + gt + '';
-			} else {
-				// there's an avatar, probably signed in
-				signinBox.innerHTML = '';
-				var myFp = localStorage.getItem('fingerprint');
-
-				if (window.location.pathname == '/author/' + myFp + '/' || window.location.pathname == '/author/' + myFp + '/index.html') {
-					var itsYou = document.getElementById('itsyou');
-					itsYou.innerHTML = 'This is your profile!';
-				}
-
-				if (window.GetPrefs) {
-					if (GetPrefs('display_username')) {
-						myidBox.innerHTML = '<a href="/profile.html" class=avatar' + gt + myAvatar + '</a' + gt;
-						signinBox.innerHTML = '';
-					} else {
-						myidBox.innerHTML = '';
-						signinBox.innerHTML = '<a href="/profile.html"' + gt + '<i' + gt + 'Change</i' + gt + '</a' + gt + '';
-					}
-				} else {
-					myidBox.innerHTML = '';
-					signinBox.innerHTML = '<a href="/profile.html"' + gt + '<i' + gt + 'Change</i' + gt + '</a' + gt + '';
-				}
-
-				var configJsOpenPgp = 1; // this is templated from config/setting/admin/js/openpgp
-
-				if (configJsOpenPgp && !window.openpgp && document.head && document.getElementById && window.localStorage) {
-					//alert('DEBUG: setAva: loading openpgp.js');
-					window.openPgpJsLoadBegin = 1;
-
-					var script = document.createElement('script');
-					script.src = '/openpgp.js';
-					script.async = false; // This is required for synchronous execution
-					document.head.appendChild(script);
-				}
-
-				if (!window.setAvatar && document.head && document.head.appendChild && document.getElementById && window.localStorage) {
-					//alert('DEBUG: setAva: loading crypto2.js');
-
-					var script2 = document.createElement('script');
-					script2.src = '/crypto2.js';
-					script2.async = false; // This is required for synchronous execution
-					document.head.appendChild(script2);
-				}
-			}
-		}
-	}
-
-	return true;
-} // setAva()
-if (window.localStorage && document.getElementById) {
-	setAva();
-}
-
-function getAvatar () { // retrieve previously built avatar from localStorage (already in html form)
-	if (window.localStorage) {
-		var myAvatar = localStorage.getItem("avatar");
-		if (!myAvatar || myAvatar.length == 0) {
-			return '';
-		} else {
-			return myAvatar;
-		}
-	} else {
-		return 'Anonymous*';
-	}
-
-	return false;
-} // getAvatar()
-
-// == end avatar.js
-
-
 // == begin settings.js
 
 var showAdvancedLastAction = '';
@@ -1348,6 +1416,508 @@ if (window.EventLoop) {
 }
 
 // == end settings.js
+
+
+// == begin timestamp.js
+
+function RoundNumber (num) {
+	var ret = Math.floor(num);
+
+	//var ret = Math.floor(num * 10) / 10;
+	//leave one digit after the decimal point
+
+	////alert('DEBUG: RoundNumber: num = ' + num + '; ret = ' + ret + '');
+
+	return ret;
+}
+
+function LongAgo (seconds) { // returns string with time units
+// takes seconds as parameter
+// returns a string like "3 days ago" or "3 days from now"
+
+	var flip = 0; // default is '... ago'
+	if (seconds < 0) {
+		flip = 1; // '... from now' instead of '... ago'
+		seconds = 0 - seconds;
+	}
+
+	var unit = '';
+	var number = seconds;
+
+	if (seconds < 5) { // seconds should always be positive because of flip above
+		returnValue = 'just now!'
+		return returnValue;
+	}
+
+	if (number < 60) {
+		number = number;
+
+		if (RoundNumber(number) != 1) {
+			unit = ' seconds';
+		} else {
+			unit = ' second';
+		}
+	} else {
+		number = number / 60;
+
+		if (number < 60) {
+			if (RoundNumber(number) != 1) {
+				unit = ' minutes';
+			} else {
+				unit = ' minute';
+			}
+		} else {
+			number = number / 60;
+
+			if (number < 24) {
+				if (RoundNumber(number) != 1) {
+					unit =  ' hours';
+				} else {
+					unit =  ' hour';
+				}
+			} else {
+				number = number / 24;
+
+				if (number < 7) {
+					if (RoundNumber(number) != 1) {
+						unit =  ' days';
+					} else {
+						unit =  ' day';
+					}
+				} else {
+					if (number < 30) {
+						number = number / 7;
+						if (RoundNumber(number) != 1) {
+							unit =  ' weeks';
+						} else {
+							unit =  ' week';
+						}
+					} else {
+						if (number < 365) {
+							number = number / 30;
+
+							if (RoundNumber(number) != 1) {
+								unit =  ' months';
+							} else {
+								unit =  ' month';
+							}
+						} else {
+							number = number / 365;
+							if (RoundNumber(number) != 1) {
+								unit =  ' years';
+							} else {
+								unit =  ' year';
+							}
+						} // years
+					} // months
+				} // weeks
+			} // days
+		} // hours
+	} // minutes
+
+	//number = RoundNumber(number);
+
+	var returnValue = '';
+	if (seconds % 1 == 0) {
+		returnValue = RoundNumber(number) + ' ' + unit;
+	} else {
+		returnValue = number + ' ' + unit;
+	}
+
+	if (flip) {
+		returnValue = returnValue + ' ago';
+	} else {
+		returnValue = returnValue + ' from now';
+	}
+
+	//alert(returnValue);
+
+	return returnValue;
+} // LongAgo()
+
+function ShowTimestamps () { // finds any class=timestamp, updates its displayed time as needed
+// currently requires getElementsByClassName()
+// in the future, ie4+, nn4+, and others compat can be improved
+	//alert('DEBUG: ShowTimestamps()');
+// function FormatTimestamps () {
+
+	var restAfter = 100; // stop after this many changes to avoid slowing things down
+	if (
+		window.GetPrefs &&
+		(GetPrefs('performance_optimization') == 'faster')
+	) {
+		restAfter = 30;
+	}
+	//alert('DEBUG: ShowTimestamps() BEGIN');
+
+	if (document.getElementsByClassName) {
+		//alert('DEBUG: ShowTimestamps: document.getElementsByClassName feature check passed');
+		var d = new Date();
+		var curTime = d.getTime() / 1000;
+		//var curTime = Math.floor(d.getTime() / 1000);
+		var changeLogged = 0;
+		var showTimestampsFormat = 0;
+
+		if (window.GetPrefs) {
+			if (GetPrefs('timestamps_format')) {
+				showTimestampsFormat = GetPrefs('timestamps_format');
+			} else {
+				showTimestampsFormat = 0;
+			}
+		}
+
+		// find elements with class=timestamp
+		var te = document.getElementsByClassName("timestamp"); //#timestampTagFormat
+		//var te = document.getElementsByTagName("time"); //#timestampTagFormat
+
+		//alert('DEBUG: ShowTimestamps: class=timestamp elements found: ' + te.length);
+		for (var i = 0; i < te.length; i++) {
+			// loop through all the timestamp elements on the page
+
+			var timeValue = te[i].getAttribute('datetime');  //#timestampTagFormat
+			if (!timeValue) {
+				var timeValue = te[i].getAttribute('epoch');  //#timestampTagFormat
+			}
+
+			if (!isNaN(timeValue)) {
+			//if (!isNaN(te[i].getAttribute('epoch'))) { //#timestampTagFormat
+				// element also has an attribute called 'epoch', and it is
+				// a number, which would represent epoch seconds
+				var secs = 0 - (curTime - timeValue); // number of seconds since epoch begin
+				var longAgo = '';
+				if (timeValue % 1 == 0) {
+					secs = RoundNumber(secs);
+				}
+
+				//alert(showTimestampsFormat);
+
+				//if (te[i].getAttribute('format')) {
+					//showTimestampsFormat = te[i].getAttribute('format');
+				//}
+
+
+				if (showTimestampsFormat) {
+					if (showTimestampsFormat == 'exact') { //#todo
+						longAgo = te[i].getAttribute('title');
+					}
+					if (showTimestampsFormat == 'exact_full') {
+						var date = new Date(timeValue * 1000);
+
+						var year = date.getFullYear();
+						var month = date.getMonth() + 1;
+						var day = date.getDate();
+						var hours = date.getHours();
+						var minutes = date.getMinutes();
+
+						if (month < 10) { month = '0' + month; }
+						if (day < 10) { day = '0' + day; }
+						if (hours < 10) { hours = '0' + hours; }
+						if (minutes < 10) { minutes = '0' + minutes; }
+
+						longAgo = year + "-" + month + "-" + day + " " + hours + ":" + minutes;
+					}
+					if (showTimestampsFormat == 'adjusted') {
+						longAgo = LongAgo(RoundNumber(secs)); // what the element's displayed value should be
+					}
+					if (showTimestampsFormat == 'seconds') {
+						longAgo = secs; // what the element's displayed value should be
+					}
+					if (showTimestampsFormat == 'epoch') {
+						longAgo = RoundNumber(timeValue);
+					}
+					if (showTimestampsFormat == 'iso') {
+						if (d.toISOString) {
+							var dd = new Date(timeValue * 1000);
+							longAgo = dd.toISOString();
+							var gt = unescape('%3E');
+							longAgo = longAgo.substr(0,10) + '<wbr' + gt + longAgo.substr(10); // wrapping hint
+						}
+					}
+					if (!longAgo) {
+						showTimestampsFormat = 'adjusted';
+						longAgo = LongAgo(RoundNumber(secs));
+					}
+				} else {
+					longAgo = secs;
+				}
+
+				//longAgo = secs;
+
+				if (te[i].innerHTML != longAgo) {
+					// element's content does not already equal what it should equal
+					te[i].innerHTML = longAgo;
+					if ((secs * (-1)) < 3600) {
+						// less than an hour ago = bold
+						te[i].style.fontWeight = 'bold';
+					} else {
+						te[i].style.fontWeight = '';
+					}
+					if ((secs * (-1)) < 86400) {
+						// less than a day ago = highlight
+						var colorHighlightAlert = '#fff0ef'; // templated
+						if (colorHighlightAlert) {
+						    te[i].style.backgroundColor = colorHighlightAlert;
+                        }
+					} else {
+						te[i].style.backgroundColor = '';
+					}
+					
+					//var rect = te[i].getBoundingClientRect();
+					//if (!te[i].getAttribute('maxw') || (te[i].getAttribute('maxw') < rect.width)) {
+					//	te[i].setAttribute('maxw', rect.width);
+					//	te[i].style.width = (rect.width) + 'px';
+					//	document.title = te[i].getAttribute('maxw') + ',' + te[i].style.width;
+					//}
+					changeLogged++; // count change logged
+				}
+			}
+			if (restAfter < changeLogged) {
+				setTimeout('ShowTimestamps()', 500);
+				i = te.length;
+				
+				return changeLogged;
+			}
+		} // for (var i = 0; i < te.length; i++)
+
+		if (window.EventLoop) {
+			// do nothing, EventLoop() will call us when needed
+		} else {
+			// allow ShowTimestamps() to run decoupled from EventLoop()
+			if (changeLogged) {
+				setTimeout('ShowTimestamps()', 5000);
+			} else {
+				setTimeout('ShowTimestamps()', 15000);
+			}
+		}
+		
+		return changeLogged;
+	}
+} // ShowTimestamps()
+//
+//if (window.EventLoop) {
+//	// do nothing, EventLoop() will take care of us
+//} else {
+//	// if no EventLoop(), we do it ourselves
+//	ShowTimestamps();
+//}
+
+// == end timestamp.js
+
+
+// == begin voting.js
+
+function PingUrlCallback () {
+	var xmlhttp = window.xmlhttp;
+	var xmlhttpElement = window.xmlhttpElement;
+
+	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		//alert('DEBUG: PingUrlCallback() found status 200!');
+
+		if (xmlhttpElement) {
+			var elemOK = document.createElement('span');
+			//elemOK.setAttribute('disabled', true);
+			elemOK.innerHTML = '&check;'; // checkmark
+			//#todo: get rect, and check if it is too wide,
+			//   which means escaped char didn't work
+			//   and should be replaced (ff 3.x, camino)
+			//elemOK.innerHTML = 'OK';
+			xmlhttpElement.setAttribute('disabled', true);
+			xmlhttpElement.appendChild(elemOK);
+		}
+		// window.location.replace(xmlhttp.responseURL);
+		// document.open();
+		// document.write(xmlhttp.responseText);
+		// document.close();
+		window.xmlhttp = 0;
+	} else if (xmlhttp.readyState == 4 && xmlhttp.status == 401) {
+		// server returned 401, which most likely means that we need a cookie
+		// redirect user to profile.html page so that they can register
+		// this is very basic, jarring, and unfriendly, but it is better than failing silently
+		// relative links setting should also be taken into account
+		// #todo
+		window.location = '/profile.html'; // #todo relativize
+	} else {
+		//alert('DEBUG: PingUrlCallback: warning: unrecognized: xmlhttp.status = ' + xmlhttp.status + '; xmlhttp.readyState = ' + xmlhttp.readyState);
+	}
+}
+
+//function OptionsDefault(token, privKeyObj) {
+//	this.data = token;
+//	this.privateKeys = [privKeyObj];
+//}
+
+function signCallback (signed) {
+    var postUrl = '/post.html';
+	var url = postUrl + '?comment=' + encodeURIComponent(signed.data);
+
+	if (PingUrl(url)) {
+		// todo incrememnt counter
+	}
+}
+
+function IncrementTagLink (t) { // increments number of votes in tag button
+// function IncrementVoteLink () {
+// function AddVote () {
+// adds a number if there isn't one already
+// #todo adapt to accommodate buttons as well
+
+	if (!t) {
+		// if t is missing, return true, so that click event can go through
+		//alert('DEBUG: IncrementTagLink: warning: t is missing');
+		return true;
+	}
+
+	if (t.innerHTML) {
+		// update count in vote link
+		//alert('DEBUG: IncrementTagLink: t.innerHTML');
+		var ih = t.innerHTML;
+		if (ih.indexOf('(') == -1) {
+			// there is no count yet, add a 1
+			//alert('DEBUG: IncrementTagLink: ( not found');
+			t.innerHTML = ih + '(1)';
+		} else {
+			// there is a count already, increment it
+			//alert('DEBUG: IncrementTagLink: ( found');
+
+			var numVal = ih.substring(ih.indexOf('(') + 1, ih.indexOf(')'));
+			var newVal = parseInt(numVal) + 1;
+			var hashTag = ih.substring(0, ih.indexOf('('));
+			t.innerHTML = hashTag + '(' + newVal + ')';
+		}
+
+		var voteValue = t.innerHTML.substring(0, t.innerHTML.indexOf('('));
+
+		//alert('DEBUG: IncrementTagLink: voteValue = "' + voteValue + '"');
+
+		//alert('DEBUG: IncrementTagLink: finished with t.innerHTML');
+
+		return false;
+	} // if (t.innerHTML)
+
+	return true;
+} // IncrementTagLink()
+
+function SignVote (t, token) { // signs a vote from referenced vote button
+// t = reference to calling button's 'this'
+// token = full voting token, in the format (gt)(gt)fileHash\n#tag
+// where (gt) is a greater-than sign, omitted here
+	//alert('DEBUG: SignVote(' + t + ',' + token +')');
+
+	if (
+		t.nextSibling &&
+		t.nextSibling.tagName &&
+		t.nextSibling.getAttribute &&
+		t.nextSibling.getAttribute('class') == 'notification'
+	) {
+		// removes a notification if it is immediately afer this button
+		t.nextSibling.remove();
+	}
+
+	if (window.xmlhttp) {
+		//only allow one vote a time to be happening
+		//unless user is operator
+
+		if (GetPrefs('show_admin')) {
+			// continue
+		} else {
+			if (window.displayNotificationWithTimeout) {
+				displayNotificationWithTimeout('Too fast', t);
+			}
+			return false;
+		}
+	}
+
+
+	if (document.getElementById) {
+	// basic dumb feature check #todo make smarter feature check ;
+	// needs better compatibility for older browsers
+		// get private key
+
+		if (!GetPrefs('show_admin') && GetPrefs(token)) {
+			// don't let user vote twice -- basic version
+			// the token we'd send to vote is stored as the key to a preference setting
+			// #todo this could be nicer?
+			// doesn't apply if user is showing operator controls
+			if (window.displayNotificationWithTimeout) {
+				window.duplicateVoteTries ? window.duplicateVoteTries++ : window.duplicateVoteTries = 1;
+				if (3 <= window.duplicateVoteTries) {
+					displayNotificationWithTimeout('Hey!', t);
+				} else {
+					displayNotificationWithTimeout('Already voted', t);
+				}
+			} else {
+				//alert('DEBUG: window.displayNotificationWithTimeout() was missing');
+			}
+
+			// returning false will keep the link from navigating to non-js fallback
+			return false;
+		}
+
+		IncrementTagLink(t);
+
+		var privkey = 0; //also serves as feature check flag, sorry
+		if (window.getPrivateKey && window.openpgp) {
+			var privkey = getPrivateKey();
+		}
+
+		//alert('DEBUG: SignVote: privkey: ' + !!privkey);
+
+		window.xmlhttpElement = t;
+		
+		if (GetPrefs('show_admin') || !privkey) {
+			//alert('DEBUG: !privkey');
+			// if there is no private key, just do a basic unsigned vote;
+
+			// if user is operator, they also do this for faster voting
+
+			if (PingUrl(t.href)) {
+				return false;
+			}
+		} else {
+			// there is a private key
+			//alert('DEBUG: privkey is true');
+
+			// load the private key into openpgp
+			var privKeyObj = openpgp.key.readArmored(privkey).keys[0];
+			var options;
+			options = new Object();
+			options.data = token;
+			options.privateKeys = privKeyObj;
+			openpgp.config.show_version = false;
+			openpgp.config.show_comment = false;
+
+			// sign the voting token and send to post.html when finished
+			openpgp.sign(options).then(signCallback);
+		}
+
+		// remember that we voted for this already
+		SetPrefs(token, 1);
+
+		if (window.displayNotification) {
+			// displayNotification('Success!', t);
+		} else {
+			//alert('DEBUG: window.displayNotification() was missing');
+		}
+
+		return false; // cancel link click-through
+	} else {
+		//	    if (document.images) {
+		//	        var myUrl = window.location;
+		//	        var postUrl = '/post.html';
+		//	    	document.images[0].src = postUrl + '?mydomain=' + myUrl;
+		//
+		//	    	//alert('DEBUG: t = ' + t);
+		//
+		//	    	return false;
+		//	    }
+	}
+
+	//alert('DEBUG: SignVote: warning: fall-through');
+
+	return true; // allow link click to happen
+} // SignVote()
+
+// == end voting.js
 
 
 // == begin utils.js
@@ -2862,290 +3432,35 @@ function ProfileOnLoad () { // onload event for profile page
 // / profile.js
 
 
-// == begin timestamp.js
+// == begin itsyou.js
 
-function RoundNumber (num) {
-	var ret = Math.floor(num);
+function ItsYou () { // tells user it is their profile
+// looks for id=itsyou element on the page and sets its text
+// this can potentially output via document.write for nn3 and friends #todo
+//alert('debug: ItsYou() begins');
+	if (window.localStorage && document.getElementById) {
+		var myFp = localStorage.getItem('fingerprint');
+		var itemFp = '00000000000000000'; // for templating;
 
-	//var ret = Math.floor(num * 10) / 10;
-	//leave one digit after the decimal point
+		if (
+			(window.location.pathname == '/author/' + myFp + '/') ||
+			(window.location.pathname == '/author/' + myFp + '/index.html') || 
+			(itemFp && (itemFp == myFp))
+		) {
+			var itsYou = document.getElementById('itsyou');
+			itsYou.innerHTML = 'This is your profile!';
 
-	////alert('DEBUG: RoundNumber: num = ' + num + '; ret = ' + ret + '');
-
-	return ret;
-}
-
-function LongAgo (seconds) { // returns string with time units
-// takes seconds as parameter
-// returns a string like "3 days ago" or "3 days from now"
-
-	var flip = 0; // default is '... ago'
-	if (seconds < 0) {
-		flip = 1; // '... from now' instead of '... ago'
-		seconds = 0 - seconds;
-	}
-
-	var unit = '';
-	var number = seconds;
-
-	if (seconds < 5) { // seconds should always be positive because of flip above
-		returnValue = 'just now!'
-		return returnValue;
-	}
-
-	if (number < 60) {
-		number = number;
-
-		if (RoundNumber(number) != 1) {
-			unit = ' seconds';
-		} else {
-			unit = ' second';
-		}
-	} else {
-		number = number / 60;
-
-		if (number < 60) {
-			if (RoundNumber(number) != 1) {
-				unit = ' minutes';
-			} else {
-				unit = ' minute';
-			}
-		} else {
-			number = number / 60;
-
-			if (number < 24) {
-				if (RoundNumber(number) != 1) {
-					unit =  ' hours';
-				} else {
-					unit =  ' hour';
-				}
-			} else {
-				number = number / 24;
-
-				if (number < 7) {
-					if (RoundNumber(number) != 1) {
-						unit =  ' days';
-					} else {
-						unit =  ' day';
-					}
-				} else {
-					if (number < 30) {
-						number = number / 7;
-						if (RoundNumber(number) != 1) {
-							unit =  ' weeks';
-						} else {
-							unit =  ' week';
-						}
-					} else {
-						if (number < 365) {
-							number = number / 30;
-
-							if (RoundNumber(number) != 1) {
-								unit =  ' months';
-							} else {
-								unit =  ' month';
-							}
-						} else {
-							number = number / 365;
-							if (RoundNumber(number) != 1) {
-								unit =  ' years';
-							} else {
-								unit =  ' year';
-							}
-						} // years
-					} // months
-				} // weeks
-			} // days
-		} // hours
-	} // minutes
-
-	//number = RoundNumber(number);
-
-	var returnValue = '';
-	if (seconds % 1 == 0) {
-		returnValue = RoundNumber(number) + ' ' + unit;
-	} else {
-		returnValue = number + ' ' + unit;
-	}
-
-	if (flip) {
-		returnValue = returnValue + ' ago';
-	} else {
-		returnValue = returnValue + ' from now';
-	}
-
-	//alert(returnValue);
-
-	return returnValue;
-} // LongAgo()
-
-function ShowTimestamps () { // finds any class=timestamp, updates its displayed time as needed
-// currently requires getElementsByClassName()
-// in the future, ie4+, nn4+, and others compat can be improved
-	//alert('DEBUG: ShowTimestamps()');
-// function FormatTimestamps () {
-
-	var restAfter = 100; // stop after this many changes to avoid slowing things down
-	if (
-		window.GetPrefs &&
-		(GetPrefs('performance_optimization') == 'faster')
-	) {
-		restAfter = 30;
-	}
-	//alert('DEBUG: ShowTimestamps() BEGIN');
-
-	if (document.getElementsByClassName) {
-		//alert('DEBUG: ShowTimestamps: document.getElementsByClassName feature check passed');
-		var d = new Date();
-		var curTime = d.getTime() / 1000;
-		//var curTime = Math.floor(d.getTime() / 1000);
-		var changeLogged = 0;
-		var showTimestampsFormat = 0;
-
-		if (window.GetPrefs) {
-			if (GetPrefs('timestamps_format')) {
-				showTimestampsFormat = GetPrefs('timestamps_format');
-			} else {
-				showTimestampsFormat = 0;
+			var pUserHint = document.getElementById('pUserHint');
+			if (pUserHint) {
+				pUserHint.innerHTML = 'Hint: This is your profile!';
 			}
 		}
-
-		// find elements with class=timestamp
-		var te = document.getElementsByClassName("timestamp"); //#timestampTagFormat
-		//var te = document.getElementsByTagName("time"); //#timestampTagFormat
-
-		//alert('DEBUG: ShowTimestamps: class=timestamp elements found: ' + te.length);
-		for (var i = 0; i < te.length; i++) {
-			// loop through all the timestamp elements on the page
-
-			var timeValue = te[i].getAttribute('datetime');  //#timestampTagFormat
-			if (!timeValue) {
-				var timeValue = te[i].getAttribute('epoch');  //#timestampTagFormat
-			}
-
-			if (!isNaN(timeValue)) {
-			//if (!isNaN(te[i].getAttribute('epoch'))) { //#timestampTagFormat
-				// element also has an attribute called 'epoch', and it is
-				// a number, which would represent epoch seconds
-				var secs = 0 - (curTime - timeValue); // number of seconds since epoch begin
-				var longAgo = '';
-				if (timeValue % 1 == 0) {
-					secs = RoundNumber(secs);
-				}
-
-				//alert(showTimestampsFormat);
-
-				//if (te[i].getAttribute('format')) {
-					//showTimestampsFormat = te[i].getAttribute('format');
-				//}
-
-
-				if (showTimestampsFormat) {
-					if (showTimestampsFormat == 'exact') { //#todo
-						longAgo = te[i].getAttribute('title');
-					}
-					if (showTimestampsFormat == 'exact_full') {
-						var date = new Date(timeValue * 1000);
-
-						var year = date.getFullYear();
-						var month = date.getMonth() + 1;
-						var day = date.getDate();
-						var hours = date.getHours();
-						var minutes = date.getMinutes();
-
-						if (month < 10) { month = '0' + month; }
-						if (day < 10) { day = '0' + day; }
-						if (hours < 10) { hours = '0' + hours; }
-						if (minutes < 10) { minutes = '0' + minutes; }
-
-						longAgo = year + "-" + month + "-" + day + " " + hours + ":" + minutes;
-					}
-					if (showTimestampsFormat == 'adjusted') {
-						longAgo = LongAgo(RoundNumber(secs)); // what the element's displayed value should be
-					}
-					if (showTimestampsFormat == 'seconds') {
-						longAgo = secs; // what the element's displayed value should be
-					}
-					if (showTimestampsFormat == 'epoch') {
-						longAgo = RoundNumber(timeValue);
-					}
-					if (showTimestampsFormat == 'iso') {
-						if (d.toISOString) {
-							var dd = new Date(timeValue * 1000);
-							longAgo = dd.toISOString();
-							var gt = unescape('%3E');
-							longAgo = longAgo.substr(0,10) + '<wbr' + gt + longAgo.substr(10); // wrapping hint
-						}
-					}
-					if (!longAgo) {
-						showTimestampsFormat = 'adjusted';
-						longAgo = LongAgo(RoundNumber(secs));
-					}
-				} else {
-					longAgo = secs;
-				}
-
-				//longAgo = secs;
-
-				if (te[i].innerHTML != longAgo) {
-					// element's content does not already equal what it should equal
-					te[i].innerHTML = longAgo;
-					if ((secs * (-1)) < 3600) {
-						// less than an hour ago = bold
-						te[i].style.fontWeight = 'bold';
-					} else {
-						te[i].style.fontWeight = '';
-					}
-					if ((secs * (-1)) < 86400) {
-						// less than a day ago = highlight
-						var colorHighlightAlert = '#fff0ef'; // templated
-						if (colorHighlightAlert) {
-						    te[i].style.backgroundColor = colorHighlightAlert;
-                        }
-					} else {
-						te[i].style.backgroundColor = '';
-					}
-					
-					//var rect = te[i].getBoundingClientRect();
-					//if (!te[i].getAttribute('maxw') || (te[i].getAttribute('maxw') < rect.width)) {
-					//	te[i].setAttribute('maxw', rect.width);
-					//	te[i].style.width = (rect.width) + 'px';
-					//	document.title = te[i].getAttribute('maxw') + ',' + te[i].style.width;
-					//}
-					changeLogged++; // count change logged
-				}
-			}
-			if (restAfter < changeLogged) {
-				setTimeout('ShowTimestamps()', 500);
-				i = te.length;
-				
-				return changeLogged;
-			}
-		} // for (var i = 0; i < te.length; i++)
-
-		if (window.EventLoop) {
-			// do nothing, EventLoop() will call us when needed
-		} else {
-			// allow ShowTimestamps() to run decoupled from EventLoop()
-			if (changeLogged) {
-				setTimeout('ShowTimestamps()', 5000);
-			} else {
-				setTimeout('ShowTimestamps()', 15000);
-			}
-		}
-		
-		return changeLogged;
+	} else {
+		//alert('debug: need fallback for older browsers here');
 	}
-} // ShowTimestamps()
-//
-//if (window.EventLoop) {
-//	// do nothing, EventLoop() will take care of us
-//} else {
-//	// if no EventLoop(), we do it ourselves
-//	ShowTimestamps();
-//}
+} // ItsYou()
 
-// == end timestamp.js
+// == end itsyou.js
 
 
 // == begin fresh.js
@@ -3658,5 +3973,5 @@ function SortTable (t, sortOrder) {
 
 // -->
 </script>
-<!-- / html/utils/scriptinject.template (main,config/template/perl/page/profile.pl,80) -->
-</body></html>
+<!-- / html/utils/scriptinject.template (main,config/template/perl/get_read_page.pl,472) -->
+</body></html><!-- GetReadPage() -->

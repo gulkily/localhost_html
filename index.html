@@ -310,7 +310,61 @@ pre time {
 		</td>
 		<td align=right>
 			<small>
-				
+				<span id=spanDialogControls>
+<!-- layer_controls.template -->
+
+<noscript>*</noscript>
+
+<span>
+	<a id=btnAdvanced href=#
+		accesskey=o
+		onclick="
+			if (window.SetPrefs) {
+				SetPrefs('show_advanced', 1);
+				SetPrefs('advanced_highlight', 0);
+				SetPrefs('beginner', 0);
+				SetPrefs('beginner_highlight', 0);
+				SetPrefs('notify_on_change', 1);
+			}
+			if (window.ShowAdvanced) {
+				ShowAdvanced(0, 0);
+				return false;
+			}
+		"
+	>Expand</a>;
+
+	<a id=btnMinimal href=#
+		accesskey=n
+		onclick="
+			if (window.SetPrefs) {
+				SetPrefs('show_advanced', 0);
+				SetPrefs('admin', 0);
+			}
+			if (window.ShowAdvanced) {
+				ShowAdvanced(0, 0);
+				return false;
+			}
+		"
+	title=Minimal>Minimal</a>;
+
+	<a id=btnReprint href=# accesskey=r onclick="
+		var winLoc = window.location.href;
+		if (winLoc.indexOf('?')) {
+			winLoc = winLoc.substr(0, winLoc.indexOf('?'));
+		}
+		var d = new Date();
+		var n = d.getTime();
+		n = Math.ceil(n / 1000);
+		n = n + 86400;
+		winLoc = winLoc + '?time=' + n;
+		window.location = winLoc;
+		return false;
+	" title="Reprint">Reprint</a>;
+
+</span>
+
+<!-- / layer_controls.template -->
+</span>
 			</small>
 		</td>
 	</tr>
@@ -384,7 +438,7 @@ Please, <a href="/write.html" onclick="InjectDialog('write'); return false;">be 
 <script language=javascript><!--
 // == begin avatar.js
 
-var configJsOpenPgp = 0; // this is templated from config/setting/admin/js/openpgp
+var configJsOpenPgp = 1; // this is templated from config/setting/admin/js/openpgp
 
 function setAva () { // sets avatar widgets (and italicizes Profile link)
 	//alert('DEBUG: setAva() begins');
@@ -427,7 +481,7 @@ function setAva () { // sets avatar widgets (and italicizes Profile link)
 					signinBox.innerHTML = '<a href="/profile.html"' + gt + '<i' + gt + 'Change</i' + gt + '</a' + gt + '';
 				}
 
-				var configJsOpenPgp = 0; // this is templated from config/setting/admin/js/openpgp
+				var configJsOpenPgp = 1; // this is templated from config/setting/admin/js/openpgp
 
 				if (configJsOpenPgp && !window.openpgp && document.head && document.getElementById && window.localStorage) {
 					//alert('DEBUG: setAva: loading openpgp.js');
@@ -1422,7 +1476,7 @@ if (window.EventLoop) {
 
 // profile.js
 
-var configJsOpenPgp = 0; // this is templated from config/setting/admin/js/openpgp
+var configJsOpenPgp = 1; // this is templated from config/setting/admin/js/openpgp
 
 if (configJsOpenPgp && !window.openpgp && document.head && document.head.appendChild && document.getElementById && window.localStorage) {
 	//alert('DEBUG: loading openpgp.js');
@@ -2045,7 +2099,7 @@ function ProfileOnLoad () { // onload event for profile page
 			if (window.localStorage) {
 				//alert('DEBUG: ProfileOnLoad: window.localStorage check passed, calling getPrivateKey()...');
 
-				var configJsOpenPgp = 0; // this is templated from config/setting/admin/js/openpgp
+				var configJsOpenPgp = 1; // this is templated from config/setting/admin/js/openpgp
 
 				var pk = getPrivateKey();
 
@@ -3983,7 +4037,7 @@ function WriteOnload () { // onload handler for write page
 			privKey = getPrivateKey();
 		}
 
-		var configJsOpenPgp = 0; // this is templated from config/setting/admin/js/openpgp
+		var configJsOpenPgp = 1; // this is templated from config/setting/admin/js/openpgp
 
 		if (configJsOpenPgp && privKey) {
 			//alert('DEBUG: privKey was true, adding options...');
@@ -4117,7 +4171,7 @@ function writeSubmit (t) { // called when user submits write form //signMessage 
 		//alert('DEBUG: no window.localStorage');
 	}
 
-	var configJsOpenPgp = 0; // this is templated from config/setting/admin/js/openpgp
+	var configJsOpenPgp = 1; // this is templated from config/setting/admin/js/openpgp
 	if (configJsOpenPgp && window.getPrivateKey && window.signMessage) {
 		//alert('DEBUG: window.getPrivateKey && window.signMessage test passed');
 		if (getPrivateKey()) {
