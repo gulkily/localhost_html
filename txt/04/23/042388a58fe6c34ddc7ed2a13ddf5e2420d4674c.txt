@@ -1,0 +1,13 @@
+>>e0b467cb40ac16a112bc1e2b4fbd3669594f4379
+
+config/setting/admin/python3/enable 1
+330cd0bb7c237cc93767530f54a9902d9a3dbedc
+
+=================
+Rejoice always
+Pray without ceasing
+Give thanks in all circumstances
+=================
+thankyou 7b9effab
+=================
+echo 1 > config/setting/admin/python3/enable

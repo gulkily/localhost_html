@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml"></link>
-<title>a84bab5e645a8a34e5fef7d2c586d87e5f26a9fa by Guest</title>
+<title>1683116339_untitled6</title>
 <style type="text/css">
 <!--
 /* begin css/default.css */
@@ -322,12 +322,12 @@ pre time {
 
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=a84bab5e cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=360eb180 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#fff0ef" class=titlebar>
 	<td>
-		<font color="#403000"><b>Untitled</b></font> <a href=#a84bab5e>#</a><a name=a84bab5e></a><br>
+		<font color="#403000"><b>Untitled</b></font> <a href=#360eb180>#</a><a name=360eb180></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -341,7 +341,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/py.html"><font color="#403000">#</font>py</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -350,9 +350,82 @@ pre time {
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">[Operator]<span class=admin><br>
--- <br>
-<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<p class="txt">
+<!-- py.template -->
+<pre><code>class Complex():
+    &quot;&quot;&quot; A class that represents the complex number x+y*i &quot;&quot;&quot;
+    def __init__(self, x, y):
+        &quot;&quot;&quot; x and y are numbers
+            self is made up of a real number part (x)
+            and an imaginary number part (y) &quot;&quot;&quot;
+        self._real = x
+        self._imag = y
+
+    def get_real(self):
+        &quot;&quot;&quot; Returns the real part of self &quot;&quot;&quot;
+        return self._real
+
+    def get_imag(self):
+        &quot;&quot;&quot; Returns the imaginary part of self &quot;&quot;&quot;
+        return self._imag
+
+    def __add__(self, oth):
+        &quot;&quot;&quot; oth is an object of type Complex
+            Returns a new Complex object whose 
+            * real part is the sum of self and oth's real parts
+            * imaginary part is the sum of self and oth's imaginary parts
+        &quot;&quot;&quot;
+        new_real = self._real + oth.get_real()
+        new_imag = self._imag + oth.get_imag()
+        new_complex = Complex(new_real, new_imag)
+        return new_complex
+
+    def is_purely_real(self):
+        &quot;&quot;&quot; Returns True if self's imaginary part is 0 &quot;&quot;&quot;
+        if self._imag == 0:
+            return True
+        else:
+            return False
+
+    def __str__(self):
+        &quot;&quot;&quot; self's representation for a Complex object, whose real part is x 
+            and imaginary part is y, is x+yi. If the real or imaginary parts 
+            are 0, include the 0 in the representation. If the imaginary part 
+            is negative, use x-yi as the representation.  &quot;&quot;&quot;
+        return_string = ''
+        return_string = str(self._real)
+        if self._imag &gt;= 0:
+            return_string += '+'
+        return_string += str(self._imag)
+        return_string += 'i'
+        return return_string
+
+# For example:
+
+c1 = Complex(3,6)
+c2 = Complex(9,7)
+print(c1)             # prints 3+6i
+print(c1.get_real())  # prints 3
+print(c1.get_imag())  # prints 6
+
+c5 = c1+c2
+print(c5) # prints 12+13i
+
+c3 = Complex(-5,0)
+print(c3.is_purely_real())  # prints True
+print(c3) # prints -5+0i
+
+c4 = Complex(0,-2)
+print(c4.is_purely_real())  # prints False
+print(c4) # prints 0-2i
+
+c4 = Complex(-5,2)
+print(c4.is_purely_real())  # prints False
+print(c4) # prints -5+2i
+
+</code></pre>
+<!-- / py.template -->
+<br></p>
 <!-- / item/item.template -->
 </td></tr></tbody>
 
@@ -362,25 +435,24 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/a8/4b/a84bab5e.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683113821 title="07:37:01">07:37</time><!-- / timestamp_time.template --></a>;
-<a class=avatar href="/author/6B368C010B14769F/index.html"><!-- avatar-username.template --><span class=avatar><span class=username><font color="#403000>"
-			<b><i>Guest+</i></b></font></span></span><!-- / avatar-username.template --></a>;
+<a href="/36/0e/360eb180.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683114158 title="07:42:38">07:42</time><!-- / timestamp_time.template --></a>;
+
 <span class=advanced>
-	<span class=fileHashShort>a84bab5e</span>;
+	<span class=fileHashShort>360eb180</span>;
 </span>
 <!-- vote_button.template -->
 <a onclick="if (window.SignVote) {
 							var gt = unescape('%3E');
-							return SignVote(this, gt+gt+'a84bab5e645a8a34e5fef7d2c586d87e5f26a9fa\n#like');
+							return SignVote(this, gt+gt+'360eb1805f6925e62163b03d1368719129ad30dd\n#like');
 						}" 
-	href="/post.html?comment=%23like&replyto=a84bab5e645a8a34e5fef7d2c586d87e5f26a9fa"
+	href="/post.html?comment=%23like&replyto=360eb1805f6925e62163b03d1368719129ad30dd"
 	class="tag-like">like</a>;
 <!-- / vote_button.template --><!-- vote_button.template -->
 <a onclick="if (window.SignVote) {
 							var gt = unescape('%3E');
-							return SignVote(this, gt+gt+'a84bab5e645a8a34e5fef7d2c586d87e5f26a9fa\n#flag');
+							return SignVote(this, gt+gt+'360eb1805f6925e62163b03d1368719129ad30dd\n#flag');
 						}" 
-	href="/post.html?comment=%23flag&replyto=a84bab5e645a8a34e5fef7d2c586d87e5f26a9fa"
+	href="/post.html?comment=%23flag&replyto=360eb1805f6925e62163b03d1368719129ad30dd"
 	class="tag-flag">flag</a>
 <!-- / vote_button.template -->
 <!-- status_bar.template -->
@@ -432,7 +504,7 @@ pre time {
 			<label for=replyto>In reply to:</label>
 			<br>
 		</span>
-		<input type=text name=replyto id=replyto value="a84bab5e645a8a34e5fef7d2c586d87e5f26a9fa" size=45>
+		<input type=text name=replyto id=replyto value="360eb1805f6925e62163b03d1368719129ad30dd" size=45>
 		<span class=beginner>
 			<br>
 			Clear this field to post a new thread.
@@ -449,25 +521,28 @@ pre time {
 <br>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=ee788d42 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=c01598ca cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
-<!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
-	<td>
-		<font color="#403000"><b>add upload page</b></font> <a href=#ee788d42>#</a><a name=ee788d42></a><br>
-		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
-	</td>
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
 </tr>
-<!-- / titlebar.template -->
+<!-- / header_wrapper.template -->
 
-
-		
-
-		
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/a8/4b/a84bab5e.html">a84bab5e..</a><br><br>add upload page<br><a href="/9d/02/9d020310.html">9d020310..</a><br><br>ok, I added upload page.<br><br>===<br></p>
+<p class="txt">&gt;&gt;<a href="/36/0e/360eb180.html">360eb180..</a><br><br>#run<span class=admin><br>
+-- <br>
+<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
 <!-- / item/item.template -->
 </td></tr></tbody>
 
@@ -477,24 +552,89 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/ee/78/ee788d42.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683113826 title="07:37:06">07:37</time><!-- / timestamp_time.template --></a>;
-
+<a href="/c0/15/c01598ca.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683116388 title="08:19:48">08:19</time><!-- / timestamp_time.template --></a>;
+<a class=avatar href="/author/2B5753757B3295F4/index.html"><!-- avatar-username.template --><span class=avatar><span class=username><font color="#403000>"
+			<b><i>Guest</i></b></font></span></span><!-- / avatar-username.template --></a>;
 <span class=advanced>
-	<span class=fileHashShort>ee788d42</span>;
+	<span class=fileHashShort>c01598ca</span>;
 </span>
 <!-- vote_button.template -->
 <a onclick="if (window.SignVote) {
 							var gt = unescape('%3E');
-							return SignVote(this, gt+gt+'ee788d42b9993f22e4a6affa597d18b6d54033c2\n#like');
+							return SignVote(this, gt+gt+'c01598cad7aeed7cedfaa4f91d68fa1d0da4738a\n#like');
 						}" 
-	href="/post.html?comment=%23like&replyto=ee788d42b9993f22e4a6affa597d18b6d54033c2"
+	href="/post.html?comment=%23like&replyto=c01598cad7aeed7cedfaa4f91d68fa1d0da4738a"
 	class="tag-like">like</a>;
 <!-- / vote_button.template --><!-- vote_button.template -->
 <a onclick="if (window.SignVote) {
 							var gt = unescape('%3E');
-							return SignVote(this, gt+gt+'ee788d42b9993f22e4a6affa597d18b6d54033c2\n#flag');
+							return SignVote(this, gt+gt+'c01598cad7aeed7cedfaa4f91d68fa1d0da4738a\n#flag');
 						}" 
-	href="/post.html?comment=%23flag&replyto=ee788d42b9993f22e4a6affa597d18b6d54033c2"
+	href="/post.html?comment=%23flag&replyto=c01598cad7aeed7cedfaa4f91d68fa1d0da4738a"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=8aa5c5d9 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/36/0e/360eb180.html">360eb180..</a><br><br>#run<span class=admin><br>
+-- <br>
+<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/8a/a5/8aa5c5d9.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683114170 title="07:42:50">07:42</time><!-- / timestamp_time.template --></a>;
+<a class=avatar href="/author/6B368C010B14769F/index.html"><!-- avatar-username.template --><span class=avatar><span class=username><font color="#403000>"
+			<b><i>Guest+</i></b></font></span></span><!-- / avatar-username.template --></a>;
+<span class=advanced>
+	<span class=fileHashShort>8aa5c5d9</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'8aa5c5d9a1c256983989a12c1df6e9e5a8378c09\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=8aa5c5d9a1c256983989a12c1df6e9e5a8378c09"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'8aa5c5d9a1c256983989a12c1df6e9e5a8378c09\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=8aa5c5d9a1c256983989a12c1df6e9e5a8378c09"
 	class="tag-flag">flag</a>
 <!-- / vote_button.template -->
 <!-- status_bar.template -->
@@ -543,41 +683,31 @@ pre time {
 <td><font color=green>Yes</font></td>
 </tr>
 <tr bgcolor="#fff0ef"><td><span title="chain_hash">SHA1 (chain.log)</span>:</td>
-<td><tt>a84bab5e645a8a34e5fef7d2c586d87e5f26a9fa</tt></td>
+<td><tt>360eb1805f6925e62163b03d1368719129ad30dd</tt></td>
 </tr>
 <tr bgcolor="#fff0ef"><td><span title="chain_next">Next</span>:</td>
-<td><a href="/ee/78/ee788d42.html">add upload page</a></td>
+<td><a href="/8a/a5/8aa5c5d9.html">8aa5c5d9..</a></td>
 </tr>
 <tr bgcolor="#fff0ef"><td><span title="chain_previous">Previous</span>:</td>
-<td><a href="/90/e4/90e415ed.html">90e415ed..</a></td>
+<td><a href="/0e/37/0e378f3d.html">0e378f3d..</a></td>
 </tr>
 <tr bgcolor="#fff0ef"><td><span title="chain_sequence">Sequence</span>:</td>
-<td>51</td>
+<td>58</td>
 </tr>
 <tr bgcolor="#fff0ef"><td><span title="chain_timestamp">Notarized</span>:</td>
-<td><!-- timestamp_time.template --><time class=timestamp datetime=1683113820.05894 title="07:37:00">07:37</time><!-- / timestamp_time.template --> <tt class=advanced> 1683113820.05894</tt></td>
-</tr>
-<tr bgcolor="#fff0ef"><td><span title="client_id">Client</span>:</td>
-<td>99BC420C2A1CF033</td>
-</tr>
-<tr bgcolor="#fff0ef"><td><span title="cookie_id">Cookie</span>:</td>
-<td><a class=avatar href="/author/6B368C010B14769F/index.html"><!-- avatar-username.template --><span class=avatar><span class=username><font color="#403000>"
-			<b><i>Guest+</i></b></font></span></span><!-- / avatar-username.template --></a> <tt class=advanced> 6B368C010B14769F</tt></td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683114157.64450 title="07:42:37">07:42</time><!-- / timestamp_time.template --> <tt class=advanced> 1683114157.64450</tt></td>
 </tr>
 <tr bgcolor="#fff0ef"><td><span title="file_path">File</span>:</td>
-<td><a href="/txt/a8/4b/a84bab5e645a8a34e5fef7d2c586d87e5f26a9fa.txt">/txt/a8/4b/a84bab5e645a8a34e5fef7d2c586d87e5f26a9fa.txt</a></td>
+<td><a href="/image/untitled6.py">/image/untitled6.py</a></td>
+</tr>
+<tr bgcolor="#fff0ef"><td><span title="file_path">File</span>:</td>
+<td><a href="/image/1683116339_untitled6.py">/image/1683116339_untitled6.py</a></td>
 </tr>
 <tr bgcolor="#fff0ef"><td><span title="item_type">Type</span>:</td>
-<td>txt</td>
-</tr>
-<tr bgcolor="#fff0ef"><td><span title="operator_please">Operator</span>:</td>
-<td>add upload page</td>
-</tr>
-<tr bgcolor="#fff0ef"><td><span title="received_timestamp">Received</span>:</td>
-<td><!-- timestamp_time.template --><time class=timestamp datetime=1683113819 title="07:36:59">07:36</time><!-- / timestamp_time.template --> <tt class=advanced> 1683113819</tt></td>
+<td>py</td>
 </tr>
 <tr bgcolor="#fff0ef"><td><span title="sha1">SHA1 (Perl, Digest::SHA)</span>:</td>
-<td><tt>a84bab5e645a8a34e5fef7d2c586d87e5f26a9fa</tt></td>
+<td><tt>360eb1805f6925e62163b03d1368719129ad30dd</tt></td>
 </tr>
 </tbody>
 
@@ -585,63 +715,11 @@ pre time {
 <!-- window/status.template -->
 <tr class=statusbar>
 	<td colspan=2>
-		13 item(s)
+		10 item(s)
 	</td>
 </tr>
 <!-- / window/status.template -->
 
-	</table>
-</font>
-<!-- / default/template/html/window/standard.template -->
-</span><span class=advanced>
-<!-- default/template/html/window/standard.template -->
-<font face=arial>
-	<table id=indexlog cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
-		
-<!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
-	<td>
-		<font color="#403000"><b>index_log</b></font> <a href=#indexlog>#</a><a name=indexlog></a><br>
-		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
-	</td>
-</tr>
-<!-- / titlebar.template -->
-
-
-		
-
-		
-
-		<tbody class=content><tr class=content><td>indexing begins<br>
-file hash = a84bab5e645a8a34e5fef7d2c586d87e5f26a9fa<br>
----<br>
-found token: cookie, : , 6B368C010B14769F<br>
-found token: client, : , 99BC420C2A1CF033<br>
-found token: received, : , 1683113819<br>
-found token: footer_separator, , <br>
-found token: operator_please,  , add upload page<br>
-finished finding tokens<br>
-tokens found: 5<br>
-token: cookie; spacer: : ; param = 6B368C010B14769F<br>
-found cookie: 6B368C010B14769F<br>
-token: client; spacer: : ; param = 99BC420C2A1CF033<br>
-found client: 6B368C010B14769F (overruled by signature)<br>
-token: received; spacer: : ; param = 1683113819<br>
-token: footer_separator; spacer: ; param = <br>
-token: operator_please; spacer:  ; param = add upload page<br>
----<br>
-item timestamp: 1683113820.05894<br>
-applying: cookie<br>
-applying: client<br>
-applying: received<br>
-valid: received<br>
-token found: received<br>
-applying: operator_please<br>
-valid: operator_please<br>
-token found: operator_please<br>
-operator, please add upload page</td></tr></tbody>
-
-		
 	</table>
 </font>
 <!-- / default/template/html/window/standard.template -->
