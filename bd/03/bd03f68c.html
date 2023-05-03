@@ -1,26 +1,608 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml"></link>
+<title>bd03f68c023e0f7fddc63f6954bc6de56ff83960 by Guest</title>
+<style type="text/css">
+<!--
+/* begin css/default.css */
+.tag-flag,
+.tag-troll,
+.tag-spam,
+.tag-remove,
+.tag-slash,
+.tag-abuse {
+/* negative (red) tags */
+	color: #403000;
+	font-weight: bold;
+}
+
+.tag-remove {
+/* remove tag */
+	font-weight: bold;
+}
+
+.tag-approve,
+.tag-accept,
+.tag-friend,
+.tag-attend,
+.tag-like,
+.tag-vouch {
+/* positive (green) tags */
+	color: #403000;
+	font-weight: bold;
+}
+
+.tag-hide {
+	color: gray;
+}
+
+div.reply {
+/* creates indented effect for sub-replies */
+	margin-left: 2%;
+	padding-left: 3em;
+}
+
+.item-textart {
+/* textart items get monospace font */
+	font-family: monospace;
+	font-size: 12pt;
+}
+
+.tag-aolart {
+/* aol art in 10-point arial font */
+    font-family: Arial;
+    font-size: 10pt;
+}
+
+div.txt {
+	padding-left: 1em;
+}
+
+.byadmin {
+/* text by admin, displayed in red for users' sake */
+	color: red;
+}
+
+.signed {
+/* signed things are displayed in gold */
+    border-color: gold;
+}
+
+
+#eventLocation {
+/* event form */
+	background-color: #fff0ef;
+	padding: 5pt;
+}
+
+#eventDate {
+/* event form */
+	background-color: #fff0ef;
+	padding: 5pt;
+}
+
+#loadingIndicator, #spanLoadingIndicator, #ariaAlert {
+	color: #403000;
+	background-color: #fff0ef;
+	padding: 3pt;
+	position: fixed;
+	top: 0;
+	left: 0;
+	margin: 0;
+	font-family: tahoma, arial, sans-serif;
+	font-weight: bold;
+}
+#loadingIndicator a {
+	/* style for links in loading indicator */
+}
+.notification {
+	color: #403000;
+	background-color: #fff0ef;
+	padding: 3pt;
+	font-weight: bold;
+	padding: 3pt;
+}
+noscript, .noscript {
+	color: red;
+}
+.menubar a, .titlebar a, .topmenubar a {
+	text-decoration: none;
+	color: #403000;
+}
+nobr {
+	white-space:nowrap;
+}
+input[type=button], button, input[type=submit] {
+	color: #403000;
+	background-color: #fff0ef
+}
+/* end css/default.css */
+
+/* theme/hypercode/additional.css */
+
+* {
+	border-radius: 5pt !important;
+	font-family: georgia, "times new roman", serif !important;
+}
+input, textarea {
+	background-color: white !important;
+	border: 2pt solid #404040 !important;
+	margin-top: 2pt !important;
+}
+#serverResponse {
+	display: none;
+}
+.titlebar {
+	background-image: linear-gradient(to bottom right, #ffffff, #fff0ef) !important;
+}
+#loadingIndicator, #ariaAlert {
+	background-color: yellow;
+	border-radius: 0 !important;
+}
+#spanSignAs {
+	float: right;
+}
+
+/* / theme/hypercode/additional.css */
+/* theme/chicago/additional.css */
+body {
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	background-color: #fff0ef;
+}
+input {
+}
+input[type=text], input[type=password], select, option, textarea {
+	background-color: #fff0ef;
+	color: #403000;
+}
+#txtClock {
+	border: 1pt inset #fff0ef;
+}
+@media (prefers-color-scheme: dark) {
+
+}
+.beginner {
+}
+.dialog {
+	box-shadow: 5pt 5pt 0 rgba(0, 20, 20, 0.3);
+	border: #c0c0c0 outset 2pt;
+	background-color: #fff0ef;
+	border-radius: 1pt;
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	margin-right: 8pt;
+	margin-bottom: 8pt;
+}
+.statusbar td {
+	border: 1pt inset #fff0ef;
+}
+textarea {
+    font-family: Fixedsys, "Courier New", Courier, monospace;
+    font-size: 12pt;
+}
+
+.txt {
+/* regular text */
+	font-family: "Times New Roman", Times, sans-serif;
+	/*font-family: Tahoma, Arial, Helvetica, sans-serif;*/
+	font-size: 14pt;
+}
+a:focus, a:active {
+    color: red !important;
+    border-radius: 1pt;
+}
+textarea:focus {
+}
+input:focus {
+}
+#serverResponse {
+/* response messages from the server */
+    background-color: #fff0ef;
+    color: #403000;
+    padding: 5pt;
+    border: 0;
+	box-shadow: 5pt 5pt 0 rgba(0, 20, 20, 0.5);
+}
+#txtClock {
+	border: 1pt inset #fff0ef;
+	background-color: #fff0ef;
+}
+.fileHashShort {
+	text-decoration: underline dotted;
+}
+#spanDialogControls a {
+	color: #fff0efText;
+}
+.titlebarButtons {
+	float: right;
+}
+button.close, button.skip {
+	border: 0;
+	margin: 0;
+	font-weight: bold;
+}
+button:hover {
+	color: red;
+}
+#spanDialogControls a {
+	color: #403000;
+}
+/* / theme/chicago/additional.css */
+/* pre_time_sans.css */
+
+pre time {
+	font-family: helvetica, arial, sans-serif;
+}
+
+/* /pre_time_sans.css */
+
+-->
+</style>
 </head>
-<body bgcolor="" text="" link="" vlink="">
-<table bgcolor="">
-<tr><td>
-<p>
-    Message received, and scheduled to be posted.<br><br>Hash: bd03f68c023e0f7fddc63f6954bc6de56ff83960(bd03f68c)<br>URL: <a href="/bd/03/bd03f68c.html">/bd/03/bd03f68c.html</a><br>
-</p>
-<p>
-    <a href="/">Return Home</a>
-</p>
-</td></tr>
+<body link="#403000" vlink="#403000" text="#403000" bgcolor="#fff0ef" background="/hypercode_bg.jpg">
+<b>
+<!-- template/topmenu2.template -->
+<table cellspacing=0 cellpadding=3 border=0 bgcolor="#fff0ef" class=dialog id=topmenu>
+	<tr bgcolor="#fff0ef" class=topmenubar>
+		<td colspan=2>
+			<big>
+				<big>
+<!-- menuitem.template -->
+<a accesskey=w href="/write.html"><u>W</u>rite</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=a href="/active.html"><u>A</u>ctive</a>
+<!-- / menuitem.template -->
+</big>
+				<span class=advanced></span>
+				<span class=admin> </span>
+				<span id=controls></span>
+				<span id=spnClock></span>
+			</big>
+		</td>
+	</tr>
+	<tr bgcolor="#fff0ef" class=titlebar>
+		<td>
+			<small>
+				<font color="#403000"><b>Welcome</b></font>
+			</small>
+		</td>
+		<td align=right>
+			<small>
+				
+			</small>
+		</td>
+	</tr>
 </table>
-<hr>
-<pre>
-&gt;&gt;71c4918002f2678bdbf661b6d833b41be3de8d9a<br>
+<!-- / topmenu2.template -->
+</b>
+<p><MAIN ID=maincontent><A NAME=maincontent></A>
+
+
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=bd03f68c cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>Untitled</b></font> <a href=#bd03f68c>#</a><a name=bd03f68c></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/71/c4/71c49180.html">move inbox dialo</a><br><br>[Operator]   <br><span class=admin><br>
+-- <br>
+<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/bd/03/bd03f68c.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683113565 title="07:32:45">07:32</time><!-- / timestamp_time.template --></a>;
+<a class=avatar href="/author/6B368C010B14769F/index.html"><!-- avatar-username.template --><span class=avatar><span class=username><font color="#403000>"
+			<b><i>Guest+</i></b></font></span></span><!-- / avatar-username.template --></a>;
+<span class=advanced>
+	<span class=fileHashShort>bd03f68c</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=bd03f68c023e0f7fddc63f6954bc6de56ff83960"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=bd03f68c023e0f7fddc63f6954bc6de56ff83960"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=Comment cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>Comment</b></font> <a href=#Comment>#</a><a name=Comment></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+
+		<tbody class=content><tr class=content><td>
+<!-- reply.template -->
+<a name=reply></a>
+<form class=reply action="/post.html" id=compose name=compose>
+	<textarea
+		wrap=soft
+		rows=7
+		cols=32
+		style="min-width: 360px; height: 80px;"
+		id=comment
+		name=comment
+	></textarea>
+	<br>
+	<input id=btnSendReply type=submit value="Send Reply">
+	<span id=spanSignAs></span>
+	<span class=advanced>
+		<hr>
+		<span class=beginner>
+			<label for=replyto>In reply to:</label>
+			<br>
+		</span>
+		<input type=text name=replyto id=replyto value="bd03f68c023e0f7fddc63f6954bc6de56ff83960" size=45>
+		<span class=beginner>
+			<br>
+			Clear this field to post a new thread.
+		</span>
+	</span>
+</form>
+<!-- / reply.template -->
+</td></tr></tbody>
+
+		
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
 <br>
-operator, please move inbox dialog to the top of the page &nbsp; <br>
-<br>
---
-</pre></body>
-</html>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=00c5c0e9 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>move inbox dialog to the top of the page</b></font> <a href=#00c5c0e9>#</a><a name=00c5c0e9></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/bd/03/bd03f68c.html">bd03f68c..</a><br><br>move inbox dialog to the top of the page<br><a href="/29/91/29916ca3.html">29916ca3..</a><br><br>I did not understand that query<br><br>===<br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/00/c5/00c5c0e9.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683113568 title="07:32:48">07:32</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>00c5c0e9</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=00c5c0e9167ede3b0f2c25fcbee011b46d83107c"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=00c5c0e9167ede3b0f2c25fcbee011b46d83107c"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies><span class=advanced>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td colspan=2>
+		<font color="#403000"><b>Item Attributes</b></font> <a href=#ItemAttributes>#</a><a name=ItemAttributes></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left>attribute</th>
+<!-- / header_column.template -->
+
+<!-- header_column.template -->
+<th align=left>value<br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr bgcolor="#fff0ef"><td><span title="chain_checksum_good">Checksum</span>:</td>
+<td><font color=green>Yes</font></td>
+</tr>
+<tr bgcolor="#fff0ef"><td><span title="chain_hash">SHA1 (chain.log)</span>:</td>
+<td><tt>bd03f68c023e0f7fddc63f6954bc6de56ff83960</tt></td>
+</tr>
+<tr bgcolor="#fff0ef"><td><span title="chain_next">Next</span>:</td>
+<td><a href="/00/c5/00c5c0e9.html">move inbox dialo</a></td>
+</tr>
+<tr bgcolor="#fff0ef"><td><span title="chain_previous">Previous</span>:</td>
+<td><a href="/71/c4/71c49180.html">move inbox dialo</a></td>
+</tr>
+<tr bgcolor="#fff0ef"><td><span title="chain_sequence">Sequence</span>:</td>
+<td>32</td>
+</tr>
+<tr bgcolor="#fff0ef"><td><span title="chain_timestamp">Notarized</span>:</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683113564.08560 title="07:32:44">07:32</time><!-- / timestamp_time.template --> <tt class=advanced> 1683113564.08560</tt></td>
+</tr>
+<tr bgcolor="#fff0ef"><td><span title="client_id">Client</span>:</td>
+<td>99BC420C2A1CF033</td>
+</tr>
+<tr bgcolor="#fff0ef"><td><span title="cookie_id">Cookie</span>:</td>
+<td><a class=avatar href="/author/6B368C010B14769F/index.html"><!-- avatar-username.template --><span class=avatar><span class=username><font color="#403000>"
+			<b><i>Guest+</i></b></font></span></span><!-- / avatar-username.template --></a> <tt class=advanced> 6B368C010B14769F</tt></td>
+</tr>
+<tr bgcolor="#fff0ef"><td><span title="file_path">File</span>:</td>
+<td><a href="/txt/bd/03/bd03f68c023e0f7fddc63f6954bc6de56ff83960.txt">/txt/bd/03/bd03f68c023e0f7fddc63f6954bc6de56ff83960.txt</a></td>
+</tr>
+<tr bgcolor="#fff0ef"><td><span title="item_type">Type</span>:</td>
+<td>txt</td>
+</tr>
+<tr bgcolor="#fff0ef"><td><span title="operator_please">Operator</span>:</td>
+<td>move inbox dialog to the top of the page</td>
+</tr>
+<tr bgcolor="#fff0ef"><td><span title="received_timestamp">Received</span>:</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683113563 title="07:32:43">07:32</time><!-- / timestamp_time.template --> <tt class=advanced> 1683113563</tt></td>
+</tr>
+<tr bgcolor="#fff0ef"><td><span title="sha1">SHA1 (Perl, Digest::SHA)</span>:</td>
+<td><tt>bd03f68c023e0f7fddc63f6954bc6de56ff83960</tt></td>
+</tr>
+</tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td colspan=2>
+		13 item(s)
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+</span><span class=advanced>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=indexlog cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>index_log</b></font> <a href=#indexlog>#</a><a name=indexlog></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+
+		<tbody class=content><tr class=content><td>indexing begins<br>
+file hash = bd03f68c023e0f7fddc63f6954bc6de56ff83960<br>
+---<br>
+found token: cookie, : , 6B368C010B14769F<br>
+found token: client, : , 99BC420C2A1CF033<br>
+found token: received, : , 1683113563<br>
+found token: parent, , 71c4918002f2678bdbf661b6d833b41be3de8d9a<br>
+found token: footer_separator, , <br>
+found token: operator_please,  , move inbox dialog to the top of the page<br>
+finished finding tokens<br>
+tokens found: 6<br>
+token: cookie; spacer: : ; param = 6B368C010B14769F<br>
+found cookie: 6B368C010B14769F<br>
+token: client; spacer: : ; param = 99BC420C2A1CF033<br>
+found client: 6B368C010B14769F (overruled by signature)<br>
+token: received; spacer: : ; param = 1683113563<br>
+token: parent; spacer: ; param = 71c4918002f2678bdbf661b6d833b41be3de8d9a<br>
+found parent: 71c4918002f2678bdbf661b6d833b41be3de8d9a<br>
+token: footer_separator; spacer: ; param = <br>
+token: operator_please; spacer:  ; param = move inbox dialog to the top of the page<br>
+---<br>
+item timestamp: 1683113564.08560<br>
+applying: cookie<br>
+applying: client<br>
+applying: received<br>
+valid: received<br>
+token found: received<br>
+applying: parent<br>
+applying: operator_please<br>
+valid: operator_please<br>
+token found: operator_please<br>
+operator, please move inbox dialog to the top of the page</td></tr></tbody>
+
+		
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+</span></main>
+<span id=messages></span>
+<img src="/p.gif" alt="" height=1 width=1>
+</body></html>
