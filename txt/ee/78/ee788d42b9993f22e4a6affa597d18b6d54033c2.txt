@@ -1,8 +1,0 @@
->>a84bab5e645a8a34e5fef7d2c586d87e5f26a9fa
-
-add upload page
-9d02031010cedcddd92992ed2da3ef3b4f55eed8
-
-ok, I added upload page.
-
-===

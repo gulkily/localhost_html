@@ -1,0 +1,19 @@
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+operator, please add notarization chain
+-----BEGIN PGP SIGNATURE-----
+
+wlwEAQEIABAFAmRSeDQJECtXU3V7MpX0AACMNwIAiCEo/ocYelK6tkqxsEWw
+ha01s/FJsom1ou37O/3JOaClnB5Z+9Unh1/4G3ibEAk7hIpyQMG/rCHdsyPv
+VXD2AQ==
+=SSHS
+-----END PGP SIGNATURE-----
+
+-- 
+
+--- 
+Cookie: 2B5753757B3295F4
+Received: 1683126324
+Client: 99BC420C2A1CF033

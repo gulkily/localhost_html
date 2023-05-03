@@ -121,6 +121,33 @@ input[type=button], button, input[type=submit] {
 }
 /* end css/default.css */
 
+/* dragging.css */
+
+/* should be called inline-block.css ? */
+
+/* makes some dialogs horizontal */
+table.dialog { /* inline-table table-block */
+	display: inline-block;
+	vertical-align: top;
+}
+form {
+	display: inline;
+}
+
+/*
+#topmenu.dialog {
+	position: fixed !important;
+	top: 0;
+	right: 0;
+}
+*/
+
+/* / dragging.css */
+
+.dialog .txt {
+	max-width: 30em;
+}
+
 /* inbox_top.css */
 
 #messages {
@@ -145,9 +172,6 @@ input, textarea {
 }
 #serverResponse {
 	display: none;
-}
-.titlebar {
-	background-image: linear-gradient(to bottom right, #ffffff, #fff0ef) !important;
 }
 #loadingIndicator, #ariaAlert {
 	background-color: yellow;
@@ -186,9 +210,6 @@ input[type=text], input[type=password], select, option, textarea {
 	font-size: 10pt;
 	margin-right: 8pt;
 	margin-bottom: 8pt;
-}
-.statusbar td {
-	border: 1pt inset #fff0ef;
 }
 textarea {
     font-family: Fixedsys, "Courier New", Courier, monospace;
@@ -263,42 +284,6 @@ pre time {
 				<big>
 <!-- menuitem.template -->
 <a accesskey=w href="/write.html"><u>W</u>rite</a>
-<!-- / menuitem.template -->
-;
-
-
-<!-- menuitem.template -->
-<a accesskey=a href="/active.html"><u>A</u>ctive</a>
-<!-- / menuitem.template -->
-;
-
-
-<!-- menuitem.template -->
-<a accesskey=s href="/settings.html"><u>S</u>ettings</a>
-<!-- / menuitem.template -->
-;
-
-
-<!-- menuitem.template -->
-<a accesskey=p href="/profile.html"><u>P</u>rofile</a>
-<!-- / menuitem.template -->
-;
-
-
-<!-- menuitem.template -->
-<a accesskey=c href="/chain.html"><u>C</u>hain</a>
-<!-- / menuitem.template -->
-;
-
-
-<!-- menuitem.template -->
-<a accesskey=u href="/upload.html"><u>U</u>pload</a>
-<!-- / menuitem.template -->
-;
-
-
-<!-- menuitem.template -->
-<a accesskey=e href="/people.html">P<u>e</u>ople(2)</a>
 <!-- / menuitem.template -->
 </big>
 				<span class=advanced></span>

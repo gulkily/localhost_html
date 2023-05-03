@@ -1,8 +1,0 @@
->>83504f781981cd0dec42d31388d303ea04c1bbc5
-
-add calendar page
-fb9855906a5bd2e61cf0a9df63bc10e553d2ad2c
-
-ok, I added calendar page and a link in the menu.
-
-===

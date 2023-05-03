@@ -1,8 +1,0 @@
->>cfac63b4edc537c0ed4851da383b407ecf76c8cf
-
-add people page
-702b9194dc97094ee75483849e2e09c5e798466c
-
-ok, I added a people page. there may not be much on it at first.
-
-===
