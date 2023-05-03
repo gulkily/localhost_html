@@ -1,0 +1,19 @@
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+operator, please add inline-block to dialogs
+-----BEGIN PGP SIGNATURE-----
+
+wlwEAQEIABAFAmRSa8MJEH2bpLVLkGWqAAD2iQIAgxcp4uRvZkkKT/qLB4eq
+GtT649vpvShlnhtpwjUKMb/BNjs9Vd4M/ghwEhEv4uhXb0/6ZHj6SuX4L27U
+4w18bQ==
+=TllS
+-----END PGP SIGNATURE-----
+
+-- 
+
+--- 
+Cookie: 7D9BA4B54B9065AA
+Received: 1683123139
+Client: 99BC420C2A1CF033
