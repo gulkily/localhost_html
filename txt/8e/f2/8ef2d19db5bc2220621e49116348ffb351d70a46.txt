@@ -1,0 +1,8 @@
+>>abf286192df15692ce25b36bafa5f70acf64edb5
+
+add javascript support
+d2c1b3f4e85a4299a098f01bb08d4474dd39551d
+
+ok, I added a basic javascript, including live timestamps, in-place voting buttons, and a settings page
+
+===
