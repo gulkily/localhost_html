@@ -15,7 +15,7 @@
 .tag-slash,
 .tag-abuse {
 /* negative (red) tags */
-	color: #403000;
+	color: #aa4040;
 	font-weight: bold;
 }
 
@@ -31,7 +31,7 @@
 .tag-like,
 .tag-vouch {
 /* positive (green) tags */
-	color: #403000;
+	color: #60c060;
 	font-weight: bold;
 }
 
@@ -74,19 +74,19 @@ div.txt {
 
 #eventLocation {
 /* event form */
-	background-color: #fff0ef;
+	background-color: #202020;
 	padding: 5pt;
 }
 
 #eventDate {
 /* event form */
-	background-color: #fff0ef;
+	background-color: #282828;
 	padding: 5pt;
 }
 
 #loadingIndicator, #spanLoadingIndicator, #ariaAlert {
-	color: #403000;
-	background-color: #fff0ef;
+	color: #aaaaaa;
+	background-color: #484830;
 	padding: 3pt;
 	position: fixed;
 	top: 0;
@@ -99,8 +99,8 @@ div.txt {
 	/* style for links in loading indicator */
 }
 .notification {
-	color: #403000;
-	background-color: #fff0ef;
+	color: #aaaaaa;
+	background-color: #484830;
 	padding: 3pt;
 	font-weight: bold;
 	padding: 3pt;
@@ -110,14 +110,14 @@ noscript, .noscript {
 }
 .menubar a, .titlebar a, .topmenubar a {
 	text-decoration: none;
-	color: #403000;
+	color: #aaaaaa;
 }
 nobr {
 	white-space:nowrap;
 }
 input[type=button], button, input[type=submit] {
-	color: #403000;
-	background-color: #fff0ef
+	color: #aaaaaa;
+	background-color: #202020
 }
 /* end css/default.css */
 
@@ -159,94 +159,76 @@ form {
 
 /* / inbox_top.css */
 
-/* theme/hypercode/additional.css */
-
-* {
-	border-radius: 5pt !important;
-	font-family: georgia, "times new roman", serif !important;
-}
-input, textarea {
-	background-color: white !important;
-	border: 2pt solid #404040 !important;
-	margin-top: 2pt !important;
-}
-#serverResponse {
-	display: none;
-}
-#loadingIndicator, #ariaAlert {
-	background-color: yellow;
-	border-radius: 0 !important;
-}
-#spanSignAs {
-	float: right;
-}
-
-/* / theme/hypercode/additional.css */
-/* theme/chicago/additional.css */
+/* theme/dark/additional.css */
 body {
-	font-family: Tahoma, Arial, Helvetica, sans-serif;
-	background-color: #fff0ef;
+	font-family: helvetica;
+	font-size: 14pt;
+	background-color: #222222;
 }
-input {
-}
-input[type=text], input[type=password], select, option, textarea {
-	background-color: #fff0ef;
-	color: #403000;
-}
-#txtClock {
-	border: 1pt inset #fff0ef;
-}
-@media (prefers-color-scheme: dark) {
-
-}
-.beginner {
+fieldset {
+	border-color: #666666;
 }
 .dialog {
-	box-shadow: 5pt 5pt 0 rgba(0, 20, 20, 0.3);
-	border: #c0c0c0 outset 2pt;
-	background-color: #fff0ef;
-	border-radius: 1pt;
-	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	border-radius: 5pt;
+	background-color: #202020;
+	font-family: tahoma, helvetica, arial, sans-serif;
 	font-size: 10pt;
-	margin-right: 8pt;
-	margin-bottom: 8pt;
+	box-shadow: 0 0 15pt #335555;
+	margin-bottom: 5pt;
 }
-textarea {
-    font-family: Fixedsys, "Courier New", Courier, monospace;
-    font-size: 12pt;
+button, input[type=button], input[type=submit], input[type=checkbox] {
+	background-color: #202020;
+	color: #aaaaaa;
+	border-color: #555555;
+	box-shadow: 0 0 5pt #335555;
 }
-
-.txt {
-/* regular text */
-	font-family: "Times New Roman", Times, sans-serif;
-	/*font-family: Tahoma, Arial, Helvetica, sans-serif;*/
-	font-size: 14pt;
-}
-a:focus, a:active {
-    color: red !important;
-    border-radius: 1pt;
-}
-textarea:focus {
-}
-input:focus {
-}
-#serverResponse {
-/* response messages from the server */
-    background-color: #fff0ef;
-    color: #403000;
-    padding: 5pt;
-    border: 0;
-	box-shadow: 5pt 5pt 0 rgba(0, 20, 20, 0.5);
+input[type=text], input[type=password], select, option, textarea {
+	background-color: #222222;
+	color: #c0c0c0;
+	border-color: #555555;
 }
 #txtClock {
-	border: 1pt inset #fff0ef;
-	background-color: #fff0ef;
+	border: 0;
+	color: #8080c0;
+}
+.statusbar td {
+	border: 1pt inset #202020;
+}
+textarea {
+    font-family: serif;
+    font-size: 12pt;
+}
+fieldset {
+    border-radius: 3pt;
+}
+.titlebar, .titlebar td {
+    border-radius: 3pt;
+}
+*:focus, *:active {
+/* focused items are orange for visibility */
+    background-color: #402010 !important;
+    color: orange !important;
+}
+#serverResponse {
+/* response from server */
+    background-color: #402820;
+    color: #aaaaaa;
+    padding: 5pt;
+    spacing: 5pt;
+    border: 2pt #202030 double;
+    display: block
+}
+@media only screen and (min-width : 40em) {
+	.item-textart {
+		max-width: 90%;
+		background-color: #808080;
+	}
+	.dialog .txt {
+		max-width: 40em;
+	}
 }
 .fileHashShort {
 	text-decoration: underline dotted;
-}
-#spanDialogControls a {
-	color: #fff0efText;
 }
 .titlebarButtons {
 	float: right;
@@ -254,15 +236,8 @@ input:focus {
 button.close, button.skip {
 	border: 0;
 	margin: 0;
-	font-weight: bold;
 }
-button:hover {
-	color: red;
-}
-#spanDialogControls a {
-	color: #403000;
-}
-/* / theme/chicago/additional.css */
+/* / theme/dark/additional.css */
 /* pre_time_sans.css */
 
 pre time {
@@ -274,28 +249,64 @@ pre time {
 -->
 </style>
 </head>
-<body link="#403000" vlink="#403000" text="#403000" bgcolor="#fff0ef" background="/hypercode_bg.jpg" onclick="if (window.ShowPreNavigateNotification && event.target && (event.target.tagName == 'A') && !(event.target.onclick)) { ShowPreNavigateNotification(); }" onload="if (window.OnLoadEverything) { OnLoadEverything(); }" >
+<body link="#8888cc" vlink="#cc88cc" text="#aaaaaa" bgcolor="#404040" onclick="if (window.ShowPreNavigateNotification && event.target && (event.target.tagName == 'A') && !(event.target.onclick)) { ShowPreNavigateNotification(); }" onload="if (window.OnLoadEverything) { OnLoadEverything(); }" >
 <b>
 <!-- template/topmenu2.template -->
-<table cellspacing=0 cellpadding=3 border=0 bgcolor="#fff0ef" class=dialog id=topmenu>
-	<tr bgcolor="#fff0ef" class=topmenubar>
+<table cellspacing=0 cellpadding=3 border=0 bgcolor="#202020" class=dialog id=topmenu>
+	<tr bgcolor="#202020" class=topmenubar>
 		<td colspan=2>
 			<big>
 				<big>
 <!-- menuitem.template -->
-<a accesskey=w href="/write.html"><u>W</u>rite</a>
+<a accesskey=w href="/welcome.html"><u>W</u>elcome</a>
 <!-- / menuitem.template -->
 ;
 
 
 <!-- menuitem.template -->
-<a accesskey=c href="/chain.html"><u>C</u>hain</a>
+<a accesskey=t href="/threads.html"><u>T</u>hreads</a>
 <!-- / menuitem.template -->
 ;
 
 
 <!-- menuitem.template -->
-<a accesskey=p href="/people.html"><u>P</u>eople</a>
+<a accesskey=u href="/upload.html"><u>U</u>pload</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=i href="/write.html">Wr<u>i</u>te</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=s href="/settings.html"><u>S</u>ettings</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=p href="/profile.html"><u>P</u>rofile</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=a href="/authors.html"><u>A</u>uthors(3)</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=g href="/tags.html">Ta<u>g</u>s(9)</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=h href="/help.html"><u>H</u>elp</a>
 <!-- / menuitem.template -->
 </big>
 				<span class=advanced></span>
@@ -305,10 +316,10 @@ pre time {
 			</big>
 		</td>
 	</tr>
-	<tr bgcolor="#fff0ef" class=titlebar>
+	<tr bgcolor="#202030" class=titlebar>
 		<td>
 			<small>
-				<font color="#403000"><b>Welcome</b></font>
+				<font color="#aaaaaa"><b>Welcome</b></font>
 			</small>
 		</td>
 		<td align=right>
@@ -377,12 +388,12 @@ pre time {
 <p>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=page_intro cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=page_intro cellspacing=0 cellpadding=6 border=0 bgcolor="#202020" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#202040" class=titlebar>
 	<td>
-		<font color="#403000"><b>chain</b></font> <a href=#page_intro>#</a><a name=page_intro></a><br>
+		<font color="#aaaaaa"><b>chain</b></font> <a href=#page_intro>#</a><a name=page_intro></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -393,12 +404,11 @@ pre time {
 
 		
 
-		<tbody class=content><tr class=content><td>This notarization chain<br>
-is a linked list of hashes, timestamps, and checksums<br>
-built using sha1 and md5<br>
-stored in a pipe-separated file called <a href="/chain.log">chain.log</a><br>
-which can be audited/revalidated <br>
-using the provided shell script, verify_chain.sh</td></tr></tbody>
+		<tbody class=content><tr class=content><td>The chain is a linked list <br>
+of item hash and timestamp item pairs, <br>
+enforced with a hashing algorithm.<br>
+If you understand what this says, <br>
+please comment with #IUnderstandHashes</td></tr></tbody>
 
 		
 	</table>
@@ -407,12 +417,45 @@ using the provided shell script, verify_chain.sh</td></tr></tbody>
 
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=Pages cellspacing=0 cellpadding=6 border=0 bgcolor="#202020" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#202040" class=titlebar>
+	<td>
+		<font color="#aaaaaa"><b>Pages</b></font> <a href=#Pages>#</a><a name=Pages></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+
+		<tbody class=content><tr class=content><td>
+<!-- pagination_link_current.template -->
+<big>1</big>
+<!-- / pagination_link_current.template -->
+
+<!-- pagination_link.template -->
+<a href="chain2.html"><big>2</big></a>
+<!-- / pagination_link.template -->
+</td></tr></tbody>
+
+		
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table cellspacing=0 cellpadding=6 border=0 bgcolor="#202020" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#202040" class=titlebar>
 	<td colspan=4>
-		<font color="#403000"><b>Chain</b></font> <a href=#Chain>#</a><a name=Chain></a><br>
+		<font color="#aaaaaa"><b>Chain</b></font> <a href=#Chain>#</a><a name=Chain></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -445,40 +488,505 @@ using the provided shell script, verify_chain.sh</td></tr></tbody>
 <!-- / header_wrapper.template -->
 
 
-		<tbody class=content><tr bgcolor="#fff0ef"><td><b><a href="/3b/33/3b337393.html">add people page</a></b></td>
-<td class=advanced>6</td>
-<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126426.59717 title="11:07:06">11:07</time><!-- / timestamp_time.template --></td>
-<td class=advanced>3b337393</td>
+		<tbody class=content><tr bgcolor="#282828"><td><b><a href="/26/ac/26ac38b3.html">26ac38b3..</a></b></td>
+<td class=advanced>136</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683226497.46091 title="14:54:57">14:54</time><!-- / timestamp_time.template --></td>
+<td class=advanced>26ac38b3</td>
 </tr>
-<tr bgcolor="#fff0ef"><td><b><a href="/e0/e5/e0e58600.html">add tags page</a></b></td>
-<td class=advanced>5</td>
-<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126419.61694 title="11:06:59">11:06</time><!-- / timestamp_time.template --></td>
-<td class=advanced>e0e58600</td>
+<tr bgcolor="#202020"><td><b><a href="/3c/a2/3ca2ad6f.html">cause: the avatar cache is not aware of monochrome mode, and it</a></b></td>
+<td class=advanced>135</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683226496.53286 title="14:54:56">14:54</time><!-- / timestamp_time.template --></td>
+<td class=advanced>3ca2ad6f</td>
 </tr>
-<tr bgcolor="#fff0ef"><td><b><a href="/d6/61/d6614ef2.html">Operator, please...</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template --></span></td>
-<td class=advanced>4</td>
-<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126414.25665 title="11:06:54">11:06</time><!-- / timestamp_time.template --></td>
-<td class=advanced>d6614ef2</td>
+<tr bgcolor="#282828"><td><b><a href="/f3/9b/f39b658a.html">f39b658a..</a></b></td>
+<td class=advanced>134</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683226496.32040 title="14:54:56">14:54</time><!-- / timestamp_time.template --></td>
+<td class=advanced>f39b658a</td>
 </tr>
-<tr bgcolor="#fff0ef"><td><b><a href="/68/74/68741b71.html">#like</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template --></span></td>
-<td class=advanced>3</td>
-<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126350.80314 title="11:05:50">11:05</time><!-- / timestamp_time.template --></td>
-<td class=advanced>68741b71</td>
+<tr bgcolor="#202020"><td><b><a href="/a4/e6/a4e694a1.html">workaround: rm -vrf cache/b/avatar*</a></b></td>
+<td class=advanced>133</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683226495.25991 title="14:54:55">14:54</time><!-- / timestamp_time.template --></td>
+<td class=advanced>a4e694a1</td>
 </tr>
-<tr bgcolor="#fff0ef"><td><b><a href="/ef/1b/ef1bbb43.html">add notarization chain</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/like.html"><font color="#403000">#</font>like</a><!-- / tag_link.template --></span></td>
-<td class=advanced>2</td>
-<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126333.98011 title="11:05:33">11:05</time><!-- / timestamp_time.template --></td>
-<td class=advanced>ef1bbb43</td>
+<tr bgcolor="#282828"><td><b><a href="/32/08/3208b529.html">3208b529..</a></b></td>
+<td class=advanced>132</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683226494.92652 title="14:54:54">14:54</time><!-- / timestamp_time.template --></td>
+<td class=advanced>3208b529</td>
 </tr>
-<tr bgcolor="#fff0ef"><td><b><a href="/70/5f/705fb5fe.html">Operator, please...</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template --></span></td>
-<td class=advanced>1</td>
-<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126325.24355 title="11:05:25">11:05</time><!-- / timestamp_time.template --></td>
-<td class=advanced>705fb5fe</td>
+<tr bgcolor="#202020"><td><b><a href="/87/63/87633a98.html">what should happen after a zip file is uploaded?</a></b></td>
+<td class=advanced>131</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683226494.34084 title="14:54:54">14:54</time><!-- / timestamp_time.template --></td>
+<td class=advanced>87633a98</td>
 </tr>
-<tr bgcolor="#fff0ef"><td><b><a href="/f8/b7/f8b76c50.html">Notice: Content was archived by the operator at 1683125825</a></b></td>
-<td class=advanced>-</td>
-<td><!-- timestamp_time.template --><time class=timestamp datetime=1683125843.22069 title="10:57:23">10:57</time><!-- / timestamp_time.template --></td>
-<td class=advanced>f8b76c50</td>
+<tr bgcolor="#282828"><td><b><a href="/59/34/5934a792.html">a) it should appear as a new item, and the item template should</a></b></td>
+<td class=advanced>130</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683226493.38401 title="14:54:53">14:54</time><!-- / timestamp_time.template --></td>
+<td class=advanced>5934a792</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/0f/52/0f524ee4.html">0f524ee4..</a></b></td>
+<td class=advanced>129</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683226492.48811 title="14:54:52">14:54</time><!-- / timestamp_time.template --></td>
+<td class=advanced>0f524ee4</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/96/f9/96f960b6.html">96f960b6..</a></b></td>
+<td class=advanced>128</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683226492.24286 title="14:54:52">14:54</time><!-- / timestamp_time.template --></td>
+<td class=advanced>96f960b6</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/79/c9/79c932f7.html">Software Updated to Version 07588b07..</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/changelog.html"><font color="#46e2bf">#</font>changelog</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template --></span></td>
+<td class=advanced>127</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683226491.30275 title="14:54:51">14:54</time><!-- / timestamp_time.template --></td>
+<td class=advanced>79c932f7</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/54/45/54451687.html">54451687..</a></b></td>
+<td class=advanced>126</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683226490.73412 title="14:54:50">14:54</time><!-- / timestamp_time.template --></td>
+<td class=advanced>54451687</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/1c/a6/1ca6677c.html">1ca6677c..</a></b></td>
+<td class=advanced>125</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683226490.49230 title="14:54:50">14:54</time><!-- / timestamp_time.template --></td>
+<td class=advanced>1ca6677c</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/df/d6/dfd6d675.html">we need some subdomains</a></b></td>
+<td class=advanced>124</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683226489.51058 title="14:54:49">14:54</time><!-- / timestamp_time.template --></td>
+<td class=advanced>dfd6d675</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/d3/06/d306ec94.html">monochrome mode and hypercode theme are not compatible with dar</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/bug.html"><font color="#688585">#</font>bug</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/known.html"><font color="#6ca33a">#</font>known</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template --></span></td>
+<td class=advanced>123</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683226488.60538 title="14:54:48">14:54</time><!-- / timestamp_time.template --></td>
+<td class=advanced>d306ec94</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/86/65/866514f6.html">Kliment chat agenda</a></b></td>
+<td class=advanced>122</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683226487.71401 title="14:54:47">14:54</time><!-- / timestamp_time.template --></td>
+<td class=advanced>866514f6</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/54/91/549147ee.html">#like</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template --></span></td>
+<td class=advanced>121</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683226486.50136 title="14:54:46">14:54</time><!-- / timestamp_time.template --></td>
+<td class=advanced>549147ee</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/03/4c/034c8bf0.html">034c8bf0..</a></b></td>
+<td class=advanced>120</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683226486.10435 title="14:54:46">14:54</time><!-- / timestamp_time.template --></td>
+<td class=advanced>034c8bf0</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/a6/82/a68263e7.html">a68263e7..</a></b></td>
+<td class=advanced>119</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683226485.74182 title="14:54:45">14:54</time><!-- / timestamp_time.template --></td>
+<td class=advanced>a68263e7</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/28/40/284085b4.html">operator, please add upload feature</a></b></td>
+<td class=advanced>118</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683226485.08614 title="14:54:45">14:54</time><!-- / timestamp_time.template --></td>
+<td class=advanced>284085b4</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/3d/4e/3d4e4cb1.html">dark theme guest avatar is dark red, should be different color</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/bug.html"><font color="#688585">#</font>bug</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template --></span></td>
+<td class=advanced>117</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683226484.21961 title="14:54:44">14:54</time><!-- / timestamp_time.template --></td>
+<td class=advanced>3d4e4cb1</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/59/bf/59bf6a4f.html">#like</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template --></span></td>
+<td class=advanced>116</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683226483.00523 title="14:54:43">14:54</time><!-- / timestamp_time.template --></td>
+<td class=advanced>59bf6a4f</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/36/69/3669b15e.html">this is due to some hard-coded values for the colors in the the</a></b></td>
+<td class=advanced>115</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683226482.08645 title="14:54:42">14:54</time><!-- / timestamp_time.template --></td>
+<td class=advanced>3669b15e</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/82/3c/823cea5e.html">823cea5e..</a></b></td>
+<td class=advanced>114</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683226481.74189 title="14:54:41">14:54</time><!-- / timestamp_time.template --></td>
+<td class=advanced>823cea5e</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/fd/c6/fdc69ab2.html">pollyanna (aka dev)</a></b></td>
+<td class=advanced>113</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683226479.80634 title="14:54:39">14:54</time><!-- / timestamp_time.template --></td>
+<td class=advanced>fdc69ab2</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/cb/08/cb080c93.html">dark theme guest avatar is dark red, should be different color</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/bug.html"><font color="#688585">#</font>bug</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template --></span></td>
+<td class=advanced>93</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683225190.64147 title="14:33:10">14:33</time><!-- / timestamp_time.template --></td>
+<td class=advanced>cb080c93</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/32/d8/32d8c659.html">add upload feature</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/like.html"><font color="#c4eb7d">#</font>like</a><!-- / tag_link.template --></span></td>
+<td class=advanced>90</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683225009.28719 title="14:30:09">14:30</time><!-- / timestamp_time.template --></td>
+<td class=advanced>32d8c659</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/d5/66/d56626dd.html">Sql to rule the world! Now just Sql to create GUI and websites </a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>87</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126767.10702 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>d56626dd</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/9f/0f/9f0f182d.html">Thanks! Weâd still consider this an early stage project and wou</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>86</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126765.75207 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>9f0f182d</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/50/0f/500fd810.html">I wonder if/how a PostgreSQL plug-in can provide an optimal mix</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>85</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126764.77090 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>500fd810</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/13/ef/13efe919.html">This looks awesome! Iâm not an expert but wouldnât the typical </a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>84</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126763.85441 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>13efe919</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/3b/77/3b77ba23.html">How about the difference between this and the Madlib project? B</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>83</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126762.29877 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>3b77ba23</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/33/39/3339fe1a.html">That's exactly the target use case. Models make online predicti</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>82</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126761.40821 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>3339fe1a</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/60/db/60db9fbd.html">why did you add the tags page?</a></b></td>
+<td class=advanced>81</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126760.49325 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>60db9fbd</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/3a/0a/3a0afb4d.html">This looks amazing!</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>80</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126759.51156 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>3a0afb4d</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/f9/21/f9213b0c.html">Buy it again is simply a name for the PostgresML project that</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/https.html"><font color="#c3437d">#</font>https</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>79</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126758.53797 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>f9213b0c</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/f1/ed/f1ed13e2.html">*Outside academia you need to do a lot of data cleaning and fea</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>78</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126757.52009 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>f1ed13e2</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/6b/f4/6bf436f3.html">#like</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template --></span></td>
+<td class=advanced>77</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126756.15923 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>6bf436f3</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/e5/6b/e56b0b77.html">Do I need to know about ML/statistics to interpret the results?</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>76</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126755.06642 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>e56b0b77</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/2f/2b/2f2b914c.html">I feel like a lot of issues out of ML systems came from the fac</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>75</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126753.60043 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>2f2b914c</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/05/9b/059b8a61.html">Itâs probably a stretch to run GPT-3 inside a db, but most of t</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>74</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126751.92333 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>059b8a61</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/ff/60/ff6025bc.html">operator, please add tags page</a></b></td>
+<td class=advanced>73</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126751.19808 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>ff6025bc</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/9d/c7/9dc78579.html">Will that also apply to plans?  I'd love to see ML models come </a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>72</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126749.94997 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>9dc78579</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/52/23/52239578.html">Reminds me of https://riverml.xyz/latest/ (which is awesome) bu</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/https.html"><font color="#c3437d">#</font>https</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>71</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126748.90473 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>52239578</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/7b/b8/7bb80ede.html">7bb80ede..</a></b></td>
+<td class=advanced>70</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126748.65107 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>7bb80ede</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/c9/69/c9696c65.html">You might want to use a different elephant logo... the branding</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/https.html"><font color="#c3437d">#</font>https</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>69</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126747.57464 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>c9696c65</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/4a/de/4adefb8b.html">The Dataframe is loaded from disk true, but it is possible that</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>68</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126746.64561 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>4adefb8b</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/cc/0e/cc0ef263.html">You can already do that by using the pl/python or pl/java exten</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>67</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126745.65476 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>cc0ef263</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/33/21/3321d344.html">3321d344..</a></b></td>
+<td class=advanced>66</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126745.44490 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>3321d344</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/78/56/785622b8.html">This is an interesting benchmark I'll try to code up. Although,</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>65</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126744.41857 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>785622b8</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/31/02/3102d25b.html">is it possible, or how hard is it, to plug in custom proprietar</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>64</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126743.46154 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>3102d25b</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/6c/2a/6c2ae9cb.html">Looks like a good fit to run on Hydras.io (YC W22) the Postgres</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>63</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126742.37022 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>6c2ae9cb</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/0d/d3/0dd3d621.html">Yeah â seems like all you need is Snowflake-esque separation of</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>62</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126741.45465 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>0dd3d621</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/5e/1d/5e1d83a8.html">You should review the PostgreSQL trademark policy: https://www.</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/https.html"><font color="#c3437d">#</font>https</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>61</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126740.56891 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>5e1d83a8</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/40/5a/405a580e.html">Nice! Feel free to file any issues on Github if something doesn</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>60</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126739.52358 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>405a580e</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/d9/d2/d9d2242f.html">Haven't played with it yet, but this tooling is exactly what I'</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>59</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126737.62279 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>d9d2242f</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/2d/b3/2db3251e.html">#flag</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template --></span></td>
+<td class=advanced>58</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126736.46189 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>2db3251e</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/d6/f1/d6f1ca3c.html">operator, please add notarization chain</a></b></td>
+<td class=advanced>57</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126735.32617 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>d6f1ca3c</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/57/a6/57a64828.html">Is this a competitor to bigquery autoML or to something like ku</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>56</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126734.39209 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>57a64828</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/01/50/01505a3a.html">This is great! FYI for those who haven't seen, BigQuery can als</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>55</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126733.42495 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>01505a3a</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/75/a5/75a59b44.html">I just gave it a try to install on Crunchy Bridge [1], disclaim</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/https.html"><font color="#c3437d">#</font>https</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>54</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126732.48893 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>75a59b44</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/dd/fe/ddfeb961.html">How do you deal with different dataset train/validation/test? H</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>53</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126731.61868 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>ddfeb961</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/61/55/61552414.html">This logo and name, to me at least, implied some sort of offici</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>52</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126730.62851 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>61552414</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/fc/81/fc818a30.html">Cool approach. This nicely fits in the trend of SQL-as-much-as-</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>51</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126729.68408 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>fc818a30</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/7f/39/7f39a35f.html">Interesting concept, but I think Big Query ML [1] has been prov</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/https.html"><font color="#c3437d">#</font>https</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>50</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126728.82249 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>7f39a35f</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/73/b1/73b18c37.html">Amazon Aurora already has ML extensions for connecting to AWS S</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/https.html"><font color="#c3437d">#</font>https</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>49</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126727.06608 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>73b18c37</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/fc/57/fc573821.html">It looks like this is running Python to do the actual ML?</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>48</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126726.16347 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>fc573821</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/18/1f/181f0dde.html">Seems like a great idea. When you look at many ML frameworks ha</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>47</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126725.19172 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>181f0dde</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/0c/a0/0ca09845.html">This is awesome. Iâm guessing the models are executed on the da</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>46</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126724.13243 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>0ca09845</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/b9/84/b984e76a.html">Well, you would also need new labels to retrain.</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>45</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126723.12257 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>b984e76a</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/dd/7f/dd7fc0cc.html">Do you plan on adding support for managed PostgreSQL services l</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>44</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126721.16587 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>dd7fc0cc</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/17/3d/173df839.html">Great idea! I see this is implemented using the Python language</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>43</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126720.28471 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>173df839</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/e5/87/e5870fd9.html">Custom proprietary models are on the TODO list. There are open </a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>42</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126719.40649 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>e5870fd9</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/7c/40/7c40a7b0.html">OLAP vs OLTP will depend on your ML use case. Online prediction</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>41</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126718.47415 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>7c40a7b0</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/bd/4e/bd4e3c3c.html">never mind. figured it out from github. this is cool.</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>40</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126717.63146 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>bd4e3c3c</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/ed/b0/edb01ebe.html">Outside academia you need to do a lot of data cleaning and feat</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>39</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126716.76945 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>edb01ebe</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/1b/c5/1bc51287.html">None, it's just an extension.</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>38</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126715.89793 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>1bc51287</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/2d/d4/2dd40afc.html">I found this to be very confusing and took some sorting out tha</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>37</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126715.04315 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>2dd40afc</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/64/2c/642c0593.html">Awesome. I'll see what it'll take to get the extension running </a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>36</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126714.05241 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>642c0593</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/b2/55/b2557914.html">The data split technique is one of the optional parameters for </a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>35</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126713.15512 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>b2557914</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/19/48/1948c120.html">Anyone care to reframe the question or improve it?</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>34</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126712.12330 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>1948c120</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/5e/d3/5ed3f7ce.html">I don't understand 5he example on the homepage. How does the ex</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>33</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126711.17301 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>5ed3f7ce</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/0c/d5/0cd564dd.html">Hello</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/scunthorpe.html"><font color="#aabc3e">#</font>scunthorpe</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/https.html"><font color="#c3437d">#</font>https</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>32</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126710.18493 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>0cd564dd</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/98/9e/989e33c1.html">What affiliation does this have with PostgreSQL?</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>31</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126708.82439 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>989e33c1</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/d6/c3/d6c32894.html">Can this be used to deploy an active learning model that lear</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>30</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126706.93914 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>d6c32894</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/f8/b5/f8b59e19.html">Yep! traditional hypertuning techniques and automated broader s</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>29</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126705.95978 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>f8b59e19</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/31/78/31784b2d.html">We canât control the extensions RDS allows to be installed, and</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/scunthorpe.html"><font color="#aabc3e">#</font>scunthorpe</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>28</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126703.90083 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>31784b2d</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/02/3d/023d34ed.html">We currently calculate those as applicable to classification an</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/https.html"><font color="#c3437d">#</font>https</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>27</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126702.76489 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>023d34ed</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/5f/8c/5f8c9c1d.html">Yep! Part of the power of being inside the OLTP is that you can</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>26</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126701.60443 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>5f8c9c1d</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/24/42/24429e62.html">Very cool! Will probably use it soon.</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>25</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126700.58076 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>24429e62</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/cb/cd/cbcdb0a1.html">How this compares to https://mindsdb.com/</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/https.html"><font color="#c3437d">#</font>https</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>24</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126699.62685 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>cbcdb0a1</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/94/47/9447910c.html">Neat project. Any roadmap for cross-validation support (GridSea</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>23</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126698.52698 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>9447910c</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/40/ca/40ca17ba.html">When I was talking about metrics I meant metrics of the model (</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>22</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126697.66316 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>40ca17ba</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/2b/fc/2bfce264.html">Stateful services like Postgres cannot be rapidly scaled up/dow</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>21</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126696.74231 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>2bfce264</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/62/03/6203e407.html">I think the logo is clever, and if thereâs no rights issue itâs</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>20</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126695.75936 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>6203e407</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/75/ee/75ee7799.html">This is really cool, running ML workloads on top of SQL is a ve</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/http.html"><font color="#77b5f8">#</font>http</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>19</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126694.89876 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>75ee7799</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/24/59/24598868.html">Landed a PR to enable GridSearchCV and RandomSearchCV. https://</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/https.html"><font color="#c3437d">#</font>https</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>18</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126692.82105 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>24598868</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/8c/9e/8c9ec3e5.html">This is great - will be experimenting with one weekend soon...</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>17</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126691.94319 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>8c9ec3e5</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/41/8c/418cc3fd.html">Just in case you were not aware, Python 3.6 reached end of life</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/https.html"><font color="#c3437d">#</font>https</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>16</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126691.00097 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>418cc3fd</td>
+</tr>
+<tr bgcolor="#282828"><td><b><a href="/c4/f8/c4f88776.html">Congratulations on the launch!</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>15</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126690.08589 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>c4f88776</td>
+</tr>
+<tr bgcolor="#202020"><td><b><a href="/19/64/1964acc1.html">This can be done manually by configuring Postgres replication</a></b><br><span style="float:right"><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --></span></td>
+<td class=advanced>14</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683126688.87429 title="05/03">05/03</time><!-- / timestamp_time.template --></td>
+<td class=advanced>1964acc1</td>
 </tr>
 </tbody>
 
@@ -486,7 +994,7 @@ using the provided shell script, verify_chain.sh</td></tr></tbody>
 <!-- window/status.template -->
 <tr class=statusbar>
 	<td colspan=4>
-		7 item(s)
+		100 item(s)
 	</td>
 </tr>
 <!-- / window/status.template -->
@@ -494,15 +1002,48 @@ using the provided shell script, verify_chain.sh</td></tr></tbody>
 	</table>
 </font>
 <!-- / default/template/html/window/standard.template -->
+<br>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=Pages cellspacing=0 cellpadding=6 border=0 bgcolor="#202020" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#202040" class=titlebar>
+	<td>
+		<font color="#aaaaaa"><b>Pages</b></font> <a href=#Pages>#</a><a name=Pages></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+
+		<tbody class=content><tr class=content><td>
+<!-- pagination_link_current.template -->
+<big>1</big>
+<!-- / pagination_link_current.template -->
+
+<!-- pagination_link.template -->
+<a href="chain2.html"><big>2</big></a>
+<!-- / pagination_link.template -->
+</td></tr></tbody>
+
+		
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
 
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=Log cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=Log cellspacing=0 cellpadding=6 border=0 bgcolor="#202020" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#202040" class=titlebar>
 	<td>
-		<font color="#403000"><b>Log</b></font> <a href=#Log>#</a><a name=Log></a><br>
+		<font color="#aaaaaa"><b>Log</b></font> <a href=#Log>#</a><a name=Log></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -522,12 +1063,12 @@ using the provided shell script, verify_chain.sh</td></tr></tbody>
 
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=Log cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=Log cellspacing=0 cellpadding=6 border=0 bgcolor="#202020" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#202040" class=titlebar>
 	<td>
-		<font color="#403000"><b>Log</b></font> <a href=#Log>#</a><a name=Log></a><br>
+		<font color="#aaaaaa"><b>Log</b></font> <a href=#Log>#</a><a name=Log></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -547,12 +1088,12 @@ using the provided shell script, verify_chain.sh</td></tr></tbody>
 <span class=advanced>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=chainsql cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=chainsql cellspacing=0 cellpadding=6 border=0 bgcolor="#202020" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#202040" class=titlebar>
 	<td>
-		<font color="#403000"><b>chain.sql</b></font> <a href=#chainsql>#</a><a name=chainsql></a><br>
+		<font color="#aaaaaa"><b>chain.sql</b></font> <a href=#chainsql>#</a><a name=chainsql></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -591,12 +1132,12 @@ ORDER BY
 <br><noscript>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=Notice cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=Notice cellspacing=0 cellpadding=6 border=0 bgcolor="#202020" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#202040" class=titlebar>
 	<td>
-		<font color="#403000"><b>Notice</b></font> <a href=#Notice>#</a><a name=Notice></a><br>
+		<font color="#aaaaaa"><b>Notice</b></font> <a href=#Notice>#</a><a name=Notice></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -617,7 +1158,7 @@ ORDER BY
 <!-- InjectJs: utils settings avatar voting table_sort profile timestamp fresh table_sort -->
 
 
-<!-- html/utils/scriptinject.template (main,config/template/perl/item_listing_page.pl,147) -->
+<!-- html/utils/scriptinject.template -->
 <script language=javascript><!--
 // == begin utils.js
 
@@ -1408,7 +1949,7 @@ function SetElementVisible (element, displayValue, bgColor, borderStyle) { // se
 	if (bgColor && (element.tagName != 'SPAN')) {
 		// background color
 		if (bgColor == 'initial') {
-			bgColor = '#fff0ef';
+			bgColor = '#202020';
 		}
 
 		if (element.style.backgroundColor != bgColor) {
@@ -1530,26 +2071,26 @@ function ShowAll (t, container) { // t = clicked link ; container = document by 
 
 		var elements = container.getElementsByClassName('advanced');
 		for (var i = 0; i < elements.length; i++) {
-			SetElementVisible(elements[i], display, '#fff0ef', 0);
+			SetElementVisible(elements[i], display, '#504040', 0);
 		}
 
 		if (0) { // #todo
 			var elements = container.getElementsByClassName('heading');
 			for (var i = 0; i < elements.length; i++) {
-				SetElementVisible(elements[i], display, '#fff0ef', 0);
+				SetElementVisible(elements[i], display, '#504040', 0);
 			}
 			var elements = container.getElementsByClassName('menubar');
 			for (var i = 0; i < elements.length; i++) {
-				SetElementVisible(elements[i], display, '#fff0ef', 0);
+				SetElementVisible(elements[i], display, '#504040', 0);
 			}
 			//var elements = container.getElementsByClassName('statusbar');
 			//for (var i = 0; i < elements.length; i++) {
-			//    SetElementVisible(elements[i], display, '#fff0ef', 0);
+			//    SetElementVisible(elements[i], display, '#504040', 0);
 			//}
 		}
 		elements = container.getElementsByClassName('beginner');
 		for (var i = 0; i < elements.length; i++) {
-			SetElementVisible(elements[i], display, '#fff0ef', 0);
+			SetElementVisible(elements[i], display, '#484830', 0);
 		}
 		elements = container.getElementsByClassName('expand');
 		for (var i = 0; i < elements.length; i++) {
@@ -1653,7 +2194,7 @@ function ShowAdvanced (force, container) { // show or hide controls based on pre
 
 			var bgColor = 'initial';
 			if (GetPrefs('advanced_highlight') == 1) { // check value of advanced_highlight preference
-				bgColor = '#fff0ef'; // advanced_highlight
+				bgColor = '#504040'; // advanced_highlight
 			}
 
 			if (force || showAdvancedLastAction != (displayValue + bgColor)) {
@@ -1699,7 +2240,7 @@ function ShowAdvanced (force, container) { // show or hide controls based on pre
 
 			bgColor = 'initial';
 			if (GetPrefs('beginner_highlight') == 1) { // check value of beginner preference
-				bgColor = '#fff0ef'; // beginner_highlight
+				bgColor = '#484830'; // beginner_highlight
 			}
 
 			if (force || showBeginnerLastAction != displayValue + bgColor) {
@@ -2485,8 +3026,8 @@ function SortTable (t, sortOrder) {
 		return '';
 	}
 
-	var rowColor0 = '#fff0ef';
-	var rowColor1 = '#fff0ef';
+	var rowColor0 = '#202020';
+	var rowColor1 = '#282828';
 
 	sortOrder = sortOrder ? 1 : 0;
 
@@ -3678,7 +4219,7 @@ function ShowTimestamps () { // finds any class=timestamp, updates its displayed
 					}
 					if ((secs * (-1)) < 86400) {
 						// less than a day ago = highlight
-						var colorHighlightAlert = '#fff0ef'; // templated
+						var colorHighlightAlert = '#402820'; // templated
 						if (colorHighlightAlert) {
 						    te[i].style.backgroundColor = colorHighlightAlert;
                         }
@@ -4009,5 +4550,5 @@ if (window.EventLoop) {
 
 // -->
 </script>
-<!-- / html/utils/scriptinject.template (main,config/template/perl/item_listing_page.pl,147) -->
+<!-- / html/utils/scriptinject.template -->
 </body></html>

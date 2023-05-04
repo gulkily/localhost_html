@@ -1,0 +1,10 @@
+>>5a417d41a0fd5f770d9fb8d04c6048a7672c0c68
+
+b) go to mavo.io, demos, mavo logo
+
+click html, copy the entire body tag contents, including the body tag
+-- 
+Cookie: ACC9247718DF680E
+Received: 1683226303
+Client: 3526F8383C7609EF
+--- 

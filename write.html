@@ -15,7 +15,7 @@
 .tag-slash,
 .tag-abuse {
 /* negative (red) tags */
-	color: #403000;
+	color: #aa4040;
 	font-weight: bold;
 }
 
@@ -31,7 +31,7 @@
 .tag-like,
 .tag-vouch {
 /* positive (green) tags */
-	color: #403000;
+	color: #60c060;
 	font-weight: bold;
 }
 
@@ -74,19 +74,19 @@ div.txt {
 
 #eventLocation {
 /* event form */
-	background-color: #fff0ef;
+	background-color: #202020;
 	padding: 5pt;
 }
 
 #eventDate {
 /* event form */
-	background-color: #fff0ef;
+	background-color: #282828;
 	padding: 5pt;
 }
 
 #loadingIndicator, #spanLoadingIndicator, #ariaAlert {
-	color: #403000;
-	background-color: #fff0ef;
+	color: #aaaaaa;
+	background-color: #484830;
 	padding: 3pt;
 	position: fixed;
 	top: 0;
@@ -99,8 +99,8 @@ div.txt {
 	/* style for links in loading indicator */
 }
 .notification {
-	color: #403000;
-	background-color: #fff0ef;
+	color: #aaaaaa;
+	background-color: #484830;
 	padding: 3pt;
 	font-weight: bold;
 	padding: 3pt;
@@ -110,14 +110,14 @@ noscript, .noscript {
 }
 .menubar a, .titlebar a, .topmenubar a {
 	text-decoration: none;
-	color: #403000;
+	color: #aaaaaa;
 }
 nobr {
 	white-space:nowrap;
 }
 input[type=button], button, input[type=submit] {
-	color: #403000;
-	background-color: #fff0ef
+	color: #aaaaaa;
+	background-color: #202020
 }
 /* end css/default.css */
 
@@ -159,94 +159,76 @@ form {
 
 /* / inbox_top.css */
 
-/* theme/hypercode/additional.css */
-
-* {
-	border-radius: 5pt !important;
-	font-family: georgia, "times new roman", serif !important;
-}
-input, textarea {
-	background-color: white !important;
-	border: 2pt solid #404040 !important;
-	margin-top: 2pt !important;
-}
-#serverResponse {
-	display: none;
-}
-#loadingIndicator, #ariaAlert {
-	background-color: yellow;
-	border-radius: 0 !important;
-}
-#spanSignAs {
-	float: right;
-}
-
-/* / theme/hypercode/additional.css */
-/* theme/chicago/additional.css */
+/* theme/dark/additional.css */
 body {
-	font-family: Tahoma, Arial, Helvetica, sans-serif;
-	background-color: #fff0ef;
+	font-family: helvetica;
+	font-size: 14pt;
+	background-color: #222222;
 }
-input {
-}
-input[type=text], input[type=password], select, option, textarea {
-	background-color: #fff0ef;
-	color: #403000;
-}
-#txtClock {
-	border: 1pt inset #fff0ef;
-}
-@media (prefers-color-scheme: dark) {
-
-}
-.beginner {
+fieldset {
+	border-color: #666666;
 }
 .dialog {
-	box-shadow: 5pt 5pt 0 rgba(0, 20, 20, 0.3);
-	border: #c0c0c0 outset 2pt;
-	background-color: #fff0ef;
-	border-radius: 1pt;
-	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	border-radius: 5pt;
+	background-color: #202020;
+	font-family: tahoma, helvetica, arial, sans-serif;
 	font-size: 10pt;
-	margin-right: 8pt;
-	margin-bottom: 8pt;
+	box-shadow: 0 0 15pt #335555;
+	margin-bottom: 5pt;
 }
-textarea {
-    font-family: Fixedsys, "Courier New", Courier, monospace;
-    font-size: 12pt;
+button, input[type=button], input[type=submit], input[type=checkbox] {
+	background-color: #202020;
+	color: #aaaaaa;
+	border-color: #555555;
+	box-shadow: 0 0 5pt #335555;
 }
-
-.txt {
-/* regular text */
-	font-family: "Times New Roman", Times, sans-serif;
-	/*font-family: Tahoma, Arial, Helvetica, sans-serif;*/
-	font-size: 14pt;
-}
-a:focus, a:active {
-    color: red !important;
-    border-radius: 1pt;
-}
-textarea:focus {
-}
-input:focus {
-}
-#serverResponse {
-/* response messages from the server */
-    background-color: #fff0ef;
-    color: #403000;
-    padding: 5pt;
-    border: 0;
-	box-shadow: 5pt 5pt 0 rgba(0, 20, 20, 0.5);
+input[type=text], input[type=password], select, option, textarea {
+	background-color: #222222;
+	color: #c0c0c0;
+	border-color: #555555;
 }
 #txtClock {
-	border: 1pt inset #fff0ef;
-	background-color: #fff0ef;
+	border: 0;
+	color: #8080c0;
+}
+.statusbar td {
+	border: 1pt inset #202020;
+}
+textarea {
+    font-family: serif;
+    font-size: 12pt;
+}
+fieldset {
+    border-radius: 3pt;
+}
+.titlebar, .titlebar td {
+    border-radius: 3pt;
+}
+*:focus, *:active {
+/* focused items are orange for visibility */
+    background-color: #402010 !important;
+    color: orange !important;
+}
+#serverResponse {
+/* response from server */
+    background-color: #402820;
+    color: #aaaaaa;
+    padding: 5pt;
+    spacing: 5pt;
+    border: 2pt #202030 double;
+    display: block
+}
+@media only screen and (min-width : 40em) {
+	.item-textart {
+		max-width: 90%;
+		background-color: #808080;
+	}
+	.dialog .txt {
+		max-width: 40em;
+	}
 }
 .fileHashShort {
 	text-decoration: underline dotted;
-}
-#spanDialogControls a {
-	color: #fff0efText;
 }
 .titlebarButtons {
 	float: right;
@@ -254,15 +236,8 @@ input:focus {
 button.close, button.skip {
 	border: 0;
 	margin: 0;
-	font-weight: bold;
 }
-button:hover {
-	color: red;
-}
-#spanDialogControls a {
-	color: #403000;
-}
-/* / theme/chicago/additional.css */
+/* / theme/dark/additional.css */
 /* pre_time_sans.css */
 
 pre time {
@@ -274,28 +249,64 @@ pre time {
 -->
 </style>
 </head>
-<body link="#403000" vlink="#403000" text="#403000" bgcolor="#fff0ef" background="/hypercode_bg.jpg" onclick="if (window.ShowPreNavigateNotification && event.target && (event.target.tagName == 'A') && !(event.target.onclick)) { ShowPreNavigateNotification(); }" onload="if (window.OnLoadEverything) { OnLoadEverything(); }" >
+<body link="#8888cc" vlink="#cc88cc" text="#aaaaaa" bgcolor="#404040" onclick="if (window.ShowPreNavigateNotification && event.target && (event.target.tagName == 'A') && !(event.target.onclick)) { ShowPreNavigateNotification(); }" onload="if (window.OnLoadEverything) { OnLoadEverything(); }" >
 <b>
 <!-- template/topmenu2.template -->
-<table cellspacing=0 cellpadding=3 border=0 bgcolor="#fff0ef" class=dialog id=topmenu>
-	<tr bgcolor="#fff0ef" class=topmenubar>
+<table cellspacing=0 cellpadding=3 border=0 bgcolor="#202020" class=dialog id=topmenu>
+	<tr bgcolor="#202020" class=topmenubar>
 		<td colspan=2>
 			<big>
 				<big>
 <!-- menuitem.template -->
-<a accesskey=w href="/write.html"><u>W</u>rite</a>
+<a accesskey=w href="/welcome.html"><u>W</u>elcome</a>
 <!-- / menuitem.template -->
 ;
 
 
 <!-- menuitem.template -->
-<a accesskey=c href="/chain.html"><u>C</u>hain</a>
+<a accesskey=t href="/threads.html"><u>T</u>hreads</a>
 <!-- / menuitem.template -->
 ;
 
 
 <!-- menuitem.template -->
-<a accesskey=p href="/people.html"><u>P</u>eople</a>
+<a accesskey=u href="/upload.html"><u>U</u>pload</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=i href="/write.html">Wr<u>i</u>te</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=s href="/settings.html"><u>S</u>ettings</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=p href="/profile.html"><u>P</u>rofile</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=a href="/authors.html"><u>A</u>uthors(3)</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=g href="/tags.html">Ta<u>g</u>s(9)</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=h href="/help.html"><u>H</u>elp</a>
 <!-- / menuitem.template -->
 </big>
 				<span class=advanced></span>
@@ -305,10 +316,10 @@ pre time {
 			</big>
 		</td>
 	</tr>
-	<tr bgcolor="#fff0ef" class=titlebar>
+	<tr bgcolor="#202030" class=titlebar>
 		<td>
 			<small>
-				<font color="#403000"><b>Welcome</b></font>
+				<font color="#aaaaaa"><b>Welcome</b></font>
 			</small>
 		</td>
 		<td align=right>
@@ -379,12 +390,12 @@ pre time {
 
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=write cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=write cellspacing=0 cellpadding=6 border=0 bgcolor="#202020" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#202040" class=titlebar>
 	<td>
-		<font color="#403000"><b>Write</b></font> <a href=#write>#</a><a name=write></a><br>
+		<font color="#aaaaaa"><b>Write</b></font> <a href=#write>#</a><a name=write></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -450,12 +461,12 @@ pre time {
 <br><noscript>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=Notice cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=Notice cellspacing=0 cellpadding=6 border=0 bgcolor="#202020" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#202040" class=titlebar>
 	<td>
-		<font color="#403000"><b>Notice</b></font> <a href=#Notice>#</a><a name=Notice></a><br>
+		<font color="#aaaaaa"><b>Notice</b></font> <a href=#Notice>#</a><a name=Notice></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -476,7 +487,7 @@ pre time {
 <!-- InjectJs: settings avatar write profile utils timestamp write_php puzzle translit voting fresh table_sort -->
 
 
-<!-- html/utils/scriptinject.template (main,config/template/perl/page/write.pl,117) -->
+<!-- html/utils/scriptinject.template -->
 <script language=javascript><!--
 // == begin settings.js
 
@@ -508,7 +519,7 @@ function SetElementVisible (element, displayValue, bgColor, borderStyle) { // se
 	if (bgColor && (element.tagName != 'SPAN')) {
 		// background color
 		if (bgColor == 'initial') {
-			bgColor = '#fff0ef';
+			bgColor = '#202020';
 		}
 
 		if (element.style.backgroundColor != bgColor) {
@@ -630,26 +641,26 @@ function ShowAll (t, container) { // t = clicked link ; container = document by 
 
 		var elements = container.getElementsByClassName('advanced');
 		for (var i = 0; i < elements.length; i++) {
-			SetElementVisible(elements[i], display, '#fff0ef', 0);
+			SetElementVisible(elements[i], display, '#504040', 0);
 		}
 
 		if (0) { // #todo
 			var elements = container.getElementsByClassName('heading');
 			for (var i = 0; i < elements.length; i++) {
-				SetElementVisible(elements[i], display, '#fff0ef', 0);
+				SetElementVisible(elements[i], display, '#504040', 0);
 			}
 			var elements = container.getElementsByClassName('menubar');
 			for (var i = 0; i < elements.length; i++) {
-				SetElementVisible(elements[i], display, '#fff0ef', 0);
+				SetElementVisible(elements[i], display, '#504040', 0);
 			}
 			//var elements = container.getElementsByClassName('statusbar');
 			//for (var i = 0; i < elements.length; i++) {
-			//    SetElementVisible(elements[i], display, '#fff0ef', 0);
+			//    SetElementVisible(elements[i], display, '#504040', 0);
 			//}
 		}
 		elements = container.getElementsByClassName('beginner');
 		for (var i = 0; i < elements.length; i++) {
-			SetElementVisible(elements[i], display, '#fff0ef', 0);
+			SetElementVisible(elements[i], display, '#484830', 0);
 		}
 		elements = container.getElementsByClassName('expand');
 		for (var i = 0; i < elements.length; i++) {
@@ -753,7 +764,7 @@ function ShowAdvanced (force, container) { // show or hide controls based on pre
 
 			var bgColor = 'initial';
 			if (GetPrefs('advanced_highlight') == 1) { // check value of advanced_highlight preference
-				bgColor = '#fff0ef'; // advanced_highlight
+				bgColor = '#504040'; // advanced_highlight
 			}
 
 			if (force || showAdvancedLastAction != (displayValue + bgColor)) {
@@ -799,7 +810,7 @@ function ShowAdvanced (force, container) { // show or hide controls based on pre
 
 			bgColor = 'initial';
 			if (GetPrefs('beginner_highlight') == 1) { // check value of beginner preference
-				bgColor = '#fff0ef'; // beginner_highlight
+				bgColor = '#484830'; // beginner_highlight
 			}
 
 			if (force || showBeginnerLastAction != displayValue + bgColor) {
@@ -3375,7 +3386,7 @@ function ShowTimestamps () { // finds any class=timestamp, updates its displayed
 					}
 					if ((secs * (-1)) < 86400) {
 						// less than a day ago = highlight
-						var colorHighlightAlert = '#fff0ef'; // templated
+						var colorHighlightAlert = '#402820'; // templated
 						if (colorHighlightAlert) {
 						    te[i].style.backgroundColor = colorHighlightAlert;
                         }
@@ -4645,8 +4656,8 @@ function SortTable (t, sortOrder) {
 		return '';
 	}
 
-	var rowColor0 = '#fff0ef';
-	var rowColor1 = '#fff0ef';
+	var rowColor0 = '#202020';
+	var rowColor1 = '#282828';
 
 	sortOrder = sortOrder ? 1 : 0;
 
@@ -4850,5 +4861,5 @@ function SortTable (t, sortOrder) {
 
 // -->
 </script>
-<!-- / html/utils/scriptinject.template (main,config/template/perl/page/write.pl,117) -->
+<!-- / html/utils/scriptinject.template -->
 </body></html>

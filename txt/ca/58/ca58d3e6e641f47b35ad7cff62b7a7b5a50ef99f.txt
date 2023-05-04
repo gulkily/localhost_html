@@ -1,0 +1,16 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+what should happen after a zip file is uploaded?
+-----BEGIN PGP SIGNATURE-----
+
+wlwEAQEIABAFAmRT/V8JEKzJJHcY32gOAABbFQH9HumwuL3qlzdgxtgVyCx/
+vIjVQvdot6T1fovk14kX4I1wIC4iVgkRou3Ze8xnHVFgdbJW8UOvhLhG9eaU
+L9k6Qw==
+=iqUH
+-----END PGP SIGNATURE-----
+-- 
+--- 
+Received: 1683225951
+Client: 3526F8383C7609EF
+Cookie: ACC9247718DF680E
