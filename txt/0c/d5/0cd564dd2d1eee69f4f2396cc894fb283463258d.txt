@@ -1,0 +1,9 @@
+Hello
+really nice !
+Can you explane the differences with https://madlib.apache.org/ ? 
+Wouldnt an OLAP db better suited than pg for this kind of workload ?
+Does being a postgreSQL module make it compatible with citus, greemplum or timescale ?
+-- 
+#f43e0c4c
+--- 
+Received: 1683126654

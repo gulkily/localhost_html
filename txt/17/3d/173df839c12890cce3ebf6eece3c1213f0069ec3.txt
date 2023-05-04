@@ -1,0 +1,5 @@
+Great idea! I see this is implemented using the Python language interface supported by PostgreSQL and importing sklearn models. I always wonder how scalable this is considering the serialization-deserialization overhead between Postgres' core and Python. Do you see any significant performance difference between this and training the sklearn models directly on something like Dataframes?
+-- 
+#f43e0c4c
+--- 
+Received: 1683126654

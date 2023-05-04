@@ -1,0 +1,5 @@
+Awesome. I'll see what it'll take to get the extension running w/ Python 3.6. It's good to know what people's ecosystem dependencies look like.
+-- 
+#f43e0c4c
+--- 
+Received: 1683126654

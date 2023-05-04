@@ -1,0 +1,5 @@
+Neat project. Any roadmap for cross-validation support (GridSearchCV and friends)?
+-- 
+#f43e0c4c
+--- 
+Received: 1683126654

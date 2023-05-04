@@ -1,0 +1,5 @@
+Is this a competitor to bigquery autoML or to something like kubeflow?
+-- 
+#f43e0c4c
+--- 
+Received: 1683126654

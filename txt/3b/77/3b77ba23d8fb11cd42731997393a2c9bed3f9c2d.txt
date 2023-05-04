@@ -1,0 +1,6 @@
+How about the difference between this and the Madlib project? Better ergonomics?
+I've used Madlib in the past and although it was 'successful', the constraint was unfamiliarity with the library from our data scientists, who preferred the classic Python libraries.
+-- 
+#f43e0c4c
+--- 
+Received: 1683126654

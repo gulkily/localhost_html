@@ -1,0 +1,5 @@
+This looks awesome! I’m not an expert but wouldn’t the typical database hardware not be really optimal for running ML? Is this meant to run on a replica (which is quite straightforward to setup) that has ML optimised hardware?
+-- 
+#f43e0c4c
+--- 
+Received: 1683126654

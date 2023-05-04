@@ -1,0 +1,6 @@
+Haven't played with it yet, but this tooling is exactly what I'm looking for for my SQL-first-python-second "data lake" workflows. It doesn't exactly matter to me if data in a table gets rewritten in-place since it's built on a model meant to be destroyed at any time from an original source file - generally data from FOIA or gov sources that's write-once.
+In a way, having to pull things out of the DB and into python is something that requires change attribution on its own since it's a conversion between abstractions which I tend to think of as a lossy process (even if it isn't). This sort of tooling keeps the abstractions localized, so it's much easier to maintain a mental model of models of changes.
+-- 
+#f43e0c4c
+--- 
+Received: 1683126654

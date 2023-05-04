@@ -1,0 +1,5 @@
+The data split technique is one of the optional parameters for the call to ‘train’. Model degradation is a really interesting topic, that is hopefully made less difficult when retraining is trivialized, but we also want to add deeper analytics into individual model predictions, as well as better model explanations with tools like shap. We haven’t exposed custom performance metrics in the API yet, but we’re computing a few right now and can add more. The next thing we may build could be a configuration wizard to help make these decisions easy based on some guided data analysis.
+-- 
+#f43e0c4c
+--- 
+Received: 1683126654

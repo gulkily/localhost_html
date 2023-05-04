@@ -1,0 +1,7 @@
+"Buy it again" is simply a name for the PostgresML project that the model is being trained for.
+There is deeper explanation in the README:
+https://github.com/postgresml/postgresml
+-- 
+#f43e0c4c
+--- 
+Received: 1683126654

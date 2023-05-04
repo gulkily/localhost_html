@@ -1,0 +1,5 @@
+That's exactly the target use case. Models make online predictions as part of Postgres queries, and can be periodically retrained in a cadence that makes sense for the particular data set. In my experience the real value of retraining at a fixed cadence is so that you can learn when your data set changes, and have fewer changes to work through when there is some data bug/anomaly introduced into the eco system. Models that aren't routinely retrained tend to die in a catastrophic manner when business logic changes, and their ingestion pipeline hasn't been updated since they were originally created.
+-- 
+#f43e0c4c
+--- 
+Received: 1683126654

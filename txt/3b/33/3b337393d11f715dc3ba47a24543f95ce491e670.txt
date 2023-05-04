@@ -1,0 +1,8 @@
+>>d6614ef2d03a279e511e1fa10b41b42f13254ad1
+
+add people page
+702b9194dc97094ee75483849e2e09c5e798466c
+
+ok, I added a people page. there may not be much on it at first.
+
+===

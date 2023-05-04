@@ -1,0 +1,6 @@
+Amazon Aurora already has ML extensions for connecting to AWS SageMaker and AWS Comprehend. I doubt they'd add another, especially one they didn't write and isn't integrated with their existing lineup.
+https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide...
+-- 
+#f43e0c4c
+--- 
+Received: 1683126654

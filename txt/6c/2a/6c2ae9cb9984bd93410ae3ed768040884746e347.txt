@@ -1,0 +1,5 @@
+Looks like a good fit to run on Hydras.io (YC W22) the Postgres data warehouse that separates the PG query layer from compute / storage. Disclaimer, I'm the co-founder.
+-- 
+#f43e0c4c
+--- 
+Received: 1683126654

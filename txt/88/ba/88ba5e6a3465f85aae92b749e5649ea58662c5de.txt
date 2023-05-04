@@ -1,0 +1,5 @@
+Outside of academia, you need to be able to constantly adapt to changing training data. That is a constant pitfall for many projects that try to transition from offline to online.
+-- 
+#f43e0c4c
+--- 
+Received: 1683126654

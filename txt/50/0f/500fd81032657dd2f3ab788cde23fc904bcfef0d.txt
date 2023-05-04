@@ -1,0 +1,5 @@
+I wonder if/how a PostgreSQL plug-in can provide an optimal mix of computing and storage resources for varying machine learning workloads.
+-- 
+#f43e0c4c
+--- 
+Received: 1683126654

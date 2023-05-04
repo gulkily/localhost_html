@@ -1,0 +1,6 @@
+This is really cool, running ML workloads on top of SQL is a very practical way of doing ML for a lot of businesses. Many companies don't have the fancy ML workloads like you see at OpenAI, they just have a SQL database with some data that could greatly help their business with some simple ML models trained on it. This looks like a nice way to do it. A slightly different approach that I've been working on involves hooking data warehouses up to Pachyderm [0] so you can do offline training on it. Not as good for online stuff as this, but for longer running batch style jobs it works really well.
+[0] http://github.com/pachyderm/pachyderm
+-- 
+#f43e0c4c
+--- 
+Received: 1683126654

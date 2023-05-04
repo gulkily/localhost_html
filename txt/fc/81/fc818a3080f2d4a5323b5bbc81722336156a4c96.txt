@@ -1,0 +1,7 @@
+Cool approach. This nicely fits in the trend of SQL-as-much-as-possible because that makes it just a tiny bit more accessible. Definitely going to play with this in the next few days.
+(edit:)
+Being able to get training data from a SQL view is by far the nicest. Keep it up!
+-- 
+#f43e0c4c
+--- 
+Received: 1683126654

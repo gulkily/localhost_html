@@ -1,0 +1,5 @@
+We can’t control the extensions RDS allows to be installed, and they are historically conservative. Lev and I do have some fairly extensive experience with replication patterns to Postgres instances running in EC2. Foreign data wrappers are also an option, and depending on workload may be a good horizontal scaling strategy in addition.
+-- 
+#f43e0c4c
+--- 
+Received: 1683126654

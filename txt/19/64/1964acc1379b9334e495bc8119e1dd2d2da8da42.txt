@@ -1,0 +1,5 @@
+This can be done "manually" by configuring Postgres replication and/or foreign data wrappers. We don't have a magic button for that, but if we have a few examples in the wild we can establish best practices and then put those into code. I say this with some optimism that we may be able to see more targeted ML specific scalability use cases that can be solved more completely than general database scalability.
+-- 
+#f43e0c4c
+--- 
+Received: 1683126654

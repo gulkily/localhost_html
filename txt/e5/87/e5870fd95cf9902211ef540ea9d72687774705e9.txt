@@ -1,0 +1,6 @@
+Custom proprietary models are on the TODO list. There are open questions about the mechanism to distribute the model params and code, which will lead to additional complexity, but I think it's something we'll eventually need to support.
+In the opposite direction of bespoke fully custom models being the norm, I'd like to build more "rails" for ML. Hopefully we can expose enough hyperparams, even for deep learning architectures, and automatically adapt the inputs with configurable transformers so that we cover 90% of the custom use cases out of the box.
+-- 
+#f43e0c4c
+--- 
+Received: 1683126654

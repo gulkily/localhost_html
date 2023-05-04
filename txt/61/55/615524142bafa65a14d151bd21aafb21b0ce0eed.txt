@@ -1,0 +1,5 @@
+This logo and name, to me at least, implied some sort of official affiliation with the PostgreSQL project.   Which I think should at least be clarified on the site/readme.
+-- 
+#f43e0c4c
+--- 
+Received: 1683126654

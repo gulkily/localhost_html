@@ -1,0 +1,5 @@
+Reminds me of https://riverml.xyz/latest/ (which is awesome) but the idea is even better because it skips all the copying and preprocessing yak shaving. Can't wait to kick the tires!
+-- 
+#f43e0c4c
+--- 
+Received: 1683126654

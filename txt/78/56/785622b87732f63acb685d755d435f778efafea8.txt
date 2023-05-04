@@ -1,0 +1,6 @@
+This is an interesting benchmark I'll try to code up. Although, it seems a bit like an apples/oranges comparison, since a Dataframe in memory had to come from somewhere, either a CSV or database like Postgres, in which case I have my money on Postgres outcompeting the standalone process parsing CSV.
+In the end though, it'll be important to have benchmarks for all the key steps in the process, both in terms of memory and compute. Off a hunch, I think the memory inefficiency involved in high level pandas operations is more likely to be a driving force to move operations into lower layers, than CPU runtime.
+-- 
+#f43e0c4c
+--- 
+Received: 1683126654
