@@ -35,7 +35,24 @@
 <!-- / header_wrapper.template -->
 
 
-		<tbody class=content><tr bgcolor="#fff0ef"><td class=advanced>85c2d7a9</td>
+		<tbody class=content><tr bgcolor="#fff0ef"><td class=advanced>620b445e</td>
+<td><b><a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('620b445e')) {
+							SetActiveDialog(document.getElementById('620b445e'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/62/0b/620b445e.html');
+						}
+					}
+				" href="/62/0b/620b445e.html">add notarization chain</a></b></td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683446333.39488 title="03:58:53">03:58</time><!-- / timestamp_time.template --></td>
+</tr>
+<tr bgcolor="#fff0ef"><td class=advanced>85c2d7a9</td>
 <td><b><a  onclick="
 					if (
 						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
@@ -92,7 +109,7 @@
 <!-- window/status.template -->
 <tr class=statusbar>
 	<td colspan=3>
-		3 item(s)
+		4 item(s)
 	</td>
 </tr>
 <!-- / window/status.template -->
