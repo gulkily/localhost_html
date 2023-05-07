@@ -121,6 +121,33 @@ input[type=button], button, input[type=submit] {
 }
 /* end css/default.css */
 
+/* dragging.css */
+
+/* should be called inline-block.css ? */
+
+/* makes some dialogs horizontal */
+table.dialog { /* inline-table table-block */
+	display: inline-block;
+	vertical-align: top;
+}
+form {
+	display: inline;
+}
+
+/*
+#topmenu.dialog {
+	position: fixed !important;
+	top: 0;
+	right: 0;
+}
+*/
+
+/* / dragging.css */
+
+.dialog .txt {
+	max-width: 30em;
+}
+
 /* inbox_top.css */
 
 #messages {
@@ -436,12 +463,12 @@ if (document.createElement) {
 	</th>
 </tr>
 
-<tr><td>last seen:</td><td><!-- timestamp_time.template --><time class=timestamp datetime=1683443815 title="03:16:55">03:16</time><!-- / timestamp_time.template --></td></tr>
+<tr><td>last seen:</td><td><!-- timestamp_time.template --><time class=timestamp datetime=1683443895 title="03:18:15">03:18</time><!-- / timestamp_time.template --></td></tr>
 <tr><td>fingerprint:</td><td><tt>87D6DDF22BD62334</tt></td></tr>
 <tr><td>notes:</td><td><b><span id=itsyou>*</span></b></td></tr>
 <tr class=advanced><td>actions:</td><td><b><span id=profileVoteButtons>*</span></b></td></tr>
 <tr><td>score:</td><td>1</td></tr>
-<tr class=advanced><td>items:</td><td>28</td></tr>
+<tr class=advanced><td>items:</td><td>30</td></tr>
 <tr class=advanced><td>description:</td><td>*</td></tr>
 <tr class=advanced><td>registration:</td><td><b><tt>*</tt></b></td></tr>
 <tr><td>write:</td><td><b><tt>*</tt></b></td></tr>
@@ -492,6 +519,10 @@ if (document.createElement) {
 <td><!-- timestamp_time.template --><time class=timestamp datetime=1683441808 title="02:43:28">02:43</time><!-- / timestamp_time.template --></td>
 <td class=advanced>e8cf2e35</td>
 </tr>
+<tr bgcolor="#fff0ef"><td><b><a href="/90/13/90136759.html">90136759..</a></b></td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683443895 title="03:18:15">03:18</time><!-- / timestamp_time.template --></td>
+<td class=advanced>90136759</td>
+</tr>
 <tr bgcolor="#fff0ef"><td><b><a href="/2c/d3/2cd3a755.html">2cd3a755..</a></b></td>
 <td><!-- timestamp_time.template --><time class=timestamp datetime=1683443815 title="03:16:55">03:16</time><!-- / timestamp_time.template --></td>
 <td class=advanced>2cd3a755</td>
@@ -530,7 +561,7 @@ if (document.createElement) {
 <!-- window/status.template -->
 <tr class=statusbar>
 	<td colspan=3>
-		9 item(s)
+		10 item(s)
 	</td>
 </tr>
 <!-- / window/status.template -->
@@ -574,6 +605,9 @@ if (document.createElement) {
 		<tbody class=content><tr bgcolor="#fff0ef"><td class=advanced>3aa47d66</td>
 <td><b><a href="/3a/a4/3aa47d66.html">js/debug 0</a></b></td>
 </tr>
+<tr bgcolor="#fff0ef"><td class=advanced>3d6cc58a</td>
+<td><b><a href="/3d/6c/3d6cc58a.html">add loading indicator</a></b></td>
+</tr>
 <tr bgcolor="#fff0ef"><td class=advanced>574e8a96</td>
 <td><b><a href="/57/4e/574e8a96.html">add profile page</a></b></td>
 </tr>
@@ -595,7 +629,7 @@ if (document.createElement) {
 <!-- window/status.template -->
 <tr class=statusbar>
 	<td colspan=2>
-		6 item(s)
+		7 item(s)
 	</td>
 </tr>
 <!-- / window/status.template -->
@@ -647,7 +681,7 @@ if (document.createElement) {
 
 		
 
-		<tbody class=content><tr class=content><td>Items on page: 28</td></tr></tbody>
+		<tbody class=content><tr class=content><td>Items on page: 30</td></tr></tbody>
 
 		
 	</table>
@@ -656,6 +690,134 @@ if (document.createElement) {
 
 <!-- item_list.template -->
 <span class=itemList>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=90136759 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">[Operator]<span class=admin><br>
+-- <br>
+<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/90/13/90136759.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443896 title="03:18:16">03:18</time><!-- / timestamp_time.template --></a>;
+<a class=avatar href="/author/87D6DDF22BD62334/index.html"><!-- avatar-username.template --><span class=avatar><span class=username><font color="#403000>"
+			<b><i>Guest</i></b></font></span></span><!-- / avatar-username.template --></a>;
+<span class=advanced>
+	<span class=fileHashShort>90136759</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'90136759ad17a2ebaf6a31b6189c2c46051c3ab0\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=90136759ad17a2ebaf6a31b6189c2c46051c3ab0"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'90136759ad17a2ebaf6a31b6189c2c46051c3ab0\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=90136759ad17a2ebaf6a31b6189c2c46051c3ab0"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('90136759ad17a2ebaf6a31b6189c2c46051c3ab0', this); }" item-id=90136759ad17a2ebaf6a31b6189c2c46051c3ab0 class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=17e057ba cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/3d/6c/3d6cc58a.html">add loading indi</a><br><br>#like<span class=admin><br>
+-- <br>
+<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/17/e0/17e057ba.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443850 title="03:17:30">03:17</time><!-- / timestamp_time.template --></a>;
+<a class=avatar href="/author/87D6DDF22BD62334/index.html"><!-- avatar-username.template --><span class=avatar><span class=username><font color="#403000>"
+			<b><i>Guest</i></b></font></span></span><!-- / avatar-username.template --></a>;
+<span class=advanced>
+	<span class=fileHashShort>17e057ba</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'17e057ba94a337ab09947d16f31bbf909407d401\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=17e057ba94a337ab09947d16f31bbf909407d401"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'17e057ba94a337ab09947d16f31bbf909407d401\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=17e057ba94a337ab09947d16f31bbf909407d401"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('17e057ba94a337ab09947d16f31bbf909407d401', this); }" item-id=17e057ba94a337ab09947d16f31bbf909407d401 class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
 	<table id=2cd3a755 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>

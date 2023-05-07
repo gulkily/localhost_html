@@ -121,6 +121,33 @@ input[type=button], button, input[type=submit] {
 }
 /* end css/default.css */
 
+/* dragging.css */
+
+/* should be called inline-block.css ? */
+
+/* makes some dialogs horizontal */
+table.dialog { /* inline-table table-block */
+	display: inline-block;
+	vertical-align: top;
+}
+form {
+	display: inline;
+}
+
+/*
+#topmenu.dialog {
+	position: fixed !important;
+	top: 0;
+	right: 0;
+}
+*/
+
+/* / dragging.css */
+
+.dialog .txt {
+	max-width: 30em;
+}
+
 /* inbox_top.css */
 
 #messages {
@@ -468,6 +495,66 @@ if (document.createElement) {
 
 <!-- item_list.template -->
 <span class=itemList>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=3461baca cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>thank you for this battery</b></font> <a href=#3461baca>#</a><a name=3461baca></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/a0/8a/a08aa2f1.html">a08aa2f1..</a><br><br>thank you for this battery<br><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/34/61/3461baca.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683434425 title="00:40:25">00:40</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>3461baca</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'3461baca7e763ff913027d510173f385cee0a06e\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=3461baca7e763ff913027d510173f385cee0a06e"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'3461baca7e763ff913027d510173f385cee0a06e\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=3461baca7e763ff913027d510173f385cee0a06e"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('3461baca7e763ff913027d510173f385cee0a06e', this); }" item-id=3461baca7e763ff913027d510173f385cee0a06e class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
 	<table id=5cea32a3 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
@@ -6932,66 +7019,6 @@ if (document.createElement) {
 <!-- / vote_button.template -->
 <!-- status_bar.template -->
 ; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('3213ccbd3f22c9ca964b3466d391fcfc0cde9547', this); }" item-id=3213ccbd3f22c9ca964b3466d391fcfc0cde9547 class=replyCartButton href=#>+cart</a></span>
-	</td>
-</tr>
-<!-- / window/status.template -->
-
-	</table>
-</font>
-<!-- / default/template/html/window/standard.template -->
-<replies></replies>
-<!-- default/template/html/window/standard.template -->
-<font face=arial>
-	<table id=27cc0133 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
-		
-<!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
-	<td>
-		<font color="#403000"><b>what should happen after a zip file is uploaded?</b></font> <a href=#27cc0133>#</a><a name=27cc0133></a><br>
-		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
-	</td>
-</tr>
-<!-- / titlebar.template -->
-
-
-		
-
-		
-
-		<tbody class=content><tr class=content><td>
-<!-- item/item.template -->
-<p class="txt">what should happen after a zip file is uploaded?<br><br></p>
-<!-- / item/item.template -->
-</td></tr></tbody>
-
-		
-<!-- window/status.template -->
-<tr class=statusbar>
-	<td>
-		
-<!-- status_bar.template -->
-<a href="/27/cc/27cc0133.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683225951 title="05/04">05/04</time><!-- / timestamp_time.template --></a>;
-
-<span class=advanced>
-	<span class=fileHashShort>27cc0133</span>;
-</span>
-<!-- vote_button.template -->
-<a onclick="if (window.SignVote) {
-							var gt = unescape('%3E');
-							return SignVote(this, gt+gt+'27cc0133cdc3c2ae37b33c8a12814bc053c62c98\n#like');
-						}" 
-	href="/post.html?comment=%23like&replyto=27cc0133cdc3c2ae37b33c8a12814bc053c62c98"
-	class="tag-like">like</a>;
-<!-- / vote_button.template --><!-- vote_button.template -->
-<a onclick="if (window.SignVote) {
-							var gt = unescape('%3E');
-							return SignVote(this, gt+gt+'27cc0133cdc3c2ae37b33c8a12814bc053c62c98\n#flag');
-						}" 
-	href="/post.html?comment=%23flag&replyto=27cc0133cdc3c2ae37b33c8a12814bc053c62c98"
-	class="tag-flag">flag</a>
-<!-- / vote_button.template -->
-<!-- status_bar.template -->
-; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('27cc0133cdc3c2ae37b33c8a12814bc053c62c98', this); }" item-id=27cc0133cdc3c2ae37b33c8a12814bc053c62c98 class=replyCartButton href=#>+cart</a></span>
 	</td>
 </tr>
 <!-- / window/status.template -->

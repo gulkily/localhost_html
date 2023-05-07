@@ -1,0 +1,8 @@
+>>90136759ad17a2ebaf6a31b6189c2c46051c3ab0
+
+add inline-block to dialogs
+fa6c04175426f4891fd2985c833d4e29270eb80b
+
+ok, I added display: inline-block to the dialog class
+
+===

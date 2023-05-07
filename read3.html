@@ -121,6 +121,33 @@ input[type=button], button, input[type=submit] {
 }
 /* end css/default.css */
 
+/* dragging.css */
+
+/* should be called inline-block.css ? */
+
+/* makes some dialogs horizontal */
+table.dialog { /* inline-table table-block */
+	display: inline-block;
+	vertical-align: top;
+}
+form {
+	display: inline;
+}
+
+/*
+#topmenu.dialog {
+	position: fixed !important;
+	top: 0;
+	right: 0;
+}
+*/
+
+/* / dragging.css */
+
+.dialog .txt {
+	max-width: 30em;
+}
+
 /* inbox_top.css */
 
 #messages {
@@ -468,6 +495,66 @@ if (document.createElement) {
 
 <!-- item_list.template -->
 <span class=itemList>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=27cc0133 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>what should happen after a zip file is uploaded?</b></font> <a href=#27cc0133>#</a><a name=27cc0133></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">what should happen after a zip file is uploaded?<br><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/27/cc/27cc0133.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683225951 title="05/04">05/04</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>27cc0133</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'27cc0133cdc3c2ae37b33c8a12814bc053c62c98\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=27cc0133cdc3c2ae37b33c8a12814bc053c62c98"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'27cc0133cdc3c2ae37b33c8a12814bc053c62c98\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=27cc0133cdc3c2ae37b33c8a12814bc053c62c98"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('27cc0133cdc3c2ae37b33c8a12814bc053c62c98', this); }" item-id=27cc0133cdc3c2ae37b33c8a12814bc053c62c98 class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
 	<table id=55ce7171 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
@@ -6931,69 +7018,6 @@ if (document.createElement) {
 <!-- / vote_button.template -->
 <!-- status_bar.template -->
 ; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('9086bd543e901b18501e4af675088e1a5201185f', this); }" item-id=9086bd543e901b18501e4af675088e1a5201185f class=replyCartButton href=#>+cart</a></span>
-	</td>
-</tr>
-<!-- / window/status.template -->
-
-	</table>
-</font>
-<!-- / default/template/html/window/standard.template -->
-<replies></replies>
-<!-- default/template/html/window/standard.template -->
-<font face=arial>
-	<table id=9014daee cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
-		
-
-		
-
-		
-<!-- header_wrapper.template -->
-<tr class=heading>
-	
-<!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
-<!-- / header_column.template -->
-
-</tr>
-<!-- / header_wrapper.template -->
-
-
-		<tbody class=content><tr class=content><td>
-<!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/90/86/9086bd54.html">reset this websi</a><br><br>[Operator]<span class=admin><br>
--- <br>
-<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
-<!-- / item/item.template -->
-</td></tr></tbody>
-
-		
-<!-- window/status.template -->
-<tr class=statusbar>
-	<td>
-		
-<!-- status_bar.template -->
-<a href="/90/14/9014daee.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443696 title="03:14:56">03:14</time><!-- / timestamp_time.template --></a>;
-
-<span class=advanced>
-	<span class=fileHashShort>9014daee</span>;
-</span>
-<!-- vote_button.template -->
-<a onclick="if (window.SignVote) {
-							var gt = unescape('%3E');
-							return SignVote(this, gt+gt+'9014daee54484c20bacd2b881388be4365a419b7\n#like');
-						}" 
-	href="/post.html?comment=%23like&replyto=9014daee54484c20bacd2b881388be4365a419b7"
-	class="tag-like">like</a>;
-<!-- / vote_button.template --><!-- vote_button.template -->
-<a onclick="if (window.SignVote) {
-							var gt = unescape('%3E');
-							return SignVote(this, gt+gt+'9014daee54484c20bacd2b881388be4365a419b7\n#flag');
-						}" 
-	href="/post.html?comment=%23flag&replyto=9014daee54484c20bacd2b881388be4365a419b7"
-	class="tag-flag">flag</a>
-<!-- / vote_button.template -->
-<!-- status_bar.template -->
-; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('9014daee54484c20bacd2b881388be4365a419b7', this); }" item-id=9014daee54484c20bacd2b881388be4365a419b7 class=replyCartButton href=#>+cart</a></span>
 	</td>
 </tr>
 <!-- / window/status.template -->
