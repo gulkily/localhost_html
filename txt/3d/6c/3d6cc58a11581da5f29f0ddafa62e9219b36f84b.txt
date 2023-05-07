@@ -1,0 +1,8 @@
+>>2cd3a7553e08a762323da16d688a10fb582badc6
+
+add loading indicator
+5d0eea333879c6088df0d3ad3a481bda7b0be0a2
+
+ok, I added a loading indicator which advises the user to meditate while waiting.
+
+===
