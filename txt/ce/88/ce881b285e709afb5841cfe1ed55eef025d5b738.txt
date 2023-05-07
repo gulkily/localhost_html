@@ -1,0 +1,13 @@
+>>7a934eb7b1a282bea2157d7313ed676e55fe69c8
+
+loading 1
+20afad5cd61edb3d238fa6248c3cc09b5ec488b4
+
+=================
+Rejoice always
+Pray without ceasing
+Give thanks in all circumstances
+=================
+pollyanna b044379e
+=================
+echo 1 > config/setting/admin/js/loading
