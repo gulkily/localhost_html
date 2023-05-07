@@ -1,0 +1,21 @@
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+>>a2d12ca5b309f79018ffe8dd5de72158d57d514c
+
+setting up your web hosting
+-----BEGIN PGP SIGNATURE-----
+
+wlwEAQEIABAFAmRXRWQJEKid6X60Rn3dAAATUQIAnFwi0D0zRlr8/Xo6RHvU
+T0xxwIB45rcHw/WxS+1eyS8MRj36EKPJssSGoka4OypuO7g1cRBamL2pkbm6
+z2anKQ==
+=w+4L
+-----END PGP SIGNATURE-----
+
+-- 
+
+--- 
+Cookie: 6EE49C71D198BA4B
+Received: 1683440996
+Client: 30B7B2A3817AB4E6

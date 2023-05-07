@@ -1,0 +1,21 @@
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+>>e297aa8c4f3a0fac42b6e80bed7d62ce56f8649e
+
+b) sort is not remembered in any scenario
+-----BEGIN PGP SIGNATURE-----
+
+wlwEAQEIABAFAmRXQ7EJEKid6X60Rn3dAACNwQIAntn4r2zzIKyEK7nIFE1q
+aYxXdI/YfxvXBwYVcu/XxTCzU3ug8PLgKstql3kecytBjLxSrnonLjhknWUW
+USC0Ug==
+=R0UI
+-----END PGP SIGNATURE-----
+
+-- 
+
+--- 
+Cookie: 6EE49C71D198BA4B
+Received: 1683440561
+Client: 30B7B2A3817AB4E6

@@ -1,0 +1,21 @@
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+>>ce5a93eab6a3f927d77874a568c8bb28754e5c57
+
+with clear up to date administration instructions
+-----BEGIN PGP SIGNATURE-----
+
+wlwEAQEIABAFAmRXRX0JEKid6X60Rn3dAADcugH/dmT5MJqgxTpZeBJR0mnn
+61v9VgPHvnmNbAc4POIjAOxeFp114b6nLzwyRnDByhS3+n1UKRAw/hfmuzbO
+k/xdHA==
+=tWPz
+-----END PGP SIGNATURE-----
+
+-- 
+
+--- 
+Cookie: 6EE49C71D198BA4B
+Received: 1683441021
+Client: 30B7B2A3817AB4E6

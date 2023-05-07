@@ -1,0 +1,19 @@
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+#todo the dialog_list_dialog dialog should show that one dialog and hide all others ... except menubar, and the dialogs list dialog .. and possibly the cart
+-----BEGIN PGP SIGNATURE-----
+
+wlwEAQEIABAFAmRXPzUJEKid6X60Rn3dAACudQH5AKGC3emVICduxEvbnFLe
+fpX5nBnHR+zhEr4fFizx45rDjvsnlm5+96LyXNdGjtK6YoQi5Y6403QwnfzG
+Id9wHw==
+=+ySC
+-----END PGP SIGNATURE-----
+
+-- 
+
+--- 
+Cookie: 6EE49C71D198BA4B
+Received: 1683439413
+Client: 30B7B2A3817AB4E6

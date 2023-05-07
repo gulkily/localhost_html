@@ -1,0 +1,14 @@
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+>>ed0f0584f6be134b0e88b7919a1cbe3a7fdcb72b
+
+workaround: rm -vrf cache/b/avatar*
+-----BEGIN PGP SIGNATURE-----
+
+wlwEAQEIABAFAmRT/J0JEKzJJHcY32gOAADyggH8DwUfV4ojAQn+Wafyaq8a
+cMmC/K1hVwMHk5nGpNBvycTrgJSfFer8LbN58NofON6d09t760ubXko7NkEk
+hmvHfw==
+=0zkk
+-----END PGP SIGNATURE-----

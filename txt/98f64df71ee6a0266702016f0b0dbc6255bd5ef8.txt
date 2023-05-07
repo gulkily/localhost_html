@@ -1,0 +1,11 @@
+without php module, it is not very usable
+
+hike alog does not do everything that's needed for chain page to be updated on next reload
+
+#bug
+-- 
+
+--- 
+Cookie: 6EE49C71D198BA4B
+Received: 1683438738
+Client: 30B7B2A3817AB4E6

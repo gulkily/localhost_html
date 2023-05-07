@@ -1,0 +1,21 @@
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+>>5f40ef48fdcac7877991a936cef12a2f4754d6d6
+
+instructions and assistance with establishing your own private instance
+-----BEGIN PGP SIGNATURE-----
+
+wlwEAQEIABAFAmRXRc4JEKid6X60Rn3dAAA1WgH+J9cBtIMESR6H4N33SvtN
+knZ5JXs9JHYmvBQ73KAmZk25WRnqdRDea3KxmqPFi+k564bcY6fghG3bFYKz
+fUbwOw==
+=0PB7
+-----END PGP SIGNATURE-----
+
+-- 
+
+--- 
+Cookie: 6EE49C71D198BA4B
+Received: 1683441102
+Client: 30B7B2A3817AB4E6

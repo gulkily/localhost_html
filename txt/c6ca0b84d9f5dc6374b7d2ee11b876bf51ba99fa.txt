@@ -1,0 +1,19 @@
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+a buggy mess of a useful application
+-----BEGIN PGP SIGNATURE-----
+
+wlwEAQEIABAFAmRXRjQJEKid6X60Rn3dAAAQswH/TsydWVRS8ILfRdCUJ2wT
+Z1RMf9N1VZPATLpUUuVCde/tHoDzVRY+rH7bgcf//Ss+6BfUqtPl+pNKsU99
+kb7loA==
+=xGuN
+-----END PGP SIGNATURE-----
+
+-- 
+
+--- 
+Cookie: 6EE49C71D198BA4B
+Received: 1683441204
+Client: 30B7B2A3817AB4E6

@@ -1,0 +1,21 @@
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+#todo
+
+in kicking-tires mode, the menubar should be rewritten every time GetMenuTemplate is called?
+-----BEGIN PGP SIGNATURE-----
+
+wlwEAQEIABAFAmRXQbAJEKid6X60Rn3dAAA/agH8CIgKsmIh4C5NWov5DsVN
+k3BElkTLxSYF47SnQgpqUo/QCBktwNyahTv8eHSTGTlKvjiiBW2AYbiG6+/k
+1RwbSQ==
+=LdTE
+-----END PGP SIGNATURE-----
+
+-- 
+
+--- 
+Cookie: 6EE49C71D198BA4B
+Received: 1683440048
+Client: 30B7B2A3817AB4E6

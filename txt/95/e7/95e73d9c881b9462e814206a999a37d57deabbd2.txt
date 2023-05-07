@@ -1,0 +1,12 @@
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Kliment chat agenda
+-----BEGIN PGP SIGNATURE-----
+
+wlwEAQEIABAFAmRT/Z8JEKzJJHcY32gOAAD0IQH/R5XodJbNFkjSJeP1ZTHt
+hsjZl3SEBnpxZaq7AvXhILZZfqbrKi+v4xv1RiXEGYz9wBXqKgNqVQaSvBPJ
+hSZwcw==
+=CSMw
+-----END PGP SIGNATURE-----

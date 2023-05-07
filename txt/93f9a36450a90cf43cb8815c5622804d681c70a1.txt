@@ -1,0 +1,27 @@
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+>>df2f1bca365933f92872e62359176c5dfd593275
+
+#todo
+
+when searching
+
+a) item should get a #search tag
+
+b) search toolbox should be displayed, even when it is not by default (could featureflag this)
+-----BEGIN PGP SIGNATURE-----
+
+wlwEAQEIABAFAmRXRiIJEKid6X60Rn3dAAAI8wH/UAKV1kNgPKZWFbQjjgRX
+2JDkOWWQmjUk7mXfQ+OPjcOgQ7+Zm+jj/eTBr058ac3MmmrFrOndR6F0Xt2x
+6VOuAA==
+=Phe7
+-----END PGP SIGNATURE-----
+
+-- 
+
+--- 
+Cookie: 6EE49C71D198BA4B
+Received: 1683441186
+Client: 30B7B2A3817AB4E6

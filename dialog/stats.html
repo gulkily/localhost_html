@@ -1,0 +1,103 @@
+
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=Status cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#000080" class=titlebar>
+	<td>
+		<font color="#ffffff"><b>Status</b></font> <a href=#Status>#</a><a name=Status></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+
+		<tbody class=content><tr class=content><td>
+<!-- stats.template -->
+
+<fieldset>
+	<p>Updated: <!-- timestamp_time.template --><time class=timestamp datetime=1683440853.42567 title="02:27:33">02:27</time><!-- / timestamp_time.template -->
+	<p>Built: <!-- timestamp_time.template --><time class=timestamp datetime=1683434727.53664 title="00:45:27">00:45</time><!-- / timestamp_time.template -->
+	<p>Version: 1493
+
+	<p></p>
+	<p id=diagnostics><a href="/engine.html"><b><font color=orange style="padding: 2pt; border-radius: 3pt; border: inset 1pt #606060; background-color: #404040;">Check engine!</font></b></a></p>
+</fieldset>
+<fieldset>
+	<p>
+		<a href="/tags.html">
+			<b>15 tags</b>
+			<span class=advanced><span class=beginner><br>applied to make content more findable</span></span>
+		</a>
+	</p>
+	<p>
+		<a href="/authors.html">
+			<b>6 authors</b>
+			<span class=advanced><span class=beginner><br>shared their names or public keys</span></span>
+		</a>
+	</p>
+	<p>
+		<a href="/threads.html">
+			<b>13 threads</b>
+			<span class=advanced><span class=beginner><br>items with replies</span></span>
+		</a>
+	</p>
+	<p>
+		<a href="/image.html">
+			<b>1 images</b>
+		</a>
+	</p>
+	<p>
+		<a href="/new.html">
+			<b>67 items</b>
+			<span class=advanced><span class=beginner><br>new public items on site</span></span>
+		</a>
+	</p>
+	<p>
+		<a href="/url.html">
+			<b>0 links</b>
+			<span class=advanced><span class=beginner><br>links to pages and sites</span></span>
+		</a>
+	</p>
+	<p class=advanced>
+		<a href="/chain.html">
+			<b>270 notarized</b>
+			<span class=advanced><span class=beginner><br>time was recorded into server's chain log</span></span>
+		</a>
+	</p>
+	<p class=advanced>
+		<a href="/compost.html">
+			<b>144 composting</b>
+			<span class=beginner><br>pieces of content available for moderation</span>
+		</a>
+	</p>
+	<p class=advanced>
+		<a href="/deleted.html">
+			<b>37 archived</b>
+			<span class=beginner></span>
+		</a>
+	</p>
+	<p class=advanced>
+		<a href="/data.html">
+			<b>246 files</b>
+			<span class=beginner><br>found under /html/txt (click to download)</span>
+		</a>
+	</p>
+	<p class=advanced>
+		<span class=beginner>version: </span>
+		<span title="`git rev-parse HEAD`">b044379e</span>
+	</p>
+</fieldset>
+
+<!-- / stats.template -->
+</td></tr></tbody>
+
+		
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->

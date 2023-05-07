@@ -1,0 +1,13 @@
+>>9ff9e0ac60cde70f19baa5569fd0dcb512dd8785
+
+titlebar_buttons 1
+17f24f9f484b0f6d6c11d45dc627486ed7deaa40
+
+=================
+Rejoice always
+Pray without ceasing
+Give thanks in all circumstances
+=================
+pollyanna b044379e
+=================
+echo 1 > config/setting/html/window_titlebar_buttons

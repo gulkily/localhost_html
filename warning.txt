@@ -1,128 +1,370 @@
-1683246208.59979 , GetMyCacheVersion: warning: directory no exist. try to make once...
-1683246208.60070 ] EnsureDirsThatShouldExist: warning: $dir should exist, but does not: $dir = /home/ilyag/pollyanna/cache/b
-1683246208.60090 ] EnsureDirsThatShouldExist: warning: $dir should exist, but does not: $dir = /home/ilyag/pollyanna/html/dialog/replies
-1683246208.61870 " SqliteQueryCachedShell: warning: $results was FALSE; $query = .tables
-1683246208.61882 " SqliteQueryCachedShell: warning: $results was FALSE; caller = main,/home/ilyag/pollyanna/config/template/perl/sqlite.pl,69
-1683246211.66252 _ GetTemplate: warning: template missing; $filename = tagset/announcement; $DEFAULTDIR = /home/ilyag/pollyanna/default; $CONFIGDIR = /home/ilyag/pollyanna/config
-1683246211.66261 _ GetTemplate: warning: template missing; $filename = tagset/announcement; caller = main,/home/ilyag/pollyanna/config/template/perl/sqlite.pl,45
-1683246211.66401 + GetConfig: warning: Tried to get undefined config with no default; $configName = template/tagset/announcement; caller = main,./config/template/perl/utils.pl,761
-1683246211.66412 _ GetTemplate: warning: found neither GetThemeAttribute(template/tagset/announcement) nor GetConfig(template/tagset/announcement); caller = main,/home/ilyag/pollyanna/config/template/perl/sqlite.pl,45
-1683246211.66432 _ GetTemplate: warning: template missing; $filename = tagset/important; $DEFAULTDIR = /home/ilyag/pollyanna/default; $CONFIGDIR = /home/ilyag/pollyanna/config
-1683246211.66440 _ GetTemplate: warning: template missing; $filename = tagset/important; caller = main,/home/ilyag/pollyanna/config/template/perl/sqlite.pl,45
-1683246211.66573 + GetConfig: warning: Tried to get undefined config with no default; $configName = template/tagset/important; caller = main,./config/template/perl/utils.pl,761
-1683246211.66581 _ GetTemplate: warning: found neither GetThemeAttribute(template/tagset/important) nor GetConfig(template/tagset/important); caller = main,/home/ilyag/pollyanna/config/template/perl/sqlite.pl,45
-1683246211.66599 _ GetTemplate: warning: template missing; $filename = tagset/report; $DEFAULTDIR = /home/ilyag/pollyanna/default; $CONFIGDIR = /home/ilyag/pollyanna/config
-1683246211.66607 _ GetTemplate: warning: template missing; $filename = tagset/report; caller = main,/home/ilyag/pollyanna/config/template/perl/sqlite.pl,45
-1683246211.66740 + GetConfig: warning: Tried to get undefined config with no default; $configName = template/tagset/report; caller = main,./config/template/perl/utils.pl,761
-1683246211.66751 _ GetTemplate: warning: found neither GetThemeAttribute(template/tagset/report) nor GetConfig(template/tagset/report); caller = main,/home/ilyag/pollyanna/config/template/perl/sqlite.pl,45
-1683246211.90124 ] EnsureDirsThatShouldExist: warning: $dir should exist, but does not: $dir = /home/ilyag/pollyanna/html/dialog/replies
-1683246212.29450 _ GetTemplate: warning: found neither GetThemeAttribute(template/list/menu_tag) nor GetConfig(template/list/menu_tag); caller = main,/home/ilyag/pollyanna/config/template/perl/widget/menu.pl,29
-1683246212.42373 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246212.46842 _ GetPageFooter: warning: reset_button requires php, js, and draggable. not adding reset button.
-1683246212.47239 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246212.49650 + GetConfig: warning: Tried to get undefined config with no default; $configName = setting/admin/puzzle/prefix; caller = main,/home/ilyag/pollyanna/config/template/perl/inject_js.pl,295
-1683246212.49727 + GetConfig: warning: Tried to get undefined config with no default; $configName = setting/admin/puzzle/cycle_limit; caller = main,/home/ilyag/pollyanna/config/template/perl/inject_js.pl,296
-1683246212.49782 + GetConfig: warning: Tried to get undefined config with no default; $configName = setting/admin/puzzle/seconds_limit; caller = main,/home/ilyag/pollyanna/config/template/perl/inject_js.pl,297
-1683246212.54675 ] GetScriptTemplate: warning: $script failed sanity check; $script = clock/union; caller = main,/home/ilyag/pollyanna/config/template/perl/inject_js.pl,111
-1683246212.54688 - InjectJs: warning: $scriptTemplate is FALSE. $script = clock/union
-1683246212.64606 > PutHtmlFile: warning: "maincontent" not found in file! $file = /home/ilyag/pollyanna/html/welcome.html
-1683246212.65228 > PutHtmlFile: warning: index.html was missing, fixing it with $file = /home/ilyag/pollyanna/html/welcome.html
-1683246212.69367 > PutHtmlFile: warning: "maincontent" not found in file! $file = /home/ilyag/pollyanna/html//home/ilyag/pollyanna/html/index.html
-1683246212.73736 > PutHtmlFile: warning: "maincontent" not found in file! $file = /home/ilyag/pollyanna/html/index.html
-1683246212.74365 _ GetTemplate: warning: template missing; $filename = perl/page/cookie.pl; $DEFAULTDIR = /home/ilyag/pollyanna/default; $CONFIGDIR = /home/ilyag/pollyanna/config
-1683246212.74373 _ GetTemplate: warning: template missing; $filename = perl/page/cookie.pl; caller = main,/home/ilyag/pollyanna/config/template/perl/make_simple_page.pl,35
-1683246212.74496 + GetConfig: warning: Tried to get undefined config with no default; $configName = template/perl/page/cookie.pl; caller = main,./config/template/perl/utils.pl,761
-1683246212.74503 _ GetTemplate: warning: found neither GetThemeAttribute(template/perl/page/cookie.pl) nor GetConfig(template/perl/page/cookie.pl); caller = main,/home/ilyag/pollyanna/config/template/perl/make_simple_page.pl,35
-1683246212.82948 _ GetTemplate: warning: returning empty string for list/menu_tag
-1683246212.93028 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246212.96126 _ GetPageFooter: warning: reset_button requires php, js, and draggable. not adding reset button.
-1683246212.96339 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246212.99347 ] GetScriptTemplate: warning: $script failed sanity check; $script = clock/union; caller = main,/home/ilyag/pollyanna/config/template/perl/inject_js.pl,111
-1683246212.99356 - InjectJs: warning: $scriptTemplate is FALSE. $script = clock/union
-1683246213.24621 _ GetTemplate: warning: returning empty string for list/menu_tag
-1683246213.36953 _ GetPageFooter: warning: reset_button requires php, js, and draggable. not adding reset button.
-1683246213.37171 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246213.46728 _ GetTemplate: warning: found neither GetThemeAttribute(template/htaccess/htaccess_php.template) nor GetConfig(template/htaccess/htaccess_php.template); caller = main,./config/template/perl/pages.pl,941
-1683246213.57414 _ GetTemplate: warning: returning empty string for list/menu_tag
-1683246213.66244 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246213.69777 _ GetPageFooter: warning: reset_button requires php, js, and draggable. not adding reset button.
-1683246213.70009 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246213.90270 _ GetTemplate: warning: returning empty string for list/menu_tag
-1683246214.00979 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246214.01752 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246214.03346 ] AddAttributeToTag: warning: nothing was changed; $tag = a id=replyCartClear; $attributeName = onclick; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/reply_cart.pl,21
-1683246214.03354 ] AddAttributeToTag: warning: $lengthBefore == $lengthAfter = 298; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/reply_cart.pl,21
-1683246214.03456 ] AddAttributeToTag: warning: nothing was changed; $tag = a id=replyCartAddAll; $attributeName = onclick; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/reply_cart.pl,26
-1683246214.03463 ] AddAttributeToTag: warning: $lengthBefore == $lengthAfter = 298; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/reply_cart.pl,26
-1683246214.03510 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246214.06519 _ GetPageFooter: warning: reset_button requires php, js, and draggable. not adding reset button.
-1683246214.06782 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246214.10800 + GetConfig: warning: Tried to get undefined config with no default; $configName = setting/admin/puzzle/prefix; caller = main,/home/ilyag/pollyanna/config/template/perl/inject_js.pl,295
-1683246214.10858 + GetConfig: warning: Tried to get undefined config with no default; $configName = setting/admin/puzzle/cycle_limit; caller = main,/home/ilyag/pollyanna/config/template/perl/inject_js.pl,296
-1683246214.10904 + GetConfig: warning: Tried to get undefined config with no default; $configName = setting/admin/puzzle/seconds_limit; caller = main,/home/ilyag/pollyanna/config/template/perl/inject_js.pl,297
-1683246214.28066 _ GetTemplate: warning: returning empty string for list/menu_tag
-1683246214.37646 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246214.40675 _ GetPageFooter: warning: reset_button requires php, js, and draggable. not adding reset button.
-1683246214.40918 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246214.50423 > PutHtmlFile: warning: "maincontent" not found in file! $file = /home/ilyag/pollyanna/html/jstest1.html
-1683246214.65422 _ GetTemplate: warning: returning empty string for list/menu_tag
-1683246214.75601 ] AddAttributeToTag: warning: nothing was changed; $tag = input name="uploaded_file[]"; $attributeName = onchange; caller = main,/home/ilyag/pollyanna/config/template/perl/page/upload.pl,26
-1683246214.75612 ] AddAttributeToTag: warning: $lengthBefore == $lengthAfter = 821; caller = main,/home/ilyag/pollyanna/config/template/perl/page/upload.pl,26
-1683246214.76135 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246214.77014 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246214.80510 _ GetPageFooter: warning: reset_button requires php, js, and draggable. not adding reset button.
-1683246214.80874 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246215.00520 _ GetTemplate: warning: returning empty string for list/menu_tag
-1683246215.10594 ] AddAttributeToTag: warning: nothing was changed; $tag = input name=uploaded_file; $attributeName = onchange; caller = main,/home/ilyag/pollyanna/config/template/perl/page/upload.pl,25
-1683246215.10608 ] AddAttributeToTag: warning: $lengthBefore == $lengthAfter = 522; caller = main,/home/ilyag/pollyanna/config/template/perl/page/upload.pl,25
-1683246215.10972 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246215.11278 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246215.14329 _ GetPageFooter: warning: reset_button requires php, js, and draggable. not adding reset button.
-1683246215.14558 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246215.23231 + GetConfig: warning: unmemo requested for unused key. $configName = template/perl/page/post.pl
-1683246215.31393 _ GetTemplate: warning: returning empty string for list/menu_tag
-1683246215.43327 _ GetPageFooter: warning: reset_button requires php, js, and draggable. not adding reset button.
-1683246215.43629 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246215.50314 > PutHtmlFile: warning: $content missing; caller = main,./config/template/perl/pages.pl,1065
-1683246215.53638 > PutHtmlFile: warning: "maincontent" not found in file! $file = /home/ilyag/pollyanna/html/blank.html
-1683246215.53851 _ GetTemplate: warning: template missing; $filename = js/lib/zalgo.js; $DEFAULTDIR = /home/ilyag/pollyanna/default; $CONFIGDIR = /home/ilyag/pollyanna/config
-1683246215.53857 _ GetTemplate: warning: template missing; $filename = js/lib/zalgo.js; caller = main,./config/template/perl/pages.pl,813
-1683246215.54019 . EnsureSubdirs: warning: $file was not set; $file = ; caller = main,./config/template/perl/config.pl,286
-1683246215.98299 > PutHtmlFile: warning: "maincontent" not found in file! $file = /home/ilyag/pollyanna/html/prefstest.html
-1683246215.98730 _ GetTemplate: warning: returning empty string for htaccess/htaccess_php.template
-1683246215.98930 > PutHtmlFile: warning: $content missing; caller = main,./config/template/perl/pages.pl,1075
-1683246216.05153 > PutHtmlFile: warning: "maincontent" not found in file! $file = /home/ilyag/pollyanna/html/favicon.ico
-1683246216.34246 _ GetTemplate: warning: returning empty string for list/menu_tag
-1683246216.49091 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246216.49445 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246216.53114 _ GetPageFooter: warning: reset_button requires php, js, and draggable. not adding reset button.
-1683246216.53464 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246216.64312 > PutHtmlFile: warning: "maincontent" not found in file! $file = /home/ilyag/pollyanna/html/read.html
-1683246227.62288 ] EnsureDirsThatShouldExist: warning: $dir should exist, but does not: $dir = /home/ilyag/pollyanna/html/dialog/replies
-1683246228.12384 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246228.17986 ] AddAttributeToTag: warning: nothing was changed; $tag = input id=chkDraggable; $attributeName = disabled; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/settings.pl,18
-1683246228.18001 ] AddAttributeToTag: warning: $lengthBefore == $lengthAfter = 3583; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/settings.pl,18
-1683246228.18136 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246228.18750 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246228.43655 ] EnsureDirsThatShouldExist: warning: $dir should exist, but does not: $dir = /home/ilyag/pollyanna/html/dialog/replies
-1683246228.99985 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246229.05894 _ GetPageFooter: warning: reset_button requires php, js, and draggable. not adding reset button.
-1683246229.06352 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246230.48114 ` GetStatsTable: warning: $tagsTotal was FALSE
-1683246230.52203 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246230.64783 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246230.74373 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246230.79297 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246230.80222 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246230.82788 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246230.86037 _ GetPageFooter: warning: reset_button requires php, js, and draggable. not adding reset button.
-1683246230.86345 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246230.91254 ] GetScriptTemplate: warning: $script failed sanity check; $script = clock/union; caller = main,/home/ilyag/pollyanna/config/template/perl/inject_js.pl,111
-1683246230.91270 - InjectJs: warning: $scriptTemplate is FALSE. $script = clock/union
-1683246231.08687 _ GetTemplate: warning: returning empty string for list/menu_tag
-1683246231.27032 ` GetStatsTable: warning: $tagsTotal was FALSE
-1683246231.30020 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246231.45256 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/chain_log.pl,36
-1683246231.48611 _ GetPageFooter: warning: reset_button requires php, js, and draggable. not adding reset button.
-1683246231.48829 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
-1683246231.57377 > PutHtmlFile: warning: content has empty table cells <td></td> ; caller = main,/home/ilyag/pollyanna/config/template/perl/make_simple_page.pl,152
+1683434514.24238 , GetMyCacheVersion: warning: directory no exist. try to make once...
+1683434514.24384 ] EnsureDirsThatShouldExist: warning: $dir should exist, but does not: $dir = /home/ilyag/pollyanna/cache/b
+1683434514.26718 " SqliteQueryCachedShell: warning: $results was FALSE; $query = .tables
+1683434514.26725 " SqliteQueryCachedShell: warning: $results was FALSE; caller = main,/home/ilyag/pollyanna/config/template/perl/sqlite.pl,69
+1683434517.43529 _ GetTemplate: warning: template missing; $filename = tagset/announcement; $DEFAULTDIR = /home/ilyag/pollyanna/default; $CONFIGDIR = /home/ilyag/pollyanna/config
+1683434517.43539 _ GetTemplate: warning: template missing; $filename = tagset/announcement; caller = main,/home/ilyag/pollyanna/config/template/perl/sqlite.pl,45
+1683434517.43691 + GetConfig: warning: Tried to get undefined config with no default; $configName = template/tagset/announcement; caller = main,./config/template/perl/utils.pl,805
+1683434517.43700 _ GetTemplate: warning: found neither GetThemeAttribute(template/tagset/announcement) nor GetConfig(template/tagset/announcement); caller = main,/home/ilyag/pollyanna/config/template/perl/sqlite.pl,45
+1683434517.43725 _ GetTemplate: warning: template missing; $filename = tagset/important; $DEFAULTDIR = /home/ilyag/pollyanna/default; $CONFIGDIR = /home/ilyag/pollyanna/config
+1683434517.43735 _ GetTemplate: warning: template missing; $filename = tagset/important; caller = main,/home/ilyag/pollyanna/config/template/perl/sqlite.pl,45
+1683434517.43865 + GetConfig: warning: Tried to get undefined config with no default; $configName = template/tagset/important; caller = main,./config/template/perl/utils.pl,805
+1683434517.43878 _ GetTemplate: warning: found neither GetThemeAttribute(template/tagset/important) nor GetConfig(template/tagset/important); caller = main,/home/ilyag/pollyanna/config/template/perl/sqlite.pl,45
+1683434517.43904 _ GetTemplate: warning: template missing; $filename = tagset/report; $DEFAULTDIR = /home/ilyag/pollyanna/default; $CONFIGDIR = /home/ilyag/pollyanna/config
+1683434517.43914 _ GetTemplate: warning: template missing; $filename = tagset/report; caller = main,/home/ilyag/pollyanna/config/template/perl/sqlite.pl,45
+1683434517.44163 + GetConfig: warning: Tried to get undefined config with no default; $configName = template/tagset/report; caller = main,./config/template/perl/utils.pl,805
+1683434517.44177 _ GetTemplate: warning: found neither GetThemeAttribute(template/tagset/report) nor GetConfig(template/tagset/report); caller = main,/home/ilyag/pollyanna/config/template/perl/sqlite.pl,45
+1683434518.65180 _ GetTemplate: warning: found neither GetThemeAttribute(template/list/menu_tag) nor GetConfig(template/list/menu_tag); caller = main,/home/ilyag/pollyanna/config/template/perl/widget/menu.pl,29
+1683434518.86057 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434519.00818 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434519.07127 + GetConfig: warning: Tried to get undefined config with no default; $configName = setting/admin/puzzle/prefix; caller = main,/home/ilyag/pollyanna/config/template/perl/inject_js.pl,295
+1683434519.07195 + GetConfig: warning: Tried to get undefined config with no default; $configName = setting/admin/puzzle/cycle_limit; caller = main,/home/ilyag/pollyanna/config/template/perl/inject_js.pl,296
+1683434519.07261 + GetConfig: warning: Tried to get undefined config with no default; $configName = setting/admin/puzzle/seconds_limit; caller = main,/home/ilyag/pollyanna/config/template/perl/inject_js.pl,297
+1683434519.14092 ] GetScriptTemplate: warning: $script failed sanity check; $script = clock/union; caller = main,/home/ilyag/pollyanna/config/template/perl/inject_js.pl,111
+1683434519.14101 - InjectJs: warning: $scriptTemplate is FALSE. $script = clock/union
+1683434519.32867 > PutHtmlFile: warning: index.html was missing, fixing it with $file = /home/ilyag/pollyanna/html/welcome.html
+1683434519.46704 _ GetTemplate: warning: template missing; $filename = perl/page/cookie.pl; $DEFAULTDIR = /home/ilyag/pollyanna/default; $CONFIGDIR = /home/ilyag/pollyanna/config
+1683434519.46715 _ GetTemplate: warning: template missing; $filename = perl/page/cookie.pl; caller = main,/home/ilyag/pollyanna/config/template/perl/make_simple_page.pl,35
+1683434519.46903 + GetConfig: warning: Tried to get undefined config with no default; $configName = template/perl/page/cookie.pl; caller = main,./config/template/perl/utils.pl,805
+1683434519.46913 _ GetTemplate: warning: found neither GetThemeAttribute(template/perl/page/cookie.pl) nor GetConfig(template/perl/page/cookie.pl); caller = main,/home/ilyag/pollyanna/config/template/perl/make_simple_page.pl,35
+1683434519.57404 _ GetTemplate: warning: returning empty string for list/menu_tag
+1683434519.72965 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434519.83099 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434519.89124 ] GetScriptTemplate: warning: $script failed sanity check; $script = clock/union; caller = main,/home/ilyag/pollyanna/config/template/perl/inject_js.pl,111
+1683434519.89144 - InjectJs: warning: $scriptTemplate is FALSE. $script = clock/union
+1683434520.39335 _ GetTemplate: warning: returning empty string for list/menu_tag
+1683434520.63777 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434520.84794 _ GetTemplate: warning: found neither GetThemeAttribute(template/htaccess/htaccess_php.template) nor GetConfig(template/htaccess/htaccess_php.template); caller = main,./config/template/perl/pages.pl,941
+1683434520.99754 _ GetTemplate: warning: returning empty string for list/menu_tag
+1683434521.13483 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434521.20962 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434521.55300 _ GetTemplate: warning: returning empty string for list/menu_tag
+1683434521.69615 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434521.71421 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434521.77629 ] AddAttributeToTag: warning: nothing was changed; $tag = a id=replyCartClear; $attributeName = onclick; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/reply_cart.pl,21
+1683434521.77636 ] AddAttributeToTag: warning: $lengthBefore == $lengthAfter = 298; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/reply_cart.pl,21
+1683434521.77733 ] AddAttributeToTag: warning: nothing was changed; $tag = a id=replyCartAddAll; $attributeName = onclick; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/reply_cart.pl,26
+1683434521.77741 ] AddAttributeToTag: warning: $lengthBefore == $lengthAfter = 298; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/reply_cart.pl,26
+1683434521.77788 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434521.86473 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434521.92719 + GetConfig: warning: Tried to get undefined config with no default; $configName = setting/admin/puzzle/prefix; caller = main,/home/ilyag/pollyanna/config/template/perl/inject_js.pl,295
+1683434521.92788 + GetConfig: warning: Tried to get undefined config with no default; $configName = setting/admin/puzzle/cycle_limit; caller = main,/home/ilyag/pollyanna/config/template/perl/inject_js.pl,296
+1683434521.92859 + GetConfig: warning: Tried to get undefined config with no default; $configName = setting/admin/puzzle/seconds_limit; caller = main,/home/ilyag/pollyanna/config/template/perl/inject_js.pl,297
+1683434522.19756 _ GetTemplate: warning: returning empty string for list/menu_tag
+1683434522.33499 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434522.41378 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434522.56429 > PutHtmlFile: warning: "maincontent" not found in file! $file = /home/ilyag/pollyanna/html/jstest1.html
+1683434522.77261 _ GetTemplate: warning: returning empty string for list/menu_tag
+1683434522.92331 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434523.02452 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434523.29866 _ GetTemplate: warning: returning empty string for list/menu_tag
+1683434523.42958 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434523.54868 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434523.71087 + GetConfig: warning: unmemo requested for unused key. $configName = template/perl/page/post.pl
+1683434523.83005 _ GetTemplate: warning: returning empty string for list/menu_tag
+1683434524.03345 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434524.16339 > PutHtmlFile: warning: $content missing; caller = main,./config/template/perl/pages.pl,1065
+1683434524.21435 > PutHtmlFile: warning: "maincontent" not found in file! $file = /home/ilyag/pollyanna/html/blank.html
+1683434524.22056 _ GetTemplate: warning: template missing; $filename = js/lib/zalgo.js; $DEFAULTDIR = /home/ilyag/pollyanna/default; $CONFIGDIR = /home/ilyag/pollyanna/config
+1683434524.22066 _ GetTemplate: warning: template missing; $filename = js/lib/zalgo.js; caller = main,./config/template/perl/pages.pl,813
+1683434524.22311 . EnsureSubdirs: warning: $file was not set; $file = ; caller = main,./config/template/perl/config.pl,286
+1683434524.90505 > PutHtmlFile: warning: "maincontent" not found in file! $file = /home/ilyag/pollyanna/html/prefstest.html
+1683434524.91103 _ GetTemplate: warning: returning empty string for htaccess/htaccess_php.template
+1683434524.91644 > PutHtmlFile: warning: $content missing; caller = main,./config/template/perl/pages.pl,1075
+1683434524.96021 > PutHtmlFile: warning: "maincontent" not found in file! $file = /home/ilyag/pollyanna/html/favicon.ico
+1683434525.15462 _ GetTemplate: warning: returning empty string for list/menu_tag
+1683434525.28999 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434525.29536 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434525.37621 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434527.69562 " MakePage: warning: Item not in database; $fileHash = a08aa2f1; caller = main,./pages.pl,1579
+1683434533.45542 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434533.48356 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434533.55143 > PutHtmlFile: warning: "maincontent" not found in file! $file = /home/ilyag/pollyanna/html/dialog/settings.html
+1683434542.23462 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434542.32087 > PutHtmlFile: warning: "maincontent" not found in file! $file = /home/ilyag/pollyanna/html/dialog/write.html
+1683434548.12363 ` IndexTextFile: warning: my $reconLine = $foundTokenName . $foundTokenSpacer . $foundTokenParam; #todo #bughere
+1683434548.12372 ` IndexTextFile: warning: $reconLine = Cookie: 6EE49C71D198BA4B
+1683434548.12567 ` IndexTextFile: warning: my $reconLine = $foundTokenName . $foundTokenSpacer . $foundTokenParam; #todo #bughere
+1683434548.12573 ` IndexTextFile: warning: $reconLine = Client: 30B7B2A3817AB4E6
+1683434548.12704 ` IndexTextFile: warning: my $reconLine = $foundTokenName . $foundTokenSpacer . $foundTokenParam; #todo #bughere
+1683434548.12718 ` IndexTextFile: warning: $reconLine = Received: 1683434547
+1683434548.14172 ` IndexTextFile: warning: $foundTokenSpacer is FALSE
+1683434548.14179 ` IndexTextFile: warning: $foundTokenParam is FALSE
+1683434548.14188 ` IndexTextFile: warning: my $reconLine = $foundTokenName . $foundTokenSpacer . $foundTokenParam; #todo #bughere
+1683434548.14196 ` IndexTextFile: warning: $reconLine = -- 
+1683434548.15381 ` IndexTextFile: warning: my $reconLine = $foundTokenName . $foundTokenSpacer . $foundTokenParam; #todo #bughere
+1683434548.15395 ` IndexTextFile: warning: $reconLine = hike set inbox 0
+1683434548.16128 ` IndexTextFile: warning: token not found in @validTokens, sanity check failed; caller = main,/home/ilyag/pollyanna/config/template/perl/index_file.pl,127
+1683434548.16161 ` IndexTextFile: warning: token not found in @validTokens, sanity check failed; caller = main,/home/ilyag/pollyanna/config/template/perl/index_file.pl,127
+1683434548.23107 < RenameFile: warning: $hashPrevious was FALSE
+1683434548.43238 ` IndexTextFile: warning: $foundTokenSpacer is FALSE
+1683434548.43247 ` IndexTextFile: warning: my $reconLine = $foundTokenName . $foundTokenSpacer . $foundTokenParam; #todo #bughere
+1683434548.43258 ` IndexTextFile: warning: $reconLine = >>3d12dea5b7c286e45c2607693e78e12806cc2c81
+1683434548.43992 > str_replace: warning: $replace_this eq $with_this; caller: main, /home/ilyag/pollyanna/config/template/perl/index_text_file.pl, 440
+1683434548.46573 ` IndexTextFile: warning: token not found in @validTokens, sanity check failed; caller = main,/home/ilyag/pollyanna/config/template/perl/index_text_file.pl,604
+1683434549.65246 ` GetItemPage: warning: author_key was defined, but $alias is FALSE
+1683434550.00162 [ AuthorHasTag: warning, no $pubKeyHash, how did we even get here? caller = main,./config/template/perl/utils.pl,1863
+1683434550.07795 ` GetAvatar: GetAlias: warning: $alias was FALSE; $authorKey = 6EE49C71D198BA4B; caller = main,/home/ilyag/pollyanna/config/template/perl/widget/author_link.pl,38
+1683434550.09574 [ AuthorHasTag: warning, no $pubKeyHash, how did we even get here? caller = main,./config/template/perl/utils.pl,1863
+1683434550.11168 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/item_template.pl,487
+1683434550.26672 > GetString: warning: string value missing for $stringKey = like; caller = main,/home/ilyag/pollyanna/config/template/perl/widget/item_tag_buttons.pl,105
+1683434550.26938 > GetString: warning: string value missing for $stringKey = flag; caller = main,/home/ilyag/pollyanna/config/template/perl/widget/item_tag_buttons.pl,105
+1683434550.29336 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434550.42531 ` GetItemTemplateBody: warning: $file{tags_list} is FALSE
+1683434550.47160 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/item_template.pl,487
+1683434550.62934 - RenderField: warning: unhandled $fieldName = client_id; $fieldValue = 30B7B2A3817AB4E6; caller: main, /home/ilyag/pollyanna/config/template/perl/resultset_as_dialog.pl, 173
+1683434550.63949 - RenderField: warning: file_path is using hard-coded path to HTML dir; caller: main,/home/ilyag/pollyanna/config/template/perl/resultset_as_dialog.pl,173
+1683434550.64408 > GetString: warning: string value missing for $stringKey = item_attribute/hike_set; caller = main,/home/ilyag/pollyanna/config/template/perl/render_field.pl,64
+1683434550.64481 - RenderField: warning: unhandled $fieldName = hike_set; $fieldValue = inbox 0; caller: main, /home/ilyag/pollyanna/config/template/perl/resultset_as_dialog.pl, 173
+1683434550.66401 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,111
+1683434550.69981 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434550.72531 ] AddAttributeToTag: warning: nothing was changed; $tag = a id=replyCartClear; $attributeName = onclick; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/reply_cart.pl,21
+1683434550.72544 ] AddAttributeToTag: warning: $lengthBefore == $lengthAfter = 298; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/reply_cart.pl,21
+1683434550.72714 ] AddAttributeToTag: warning: nothing was changed; $tag = a id=replyCartAddAll; $attributeName = onclick; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/reply_cart.pl,26
+1683434550.72726 ] AddAttributeToTag: warning: $lengthBefore == $lengthAfter = 298; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/reply_cart.pl,26
+1683434550.72829 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434550.82012 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+			//alert('DEBUG: SaveDialogPosition: warning: elId is false');
+		//alert('DEBUG: SaveDialogPosition: warning: elmnt is false');
+		//alert('DEBUG: DraggingInitDialog: warning: el argument is missing');
+		//alert('DEBUG: DraggingInitDialog: warning: elId is false 2' + elements[i].innerHTML);
+	//	//alert('DEBUG: DraggingInit: warning: GetPrefs(draggable) was false, returning');
+	//	//alert('DEBUG: DraggingInit: warning: GetPrefs(draggable) was false, returning');
+		//alert('DEBUG: RestoreDialogPosition: warning: elId missing');
+		//alert('GetDialogId: warning: fallback');
+		//alert('DEBUG: SpotlightDialog: warning: dialog not found');
+		//alert('GetDialogTitle: warning: fallback');
+					//alert('DEBUG: CollapseWindowFromButton: warning: sanity check failed');
+		//alert('DEBUG: SelectMe: warning: ths missing');
+				//alert('DEBUG: InsertFetchedDialog: warning: maincontent is missing');
+		//alert('DEBUG: FetchDialog: warning: draggable_spawn is FALSE');
+		//alert('DEBUG: warning: FetchDialogFromUrl() called, but draggable_spawn is FALSE');
+1683434555.62929 + GetQueryAsDialog: warning: $title is FALSE; caller = main,./pages.pl,1753
+1683434555.67292 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,111
+1683434555.77000 > PutHtmlFile: warning: "maincontent" not found in file! $file = /home/ilyag/pollyanna/html/dialog/tags.html
+1683434566.59132 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434566.62558 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434566.63724 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434568.74082 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434568.77346 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434568.79164 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434569.29179 ' GetTimestampWidget: warning: sanity check failed! $time = 0; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/stats_table.pl,69
+1683434569.52958 ] GetDialogX: warning: body is FALSE; title = Status; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/stats_table.pl,197
+1683434569.53449 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434569.62454 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434569.62478 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434569.72755 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434569.73174 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434569.82743 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434569.83122 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434569.84560 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434569.84852 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434569.88878 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434569.89187 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434569.91629 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434569.92041 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434570.05188 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434570.06447 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434570.13971 ] GetScriptTemplate: warning: $script failed sanity check; $script = clock/union; caller = main,/home/ilyag/pollyanna/config/template/perl/inject_js.pl,111
+1683434570.13993 - InjectJs: warning: $scriptTemplate is FALSE. $script = clock/union
+1683434570.14655 ] GetScriptTemplate: warning: $script failed sanity check; $script = clock/union; caller = main,/home/ilyag/pollyanna/config/template/perl/inject_js.pl,111
+1683434570.14669 - InjectJs: warning: $scriptTemplate is FALSE. $script = clock/union
+			//alert('DEBUG: SaveDialogPosition: warning: elId is false');
+		//alert('DEBUG: SaveDialogPosition: warning: elmnt is false');
+		//alert('DEBUG: DraggingInitDialog: warning: el argument is missing');
+		//alert('DEBUG: DraggingInitDialog: warning: elId is false 2' + elements[i].innerHTML);
+	//	//alert('DEBUG: DraggingInit: warning: GetPrefs(draggable) was false, returning');
+	//	//alert('DEBUG: DraggingInit: warning: GetPrefs(draggable) was false, returning');
+		//alert('DEBUG: RestoreDialogPosition: warning: elId missing');
+		//alert('GetDialogId: warning: fallback');
+		//alert('DEBUG: SpotlightDialog: warning: dialog not found');
+		//alert('GetDialogTitle: warning: fallback');
+					//alert('DEBUG: CollapseWindowFromButton: warning: sanity check failed');
+		//alert('DEBUG: SelectMe: warning: ths missing');
+				//alert('DEBUG: InsertFetchedDialog: warning: maincontent is missing');
+		//alert('DEBUG: FetchDialog: warning: draggable_spawn is FALSE');
+		//alert('DEBUG: warning: FetchDialogFromUrl() called, but draggable_spawn is FALSE');
+			//alert('DEBUG: SaveDialogPosition: warning: elId is false');
+		//alert('DEBUG: SaveDialogPosition: warning: elmnt is false');
+		//alert('DEBUG: DraggingInitDialog: warning: el argument is missing');
+		//alert('DEBUG: DraggingInitDialog: warning: elId is false 2' + elements[i].innerHTML);
+	//	//alert('DEBUG: DraggingInit: warning: GetPrefs(draggable) was false, returning');
+	//	//alert('DEBUG: DraggingInit: warning: GetPrefs(draggable) was false, returning');
+		//alert('DEBUG: RestoreDialogPosition: warning: elId missing');
+		//alert('GetDialogId: warning: fallback');
+		//alert('DEBUG: SpotlightDialog: warning: dialog not found');
+		//alert('GetDialogTitle: warning: fallback');
+					//alert('DEBUG: CollapseWindowFromButton: warning: sanity check failed');
+		//alert('DEBUG: SelectMe: warning: ths missing');
+				//alert('DEBUG: InsertFetchedDialog: warning: maincontent is missing');
+		//alert('DEBUG: FetchDialog: warning: draggable_spawn is FALSE');
+		//alert('DEBUG: warning: FetchDialogFromUrl() called, but draggable_spawn is FALSE');
+1683434570.46714 _ GetTemplate: warning: returning empty string for list/menu_tag
+1683434570.46829 _ GetTemplate: warning: returning empty string for list/menu_tag
+1683434570.82614 _ GetTemplate: warning: returning empty string for html/stats.template
+1683434571.00785 ] GetDialogX: warning: body is FALSE; title = Status; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/stats_table.pl,197
+1683434571.02206 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434571.12603 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/chain_log.pl,36
+1683434571.14632 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/chain_log.pl,36
+1683434571.23879 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434571.26152 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434571.39668 > PutHtmlFile: warning: content has empty table cells <td></td> ; caller = main,/home/ilyag/pollyanna/config/template/perl/make_simple_page.pl,152
+1683434571.42309 > PutHtmlFile: warning: content has empty table cells <td></td> ; caller = main,/home/ilyag/pollyanna/config/template/perl/make_simple_page.pl,152
+1683434571.56545 > PutHtmlFile: warning: "maincontent" not found in file! $file = /home/ilyag/pollyanna/html/engine.html
+1683434571.57197 > PutHtmlFile: warning: "maincontent" not found in file! $file = /home/ilyag/pollyanna/html/engine.html
+1683434571.65288 _ GetTemplate: warning: template missing; $filename = stats-horizontal.template; $DEFAULTDIR = /home/ilyag/pollyanna/default; $CONFIGDIR = /home/ilyag/pollyanna/config
+1683434571.65300 _ GetTemplate: warning: template missing; $filename = stats-horizontal.template; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/stats_table.pl,78
+1683434571.65459 + GetConfig: warning: Tried to get undefined config with no default; $configName = template/stats-horizontal.template; caller = main,./config/template/perl/utils.pl,805
+1683434571.65470 _ GetTemplate: warning: found neither GetThemeAttribute(template/stats-horizontal.template) nor GetConfig(template/stats-horizontal.template); caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/stats_table.pl,78
+1683434571.66569 _ GetTemplate: warning: template missing; $filename = stats-horizontal.template; $DEFAULTDIR = /home/ilyag/pollyanna/default; $CONFIGDIR = /home/ilyag/pollyanna/config
+1683434571.66576 _ GetTemplate: warning: template missing; $filename = stats-horizontal.template; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/stats_table.pl,78
+1683434571.66708 + GetConfig: warning: Tried to get undefined config with no default; $configName = template/stats-horizontal.template; caller = main,./config/template/perl/utils.pl,805
+1683434571.66715 _ GetTemplate: warning: found neither GetThemeAttribute(template/stats-horizontal.template) nor GetConfig(template/stats-horizontal.template); caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/stats_table.pl,78
+1683434571.76539 ] GetDialogX: warning: body is FALSE; title = Site Statistics*; caller = main,./pages.pl,1300
+1683434571.77585 ] GetDialogX: warning: body is FALSE; title = Site Statistics*; caller = main,./pages.pl,1300
+1683434571.80591 > PutHtmlFile: warning: "maincontent" not found in file! $file = /home/ilyag/pollyanna/html/stats-footer.html
+1683434571.82543 > PutHtmlFile: warning: "maincontent" not found in file! $file = /home/ilyag/pollyanna/html/stats-footer.html
+1683434681.03989 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434681.13793 _ GetPageFooter: warning: reset_button requires php, js, and draggable. not adding reset button.
+1683434681.14574 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434681.17533 + GetConfig: warning: Tried to get undefined config with no default; $configName = setting/admin/puzzle/prefix; caller = main,/home/ilyag/pollyanna/config/template/perl/inject_js.pl,295
+1683434681.17625 + GetConfig: warning: Tried to get undefined config with no default; $configName = setting/admin/puzzle/cycle_limit; caller = main,/home/ilyag/pollyanna/config/template/perl/inject_js.pl,296
+1683434681.17723 + GetConfig: warning: Tried to get undefined config with no default; $configName = setting/admin/puzzle/seconds_limit; caller = main,/home/ilyag/pollyanna/config/template/perl/inject_js.pl,297
+1683434681.23565 ] GetScriptTemplate: warning: $script failed sanity check; $script = clock/union; caller = main,/home/ilyag/pollyanna/config/template/perl/inject_js.pl,111
+1683434681.23574 - InjectJs: warning: $scriptTemplate is FALSE. $script = clock/union
+			//alert('DEBUG: SaveDialogPosition: warning: elId is false');
+		//alert('DEBUG: SaveDialogPosition: warning: elmnt is false');
+		//alert('DEBUG: DraggingInitDialog: warning: el argument is missing');
+		//alert('DEBUG: DraggingInitDialog: warning: elId is false 2' + elements[i].innerHTML);
+	//	//alert('DEBUG: DraggingInit: warning: GetPrefs(draggable) was false, returning');
+	//	//alert('DEBUG: DraggingInit: warning: GetPrefs(draggable) was false, returning');
+		//alert('DEBUG: RestoreDialogPosition: warning: elId missing');
+		//alert('GetDialogId: warning: fallback');
+		//alert('DEBUG: SpotlightDialog: warning: dialog not found');
+		//alert('GetDialogTitle: warning: fallback');
+					//alert('DEBUG: CollapseWindowFromButton: warning: sanity check failed');
+		//alert('DEBUG: SelectMe: warning: ths missing');
+				//alert('DEBUG: InsertFetchedDialog: warning: maincontent is missing');
+		//alert('DEBUG: FetchDialog: warning: draggable_spawn is FALSE');
+		//alert('DEBUG: warning: FetchDialogFromUrl() called, but draggable_spawn is FALSE');
+1683434681.40411 > PutHtmlFile: warning: index.html was missing, fixing it with $file = /home/ilyag/pollyanna/html/welcome.html
+1683434681.53329 _ GetTemplate: warning: template missing; $filename = perl/page/cookie.pl; $DEFAULTDIR = /home/ilyag/pollyanna/default; $CONFIGDIR = /home/ilyag/pollyanna/config
+1683434681.53341 _ GetTemplate: warning: template missing; $filename = perl/page/cookie.pl; caller = main,/home/ilyag/pollyanna/config/template/perl/make_simple_page.pl,35
+1683434681.53499 + GetConfig: warning: Tried to get undefined config with no default; $configName = template/perl/page/cookie.pl; caller = main,./config/template/perl/utils.pl,805
+1683434681.53508 _ GetTemplate: warning: found neither GetThemeAttribute(template/perl/page/cookie.pl) nor GetConfig(template/perl/page/cookie.pl); caller = main,/home/ilyag/pollyanna/config/template/perl/make_simple_page.pl,35
+1683434681.64097 _ GetTemplate: warning: returning empty string for list/menu_tag
+1683434681.77482 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434681.84447 _ GetPageFooter: warning: reset_button requires php, js, and draggable. not adding reset button.
+1683434681.85192 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434681.89726 ] GetScriptTemplate: warning: $script failed sanity check; $script = clock/union; caller = main,/home/ilyag/pollyanna/config/template/perl/inject_js.pl,111
+1683434681.89747 - InjectJs: warning: $scriptTemplate is FALSE. $script = clock/union
+1683434682.16972 _ GetTemplate: warning: returning empty string for list/menu_tag
+1683434682.38614 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434682.43766 _ GetPageFooter: warning: reset_button requires php, js, and draggable. not adding reset button.
+1683434682.44023 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434682.79186 _ GetTemplate: warning: returning empty string for list/menu_tag
+1683434682.96234 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434682.97998 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434683.00687 ] AddAttributeToTag: warning: nothing was changed; $tag = a id=replyCartClear; $attributeName = onclick; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/reply_cart.pl,21
+1683434683.00695 ] AddAttributeToTag: warning: $lengthBefore == $lengthAfter = 298; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/reply_cart.pl,21
+1683434683.00832 ] AddAttributeToTag: warning: nothing was changed; $tag = a id=replyCartAddAll; $attributeName = onclick; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/reply_cart.pl,26
+1683434683.00839 ] AddAttributeToTag: warning: $lengthBefore == $lengthAfter = 298; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/reply_cart.pl,26
+1683434683.00886 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434683.06768 _ GetPageFooter: warning: reset_button requires php, js, and draggable. not adding reset button.
+1683434683.07158 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434683.15479 + GetConfig: warning: Tried to get undefined config with no default; $configName = setting/admin/puzzle/prefix; caller = main,/home/ilyag/pollyanna/config/template/perl/inject_js.pl,295
+1683434683.15617 + GetConfig: warning: Tried to get undefined config with no default; $configName = setting/admin/puzzle/cycle_limit; caller = main,/home/ilyag/pollyanna/config/template/perl/inject_js.pl,296
+1683434683.15723 + GetConfig: warning: Tried to get undefined config with no default; $configName = setting/admin/puzzle/seconds_limit; caller = main,/home/ilyag/pollyanna/config/template/perl/inject_js.pl,297
+1683434683.43820 _ GetTemplate: warning: returning empty string for list/menu_tag
+1683434683.54419 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434683.61330 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434683.67298 _ GetPageFooter: warning: reset_button requires php, js, and draggable. not adding reset button.
+1683434683.67546 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434683.70133 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/chain_log.pl,36
+1683434683.77116 _ GetPageFooter: warning: reset_button requires php, js, and draggable. not adding reset button.
+1683434683.77700 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434683.82973 > PutHtmlFile: warning: "maincontent" not found in file! $file = /home/ilyag/pollyanna/html/jstest1.html
+			//alert('DEBUG: SaveDialogPosition: warning: elId is false');
+		//alert('DEBUG: SaveDialogPosition: warning: elmnt is false');
+		//alert('DEBUG: DraggingInitDialog: warning: el argument is missing');
+		//alert('DEBUG: DraggingInitDialog: warning: elId is false 2' + elements[i].innerHTML);
+	//	//alert('DEBUG: DraggingInit: warning: GetPrefs(draggable) was false, returning');
+	//	//alert('DEBUG: DraggingInit: warning: GetPrefs(draggable) was false, returning');
+		//alert('DEBUG: RestoreDialogPosition: warning: elId missing');
+		//alert('GetDialogId: warning: fallback');
+		//alert('DEBUG: SpotlightDialog: warning: dialog not found');
+		//alert('GetDialogTitle: warning: fallback');
+					//alert('DEBUG: CollapseWindowFromButton: warning: sanity check failed');
+		//alert('DEBUG: SelectMe: warning: ths missing');
+				//alert('DEBUG: InsertFetchedDialog: warning: maincontent is missing');
+		//alert('DEBUG: FetchDialog: warning: draggable_spawn is FALSE');
+		//alert('DEBUG: warning: FetchDialogFromUrl() called, but draggable_spawn is FALSE');
+1683434683.97517 _ GetTemplate: warning: returning empty string for list/menu_tag
+1683434683.99534 > PutHtmlFile: warning: content has empty table cells <td></td> ; caller = main,/home/ilyag/pollyanna/config/template/perl/make_simple_page.pl,152
+1683434684.14188 > PutHtmlFile: warning: "maincontent" not found in file! $file = /home/ilyag/pollyanna/html/engine.html
+1683434684.15016 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434684.20820 _ GetPageFooter: warning: reset_button requires php, js, and draggable. not adding reset button.
+1683434684.21109 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434684.23519 _ GetTemplate: warning: template missing; $filename = stats-horizontal.template; $DEFAULTDIR = /home/ilyag/pollyanna/default; $CONFIGDIR = /home/ilyag/pollyanna/config
+1683434684.23526 _ GetTemplate: warning: template missing; $filename = stats-horizontal.template; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/stats_table.pl,78
+1683434684.23650 + GetConfig: warning: Tried to get undefined config with no default; $configName = template/stats-horizontal.template; caller = main,./config/template/perl/utils.pl,805
+1683434684.23657 _ GetTemplate: warning: found neither GetThemeAttribute(template/stats-horizontal.template) nor GetConfig(template/stats-horizontal.template); caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/stats_table.pl,78
+1683434684.35106 ] GetDialogX: warning: body is FALSE; title = Site Statistics*; caller = main,./pages.pl,1300
+1683434684.40157 > PutHtmlFile: warning: "maincontent" not found in file! $file = /home/ilyag/pollyanna/html/stats-footer.html
+1683434684.55785 _ GetTemplate: warning: returning empty string for list/menu_tag
+1683434684.76288 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434684.80585 _ GetPageFooter: warning: reset_button requires php, js, and draggable. not adding reset button.
+1683434684.80807 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434685.04650 _ GetTemplate: warning: returning empty string for list/menu_tag
+1683434685.22672 _ GetPageFooter: warning: reset_button requires php, js, and draggable. not adding reset button.
+1683434685.23031 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434685.34810 > PutHtmlFile: warning: $content missing; caller = main,./config/template/perl/pages.pl,1065
+1683434685.39579 > PutHtmlFile: warning: "maincontent" not found in file! $file = /home/ilyag/pollyanna/html/blank.html
+1683434685.72838 > PutHtmlFile: warning: "maincontent" not found in file! $file = /home/ilyag/pollyanna/html/prefstest.html
+1683434685.73679 > PutHtmlFile: warning: $content missing; caller = main,./config/template/perl/pages.pl,1075
+1683434685.78305 > PutHtmlFile: warning: "maincontent" not found in file! $file = /home/ilyag/pollyanna/html/favicon.ico
+1683434686.04312 _ GetTemplate: warning: returning empty string for list/menu_tag
+1683434686.18430 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,111
+1683434686.25772 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/item_template.pl,487
+1683434686.38062 > GetString: warning: string value missing for $stringKey = like; caller = main,/home/ilyag/pollyanna/config/template/perl/widget/item_tag_buttons.pl,105
+1683434686.39132 > GetString: warning: string value missing for $stringKey = flag; caller = main,/home/ilyag/pollyanna/config/template/perl/widget/item_tag_buttons.pl,105
+1683434686.39354 ` GetItemTemplateBody: warning: $file{tags_list} is FALSE
+1683434686.45509 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/item_template.pl,487
+1683434686.53909 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434686.62473 _ GetPageFooter: warning: reset_button requires php, js, and draggable. not adding reset button.
+1683434686.62994 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434695.95097 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434695.98214 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434695.99547 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434696.29188 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434696.34002 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434696.41802 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434696.51669 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434696.54067 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434696.56378 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434696.58003 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434696.64104 _ GetPageFooter: warning: reset_button requires php, js, and draggable. not adding reset button.
+1683434696.64703 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434696.72283 ] GetScriptTemplate: warning: $script failed sanity check; $script = clock/union; caller = main,/home/ilyag/pollyanna/config/template/perl/inject_js.pl,111
+1683434696.72307 - InjectJs: warning: $scriptTemplate is FALSE. $script = clock/union
+			//alert('DEBUG: SaveDialogPosition: warning: elId is false');
+		//alert('DEBUG: SaveDialogPosition: warning: elmnt is false');
+		//alert('DEBUG: DraggingInitDialog: warning: el argument is missing');
+		//alert('DEBUG: DraggingInitDialog: warning: elId is false 2' + elements[i].innerHTML);
+	//	//alert('DEBUG: DraggingInit: warning: GetPrefs(draggable) was false, returning');
+	//	//alert('DEBUG: DraggingInit: warning: GetPrefs(draggable) was false, returning');
+		//alert('DEBUG: RestoreDialogPosition: warning: elId missing');
+		//alert('GetDialogId: warning: fallback');
+		//alert('DEBUG: SpotlightDialog: warning: dialog not found');
+		//alert('GetDialogTitle: warning: fallback');
+					//alert('DEBUG: CollapseWindowFromButton: warning: sanity check failed');
+		//alert('DEBUG: SelectMe: warning: ths missing');
+				//alert('DEBUG: InsertFetchedDialog: warning: maincontent is missing');
+		//alert('DEBUG: FetchDialog: warning: draggable_spawn is FALSE');
+		//alert('DEBUG: warning: FetchDialogFromUrl() called, but draggable_spawn is FALSE');
+1683434696.95721 _ GetTemplate: warning: returning empty string for list/menu_tag
+1683434697.23940 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434697.35291 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog/chain_log.pl,36
+1683434697.40246 _ GetPageFooter: warning: reset_button requires php, js, and draggable. not adding reset button.
+1683434697.40458 ; GetDialogX2: warning: $windowAnchor is FALSE, activating fallback; caller = main,/home/ilyag/pollyanna/config/template/perl/dialog.pl,92
+1683434697.54521 > PutHtmlFile: warning: content has empty table cells <td></td> ; caller = main,/home/ilyag/pollyanna/config/template/perl/make_simple_page.pl,152

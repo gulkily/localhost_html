@@ -1,0 +1,14 @@
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+#bug
+
+dark theme guest avatar is dark red, should be different color
+-----BEGIN PGP SIGNATURE-----
+
+wlwEAQEIABAFAmRT+mYJEKzJJHcY32gOAACtdQH+N8Frv6PhbGxuLSev9bXo
+o0y0mqv35ydqmVaY+of1+pNCzoiWDJ2Pz9bnZrZDOduP+g0zmmoSH6yypW6Y
+nR7tKw==
+=2xNt
+-----END PGP SIGNATURE-----
