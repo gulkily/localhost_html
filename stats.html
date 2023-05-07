@@ -1,0 +1,445 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml"></link>
+<title>Stats</title>
+<style type="text/css">
+<!--
+/* begin css/default.css */
+.tag-flag,
+.tag-troll,
+.tag-spam,
+.tag-remove,
+.tag-slash,
+.tag-abuse {
+/* negative (red) tags */
+	color: #403000;
+	font-weight: bold;
+}
+
+.tag-remove {
+/* remove tag */
+	font-weight: bold;
+}
+
+.tag-approve,
+.tag-accept,
+.tag-friend,
+.tag-attend,
+.tag-like,
+.tag-vouch {
+/* positive (green) tags */
+	color: #403000;
+	font-weight: bold;
+}
+
+.tag-hide {
+	color: gray;
+}
+
+div.reply {
+/* creates indented effect for sub-replies */
+	margin-left: 2%;
+	padding-left: 3em;
+}
+
+.item-textart {
+/* textart items get monospace font */
+	font-family: monospace;
+	font-size: 12pt;
+}
+
+.tag-aolart {
+/* aol art in 10-point arial font */
+    font-family: Arial;
+    font-size: 10pt;
+}
+
+div.txt {
+	padding-left: 1em;
+}
+
+.byadmin {
+/* text by admin, displayed in red for users' sake */
+	color: red;
+}
+
+.signed {
+/* signed things are displayed in gold */
+    border-color: gold;
+}
+
+
+#eventLocation {
+/* event form */
+	background-color: #fff0ef;
+	padding: 5pt;
+}
+
+#eventDate {
+/* event form */
+	background-color: #fff0ef;
+	padding: 5pt;
+}
+
+#loadingIndicator, #spanLoadingIndicator, #ariaAlert {
+	color: #403000;
+	background-color: #fff0ef;
+	padding: 3pt;
+	position: fixed;
+	top: 0;
+	left: 0;
+	margin: 0;
+	font-family: tahoma, arial, sans-serif;
+	font-weight: bold;
+}
+#loadingIndicator a {
+	/* style for links in loading indicator */
+}
+.notification {
+	color: #403000;
+	background-color: #fff0ef;
+	padding: 3pt;
+	font-weight: bold;
+	padding: 3pt;
+}
+noscript, .noscript {
+	color: red;
+}
+.menubar a, .titlebar a, .topmenubar a {
+	text-decoration: none;
+	color: #403000;
+}
+nobr {
+	white-space:nowrap;
+}
+input[type=button], button, input[type=submit] {
+	color: #403000;
+	background-color: #fff0ef
+}
+/* end css/default.css */
+
+/* inbox_top.css */
+
+#messages {
+	position: absolute !important;
+	top: 0 !important;
+	right: 0 !important;
+	margin-top: 5pt !important;
+}
+
+/* / inbox_top.css */
+
+/* theme/hypercode/additional.css */
+
+* {
+	border-radius: 5pt !important;
+	font-family: georgia, "times new roman", serif !important;
+}
+input, textarea {
+	background-color: white !important;
+	border: 2pt solid #404040 !important;
+	margin-top: 2pt !important;
+}
+#serverResponse {
+	display: none;
+}
+#loadingIndicator, #ariaAlert {
+	background-color: yellow;
+	border-radius: 0 !important;
+}
+#spanSignAs {
+	float: right;
+}
+
+/* / theme/hypercode/additional.css */
+/* theme/chicago/additional.css */
+body {
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	background-color: #fff0ef;
+}
+input {
+}
+input[type=text], input[type=password], select, option, textarea {
+	background-color: #fff0ef;
+	color: #403000;
+}
+#txtClock {
+	border: 1pt inset #fff0ef;
+}
+@media (prefers-color-scheme: dark) {
+
+}
+.beginner {
+}
+.dialog {
+	box-shadow: 5pt 5pt 0 rgba(0, 20, 20, 0.3);
+	border: #c0c0c0 outset 2pt;
+	background-color: #fff0ef;
+	border-radius: 1pt;
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	margin-right: 8pt;
+	margin-bottom: 8pt;
+}
+textarea {
+    font-family: Fixedsys, "Courier New", Courier, monospace;
+    font-size: 12pt;
+}
+
+.txt {
+/* regular text */
+	font-family: "Times New Roman", Times, sans-serif;
+	/*font-family: Tahoma, Arial, Helvetica, sans-serif;*/
+	font-size: 14pt;
+}
+a:focus, a:active {
+    color: red !important;
+    border-radius: 1pt;
+}
+textarea:focus {
+}
+input:focus {
+}
+#serverResponse {
+/* response messages from the server */
+    background-color: #fff0ef;
+    color: #403000;
+    padding: 5pt;
+    border: 0;
+	box-shadow: 5pt 5pt 0 rgba(0, 20, 20, 0.5);
+}
+#txtClock {
+	border: 1pt inset #fff0ef;
+	background-color: #fff0ef;
+}
+.fileHashShort {
+	text-decoration: underline dotted;
+}
+#spanDialogControls a {
+	color: #fff0efText;
+}
+.titlebarButtons {
+	float: right;
+}
+button.close, button.skip {
+	border: 0;
+	margin: 0;
+	font-weight: bold;
+}
+button:hover {
+	color: red;
+}
+#spanDialogControls a {
+	color: #403000;
+}
+/* / theme/chicago/additional.css */
+/* pre_time_sans.css */
+
+pre time {
+	font-family: helvetica, arial, sans-serif;
+}
+
+/* /pre_time_sans.css */
+
+-->
+</style>
+</head>
+<body link="#403000" vlink="#403000" text="#403000" bgcolor="#fff0ef" background="/hypercode_bg.jpg">
+<b>
+<!-- template/topmenu2.template -->
+<table cellspacing=0 cellpadding=3 border=0 bgcolor="#fff0ef" class=dialog id=topmenu>
+	<tr bgcolor="#fff0ef" class=topmenubar>
+		<td colspan=2>
+			<big>
+				<big>
+<!-- menuitem.template -->
+<a accesskey=w href="/write.html"><u>W</u>rite</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=a href="/active.html"><u>A</u>ctive</a>
+<!-- / menuitem.template -->
+</big>
+				<span class=advanced></span>
+				<span class=admin> </span>
+				<span id=controls></span>
+				<span id=spnClock></span>
+			</big>
+		</td>
+	</tr>
+	<tr bgcolor="#fff0ef" class=titlebar>
+		<td>
+			<small>
+				<font color="#403000"><b>Welcome</b></font>
+			</small>
+		</td>
+		<td align=right>
+			<small>
+				
+			</small>
+		</td>
+	</tr>
+</table>
+<!-- / topmenu2.template -->
+</b>
+<p><MAIN ID=maincontent><A NAME=maincontent></A>
+
+
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=Status cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>Status</b></font> <a href=#Status>#</a><a name=Status></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+
+		<tbody class=content><tr class=content><td>
+<!-- stats.template -->
+
+<fieldset>
+	<p>Updated: <!-- timestamp_time.template --><time class=timestamp datetime=1683453269.16078 title="05:54:29">05:54</time><!-- / timestamp_time.template -->
+	<p>Built: <!-- timestamp_time.template --><time class=timestamp datetime=1683446192.20606 title="03:56:32">03:56</time><!-- / timestamp_time.template -->
+	<p>Version: 1493
+
+	<p></p>
+	<p id=diagnostics><a href="/engine.html"><b>Check engine!</b></a></p>
+</fieldset>
+<fieldset>
+	<p>
+		<a href="/tags.html">
+			<b>23 tags</b>
+			<span class=advanced><span class=beginner><br>applied to make content more findable</span></span>
+		</a>
+	</p>
+	<p>
+		<a href="/authors.html">
+			<b>11 authors</b>
+			<span class=advanced><span class=beginner><br>shared their names or public keys</span></span>
+		</a>
+	</p>
+	<p>
+		<a href="/threads.html">
+			<b>43 threads</b>
+			<span class=advanced><span class=beginner><br>items with replies</span></span>
+		</a>
+	</p>
+	<p>
+		<a href="/image.html">
+			<b>1 images</b>
+		</a>
+	</p>
+	<p>
+		<a href="/new.html">
+			<b>174 items</b>
+			<span class=advanced><span class=beginner><br>new public items on site</span></span>
+		</a>
+	</p>
+	<p>
+		<a href="/url.html">
+			<b>0 links</b>
+			<span class=advanced><span class=beginner><br>links to pages and sites</span></span>
+		</a>
+	</p>
+	<p class=advanced>
+		<a href="/chain.html">
+			<b>407 notarized</b>
+			<span class=advanced><span class=beginner><br>time was recorded into server's chain log</span></span>
+		</a>
+	</p>
+	<p class=advanced>
+		<a href="/compost.html">
+			<b>251 composting</b>
+			<span class=beginner><br>pieces of content available for moderation</span>
+		</a>
+	</p>
+	<p class=advanced>
+		<a href="/deleted.html">
+			<b>38 archived</b>
+			<span class=beginner></span>
+		</a>
+	</p>
+	<p class=advanced>
+		<a href="/data.html">
+			<b>479 files</b>
+			<span class=beginner><br>found under /html/txt (click to download)</span>
+		</a>
+	</p>
+	<p class=advanced>
+		<span class=beginner>version: </span>
+		<span title="`git rev-parse HEAD`">b044379e</span>
+	</p>
+</fieldset>
+
+<!-- / stats.template -->
+</td></tr></tbody>
+
+		
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td colspan=4>
+		<font color="#403000"><b>Notarized</b></font> <a href=#Notarized>#</a><a name=Notarized></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left>title</th>
+<!-- / header_column.template -->
+
+<!-- header_column.template -->
+<th align=left>item</th>
+<!-- / header_column.template -->
+
+<!-- header_column.template -->
+<th align=left>timestamp</th>
+<!-- / header_column.template -->
+
+<!-- header_column.template -->
+<th align=left>checksum<br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr><td><a href="/bd/5b/bd5b3d91.html">reset this websi</a></td><td>bd5b3d91</td><td><!-- timestamp_time.template --><time class=timestamp datetime=1683453263.85851 title="05:54:23">05:54</time><!-- / timestamp_time.template --></td><td>14573ead</td></tr><tr><td><a href="/4f/5e/4f5e3071.html">add inbox featur</a></td><td>4f5e3071</td><td><!-- timestamp_time.template --><time class=timestamp datetime=1683453241.96840 title="05:54:01">05:54</time><!-- / timestamp_time.template --></td><td>e13eedc7</td></tr><tr><td><a href="/09/48/0948b495.html">Operator, please</a></td><td>0948b495</td><td><!-- timestamp_time.template --><time class=timestamp datetime=1683453238.93272 title="05:53:58">05:53</time><!-- / timestamp_time.template --></td><td>dd029d20</td></tr><tr><td><a href="/96/34/96343c29.html">Operator, please</a></td><td>96343c29</td><td><!-- timestamp_time.template --><time class=timestamp datetime=1683453197.52737 title="05:53:17">05:53</time><!-- / timestamp_time.template --></td><td>0af330ea</td></tr><tr><td><a href="/87/a4/87a43a7b.html">#like</a></td><td>87a43a7b</td><td><!-- timestamp_time.template --><time class=timestamp datetime=1683446531.13988 title="04:02:11">04:02</time><!-- / timestamp_time.template --></td><td>e8eef0ae</td></tr><tr><td>-</td><td>-</td><td>-</td></tr></tbody>
+
+		
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+</main>
+<span id=messages></span>
+<img src="/p.gif" alt="" height=1 width=1>
+</body></html>

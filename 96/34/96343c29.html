@@ -1,0 +1,592 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml"></link>
+<title>Operator, please... by ilyag</title>
+<style type="text/css">
+<!--
+/* begin css/default.css */
+.tag-flag,
+.tag-troll,
+.tag-spam,
+.tag-remove,
+.tag-slash,
+.tag-abuse {
+/* negative (red) tags */
+	color: #403000;
+	font-weight: bold;
+}
+
+.tag-remove {
+/* remove tag */
+	font-weight: bold;
+}
+
+.tag-approve,
+.tag-accept,
+.tag-friend,
+.tag-attend,
+.tag-like,
+.tag-vouch {
+/* positive (green) tags */
+	color: #403000;
+	font-weight: bold;
+}
+
+.tag-hide {
+	color: gray;
+}
+
+div.reply {
+/* creates indented effect for sub-replies */
+	margin-left: 2%;
+	padding-left: 3em;
+}
+
+.item-textart {
+/* textart items get monospace font */
+	font-family: monospace;
+	font-size: 12pt;
+}
+
+.tag-aolart {
+/* aol art in 10-point arial font */
+    font-family: Arial;
+    font-size: 10pt;
+}
+
+div.txt {
+	padding-left: 1em;
+}
+
+.byadmin {
+/* text by admin, displayed in red for users' sake */
+	color: red;
+}
+
+.signed {
+/* signed things are displayed in gold */
+    border-color: gold;
+}
+
+
+#eventLocation {
+/* event form */
+	background-color: #fff0ef;
+	padding: 5pt;
+}
+
+#eventDate {
+/* event form */
+	background-color: #fff0ef;
+	padding: 5pt;
+}
+
+#loadingIndicator, #spanLoadingIndicator, #ariaAlert {
+	color: #403000;
+	background-color: #fff0ef;
+	padding: 3pt;
+	position: fixed;
+	top: 0;
+	left: 0;
+	margin: 0;
+	font-family: tahoma, arial, sans-serif;
+	font-weight: bold;
+}
+#loadingIndicator a {
+	/* style for links in loading indicator */
+}
+.notification {
+	color: #403000;
+	background-color: #fff0ef;
+	padding: 3pt;
+	font-weight: bold;
+	padding: 3pt;
+}
+noscript, .noscript {
+	color: red;
+}
+.menubar a, .titlebar a, .topmenubar a {
+	text-decoration: none;
+	color: #403000;
+}
+nobr {
+	white-space:nowrap;
+}
+input[type=button], button, input[type=submit] {
+	color: #403000;
+	background-color: #fff0ef
+}
+/* end css/default.css */
+
+/* inbox_top.css */
+
+#messages {
+	position: absolute !important;
+	top: 0 !important;
+	right: 0 !important;
+	margin-top: 5pt !important;
+}
+
+/* / inbox_top.css */
+
+/* theme/hypercode/additional.css */
+
+* {
+	border-radius: 5pt !important;
+	font-family: georgia, "times new roman", serif !important;
+}
+input, textarea {
+	background-color: white !important;
+	border: 2pt solid #404040 !important;
+	margin-top: 2pt !important;
+}
+#serverResponse {
+	display: none;
+}
+#loadingIndicator, #ariaAlert {
+	background-color: yellow;
+	border-radius: 0 !important;
+}
+#spanSignAs {
+	float: right;
+}
+
+/* / theme/hypercode/additional.css */
+/* theme/chicago/additional.css */
+body {
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	background-color: #fff0ef;
+}
+input {
+}
+input[type=text], input[type=password], select, option, textarea {
+	background-color: #fff0ef;
+	color: #403000;
+}
+#txtClock {
+	border: 1pt inset #fff0ef;
+}
+@media (prefers-color-scheme: dark) {
+
+}
+.beginner {
+}
+.dialog {
+	box-shadow: 5pt 5pt 0 rgba(0, 20, 20, 0.3);
+	border: #c0c0c0 outset 2pt;
+	background-color: #fff0ef;
+	border-radius: 1pt;
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	margin-right: 8pt;
+	margin-bottom: 8pt;
+}
+textarea {
+    font-family: Fixedsys, "Courier New", Courier, monospace;
+    font-size: 12pt;
+}
+
+.txt {
+/* regular text */
+	font-family: "Times New Roman", Times, sans-serif;
+	/*font-family: Tahoma, Arial, Helvetica, sans-serif;*/
+	font-size: 14pt;
+}
+a:focus, a:active {
+    color: red !important;
+    border-radius: 1pt;
+}
+textarea:focus {
+}
+input:focus {
+}
+#serverResponse {
+/* response messages from the server */
+    background-color: #fff0ef;
+    color: #403000;
+    padding: 5pt;
+    border: 0;
+	box-shadow: 5pt 5pt 0 rgba(0, 20, 20, 0.5);
+}
+#txtClock {
+	border: 1pt inset #fff0ef;
+	background-color: #fff0ef;
+}
+.fileHashShort {
+	text-decoration: underline dotted;
+}
+#spanDialogControls a {
+	color: #fff0efText;
+}
+.titlebarButtons {
+	float: right;
+}
+button.close, button.skip {
+	border: 0;
+	margin: 0;
+	font-weight: bold;
+}
+button:hover {
+	color: red;
+}
+#spanDialogControls a {
+	color: #403000;
+}
+/* / theme/chicago/additional.css */
+/* pre_time_sans.css */
+
+pre time {
+	font-family: helvetica, arial, sans-serif;
+}
+
+/* /pre_time_sans.css */
+
+-->
+</style>
+</head>
+<body link="#403000" vlink="#403000" text="#403000" bgcolor="#fff0ef" background="/hypercode_bg.jpg">
+<b>
+<!-- template/topmenu2.template -->
+<table cellspacing=0 cellpadding=3 border=0 bgcolor="#fff0ef" class=dialog id=topmenu>
+	<tr bgcolor="#fff0ef" class=topmenubar>
+		<td colspan=2>
+			<big>
+				<big>
+<!-- menuitem.template -->
+<a accesskey=w href="/write.html"><u>W</u>rite</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=a href="/active.html"><u>A</u>ctive</a>
+<!-- / menuitem.template -->
+</big>
+				<span class=advanced></span>
+				<span class=admin> </span>
+				<span id=controls></span>
+				<span id=spnClock></span>
+			</big>
+		</td>
+	</tr>
+	<tr bgcolor="#fff0ef" class=titlebar>
+		<td>
+			<small>
+				<font color="#403000"><b>Welcome</b></font>
+			</small>
+		</td>
+		<td align=right>
+			<small>
+				
+			</small>
+		</td>
+	</tr>
+</table>
+<!-- / topmenu2.template -->
+</b>
+<p><MAIN ID=maincontent><A NAME=maincontent></A>
+
+
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=96343c29 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>Operator, please...</b></font> <a href=#96343c29>#</a><a name=96343c29></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">[Operator]<br><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/96/34/96343c29.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683453196 title="05:53:16">05:53</time><!-- / timestamp_time.template --></a>;
+<a class=avatar href="/author/5FC40A0CA5640E8D/index.html"><!-- avatar-username.template --><span class=avatar><span class=username><font color="#403000>"
+			<b><i>ilyag</i></b></font></span></span><!-- / avatar-username.template --></a>;
+<span class=advanced>
+	<span class=fileHashShort>96343c29</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=96343c29d0a07678cb58cfda4695b2657fbeb4e1"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=96343c29d0a07678cb58cfda4695b2657fbeb4e1"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+<!-- add_to_reply_cart button requires js, but it is not enabled -->
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=Comment cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>Comment</b></font> <a href=#Comment>#</a><a name=Comment></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+
+		<tbody class=content><tr class=content><td>
+<!-- reply.template -->
+<a name=reply></a>
+<form class=reply action="/post.html" id=compose name=compose>
+	<textarea
+		wrap=soft
+		rows=7
+		cols=32
+		style="min-width: 360px; height: 80px;"
+		id=comment
+		name=comment
+	></textarea>
+	<br>
+	<input id=btnSendReply type=submit value="Send Reply">
+	<span id=spanSignAs></span>
+	<span class=advanced>
+		<hr>
+		<span class=beginner>
+			<label for=replyto>In reply to:</label>
+			<br>
+		</span>
+		<input type=text name=replyto id=replyto value="96343c29d0a07678cb58cfda4695b2657fbeb4e1" size=45>
+		<span class=beginner>
+			<br>
+			Clear this field to post a new thread.
+		</span>
+	</span>
+</form>
+<!-- / reply.template -->
+</td></tr></tbody>
+
+		
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<br>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=bd5b3d91 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>reset this website</b></font> <a href=#bd5b3d91>#</a><a name=bd5b3d91></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/96/34/96343c29.html">Operator, please</a><br><br>reset this website<br><a href="/e3/92/e392f9d9.html">e392f9d9..</a><br><br>ok, I reset the website settings<br><br>===<br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/bd/5b/bd5b3d91.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683453264 title="05:54:24">05:54</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>bd5b3d91</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=bd5b3d91e4dd684f116459614cc47d4cf1572bc5"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=bd5b3d91e4dd684f116459614cc47d4cf1572bc5"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+<!-- add_to_reply_cart button requires js, but it is not enabled -->
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies><span class=advanced>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td colspan=2>
+		<font color="#403000"><b>Item Attributes</b></font> <a href=#ItemAttributes>#</a><a name=ItemAttributes></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left>attribute</th>
+<!-- / header_column.template -->
+
+<!-- header_column.template -->
+<th align=left>value<br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr bgcolor="#fff0ef"><td><span title="chain_checksum_good">Checksum</span>:</td>
+<td><font color=green>Yes</font></td>
+</tr>
+<tr bgcolor="#fff0ef"><td><span title="chain_hash">SHA1 (chain.log)</span>:</td>
+<td><tt>96343c29d0a07678cb58cfda4695b2657fbeb4e1</tt></td>
+</tr>
+<tr bgcolor="#fff0ef"><td><span title="chain_next">Next</span>:</td>
+<td><a href="/09/48/0948b495.html">Operator, please</a></td>
+</tr>
+<tr bgcolor="#fff0ef"><td><span title="chain_previous">Previous</span>:</td>
+<td><a href="/87/a4/87a43a7b.html">#like</a></td>
+</tr>
+<tr bgcolor="#fff0ef"><td><span title="chain_sequence">Sequence</span>:</td>
+<td>403</td>
+</tr>
+<tr bgcolor="#fff0ef"><td><span title="chain_timestamp">Notarized</span>:</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683453197.52737 title="05:53:17">05:53</time><!-- / timestamp_time.template --> <tt class=advanced> 1683453197.52737</tt></td>
+</tr>
+<tr bgcolor="#fff0ef"><td><span title="file_path">File</span>:</td>
+<td><a href="/txt/96/34/96343c29d0a07678cb58cfda4695b2657fbeb4e1.txt">/txt/96/34/96343c29d0a07678cb58cfda4695b2657fbeb4e1.txt</a></td>
+</tr>
+<tr bgcolor="#fff0ef"><td><span title="gpg_id">Signature</span>:</td>
+<td><a class=avatar href="/author/5FC40A0CA5640E8D/index.html"><!-- avatar-username.template --><span class=avatar><span class=username><font color="#403000>"
+			<b><i>ilyag</i></b></font></span></span><!-- / avatar-username.template --></a> <tt class=advanced> 5FC40A0CA5640E8D</tt></td>
+</tr>
+<tr bgcolor="#fff0ef"><td><span title="gpg_timestamp">Signed</span>:</td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683453196 title="05:53:16">05:53</time><!-- / timestamp_time.template --> <tt class=advanced> 1683453196</tt></td>
+</tr>
+<tr bgcolor="#fff0ef"><td><span title="item_type">Type</span>:</td>
+<td>txt</td>
+</tr>
+<tr bgcolor="#fff0ef"><td><span title="operator_please">Operator</span>:</td>
+<td>reset this website</td>
+</tr>
+<tr bgcolor="#fff0ef"><td><span title="sha1">SHA1 (Perl, Digest::SHA)</span>:</td>
+<td><tt>96343c29d0a07678cb58cfda4695b2657fbeb4e1</tt></td>
+</tr>
+<tr bgcolor="#fff0ef"><td><span title="title">Title</span>:</td>
+<td>Operator, please...</td>
+</tr>
+</tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td colspan=2>
+		13 item(s)
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+</span><span class=advanced>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=indexlog cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>index_log</b></font> <a href=#indexlog>#</a><a name=indexlog></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+
+		<tbody class=content><tr class=content><td>indexing begins<br>
+file hash = 96343c29d0a07678cb58cfda4695b2657fbeb4e1<br>
+---<br>
+found token: operator_please,  , reset this website<br>
+finished finding tokens<br>
+tokens found: 1<br>
+token: operator_please; spacer:  ; param = reset this website<br>
+---<br>
+item timestamp: 1683453197.52737<br>
+applying: operator_please<br>
+valid: operator_please<br>
+token found: operator_please<br>
+operator, please reset this website</td></tr></tbody>
+
+		
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+</span></main>
+<span id=messages></span>
+<img src="/p.gif" alt="" height=1 width=1>
+</body></html>
