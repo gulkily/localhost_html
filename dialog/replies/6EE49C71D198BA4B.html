@@ -1,7 +1,7 @@
 
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#fff0ef" class=titlebar>
@@ -35,56 +35,225 @@
 <!-- / header_wrapper.template -->
 
 
-		<tbody class=content><tr bgcolor="#fff0ef"><td class=advanced>3f5cc593</td>
-<td><b><a href="/3f/5c/3f5cc593.html">add inbox feature</a></b></td>
+		<tbody class=content><tr bgcolor="#fff0ef"><td class=advanced>1f4c1c0f</td>
+<td><b><a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('1f4c1c0f')) {
+							SetActiveDialog(document.getElementById('1f4c1c0f'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/1f/4c/1f4c1c0f.html');
+						}
+					}
+				" href="/1f/4c/1f4c1c0f.html">make the interface more draggable</a></b></td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683441580.72785 title="02:39:40">02:39</time><!-- / timestamp_time.template --></td>
+</tr>
+<tr bgcolor="#fff0ef"><td class=advanced>3f5cc593</td>
+<td><b><a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('3f5cc593')) {
+							SetActiveDialog(document.getElementById('3f5cc593'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/3f/5c/3f5cc593.html');
+						}
+					}
+				" href="/3f/5c/3f5cc593.html">add inbox feature</a></b></td>
 <td><!-- timestamp_time.template --><time class=timestamp datetime=1683441551.64530 title="02:39:11">02:39</time><!-- / timestamp_time.template --></td>
 </tr>
 <tr bgcolor="#fff0ef"><td class=advanced>57586603</td>
-<td><b><a href="/57/58/57586603.html">should describe what known settings do</a></b></td>
+<td><b><a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('57586603')) {
+							SetActiveDialog(document.getElementById('57586603'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/57/58/57586603.html');
+						}
+					}
+				" href="/57/58/57586603.html">should describe what known settings do</a></b></td>
 <td><!-- timestamp_time.template --><time class=timestamp datetime=1683441460.10642 title="02:37:40">02:37</time><!-- / timestamp_time.template --></td>
 </tr>
 <tr bgcolor="#fff0ef"><td class=advanced>5112911c</td>
-<td><b><a href="/51/12/5112911c.html">add javascript support</a></b></td>
+<td><b><a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('5112911c')) {
+							SetActiveDialog(document.getElementById('5112911c'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/51/12/5112911c.html');
+						}
+					}
+				" href="/51/12/5112911c.html">add javascript support</a></b></td>
 <td><!-- timestamp_time.template --><time class=timestamp datetime=1683441454.78611 title="02:37:34">02:37</time><!-- / timestamp_time.template --></td>
 </tr>
-<tr bgcolor="#fff0ef"><td class=advanced>ce881b28</td>
-<td><b><a href="/ce/88/ce881b28.html">loading 1</a></b></td>
-<td><!-- timestamp_time.template --><time class=timestamp datetime=1683441418.23103 title="02:36:58">02:36</time><!-- / timestamp_time.template --></td>
-</tr>
 <tr bgcolor="#fff0ef"><td class=advanced>afffd303</td>
-<td><b><a href="/af/ff/afffd303.html">return_to</a></b></td>
+<td><b><a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('afffd303')) {
+							SetActiveDialog(document.getElementById('afffd303'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/af/ff/afffd303.html');
+						}
+					}
+				" href="/af/ff/afffd303.html">return_to</a></b></td>
 <td><!-- timestamp_time.template --><time class=timestamp datetime=1683441403.66371 title="02:36:43">02:36</time><!-- / timestamp_time.template --></td>
 </tr>
 <tr bgcolor="#fff0ef"><td class=advanced>d054152d</td>
-<td><b><a href="/d0/54/d054152d.html">how to fix: ....</a></b></td>
+<td><b><a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('d054152d')) {
+							SetActiveDialog(document.getElementById('d054152d'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/d0/54/d054152d.html');
+						}
+					}
+				" href="/d0/54/d054152d.html">how to fix: ....</a></b></td>
 <td><!-- timestamp_time.template --><time class=timestamp datetime=1683441262 title="02:34:22">02:34</time><!-- / timestamp_time.template --></td>
 </tr>
 <tr bgcolor="#fff0ef"><td class=advanced>68d7c039</td>
-<td><b><a href="/68/d7/68d7c039.html">when searching</a></b></td>
+<td><b><a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('68d7c039')) {
+							SetActiveDialog(document.getElementById('68d7c039'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/68/d7/68d7c039.html');
+						}
+					}
+				" href="/68/d7/68d7c039.html">when searching</a></b></td>
 <td><!-- timestamp_time.template --><time class=timestamp datetime=1683441186 title="02:33:06">02:33</time><!-- / timestamp_time.template --></td>
 </tr>
 <tr bgcolor="#fff0ef"><td class=advanced>e297aa8c</td>
-<td><b><a href="/e2/97/e297aa8c.html">the query listings dialogs...</a></b></td>
+<td><b><a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('e297aa8c')) {
+							SetActiveDialog(document.getElementById('e297aa8c'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/e2/97/e297aa8c.html');
+						}
+					}
+				" href="/e2/97/e297aa8c.html">the query listings dialogs...</a></b></td>
 <td><!-- timestamp_time.template --><time class=timestamp datetime=1683440544 title="02:22:24">02:22</time><!-- / timestamp_time.template --></td>
 </tr>
 <tr bgcolor="#fff0ef"><td class=advanced>eaca5686</td>
-<td><b><a href="/ea/ca/eaca5686.html">this url seems to not be parsed correctly by the parser:</a></b></td>
+<td><b><a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('eaca5686')) {
+							SetActiveDialog(document.getElementById('eaca5686'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/ea/ca/eaca5686.html');
+						}
+					}
+				" href="/ea/ca/eaca5686.html">this url seems to not be parsed correctly by the parser:</a></b></td>
 <td><!-- timestamp_time.template --><time class=timestamp datetime=1683439814 title="02:10:14">02:10</time><!-- / timestamp_time.template --></td>
 </tr>
 <tr bgcolor="#fff0ef"><td class=advanced>392ea2d8</td>
-<td><b><a href="/39/2e/392ea2d8.html">inbox 0</a></b></td>
+<td><b><a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('392ea2d8')) {
+							SetActiveDialog(document.getElementById('392ea2d8'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/39/2e/392ea2d8.html');
+						}
+					}
+				" href="/39/2e/392ea2d8.html">inbox 0</a></b></td>
 <td><!-- timestamp_time.template --><time class=timestamp datetime=1683434548.23671 title="00:42:28">00:42</time><!-- / timestamp_time.template --></td>
 </tr>
 <tr bgcolor="#fff0ef"><td class=advanced>f2295c40</td>
-<td><b><a href="/f2/29/f2295c40.html">add inbox feature</a></b></td>
+<td><b><a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('f2295c40')) {
+							SetActiveDialog(document.getElementById('f2295c40'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/f2/29/f2295c40.html');
+						}
+					}
+				" href="/f2/29/f2295c40.html">add inbox feature</a></b></td>
 <td><!-- timestamp_time.template --><time class=timestamp datetime=1683433932.27687 title="00:32:12">00:32</time><!-- / timestamp_time.template --></td>
 </tr>
 <tr bgcolor="#fff0ef"><td class=advanced>85eca0f3</td>
-<td><b><a href="/85/ec/85eca0f3.html">operator, please add profile feature</a></b></td>
+<td><b><a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('85eca0f3')) {
+							SetActiveDialog(document.getElementById('85eca0f3'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/85/ec/85eca0f3.html');
+						}
+					}
+				" href="/85/ec/85eca0f3.html">operator, please add profile feature</a></b></td>
 <td><!-- timestamp_time.template --><time class=timestamp datetime=1683433870 title="00:31:10">00:31</time><!-- / timestamp_time.template --></td>
 </tr>
 <tr bgcolor="#fff0ef"><td class=advanced>4e71ff92</td>
-<td><b><a href="/4e/71/4e71ff92.html">add javascript support</a></b></td>
+<td><b><a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('4e71ff92')) {
+							SetActiveDialog(document.getElementById('4e71ff92'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/4e/71/4e71ff92.html');
+						}
+					}
+				" href="/4e/71/4e71ff92.html">add javascript support</a></b></td>
 <td><!-- timestamp_time.template --><time class=timestamp datetime=1683433839.68280 title="00:30:39">00:30</time><!-- / timestamp_time.template --></td>
 </tr>
 </tbody>
