@@ -15,7 +15,7 @@
 .tag-slash,
 .tag-abuse {
 /* negative (red) tags */
-	color: #c00000;
+	color: #403000;
 	font-weight: bold;
 }
 
@@ -31,7 +31,7 @@
 .tag-like,
 .tag-vouch {
 /* positive (green) tags */
-	color: #008000;
+	color: #403000;
 	font-weight: bold;
 }
 
@@ -74,19 +74,19 @@ div.txt {
 
 #eventLocation {
 /* event form */
-	background-color: #ffffff;
+	background-color: #fff0ef;
 	padding: 5pt;
 }
 
 #eventDate {
 /* event form */
-	background-color: #e0e0e0;
+	background-color: #fff0ef;
 	padding: 5pt;
 }
 
 #loadingIndicator, #spanLoadingIndicator, #ariaAlert {
-	color: #000000;
-	background-color: #f0f0d0;
+	color: #403000;
+	background-color: #fff0ef;
 	padding: 3pt;
 	position: fixed;
 	top: 0;
@@ -99,8 +99,8 @@ div.txt {
 	/* style for links in loading indicator */
 }
 .notification {
-	color: #000000;
-	background-color: #f0f0d0;
+	color: #403000;
+	background-color: #fff0ef;
 	padding: 3pt;
 	font-weight: bold;
 	padding: 3pt;
@@ -110,43 +110,16 @@ noscript, .noscript {
 }
 .menubar a, .titlebar a, .topmenubar a {
 	text-decoration: none;
-	color: #000000;
+	color: #403000;
 }
 nobr {
 	white-space:nowrap;
 }
 input[type=button], button, input[type=submit] {
-	color: #000000;
-	background-color: #c0c0c0
+	color: #403000;
+	background-color: #fff0ef
 }
 /* end css/default.css */
-
-/* dragging.css */
-
-/* should be called inline-block.css ? */
-
-/* makes some dialogs horizontal */
-table.dialog { /* inline-table table-block */
-	display: inline-block;
-	vertical-align: top;
-}
-form {
-	display: inline;
-}
-
-/*
-#topmenu.dialog {
-	position: fixed !important;
-	top: 0;
-	right: 0;
-}
-*/
-
-/* / dragging.css */
-
-.dialog .txt {
-	max-width: 30em;
-}
 
 /* inbox_top.css */
 
@@ -159,19 +132,42 @@ form {
 
 /* / inbox_top.css */
 
+/* theme/hypercode/additional.css */
+
+* {
+	border-radius: 5pt !important;
+	font-family: georgia, "times new roman", serif !important;
+}
+input, textarea {
+	background-color: white !important;
+	border: 2pt solid #404040 !important;
+	margin-top: 2pt !important;
+}
+#serverResponse {
+	display: none;
+}
+#loadingIndicator, #ariaAlert {
+	background-color: yellow;
+	border-radius: 0 !important;
+}
+#spanSignAs {
+	float: right;
+}
+
+/* / theme/hypercode/additional.css */
 /* theme/chicago/additional.css */
 body {
 	font-family: Tahoma, Arial, Helvetica, sans-serif;
-	background-color: #008080;
+	background-color: #fff0ef;
 }
 input {
 }
 input[type=text], input[type=password], select, option, textarea {
-	background-color: #ffffff;
-	color: #000000;
+	background-color: #fff0ef;
+	color: #403000;
 }
 #txtClock {
-	border: 1pt inset #c0c0c0;
+	border: 1pt inset #fff0ef;
 }
 @media (prefers-color-scheme: dark) {
 
@@ -181,7 +177,7 @@ input[type=text], input[type=password], select, option, textarea {
 .dialog {
 	box-shadow: 5pt 5pt 0 rgba(0, 20, 20, 0.3);
 	border: #c0c0c0 outset 2pt;
-	background-color: #c0c0c0;
+	background-color: #fff0ef;
 	border-radius: 1pt;
 	font-family: Tahoma, Arial, Helvetica, sans-serif;
 	font-size: 10pt;
@@ -209,21 +205,21 @@ input:focus {
 }
 #serverResponse {
 /* response messages from the server */
-    background-color: #ffc080;
-    color: #000000;
+    background-color: #fff0ef;
+    color: #403000;
     padding: 5pt;
     border: 0;
 	box-shadow: 5pt 5pt 0 rgba(0, 20, 20, 0.5);
 }
 #txtClock {
-	border: 1pt inset #c0c0c0;
-	background-color: #c0c0c0;
+	border: 1pt inset #fff0ef;
+	background-color: #fff0ef;
 }
 .fileHashShort {
 	text-decoration: underline dotted;
 }
 #spanDialogControls a {
-	color: #000080Text;
+	color: #fff0efText;
 }
 .titlebarButtons {
 	float: right;
@@ -237,7 +233,7 @@ button:hover {
 	color: red;
 }
 #spanDialogControls a {
-	color: #ffffff;
+	color: #403000;
 }
 /* / theme/chicago/additional.css */
 /* pre_time_sans.css */
@@ -251,64 +247,16 @@ pre time {
 -->
 </style>
 </head>
-<body link="#0000cc" vlink="#6000c0" text="#000000" bgcolor="#008080">
+<body link="#403000" vlink="#403000" text="#403000" bgcolor="#fff0ef" background="/hypercode_bg.jpg">
 <b>
 <!-- template/topmenu2.template -->
-<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialog) { return SetActiveDialog(this); }" cellspacing=0 cellpadding=3 border=0 bgcolor="#c0c0c0" class=dialog id=topmenu>
-	<tr bgcolor="#c0c0c0" class=topmenubar>
+<table cellspacing=0 cellpadding=3 border=0 bgcolor="#fff0ef" class=dialog id=topmenu>
+	<tr bgcolor="#fff0ef" class=topmenubar>
 		<td colspan=2>
 			<big>
 				<big>
 <!-- menuitem.template -->
-<a  onclick="if ((!window.GetPrefs || GetPrefs('draggable_spawn'))) { return FetchDialog('welcome'); }" accesskey=w href="/welcome.html"><u>W</u>elcome</a>
-<!-- / menuitem.template -->
-;
-
-
-<!-- menuitem.template -->
-<a  onclick="if ((!window.GetPrefs || GetPrefs('draggable_spawn'))) { return FetchDialog('threads'); }" accesskey=t href="/threads.html"><u>T</u>hreads(12)</a>
-<!-- / menuitem.template -->
-;
-
-
-<!-- menuitem.template -->
-<a  onclick="if ((!window.GetPrefs || GetPrefs('draggable_spawn'))) { return FetchDialog('upload'); }" accesskey=u href="/upload.html"><u>U</u>pload</a>
-<!-- / menuitem.template -->
-;
-
-
-<!-- menuitem.template -->
-<a  onclick="if ((!window.GetPrefs || GetPrefs('draggable_spawn'))) { return FetchDialog('write'); }" accesskey=i href="/write.html">Wr<u>i</u>te</a>
-<!-- / menuitem.template -->
-;
-
-
-<!-- menuitem.template -->
-<a  onclick="if ((!window.GetPrefs || GetPrefs('draggable_spawn'))) { return FetchDialog('settings'); }" accesskey=s href="/settings.html"><u>S</u>ettings</a>
-<!-- / menuitem.template -->
-;
-
-
-<!-- menuitem.template -->
-<a  onclick="if ((!window.GetPrefs || GetPrefs('draggable_spawn'))) { return FetchDialog('profile'); }" accesskey=p href="/profile.html"><u>P</u>rofile</a>
-<!-- / menuitem.template -->
-;
-
-
-<!-- menuitem.template -->
-<a  onclick="if ((!window.GetPrefs || GetPrefs('draggable_spawn'))) { return FetchDialog('authors'); }" accesskey=a href="/authors.html"><u>A</u>uthors(6)</a>
-<!-- / menuitem.template -->
-;
-
-
-<!-- menuitem.template -->
-<a  onclick="if ((!window.GetPrefs || GetPrefs('draggable_spawn'))) { return FetchDialog('tags'); }" accesskey=g href="/tags.html">Ta<u>g</u>s(15)</a>
-<!-- / menuitem.template -->
-;
-
-
-<!-- menuitem.template -->
-<a accesskey=h href="/help.html"><u>H</u>elp</a>
+<a accesskey=w href="/write.html"><u>W</u>rite</a>
 <!-- / menuitem.template -->
 </big>
 				<span class=advanced></span>
@@ -318,130 +266,15 @@ pre time {
 			</big>
 		</td>
 	</tr>
-	<tr bgcolor="#000080" class=titlebar>
+	<tr bgcolor="#fff0ef" class=titlebar>
 		<td>
 			<small>
-				<font color="#ffffff"><b>Welcome</b></font>
+				<font color="#403000"><b>Welcome</b></font>
 			</small>
 		</td>
 		<td align=right>
 			<small>
-				<span id=spanDialogControls>
-<!-- layer_controls.template -->
-
-<noscript>*</noscript>
-
-<span>
-	<a id=btnAdvanced href=#
-		accesskey=o
-		onclick="
-			if (window.SetPrefs) {
-				SetPrefs('show_advanced', 1);
-				SetPrefs('advanced_highlight', 0);
-				SetPrefs('beginner', 0);
-				SetPrefs('beginner_highlight', 0);
-				SetPrefs('notify_on_change', 1);
-			}
-			if (window.ShowAdvanced) {
-				ShowAdvanced(0, 0);
-				return false;
-			}
-		"
-	>Expand</a>;
-
-	<a id=btnMinimal href=#
-		accesskey=n
-		onclick="
-			if (window.SetPrefs) {
-				SetPrefs('show_advanced', 0);
-				SetPrefs('admin', 0);
-			}
-			if (window.ShowAdvanced) {
-				ShowAdvanced(0, 0);
-				return false;
-			}
-		"
-	title=Minimal>Minimal</a>;
-
-	<a id=btnReprint href=# accesskey=r onclick="
-		var winLoc = window.location.href;
-		if (winLoc.indexOf('?')) {
-			winLoc = winLoc.substr(0, winLoc.indexOf('?'));
-		}
-		var d = new Date();
-		var n = d.getTime();
-		n = Math.ceil(n / 1000);
-		n = n + 86400;
-		winLoc = winLoc + '?time=' + n;
-		window.location = winLoc;
-		return false;
-	" title="Reprint">Reprint</a>;
-
-</span>
-
-<!-- / layer_controls.template -->
-
-<!-- dialog_controls.template 'Interface Controls' -->
-
-<span class=advanced>
-	<a id=btnCascade href=# onclick="
-		if (window.DraggingCascade) {
-			SetPrefs('draggable', 1);
-			DraggingInit(0);
-			DraggingMakeFit(0);
-			DraggingCascade();
-			DraggingInit(0);
-		}
-	" title=Cascade>Cascade</a>;
-
-	<a id=btnArrange href=# onclick="
-		if (window.DraggingRetile) {
-			SetPrefs('draggable', 1);
-			DraggingInit(0);
-			DraggingMakeFit(0);
-			DraggingRetile();
-			DraggingInit(0);
-		}
-	" title=Arrange>Arrange</a>;
-</span>
-
-<a id=btnAnnoy href=# onclick="
-	if (window.DraggingRetile) {
-		SetPrefs('draggable', 1);
-		SetPrefs('draggable_activate', 1);
-		SetPrefs('draggable_spawn', 1);
-		SetPrefs('draggable_spawn_focus', 1);
-		SetPrefs('draggable', 1);
-		SetPrefs('draggable_restore', 1);
-		SetPrefs('draggable_restore_collapsed', 1);
-		SetActiveDialog(GetParentDialog(this));
-		DraggingInit(0);
-		DraggingMakeFit(0);
-		DraggingInit(0);
-	}
-" title=Annoy>Annoy</a>;
-
-<a id=btnDraggingReset href=# onclick="
-	if (window.DraggingReset && window.SetPrefs) {
-		SetPrefs('beginner', 1);
-		SetPrefs('show_advanced', 0);
-		SetPrefs('show_admin', 0);
-		SetPrefs('draggable_activate', 0);
-		SetPrefs('draggable_spawn', 0);
-		SetPrefs('draggable_spawn_focus', 0);
-		SetPrefs('draggable', 0);
-		SetPrefs('draggable_restore', 0);
-		SetPrefs('draggable_scale', 0);
-		SetPrefs('draggable_restore_collapsed', 0);
-		DraggingReset();
-		//window.location = '/help.html'; #option
-		window.location.reload(false);
-	}
-" title="Reset">Reset</a>
-
-<!-- #todo redo this whole template -->
-<!-- / dialog_controls.template -->
-</span>
+				
 			</small>
 		</td>
 	</tr>
@@ -453,7 +286,7 @@ pre time {
 
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
+	<table cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -486,55 +319,4 @@ pre time {
 </main>
 <span id=messages></span>
 <img src="/p.gif" alt="" height=1 width=1>
-
-<!-- reset_button.template -->
-<a href="/help.html?light=0&time=9999999999&ui=Beginner" onclick="
-	if (window.DraggingReset && window.SetPrefs) {
-		SetPrefs('beginner', 1);
-		SetPrefs('show_advanced', 0);
-		SetPrefs('show_admin', 0);
-		SetPrefs('draggable_activate', 0);
-		SetPrefs('draggable_spawn', 0);
-		SetPrefs('draggable_spawn_focus', 0);
-		SetPrefs('draggable', 0);
-		SetPrefs('draggable_restore', 0);
-		SetPrefs('draggable_restore_collapsed', 0);
-		DraggingReset();
-		//window.location.reload();
-
-		var winLoc = window.location.href;
-		//var winLoc = '/help.html'; #option
-		if (winLoc.indexOf('?')) {
-			winLoc = winLoc.substr(0, winLoc.indexOf('?'));
-		}
-		winLoc = winLoc + '?time=9999999999';
-		window.location = winLoc;
-		return false;
-	}
-" style="float:right; z-index: 99999;"><button>RESET</button></a>
-<!-- / reset_button.template --><br><noscript>
-<!-- default/template/html/window/standard.template -->
-<font face=arial>
-	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=Notice cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
-		
-<!-- titlebar.template -->
-<tr bgcolor="#000080" class=titlebar>
-	<td>
-		<font color="#ffffff"><b>Notice</b></font> <a href=#Notice>#</a><a name=Notice></a><br>
-		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
-	</td>
-</tr>
-<!-- / titlebar.template -->
-
-
-		
-
-		
-
-		<tbody class=content><tr class=content><td><b class=noscript>*</b> Some features may require JavaScript</td></tr></tbody>
-
-		
-	</table>
-</font>
-<!-- / default/template/html/window/standard.template -->
-</noscript></body></html>
+</body></html>
