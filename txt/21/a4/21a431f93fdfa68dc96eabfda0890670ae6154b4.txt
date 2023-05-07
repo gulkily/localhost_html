@@ -1,0 +1,8 @@
+>>b85a7b3666aa981e0491ef801f5d373162980d2b
+
+make the interface more draggable
+cb3669497bb94c8c010f60af257a5ffc7d0ed086
+
+ok, I added some javascript for draggable dialogs.
+
+===
