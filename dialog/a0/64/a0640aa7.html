@@ -1,0 +1,78 @@
+
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=a0640aa7 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hashtag'); }" href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('e2dfd18c')) {
+							SetActiveDialog(document.getElementById('e2dfd18c'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/e2/df/e2dfd18c.html');
+						}
+					}
+				" href="/e2/df/e2dfd18c.html">a1) it is squish</a><br><br>#css<span class=admin><br>
+-- <br>
+<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/a0/64/a0640aa7.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683441646 title="02:40:46">02:40</time><!-- / timestamp_time.template --></a>;
+<a class=avatar href="/author/6EE49C71D198BA4B/index.html"><!-- avatar-username.template --><span class=avatar><span class=username><font color="#403000>"
+			<b><i>Guest</i></b></font></span></span><!-- / avatar-username.template --></a>;
+<span class=advanced>
+	<span class=fileHashShort>a0640aa7</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'a0640aa72fac3d1bc628d04105df53befc601d4b\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=a0640aa72fac3d1bc628d04105df53befc601d4b"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'a0640aa72fac3d1bc628d04105df53befc601d4b\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=a0640aa72fac3d1bc628d04105df53befc601d4b"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('a0640aa72fac3d1bc628d04105df53befc601d4b', this); }" item-id=a0640aa72fac3d1bc628d04105df53befc601d4b class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>

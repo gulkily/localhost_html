@@ -1,0 +1,13 @@
+>>373923e8aa03cbf6a42f707afd48607c16a79908
+
+js/debug 0
+ee3a0feff54583b3de98be5025ff632080e22b76
+
+=================
+Rejoice always
+Pray without ceasing
+Give thanks in all circumstances
+=================
+pollyanna b044379e
+=================
+echo 0 > config/setting/admin/js/debug

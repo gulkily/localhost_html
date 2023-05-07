@@ -1,62 +1,10 @@
-
-<!-- debug_button.template -->
-
-<span
-	id=jsdebug
-	class=dialog
-	style="border: 3pt; padding: 3pt; float:right;"
->
-
-<button
-	href=#
-	onclick="
-		window.dbgoff = !window.dbgoff;
-		this.innerHTML = 'js-debug: ' + (!window.dbgoff);
-		return false;
-	"
-	title="toggle javascript debug output and breakpoints"
->js-debug: true</button>
-
-<button
-	href=#
-	onclick="
-		window.eventLoopEnabled = !window.eventLoopEnabled;
-		if (window.EventLoop && window.eventLoopEnabled) {
-			EventLoop();
-		} else {
-			if (window.timeoutEventLoop) {
-				clearTimeout(window.timeoutEventLoop);
-			}
-		}
-		this.innerHTML = 'event-loop: ' + (!!window.eventLoopEnabled);
-		return false;
-	"
-	title="toggle event loop"
->event-loop: true</button>
-
-<button
-	href=#
-	onclick="
-		var freshReload = GetPrefs('fresh_reload') ? 0 : 1; /* TOGGLE */
-		SetPrefs('fresh_reload', freshReload);
-		this.innerHTML = 'auto-reload: ' + (!!freshReload);
-		return false;
-	"
-	title="toggle auto reloading"
->auto-reload: true</button>
-
-<noscript>*</noscript>
-
-</span>
-
-<!-- / debug_button.template -->
 <html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml"></link>
-<title>i'm not going to bullshit you... i have no money to offer by Guest</title>
+<title>373923e8aa03cbf6a42f707afd48607c16a79908 by Guest</title>
 <style type="text/css">
 <!--
 /* begin css/default.css */
@@ -172,33 +120,6 @@ input[type=button], button, input[type=submit] {
 	background-color: #fff0ef
 }
 /* end css/default.css */
-
-/* dragging.css */
-
-/* should be called inline-block.css ? */
-
-/* makes some dialogs horizontal */
-table.dialog { /* inline-table table-block */
-	display: inline-block;
-	vertical-align: top;
-}
-form {
-	display: inline;
-}
-
-/*
-#topmenu.dialog {
-	position: fixed !important;
-	top: 0;
-	right: 0;
-}
-*/
-
-/* / dragging.css */
-
-.dialog .txt {
-	max-width: 30em;
-}
 
 /* inbox_top.css */
 
@@ -339,26 +260,26 @@ pre time {
 
 function addLoadingIndicator (strMessage) { // adds loading indicator bar (to top of page, depending on style)
 // function ShowLoadingIndicator ()
-	if(!window.dbgoff)console.log(' addLoadingIndicator(' + strMessage + ')');
+	//alert('DEBUG: addLoadingIndicator(' + strMessage + ')');
 	if (!strMessage) {
-		if(!window.dbgoff)console.log(' strMessage = ' + strMessage);
+		//alert('DEBUG: strMessage = ' + strMessage);
 		strMessage = 'Meditate...';
 	}
-	if(!window.dbgoff)console.log(' addLoadingIndicator: strMessage = ' + strMessage);
+	//alert('DEBUG: addLoadingIndicator: strMessage = ' + strMessage);
 
 	if (!document.createElement) {
-		if(!window.dbgoff)console.log(' addLoadingIndicator: warning: no document.createElement');
+		//alert('DEBUG: addLoadingIndicator: warning: no document.createElement');
 		return '';
 		// #todo improve compatibility here
 	}
 
 	if (window.loadingIndicator) {
-	    if(!window.dbgoff)console.log(' addLoadingIndicator: warning: loading indicator already exists');
+	    //alert('DEBUG: addLoadingIndicator: warning: loading indicator already exists');
 	    return '';
 	}
 	window.loadingIndicator = 1;
 
-	if(!window.dbgoff)console.log(' addLoadingIndicator: sanity checks passed!');
+	//alert('DEBUG: addLoadingIndicator: sanity checks passed!');
 	var spanLoadingIndicator = document.createElement('span');
 	if (spanLoadingIndicator) {
 		spanLoadingIndicator.setAttribute('id', 'loadingIndicator');
@@ -381,10 +302,10 @@ function GetMeditateMessage() {
 
 function ShowPreNavigateNotification () { // displays 'Meditate...' message
 	// OnUnload ()
-	if(!window.dbgoff)console.log(' ShowPreNavigateNotification() begin');
+	//alert('DEBUG: ShowPreNavigateNotification() begin');
 
 	if (window.blockPreNavigateNotification) {
-		if(!window.dbgoff)console.log(' ShowPreNavigateNotification() blocked by window.blockPreNavigateNotification');
+		//alert('DEBUG: ShowPreNavigateNotification() blocked by window.blockPreNavigateNotification');
 		window.blockPreNavigateNotification = 0;
 		return '';
 	}
@@ -419,13 +340,13 @@ function ShowPreNavigateNotification () { // displays 'Meditate...' message
 } // ShowPreNavigateNotification()
 
 if (document.createElement) {
-	if(!window.dbgoff)console.log(' loading_begin.js: createElement feature check PASSED!');
+	//alert('DEBUG: loading_begin.js: createElement feature check PASSED!');
 	var d = new Date();
 	var loadingIndicatorStart = d.getTime() * 1;
 
 	addLoadingIndicator('Meditate...');
 } else {
-	if(!window.dbgoff)console.log(' loading_begin.js: createElement feature check FAILED!');
+	//alert('DEBUG: loading_begin.js: createElement feature check FAILED!');
 }
 // end loading_begin.js
 
@@ -435,31 +356,31 @@ if (document.createElement) {
 
 <b>
 <!-- template/topmenu2.template -->
-<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialog) { return SetActiveDialog(this); }" cellspacing=0 cellpadding=3 border=0 bgcolor="#fff0ef" class=dialog id=topmenu>
+<table cellspacing=0 cellpadding=3 border=0 bgcolor="#fff0ef" class=dialog id=topmenu>
 	<tr bgcolor="#fff0ef" class=topmenubar>
 		<td colspan=2>
 			<big>
 				<big>
 <!-- menuitem.template -->
-<a  onclick="if ((!window.GetPrefs || GetPrefs('draggable_spawn'))) { return FetchDialog('write'); }" accesskey=w href="/write.html"><u>W</u>rite</a>
+<a accesskey=w href="/write.html"><u>W</u>rite</a>
 <!-- / menuitem.template -->
 ;
 
 
 <!-- menuitem.template -->
-<a  onclick="if ((!window.GetPrefs || GetPrefs('draggable_spawn'))) { return FetchDialog('chain'); }" accesskey=c href="/chain.html"><u>C</u>hain</a>
+<a accesskey=c href="/chain.html"><u>C</u>hain</a>
 <!-- / menuitem.template -->
 ;
 
 
 <!-- menuitem.template -->
-<a  onclick="if ((!window.GetPrefs || GetPrefs('draggable_spawn'))) { return FetchDialog('active'); }" accesskey=a href="/active.html"><u>A</u>ctive</a>
+<a accesskey=a href="/active.html"><u>A</u>ctive</a>
 <!-- / menuitem.template -->
 ;
 
 
 <!-- menuitem.template -->
-<a  onclick="if ((!window.GetPrefs || GetPrefs('draggable_spawn'))) { return FetchDialog('profile'); }" accesskey=p href="/profile.html"><u>P</u>rofile</a>
+<a accesskey=p href="/profile.html"><u>P</u>rofile</a>
 <!-- / menuitem.template -->
 </big>
 				<span class=advanced></span>
@@ -531,67 +452,6 @@ if (document.createElement) {
 </span>
 
 <!-- / layer_controls.template -->
-
-<!-- dialog_controls.template 'Interface Controls' -->
-
-<span class=advanced>
-	<a id=btnCascade href=# onclick="
-		if (window.DraggingCascade) {
-			SetPrefs('draggable', 1);
-			DraggingInit(0);
-			DraggingMakeFit(0);
-			DraggingCascade();
-			DraggingInit(0);
-		}
-	" title=Cascade>Cascade</a>;
-
-	<a id=btnArrange href=# onclick="
-		if (window.DraggingRetile) {
-			SetPrefs('draggable', 1);
-			DraggingInit(0);
-			DraggingMakeFit(0);
-			DraggingRetile();
-			DraggingInit(0);
-		}
-	" title=Arrange>Arrange</a>;
-</span>
-
-<a id=btnAnnoy href=# onclick="
-	if (window.DraggingRetile) {
-		SetPrefs('draggable', 1);
-		SetPrefs('draggable_activate', 1);
-		SetPrefs('draggable_spawn', 1);
-		SetPrefs('draggable_spawn_focus', 1);
-		SetPrefs('draggable', 1);
-		SetPrefs('draggable_restore', 1);
-		SetPrefs('draggable_restore_collapsed', 1);
-		SetActiveDialog(GetParentDialog(this));
-		DraggingInit(0);
-		DraggingMakeFit(0);
-		DraggingInit(0);
-	}
-" title=Annoy>Annoy</a>;
-
-<a id=btnDraggingReset href=# onclick="
-	if (window.DraggingReset && window.SetPrefs) {
-		SetPrefs('beginner', 1);
-		SetPrefs('show_advanced', 0);
-		SetPrefs('show_admin', 0);
-		SetPrefs('draggable_activate', 0);
-		SetPrefs('draggable_spawn', 0);
-		SetPrefs('draggable_spawn_focus', 0);
-		SetPrefs('draggable', 0);
-		SetPrefs('draggable_restore', 0);
-		SetPrefs('draggable_scale', 0);
-		SetPrefs('draggable_restore_collapsed', 0);
-		DraggingReset();
-		//window.location = '/help.html'; #option
-		window.location.reload(false);
-	}
-" title="Reset">Reset</a>
-
-<!-- #todo redo this whole template -->
-<!-- / dialog_controls.template -->
 </span>
 			</small>
 		</td>
@@ -604,12 +464,12 @@ if (document.createElement) {
 
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=e8cf2e35 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=373923e8 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#fff0ef" class=titlebar>
 	<td>
-		<font color="#403000"><b>i'm not going to bullshit you... i have no money to offer</b></font> <a href=#e8cf2e35>#</a><a name=e8cf2e35></a><br>
+		<font color="#403000"><b>Untitled</b></font> <a href=#373923e8>#</a><a name=373923e8></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -623,7 +483,7 @@ if (document.createElement) {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/like'); }" href="/tag/like.html"><font color="#403000">#</font>like</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/hike_set.html"><font color="#403000">#</font>hike_set</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -632,7 +492,7 @@ if (document.createElement) {
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">i'm not going to bullshit you... i have no money to offer<span class=admin><br>
+<p class="txt">&gt;&gt;<a href="/97/ed/97ed0107.html">97ed0107..</a><br><br>[hike set]<span class=admin><br>
 -- <br>
 <br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
 <!-- / item/item.template -->
@@ -644,29 +504,29 @@ if (document.createElement) {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/e8/cf/e8cf2e35.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683441809 title="02:43:29">02:43</time><!-- / timestamp_time.template --></a>;
+<a href="/37/39/373923e8.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443069 title="03:04:29">03:04</time><!-- / timestamp_time.template --></a>;
 <a class=avatar href="/author/87D6DDF22BD62334/index.html"><!-- avatar-username.template --><span class=avatar><span class=username><font color="#403000>"
 			<b><i>Guest</i></b></font></span></span><!-- / avatar-username.template --></a>;
 <span class=advanced>
-	<span class=fileHashShort>e8cf2e35</span>;
+	<span class=fileHashShort>373923e8</span>;
 </span>
 <!-- vote_button.template -->
 <a onclick="if (window.SignVote) {
 							var gt = unescape('%3E');
-							return SignVote(this, gt+gt+'e8cf2e353f3b530b0eef50090aa13cd91ecebaa2\n#like');
+							return SignVote(this, gt+gt+'373923e8aa03cbf6a42f707afd48607c16a79908\n#like');
 						}" 
-	href="/post.html?comment=%23like&replyto=e8cf2e353f3b530b0eef50090aa13cd91ecebaa2"
-	class="tag-like">like(1)</a>;
+	href="/post.html?comment=%23like&replyto=373923e8aa03cbf6a42f707afd48607c16a79908"
+	class="tag-like">like</a>;
 <!-- / vote_button.template --><!-- vote_button.template -->
 <a onclick="if (window.SignVote) {
 							var gt = unescape('%3E');
-							return SignVote(this, gt+gt+'e8cf2e353f3b530b0eef50090aa13cd91ecebaa2\n#flag');
+							return SignVote(this, gt+gt+'373923e8aa03cbf6a42f707afd48607c16a79908\n#flag');
 						}" 
-	href="/post.html?comment=%23flag&replyto=e8cf2e353f3b530b0eef50090aa13cd91ecebaa2"
+	href="/post.html?comment=%23flag&replyto=373923e8aa03cbf6a42f707afd48607c16a79908"
 	class="tag-flag">flag</a>
 <!-- / vote_button.template -->
 <!-- status_bar.template -->
-; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('e8cf2e353f3b530b0eef50090aa13cd91ecebaa2', this); }" item-id=e8cf2e353f3b530b0eef50090aa13cd91ecebaa2 class=replyCartButton href=#>+cart</a></span>
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('373923e8aa03cbf6a42f707afd48607c16a79908', this); }" item-id=373923e8aa03cbf6a42f707afd48607c16a79908 class=replyCartButton href=#>+cart</a></span>
 	</td>
 </tr>
 <!-- / window/status.template -->
@@ -677,7 +537,7 @@ if (document.createElement) {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=Comment cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=Comment cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#fff0ef" class=titlebar>
@@ -714,7 +574,7 @@ if (document.createElement) {
 			<label for=replyto>In reply to:</label>
 			<br>
 		</span>
-		<input type=text name=replyto id=replyto value="e8cf2e353f3b530b0eef50090aa13cd91ecebaa2" size=45>
+		<input type=text name=replyto id=replyto value="373923e8aa03cbf6a42f707afd48607c16a79908" size=45>
 		<span class=beginner>
 			<br>
 			Clear this field to post a new thread.
@@ -731,89 +591,12 @@ if (document.createElement) {
 <br>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=da3b0cd3 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
-		
-
-		
-
-		
-<!-- header_wrapper.template -->
-<tr class=heading>
-	
-<!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hashtag'); }" href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
-<!-- / header_column.template -->
-
-</tr>
-<!-- / header_wrapper.template -->
-
-
-		<tbody class=content><tr class=content><td>
-<!-- item/item.template -->
-<p class="txt">&gt;&gt;<a  onclick="
-					if (
-						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
-						(window.FetchDialogFromUrl) &&
-						document.getElementById
-					) {
-						if (document.getElementById('e8cf2e35')) {
-							SetActiveDialog(document.getElementById('e8cf2e35'));
-							return false;
-						} else {
-							return FetchDialogFromUrl('/dialog/e8/cf/e8cf2e35.html');
-						}
-					}
-				" href="/e8/cf/e8cf2e35.html">i'm not going to</a><br><br>#like<span class=admin><br>
--- <br>
-<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
-<!-- / item/item.template -->
-</td></tr></tbody>
-
-		
-<!-- window/status.template -->
-<tr class=statusbar>
-	<td>
-		
-<!-- status_bar.template -->
-<a href="/da/3b/da3b0cd3.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683442944 title="03:02:24">03:02</time><!-- / timestamp_time.template --></a>;
-<a class=avatar href="/author/87D6DDF22BD62334/index.html"><!-- avatar-username.template --><span class=avatar><span class=username><font color="#403000>"
-			<b><i>Guest</i></b></font></span></span><!-- / avatar-username.template --></a>;
-<span class=advanced>
-	<span class=fileHashShort>da3b0cd3</span>;
-</span>
-<!-- vote_button.template -->
-<a onclick="if (window.SignVote) {
-							var gt = unescape('%3E');
-							return SignVote(this, gt+gt+'da3b0cd3f242ef6dc9c6dd141fda04eff0437156\n#like');
-						}" 
-	href="/post.html?comment=%23like&replyto=da3b0cd3f242ef6dc9c6dd141fda04eff0437156"
-	class="tag-like">like</a>;
-<!-- / vote_button.template --><!-- vote_button.template -->
-<a onclick="if (window.SignVote) {
-							var gt = unescape('%3E');
-							return SignVote(this, gt+gt+'da3b0cd3f242ef6dc9c6dd141fda04eff0437156\n#flag');
-						}" 
-	href="/post.html?comment=%23flag&replyto=da3b0cd3f242ef6dc9c6dd141fda04eff0437156"
-	class="tag-flag">flag</a>
-<!-- / vote_button.template -->
-<!-- status_bar.template -->
-; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('da3b0cd3f242ef6dc9c6dd141fda04eff0437156', this); }" item-id=da3b0cd3f242ef6dc9c6dd141fda04eff0437156 class=replyCartButton href=#>+cart</a></span>
-	</td>
-</tr>
-<!-- / window/status.template -->
-
-	</table>
-</font>
-<!-- / default/template/html/window/standard.template -->
-<replies></replies>
-<!-- default/template/html/window/standard.template -->
-<font face=arial>
-	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=f70a1b18 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=3aa47d66 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#fff0ef" class=titlebar>
 	<td>
-		<font color="#403000"><b>but here is what i can honestly say</b></font> <a href=#f70a1b18>#</a><a name=f70a1b18></a><br>
+		<font color="#403000"><b>js/debug 0</b></font> <a href=#3aa47d66>#</a><a name=3aa47d66></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -823,35 +606,10 @@ if (document.createElement) {
 		
 
 		
-<!-- header_wrapper.template -->
-<tr class=heading>
-	
-<!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
-<!-- / header_column.template -->
-
-</tr>
-<!-- / header_wrapper.template -->
-
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">&gt;&gt;<a  onclick="
-					if (
-						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
-						(window.FetchDialogFromUrl) &&
-						document.getElementById
-					) {
-						if (document.getElementById('e8cf2e35')) {
-							SetActiveDialog(document.getElementById('e8cf2e35'));
-							return false;
-						} else {
-							return FetchDialogFromUrl('/dialog/e8/cf/e8cf2e35.html');
-						}
-					}
-				" href="/e8/cf/e8cf2e35.html">i'm not going to</a><br><br>but here is what i can honestly say<span class=admin><br>
--- <br>
-<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<p class="txt">&gt;&gt;<a href="/37/39/373923e8.html">373923e8..</a><br><br>js/debug 0<br><a href="/ee/3a/ee3a0fef.html">ee3a0fef..</a><br><br>=================<br>Rejoice always<br>Pray without ceasing<br>Give thanks in all circumstances<br>=================<br>pollyanna b044379e<br>=================<br>echo 0 &gt; config/setting/admin/js/debug<br><br></p>
 <!-- / item/item.template -->
 </td></tr></tbody>
 
@@ -861,29 +619,28 @@ if (document.createElement) {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/f7/0a/f70a1b18.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683441823 title="02:43:43">02:43</time><!-- / timestamp_time.template --></a>;
-<a class=avatar href="/author/87D6DDF22BD62334/index.html"><!-- avatar-username.template --><span class=avatar><span class=username><font color="#403000>"
-			<b><i>Guest</i></b></font></span></span><!-- / avatar-username.template --></a>;
+<a href="/3a/a4/3aa47d66.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443069 title="03:04:29">03:04</time><!-- / timestamp_time.template --></a>;
+
 <span class=advanced>
-	<span class=fileHashShort>f70a1b18</span>;
+	<span class=fileHashShort>3aa47d66</span>;
 </span>
 <!-- vote_button.template -->
 <a onclick="if (window.SignVote) {
 							var gt = unescape('%3E');
-							return SignVote(this, gt+gt+'f70a1b18466186db2bd89545930fb383fdd46b8e\n#like');
+							return SignVote(this, gt+gt+'3aa47d66795abd4404e6ff6c08ce4c0d295f73ea\n#like');
 						}" 
-	href="/post.html?comment=%23like&replyto=f70a1b18466186db2bd89545930fb383fdd46b8e"
+	href="/post.html?comment=%23like&replyto=3aa47d66795abd4404e6ff6c08ce4c0d295f73ea"
 	class="tag-like">like</a>;
 <!-- / vote_button.template --><!-- vote_button.template -->
 <a onclick="if (window.SignVote) {
 							var gt = unescape('%3E');
-							return SignVote(this, gt+gt+'f70a1b18466186db2bd89545930fb383fdd46b8e\n#flag');
+							return SignVote(this, gt+gt+'3aa47d66795abd4404e6ff6c08ce4c0d295f73ea\n#flag');
 						}" 
-	href="/post.html?comment=%23flag&replyto=f70a1b18466186db2bd89545930fb383fdd46b8e"
+	href="/post.html?comment=%23flag&replyto=3aa47d66795abd4404e6ff6c08ce4c0d295f73ea"
 	class="tag-flag">flag</a>
 <!-- / vote_button.template -->
 <!-- status_bar.template -->
-; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('f70a1b18466186db2bd89545930fb383fdd46b8e', this); }" item-id=f70a1b18466186db2bd89545930fb383fdd46b8e class=replyCartButton href=#>+cart</a></span>
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('3aa47d66795abd4404e6ff6c08ce4c0d295f73ea', this); }" item-id=3aa47d66795abd4404e6ff6c08ce4c0d295f73ea class=replyCartButton href=#>+cart</a></span>
 	</td>
 </tr>
 <!-- / window/status.template -->
@@ -894,7 +651,7 @@ if (document.createElement) {
 <replies></replies><span class=advanced>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#fff0ef" class=titlebar>
@@ -928,45 +685,19 @@ if (document.createElement) {
 <td><font color=green>Yes</font></td>
 </tr>
 <tr bgcolor="#fff0ef"><td><span title="chain_hash">SHA1 (chain.log)</span>:</td>
-<td><tt>e8cf2e353f3b530b0eef50090aa13cd91ecebaa2</tt></td>
+<td><tt>373923e8aa03cbf6a42f707afd48607c16a79908</tt></td>
 </tr>
 <tr bgcolor="#fff0ef"><td><span title="chain_next">Next</span>:</td>
-<td><a  onclick="
-					if (
-						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
-						(window.FetchDialogFromUrl) &&
-						document.getElementById
-					) {
-						if (document.getElementById('f70a1b18')) {
-							SetActiveDialog(document.getElementById('f70a1b18'));
-							return false;
-						} else {
-							return FetchDialogFromUrl('/dialog/f7/0a/f70a1b18.html');
-						}
-					}
-				" href="/f7/0a/f70a1b18.html">but here is what</a></td>
+<td><a href="/3a/a4/3aa47d66.html">js/debug 0</a></td>
 </tr>
 <tr bgcolor="#fff0ef"><td><span title="chain_previous">Previous</span>:</td>
-<td><a  onclick="
-					if (
-						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
-						(window.FetchDialogFromUrl) &&
-						document.getElementById
-					) {
-						if (document.getElementById('af47f934')) {
-							SetActiveDialog(document.getElementById('af47f934'));
-							return false;
-						} else {
-							return FetchDialogFromUrl('/dialog/af/47/af47f934.html');
-						}
-					}
-				" href="/af/47/af47f934.html">add profile page</a></td>
+<td><a href="/8c/e6/8ce6fd09.html">dragging 0</a></td>
 </tr>
 <tr bgcolor="#fff0ef"><td><span title="chain_sequence">Sequence</span>:</td>
-<td>312</td>
+<td>331</td>
 </tr>
 <tr bgcolor="#fff0ef"><td><span title="chain_timestamp">Notarized</span>:</td>
-<td><!-- timestamp_time.template --><time class=timestamp datetime=1683441808.29217 title="02:43:28">02:43</time><!-- / timestamp_time.template --> <tt class=advanced> 1683441808.29217</tt></td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683443068.14956 title="03:04:28">03:04</time><!-- / timestamp_time.template --> <tt class=advanced> 1683443068.14956</tt></td>
 </tr>
 <tr bgcolor="#fff0ef"><td><span title="client_id">Client</span>:</td>
 <td>30B7B2A3817AB4E6</td>
@@ -976,19 +707,19 @@ if (document.createElement) {
 			<b><i>Guest</i></b></font></span></span><!-- / avatar-username.template --></a> <tt class=advanced> 87D6DDF22BD62334</tt></td>
 </tr>
 <tr bgcolor="#fff0ef"><td><span title="file_path">File</span>:</td>
-<td><a href="/txt/e8/cf/e8cf2e353f3b530b0eef50090aa13cd91ecebaa2.txt">/txt/e8/cf/e8cf2e353f3b530b0eef50090aa13cd91ecebaa2.txt</a></td>
+<td><a href="/txt/37/39/373923e8aa03cbf6a42f707afd48607c16a79908.txt">/txt/37/39/373923e8aa03cbf6a42f707afd48607c16a79908.txt</a></td>
+</tr>
+<tr bgcolor="#fff0ef"><td><span title="hike_set">hike_set</span>:</td>
+<td>js/debug 0</td>
 </tr>
 <tr bgcolor="#fff0ef"><td><span title="item_type">Type</span>:</td>
 <td>txt</td>
 </tr>
 <tr bgcolor="#fff0ef"><td><span title="received_timestamp">Received</span>:</td>
-<td><!-- timestamp_time.template --><time class=timestamp datetime=1683441808 title="02:43:28">02:43</time><!-- / timestamp_time.template --> <tt class=advanced> 1683441808</tt></td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683443067 title="03:04:27">03:04</time><!-- / timestamp_time.template --> <tt class=advanced> 1683443067</tt></td>
 </tr>
 <tr bgcolor="#fff0ef"><td><span title="sha1">SHA1 (Perl, Digest::SHA)</span>:</td>
-<td><tt>e8cf2e353f3b530b0eef50090aa13cd91ecebaa2</tt></td>
-</tr>
-<tr bgcolor="#fff0ef"><td><span title="title">Title</span>:</td>
-<td>i'm not going to bullshit you... i have no money to offer</td>
+<td><tt>373923e8aa03cbf6a42f707afd48607c16a79908</tt></td>
 </tr>
 </tbody>
 
@@ -1007,7 +738,7 @@ if (document.createElement) {
 </span><span class=advanced>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=indexlog cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=indexlog cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#fff0ef" class=titlebar>
@@ -1024,27 +755,37 @@ if (document.createElement) {
 		
 
 		<tbody class=content><tr class=content><td>indexing begins<br>
-file hash = e8cf2e353f3b530b0eef50090aa13cd91ecebaa2<br>
+file hash = 373923e8aa03cbf6a42f707afd48607c16a79908<br>
 ---<br>
 found token: cookie, : , 87D6DDF22BD62334<br>
 found token: client, : , 30B7B2A3817AB4E6<br>
-found token: received, : , 1683441808<br>
+found token: received, : , 1683443067<br>
+found token: parent, , 97ed0107c5d416970377255f57cbbf5668df167e<br>
 found token: footer_separator, , <br>
+found token: hike_set,  , js/debug 0<br>
 finished finding tokens<br>
-tokens found: 4<br>
+tokens found: 6<br>
 token: cookie; spacer: : ; param = 87D6DDF22BD62334<br>
 found cookie: 87D6DDF22BD62334<br>
 token: client; spacer: : ; param = 30B7B2A3817AB4E6<br>
 found client: 87D6DDF22BD62334 (overruled by signature)<br>
-token: received; spacer: : ; param = 1683441808<br>
+token: received; spacer: : ; param = 1683443067<br>
+token: parent; spacer: ; param = 97ed0107c5d416970377255f57cbbf5668df167e<br>
+found parent: 97ed0107c5d416970377255f57cbbf5668df167e<br>
 token: footer_separator; spacer: ; param = <br>
+token: hike_set; spacer:  ; param = js/debug 0<br>
 ---<br>
-item timestamp: 1683441808.29217<br>
+item timestamp: 1683443068.14956<br>
 applying: cookie<br>
 applying: client<br>
 applying: received<br>
 valid: received<br>
-token found: received</td></tr></tbody>
+token found: received<br>
+applying: parent<br>
+applying: hike_set<br>
+valid: hike_set<br>
+token found: hike_set<br>
+hike set js/debug 0</td></tr></tbody>
 
 		
 	</table>
@@ -1053,7 +794,7 @@ token found: received</td></tr></tbody>
 </span><span class=advanced>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=Cart cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=Cart cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#fff0ef" class=titlebar>
@@ -1088,36 +829,10 @@ token found: received</td></tr></tbody>
 </span></main>
 <span id=messages></span>
 <img src="/p.gif" alt="" height=1 width=1>
-
-<!-- reset_button.template -->
-<a href="/help.html?light=0&time=9999999999&ui=Beginner" onclick="
-	if (window.DraggingReset && window.SetPrefs) {
-		SetPrefs('beginner', 1);
-		SetPrefs('show_advanced', 0);
-		SetPrefs('show_admin', 0);
-		SetPrefs('draggable_activate', 0);
-		SetPrefs('draggable_spawn', 0);
-		SetPrefs('draggable_spawn_focus', 0);
-		SetPrefs('draggable', 0);
-		SetPrefs('draggable_restore', 0);
-		SetPrefs('draggable_restore_collapsed', 0);
-		DraggingReset();
-		//window.location.reload();
-
-		var winLoc = window.location.href;
-		//var winLoc = '/help.html'; #option
-		if (winLoc.indexOf('?')) {
-			winLoc = winLoc.substr(0, winLoc.indexOf('?'));
-		}
-		winLoc = winLoc + '?time=9999999999';
-		window.location = winLoc;
-		return false;
-	}
-" style="float:right; z-index: 99999;"><button>RESET</button></a>
-<!-- / reset_button.template --><br><noscript>
+<br><noscript>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=Notice cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=Notice cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#fff0ef" class=titlebar>
@@ -1140,7 +855,7 @@ token found: received</td></tr></tbody>
 </font>
 <!-- / default/template/html/window/standard.template -->
 </noscript>
-<!-- InjectJs: settings avatar voting utils profile translit write write_buttons timestamp itsyou reply_cart write_php fresh dragging table_sort -->
+<!-- InjectJs: settings avatar voting utils profile translit write write_buttons timestamp itsyou reply_cart write_php fresh table_sort -->
 
 
 <!-- html/utils/scriptinject.template -->
@@ -1162,15 +877,15 @@ function SetElementVisible (element, displayValue, bgColor, borderStyle) { // se
 // also sets background color
 // used for hiding/showing and highlighting beginner, advanced element classes on page.
 	if (element) {
-		if(!window.dbgoff)console.log(' SetElementVisible: before: ' + element.nodeName + ' : ' + element.style.display);
+		//alert('DEBUG: SetElementVisible: before: ' + element.nodeName + ' : ' + element.style.display);
 	} else {
-		if(!window.dbgoff)console.log(' SetElementVisible: before: warning: no element');
+		//alert('DEBUG: SetElementVisible: before: warning: no element');
 		return '';
 	}
 
 	var changesMade = 0;
 
-	if(!window.dbgoff)console.log(' SetElementVisible:' + element.tagName + "; displayValue:" + displayValue + "; bgColor:" + bgColor + "; borderStyle:" + borderStyle + "\n");
+	//alert('DEBUG: SetElementVisible:' + element.tagName + "; displayValue:" + displayValue + "; bgColor:" + bgColor + "; borderStyle:" + borderStyle + "\n");
 
 	if (bgColor && (element.tagName != 'SPAN')) {
 		// background color
@@ -1231,14 +946,14 @@ function SetElementVisible (element, displayValue, bgColor, borderStyle) { // se
 	}
 
 	if (element) {
-		if(!window.dbgoff)console.log(' SetElementVisible: after: ' + element.nodeName + ' : ' + element.style.display);
+		//alert('DEBUG: SetElementVisible: after: ' + element.nodeName + ' : ' + element.style.display);
 		if (changesMade) {
 			return changesMade;
 		} else {
 			return 0;
 		}
 	} else {
-		if(!window.dbgoff)console.log(' SetElementVisible: after: warning: no element');
+		//alert('DEBUG: SetElementVisible: after: warning: no element');
 		return changesMade;
 	}
 
@@ -1248,7 +963,7 @@ function SetElementVisible (element, displayValue, bgColor, borderStyle) { // se
 function ShowAll (t, container) { // t = clicked link ; container = document by default ; shows all elements, overriding settings
 // admin elements are excluded. only beginner, advanced class elements are shown
 	if (!document.getElementsByClassName) {
-		if(!window.dbgoff)console.log(' ShowAll: warning: getElementsByClassName feature check FAILED');
+		//alert('DEBUG: ShowAll: warning: getElementsByClassName feature check FAILED');
 		return false;
 	}
 
@@ -1352,7 +1067,7 @@ function ShowAdvanced (force, container) { // show or hide controls based on pre
 // 1 = does not re-do setTimeout (called this way from checkboxes)
 // 0 = previous preference values are remembered, and are not re-done (called by timer)
 
-	if(!window.dbgoff)console.log(' ShowAdvanced(' + force + ')');
+	//alert('DEBUG: ShowAdvanced(' + force + ')');
 
 	if (!container) {
 		container = document;
@@ -1363,7 +1078,7 @@ function ShowAdvanced (force, container) { // show or hide controls based on pre
 	var counterChangesMade = 0;
 
 	if (document.getElementById && window.localStorage && container.getElementsByClassName) {
-		if(!window.dbgoff)console.log(' ShowAdvanced: feature check passed!');
+		//alert('DEBUG: ShowAdvanced: feature check passed!');
 		///////////
 
 		var styleAssistShowAdvanced = document.getElementById('styleAssistShowAdvanced');
@@ -1507,15 +1222,15 @@ function ShowAdvanced (force, container) { // show or hide controls based on pre
 		//SettingsOnload();
 
 	} else {
-		if(!window.dbgoff)console.log(' ShowAdvanced: feature check FAILED!');
-		if(!window.dbgoff)console.log(' window.localStorage: ' + window.localStorage + '; document.getElementsByClassName: ' + document.getElementsByClassName);
+		//alert('DEBUG: ShowAdvanced: feature check FAILED!');
+		//alert('DEBUG: window.localStorage: ' + window.localStorage + '; document.getElementsByClassName: ' + document.getElementsByClassName);
 	}
 
 	if (counterChangesMade) {
 		LoadCheckboxValues();
 	}
 
-	if(!window.dbgoff)console.log(' ShowAdvanced: returning false');
+	//alert('DEBUG: ShowAdvanced: returning false');
 	return '';
 } // ShowAdvanced()
 
@@ -1528,11 +1243,11 @@ function GetPrefs (prefKey, storeName) { // get prefs value from localstorage
 	}
 
 	if (!prefKey) {
-		if(!window.dbgoff)console.log(' GetPrefs: warning: missing prefKey');
+		//alert('DEBUG: GetPrefs: warning: missing prefKey');
 		return '';
 	}
 
-	if(!window.dbgoff)console.log(' GetPrefs(' + prefKey + ')');
+	//alert('DEBUG: GetPrefs(' + prefKey + ')');
 	if (window.localStorage) {
 		//var nameContainer = 'settings';
 		var nameContainer = storeName;
@@ -1590,15 +1305,15 @@ function GetPrefs (prefKey, storeName) { // get prefs value from localstorage
 		return prefValue;
 	}
 
-	if(!window.dbgoff)console.log(' GetPrefs: fallthrough, returning ');
+	//alert('DEBUG: GetPrefs: fallthrough, returning ');
 	return '';
 } // GetPrefs()
 
 function SetPrefs (prefKey, prefValue, storeName) { // set prefs key prefKey to value prefValue
-	if(!window.dbgoff)console.log(' SetPrefs(' + prefKey + ', ' + prefValue + ')');
+	//alert('DEBUG: SetPrefs(' + prefKey + ', ' + prefValue + ')');
 
 	if (!prefKey || !prefKey.substr) {
-		if(!window.dbgoff)console.log(' GetPrefs: warning: missing prefKey');
+		//alert('DEBUG: GetPrefs: warning: missing prefKey');
 		return '';
 	}
 
@@ -1607,17 +1322,17 @@ function SetPrefs (prefKey, prefValue, storeName) { // set prefs key prefKey to 
 	}
 
 	if (prefKey == 'show_advanced' || prefKey == 'beginner' || prefKey == 'show_admin') { // SetPrefs()
-		if(!window.dbgoff)console.log(' SetPrefs: setting cookie to match LocalStorage');
+		//alert('DEBUG: SetPrefs: setting cookie to match LocalStorage');
 		if (window.SetCookie) {
 			SetCookie(prefKey, (prefValue ? 1 : 0));
 		} else {
-			if(!window.dbgoff)console.log(' warning: window.SetCookie missing');
+			//alert('DEBUG: warning: window.SetCookie missing');
 		}
 	}
 
 	if (prefKey == 'performance_optimization') {
 		window.performanceOptimization = prefValue;
-		if(!window.dbgoff)console.log(' SetPrefs: setting cookie to match LocalStorage');
+		//alert('DEBUG: SetPrefs: setting cookie to match LocalStorage');
 		if (prefValue != 'none') {
 			//if (window.EventLoop) {
 				// todo enable/disable eventloop?
@@ -1669,10 +1384,10 @@ function SaveCheckbox (ths, prefKey) { // saves value of checkbox, toggles affec
 //
 // this function is a bit of a mess, could use a refactor #todo
 
-	if(!window.dbgoff)console.log(' SaveCheckbox(' + ths + ',' + prefKey);
+	//alert('DEBUG: SaveCheckbox(' + ths + ',' + prefKey);
 
 	var checkboxState = (ths.checked ? 1 : 0);
-	if(!window.dbgoff)console.log(' checkboxState = ' + checkboxState);
+	//alert('DEBUG: checkboxState = ' + checkboxState);
 
 	///////////////////////////////
 	// BEFORE SAVE ACTIONS BEGIN //
@@ -1733,7 +1448,7 @@ function SaveCheckbox (ths, prefKey) { // saves value of checkbox, toggles affec
 	// AFTER SAVE ACTIONS FINISH //
 	///////////////////////////////
 
-	if(!window.dbgoff)console.log(' after SetPrefs, GetPrefs(' + prefKey + ') returns: ' + GetPrefs(prefKey));
+	//alert('DEBUG: after SetPrefs, GetPrefs(' + prefKey + ') returns: ' + GetPrefs(prefKey));
 
 	// call ShowAdvanced(1) to update ui appearance
 	// ShowAdvanced(1);
@@ -1742,7 +1457,7 @@ function SaveCheckbox (ths, prefKey) { // saves value of checkbox, toggles affec
 } // SaveCheckbox()
 
 function SetInterfaceMode (ab, thisButton) { // updates several settings to change to "ui mode" (beginner, advanced, etc.)
-	if(!window.dbgoff)console.log(' SetInterfaceMode(' + ab + ')');
+	//alert('DEBUG: SetInterfaceMode(' + ab + ')');
 
 	if (window.localStorage && window.SetPrefs) {
 		if (ab == 'beginner') {
@@ -1787,7 +1502,7 @@ function SetInterfaceMode (ab, thisButton) { // updates several settings to chan
 			if (thisButton && window.GetParentDialog) {
 				var parentDialog = GetParentDialog(thisButton);
 				if (parentDialog) {
-					if(!window.dbgoff)console.log(' SetInterfaceMode: calling DraggingInitDialog(parentDialog)');
+					//alert('DEBUG: SetInterfaceMode: calling DraggingInitDialog(parentDialog)');
 					DraggingInitDialog(parentDialog);
 				}
 			}
@@ -1802,12 +1517,12 @@ function SetInterfaceMode (ab, thisButton) { // updates several settings to chan
 		ShowAdvanced(1, 0);
 		LoadCheckboxValues();
 
-		if(!window.dbgoff)console.log(' window.SetPrefs was found, and ShowAdvanced(1) was called');
+		//alert('DEBUG: window.SetPrefs was found, and ShowAdvanced(1) was called');
 
 		return false;
 	}
 
-	if(!window.dbgoff)console.log(' returning true');
+	//alert('DEBUG: returning true');
 
 	return true;
 } // SetInterfaceMode()
@@ -1818,16 +1533,16 @@ function LoadCheckbox (c, prefKey) { // updates checkbox state to reflect settin
 // prefKey = key of preference value
 	//console.log(prefKey);
 	if (!c) {
-		if(!window.dbgoff)console.log(' LoadCheckbox: warning: c was missing');
+		//alert('DEBUG: LoadCheckbox: warning: c was missing');
 		// this happens a lot because LoadCheckboxes doesn't verify that elements exist before calling #todo
 		// #todo this should really find the checkbox automatically and have only one argument
 		//return '';
 	}
 
-	if(!window.dbgoff)console.log(' LoadCheckbox(..., ' + prefKey + ')');
+	//alert('DEBUG: LoadCheckbox(..., ' + prefKey + ')');
 
 	if (prefKey == 'timestamps_format') {
-		if(!window.dbgoff)console.log(' LoadCheckbox: timestamps_format');
+		//alert('DEBUG: LoadCheckbox: timestamps_format');
 		var checkboxState = GetPrefs(prefKey);
 
 		if (document.frmSettings && document.frmSettings.optTimestampsFormat) {
@@ -1835,7 +1550,7 @@ function LoadCheckbox (c, prefKey) { // updates checkbox state to reflect settin
 		}
 	}
 	else if (prefKey == 'performance_optimization') {
-		if(!window.dbgoff)console.log(' LoadCheckbox: performance_optimization');
+		//alert('DEBUG: LoadCheckbox: performance_optimization');
 		var checkboxState = GetPrefs(prefKey);
 
 		if (document.frmSettings && document.frmSettings.optPerformanceOptimization) {
@@ -1843,7 +1558,7 @@ function LoadCheckbox (c, prefKey) { // updates checkbox state to reflect settin
 		}
 	}
 	else {
-		if(!window.dbgoff)console.log(' LoadCheckbox: ' + prefKey);
+		//alert('DEBUG: LoadCheckbox: ' + prefKey);
 		var checkboxState = GetPrefs(prefKey);
 
 		if (c && c.checked != (checkboxState ? 1 : 0)) {
@@ -1857,7 +1572,7 @@ function LoadCheckbox (c, prefKey) { // updates checkbox state to reflect settin
 } // LoadCheckbox()
 
 function LoadCheckboxValues () {
-	if(!window.dbgoff)console.log(' LoadCheckboxValues()');
+	//alert('DEBUG: LoadCheckboxValues()');
 
 	// #todo check if being called too often?
 
@@ -1878,7 +1593,7 @@ function LoadCheckboxValues () {
 	LoadCheckbox(document.getElementById('chkSignByDefault'), 'sign_by_default');
 	LoadCheckbox(document.getElementById('chkUncheckSignWhenPasting'), 'uncheck_sign_when_pasting');
 
-	if(!window.dbgoff)console.log(' LoadCheckboxValues: about to do option groups');
+	//alert('DEBUG: LoadCheckboxValues: about to do option groups');
 
 	LoadCheckbox(document.getElementById('optTimestampsFormat'), 'timestamps_format');
 	LoadCheckbox(document.getElementById('optPerformanceOptimization'), 'performance_optimization');
@@ -1887,7 +1602,7 @@ function LoadCheckboxValues () {
 } // LoadCheckboxValues()
 
 function SettingsOnload () { // onload function for settings page
-	if(!window.dbgoff)console.log(' SettingsOnload() begin');
+	//alert('debug: SettingsOnload() begin');
 
 	if (document.getElementById) {
 	// below is code which sets the checked state of settings checkboxes
@@ -1905,7 +1620,7 @@ function SettingsOnload () { // onload function for settings page
 
 	}
 
-	if(!window.dbgoff)console.log(' SettingsOnload: returning false');
+	//alert('debug: SettingsOnload: returning false');
 	return false;
 } // SettingsOnload()
 
@@ -1923,7 +1638,7 @@ if (window.EventLoop) {
 var configJsOpenPgp = 1; // this is templated from config/setting/admin/js/openpgp
 
 function setAva () { // sets avatar widgets (and italicizes Profile link)
-	if(!window.dbgoff)console.log(' setAva() begins');
+	//alert('DEBUG: setAva() begins');
 
 	if (document.getElementById && String.fromCharCode) {
 		var myidBox = document.getElementById('myid'); // displays username (if preference is set)
@@ -1966,7 +1681,7 @@ function setAva () { // sets avatar widgets (and italicizes Profile link)
 				var configJsOpenPgp = 1; // this is templated from config/setting/admin/js/openpgp
 
 				if (configJsOpenPgp && !window.openpgp && document.head && document.getElementById && window.localStorage) {
-					if(!window.dbgoff)console.log(' setAva: loading openpgp.js');
+					//alert('DEBUG: setAva: loading openpgp.js');
 					window.openPgpJsLoadBegin = 1;
 
 					var script = document.createElement('script');
@@ -1976,7 +1691,7 @@ function setAva () { // sets avatar widgets (and italicizes Profile link)
 				}
 
 				if (!window.setAvatar && document.head && document.head.appendChild && document.getElementById && window.localStorage) {
-					if(!window.dbgoff)console.log(' setAva: loading crypto2.js');
+					//alert('DEBUG: setAva: loading crypto2.js');
 
 					var script2 = document.createElement('script');
 					script2.src = '/crypto2.js';
@@ -2018,7 +1733,7 @@ function PingUrlCallback () {
 	var xmlhttpElement = window.xmlhttpElement;
 
 	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-		if(!window.dbgoff)console.log(' PingUrlCallback() found status 200!');
+		//alert('DEBUG: PingUrlCallback() found status 200!');
 
 		if (xmlhttpElement) {
 			var elemOK = document.createElement('span');
@@ -2044,7 +1759,7 @@ function PingUrlCallback () {
 		// #todo
 		window.location = '/profile.html'; // #todo relativize
 	} else {
-		if(!window.dbgoff)console.log(' PingUrlCallback: warning: unrecognized: xmlhttp.status = ' + xmlhttp.status + '; xmlhttp.readyState = ' + xmlhttp.readyState);
+		//alert('DEBUG: PingUrlCallback: warning: unrecognized: xmlhttp.status = ' + xmlhttp.status + '; xmlhttp.readyState = ' + xmlhttp.readyState);
 	}
 }
 
@@ -2070,21 +1785,21 @@ function IncrementTagLink (t) { // increments number of votes in tag button
 
 	if (!t) {
 		// if t is missing, return true, so that click event can go through
-		if(!window.dbgoff)console.log(' IncrementTagLink: warning: t is missing');
+		//alert('DEBUG: IncrementTagLink: warning: t is missing');
 		return true;
 	}
 
 	if (t.innerHTML) {
 		// update count in vote link
-		if(!window.dbgoff)console.log(' IncrementTagLink: t.innerHTML');
+		//alert('DEBUG: IncrementTagLink: t.innerHTML');
 		var ih = t.innerHTML;
 		if (ih.indexOf('(') == -1) {
 			// there is no count yet, add a 1
-			if(!window.dbgoff)console.log(' IncrementTagLink: ( not found');
+			//alert('DEBUG: IncrementTagLink: ( not found');
 			t.innerHTML = ih + '(1)';
 		} else {
 			// there is a count already, increment it
-			if(!window.dbgoff)console.log(' IncrementTagLink: ( found');
+			//alert('DEBUG: IncrementTagLink: ( found');
 
 			var numVal = ih.substring(ih.indexOf('(') + 1, ih.indexOf(')'));
 			var newVal = parseInt(numVal) + 1;
@@ -2094,9 +1809,9 @@ function IncrementTagLink (t) { // increments number of votes in tag button
 
 		var voteValue = t.innerHTML.substring(0, t.innerHTML.indexOf('('));
 
-		if(!window.dbgoff)console.log(' IncrementTagLink: voteValue = "' + voteValue + '"');
+		//alert('DEBUG: IncrementTagLink: voteValue = "' + voteValue + '"');
 
-		if(!window.dbgoff)console.log(' IncrementTagLink: finished with t.innerHTML');
+		//alert('DEBUG: IncrementTagLink: finished with t.innerHTML');
 
 		return false;
 	} // if (t.innerHTML)
@@ -2108,7 +1823,7 @@ function SignVote (t, token) { // signs a vote from referenced vote button
 // t = reference to calling button's 'this'
 // token = full voting token, in the format (gt)(gt)fileHash\n#tag
 // where (gt) is a greater-than sign, omitted here
-	if(!window.dbgoff)console.log(' SignVote(' + t + ',' + token +')');
+	//alert('DEBUG: SignVote(' + t + ',' + token +')');
 
 	if (
 		t.nextSibling &&
@@ -2153,7 +1868,7 @@ function SignVote (t, token) { // signs a vote from referenced vote button
 					displayNotificationWithTimeout('Already voted', t);
 				}
 			} else {
-				if(!window.dbgoff)console.log(' window.displayNotificationWithTimeout() was missing');
+				//alert('DEBUG: window.displayNotificationWithTimeout() was missing');
 			}
 
 			// returning false will keep the link from navigating to non-js fallback
@@ -2167,12 +1882,12 @@ function SignVote (t, token) { // signs a vote from referenced vote button
 			var privkey = getPrivateKey();
 		}
 
-		if(!window.dbgoff)console.log(' SignVote: privkey: ' + !!privkey);
+		//alert('DEBUG: SignVote: privkey: ' + !!privkey);
 
 		window.xmlhttpElement = t;
 		
 		if (GetPrefs('show_admin') || !privkey) {
-			if(!window.dbgoff)console.log(' !privkey');
+			//alert('DEBUG: !privkey');
 			// if there is no private key, just do a basic unsigned vote;
 
 			// if user is operator, they also do this for faster voting
@@ -2182,7 +1897,7 @@ function SignVote (t, token) { // signs a vote from referenced vote button
 			}
 		} else {
 			// there is a private key
-			if(!window.dbgoff)console.log(' privkey is true');
+			//alert('DEBUG: privkey is true');
 
 			// load the private key into openpgp
 			var privKeyObj = openpgp.key.readArmored(privkey).keys[0];
@@ -2203,7 +1918,7 @@ function SignVote (t, token) { // signs a vote from referenced vote button
 		if (window.displayNotification) {
 			// displayNotification('Success!', t);
 		} else {
-			if(!window.dbgoff)console.log(' window.displayNotification() was missing');
+			//alert('DEBUG: window.displayNotification() was missing');
 		}
 
 		return false; // cancel link click-through
@@ -2213,13 +1928,13 @@ function SignVote (t, token) { // signs a vote from referenced vote button
 		//	        var postUrl = '/post.html';
 		//	    	document.images[0].src = postUrl + '?mydomain=' + myUrl;
 		//
-		//	    	if(!window.dbgoff)console.log(' t = ' + t);
+		//	    	//alert('DEBUG: t = ' + t);
 		//
 		//	    	return false;
 		//	    }
 	}
 
-	if(!window.dbgoff)console.log(' SignVote: warning: fall-through');
+	//alert('DEBUG: SignVote: warning: fall-through');
 
 	return true; // allow link click to happen
 } // SignVote()
@@ -2268,65 +1983,65 @@ function OnLoadEverything () { // checks for each onLoad function and calls it
 // body onload body.onload
 // function OnLoad {
 // typically called from body.onload
-	if(!window.dbgoff)console.log(' OnLoadEverything() begins');
+	//alert('DEBUG: OnLoadEverything() begins');
 
 	if ((window.addLoadingIndicator) && (!window.loadingIndicator)) {
-		if(!window.dbgoff)console.log(' OnLoadEverything: addLoadingIndicator()');
+		//alert('DEBUG: OnLoadEverything: addLoadingIndicator()');
 		addLoadingIndicator('Meditate...');
 	} else {
-		if(!window.dbgoff)console.log(' OnLoadEverything: (window.addLoadingIndicator) is FALSE');
+		//alert('DEBUG: OnLoadEverything: (window.addLoadingIndicator) is FALSE');
 	}
 
 	if (window.setClock) {
-		if(!window.dbgoff)console.log(' OnLoadEverything: setClock()');
+		//alert('DEBUG: OnLoadEverything: setClock()');
 		window.eventLoopSetClock = 1;
 		setClock();
 	}
 	if (window.ItsYou) {
-		if(!window.dbgoff)console.log(' OnLoadEverything: ItsYou()');
+		//alert('DEBUG: OnLoadEverything: ItsYou()');
 		ItsYou();
 	}
 	if (window.ShowTimestamps) {
-		if(!window.dbgoff)console.log(' OnLoadEverything: ShowTimestamps()');
+		//alert('DEBUG: OnLoadEverything: ShowTimestamps()');
 		window.eventLoopShowTimestamps = 1;
 		ShowTimestamps();
 	}
 	if (window.SettingsOnload) {
-		if(!window.dbgoff)console.log(' OnLoadEverything: SettingsOnload()');
+		//alert('DEBUG: OnLoadEverything: SettingsOnload()');
 		SettingsOnload();
 	}
 	if (window.ProfileOnLoad) {
-		if(!window.dbgoff)console.log(' OnLoadEverything: ProfileOnLoad()');
+		//alert('DEBUG: OnLoadEverything: ProfileOnLoad()');
 		ProfileOnLoad();
 	}
 	if (window.WriteOnload) {
-		if(!window.dbgoff)console.log(' OnLoadEverything: WriteOnload()');
+		//alert('DEBUG: OnLoadEverything: WriteOnload()');
 		WriteOnload();
 	}
 
 	if (window.ShowAdvanced) {
-		if(!window.dbgoff)console.log(' OnLoadEverything: ShowAdvanced()');
+		//alert('DEBUG: OnLoadEverything: ShowAdvanced()');
 		window.eventLoopShowAdvanced = 1;
 		ShowAdvanced(0, 0);
 	}
-	if(!window.dbgoff)console.log(' OnLoadEverything: ShowAdvanced() finished!');
+	//alert('DEBUG: OnLoadEverything: ShowAdvanced() finished!');
 
 	if (window.SearchOnload) {
-		if(!window.dbgoff)console.log(' OnLoadEverything: SearchOnload()');
+		//alert('DEBUG: OnLoadEverything: SearchOnload()');
 		SearchOnload();
 	}
 
 	if (window.DesktopOnLoad) {
-		if(!window.dbgoff)console.log(' OnLoadEverything: DesktopOnLoad()');
+		//alert('DEBUG: OnLoadEverything: DesktopOnLoad()');
 		DesktopOnLoad();
 	}
 
 	if (window.UploadAddImagePreviewElement) {
-		if(!window.dbgoff)console.log(' OnLoadEverything: UploadAddImagePreviewElement()');
+		//alert('DEBUG: OnLoadEverything: UploadAddImagePreviewElement()');
 		UploadAddImagePreviewElement();
 	}
 
-	if(!window.dbgoff)console.log(' OnLoadEverything: checking for editable field...');
+	//alert('DEBUG: OnLoadEverything: checking for editable field...');
 
 	if (window.location && document.compose && window.location.href.indexOf) {
 		if (
@@ -2344,13 +2059,13 @@ function OnLoadEverything () { // checks for each onLoad function and calls it
 			document.compose.comment &&
 			document.compose.comment.focus
 		) {
-			if(!window.dbgoff)console.log(' OnLoadEverything: document.compose.comment.focus()()');
+			//alert('DEBUG: OnLoadEverything: document.compose.comment.focus()()');
 			document.compose.comment.focus();
 		}
 	}
 
 	if (window.location.href && (window.location.href.indexOf('search') != -1) && document.search.q) {
-		if(!window.dbgoff)console.log(' OnLoadEverything: document.search.q.focus()');
+		//alert('DEBUG: OnLoadEverything: document.search.q.focus()');
 		document.search.q.focus();
 	}
 
@@ -2365,7 +2080,7 @@ function OnLoadEverything () { // checks for each onLoad function and calls it
 	}
 
 	if (window.EventLoop) {
-		if(!window.dbgoff)console.log(' OnLoadEverything: EventLoop()');
+		//alert('DEBUG: OnLoadEverything: EventLoop()');
 		if (window.CheckIfFresh) {
 			window.eventLoopFresh = 1;
 		}
@@ -2376,7 +2091,7 @@ function OnLoadEverything () { // checks for each onLoad function and calls it
 	// FetchDialog('help');
 
 	if (window.DraggingInit && GetPrefs('draggable')) {
-		if(!window.dbgoff)console.log(' OnLoadEverything: DraggingInit()');
+		//alert('DEBUG: OnLoadEverything: DraggingInit()');
 		if (window.location.href.indexOf('settings') != -1) {
 			// exclude settings page to avoid difficult situations
 			// one day, it will no longer be necessary
@@ -2397,7 +2112,7 @@ function OnLoadEverything () { // checks for each onLoad function and calls it
 	}
 
 	if (window.HideLoadingIndicator) {
-		if(!window.dbgoff)console.log(' OnLoadEverything: HideLoadingIndicator()');
+		//alert('DEBUG: OnLoadEverything: HideLoadingIndicator()');
 		HideLoadingIndicator();
 	}
 
@@ -2433,7 +2148,7 @@ function EventLoop () { // for calling things which need to happen on a regular 
 			window.rememberInnerHeight = window.innerHeight;
 		}
 		if (window.rememberInnerWidth != window.innerWidth || window.rememberInnerHeight != window.innerHeight) {
-			if(!window.dbgoff)console.log(' window.innerWidth = ' + window.innerWidth + ', window.innerHeight = ' + window.innerHeight);
+			//alert('DEBUG: window.innerWidth = ' + window.innerWidth + ', window.innerHeight = ' + window.innerHeight);
 			window.rememberInnerWidth = window.innerWidth;
 			window.rememberInnerHeight = window.innerHeight;
 			if (window.DraggingRetile) {
@@ -2480,7 +2195,7 @@ function EventLoop () { // for calling things which need to happen on a regular 
 		}
 	}
 
-	if(!window.dbgoff)console.log(' EventLoop: eventLoopBegin = ' + eventLoopBegin + ' - window.eventLoopPrevious = ' + window.eventLoopPrevious + ' = ' + (eventLoopBegin - window.eventLoopPrevious));
+	//alert('DEBUG: EventLoop: eventLoopBegin = ' + eventLoopBegin + ' - window.eventLoopPrevious = ' + window.eventLoopPrevious + ' = ' + (eventLoopBegin - window.eventLoopPrevious));
 
 	if (10*m < (eventLoopBegin - window.eventLoopPrevious)) {
 		// ACTUAL EVENT LOOP WORK BEGINS
@@ -2618,10 +2333,10 @@ function UrlExists (url) { // checks if url exists
 // #todo use async
 // #todo Q: how to do pre-xhr browsers? A: use img.src = and check the resulting image url
 
-	if(!window.dbgoff)console.log(' UrlExists(' + url + ')');
+	//alert('DEBUG: UrlExists(' + url + ')');
 
 	if (window.XMLHttpRequest) {
-		if(!window.dbgoff)console.log(' UrlExists: window.XMLHttpRequest check passed');
+		//alert('DEBUG: UrlExists: window.XMLHttpRequest check passed');
 
 		var http = new XMLHttpRequest();
 		http.open('HEAD', url, false);
@@ -2629,7 +2344,7 @@ function UrlExists (url) { // checks if url exists
 		http.send();
 		var httpStatusReturned = http.status;
 
-		if(!window.dbgoff)console.log(' UrlExists: httpStatusReturned = ' + httpStatusReturned);
+		//alert('DEBUG: UrlExists: httpStatusReturned = ' + httpStatusReturned);
 
 		return (httpStatusReturned == 200);
 	}
@@ -2723,7 +2438,7 @@ function newA (href, target, innerHTML, parent) { // makes new a element and app
 } // newA()
 
 function SetCookie (cname, cvalue, exdays) { // set cookie
-	if(!window.dbgoff)console.log(' SetCookie(' + cname + ', ' + cvalue + ', ' + exdays + ')');
+	//alert('DEBUG: SetCookie(' + cname + ', ' + cvalue + ', ' + exdays + ')');
 	var d = new Date();
 	if (!exdays) {
 		exdays = 1;
@@ -2847,7 +2562,7 @@ function elementInViewport2 (el) {
 
 function PingUrl (url, ele) { // loads arbitrary url via image or xhr
 // compatible with most js
-	if(!window.dbgoff)console.log(' PingUrl() begins');
+	//alert('DEBUG: PingUrl() begins');
 
 	// another option below
 	// var img = document.createElement('img');
@@ -2860,14 +2575,14 @@ function PingUrl (url, ele) { // loads arbitrary url via image or xhr
 
 	if (!url) {
 		// #todo more sanity here
-		if(!window.dbgoff)console.log(' PingUrl: warning: url was FALSE');
+		//alert('DEBUG: PingUrl: warning: url was FALSE');
 		return '';
 	}
 
-	if(!window.dbgoff)console.log(' PingUrl: url = ' + url);
+	//alert('DEBUG: PingUrl: url = ' + url);
 
 	if (window.XMLHttpRequest) {
-		if(!window.dbgoff)console.log(' PingUrl: window.XMLHttpRequest was true');
+		//alert('DEBUG: PingUrl: window.XMLHttpRequest was true');
 
 		var xmlhttp;
 		if (window.xmlhttp) {
@@ -2889,10 +2604,10 @@ function PingUrl (url, ele) { // loads arbitrary url via image or xhr
 
 		return false;
 	} else {
-		if(!window.dbgoff)console.log(' PingUrl: using image method, no xhr here');
+		//alert('DEBUG: PingUrl: using image method, no xhr here');
 
 		if (document.images) {
-			if(!window.dbgoff)console.log(' PingUrl: document.images was true');
+			//alert('DEBUG: PingUrl: document.images was true');
 			if (document.images.length) {
 				// use last image on page, if possible. this should be the special pixel image.
 				var img = document.images[document.images.length - 1];
@@ -2910,7 +2625,7 @@ function PingUrl (url, ele) { // loads arbitrary url via image or xhr
 				}
 			}
 		} else {
-			if(!window.dbgoff)console.log(' PingUrl: warning: document.images was FALSE');
+			//alert('DEBUG: PingUrl: warning: document.images was FALSE');
 		}
 	}
 
@@ -2964,7 +2679,7 @@ function PingUrl (url, ele) { // loads arbitrary url via image or xhr
 //
 //function ConvertSubmitsToButtonsWithAccessKey (parent) {
 //	if (!parent) {
-//		if(!window.dbgoff)console.log(' ConvertSubmitsToButtons: warning: sanity check failed');
+//		//alert('DEBUG: ConvertSubmitsToButtons: warning: sanity check failed');
 //		return '';
 //	}
 //
@@ -2991,36 +2706,36 @@ function PingUrl (url, ele) { // loads arbitrary url via image or xhr
 var configJsOpenPgp = 1; // this is templated from config/setting/admin/js/openpgp
 
 if (configJsOpenPgp && !window.openpgp && document.head && document.head.appendChild && document.getElementById && window.localStorage) {
-	if(!window.dbgoff)console.log(' loading openpgp.js');
+	//alert('DEBUG: loading openpgp.js');
 	window.openPgpJsLoadBegin = 1;
 
 	var script = document.createElement('script');
 	script.src = '/openpgp.js';
 	script.async = false; // This is required for synchronous execution
 	document.head.appendChild(script);
-	if(!window.dbgoff)console.log(' finished loading openpgp.js; window.openpgp: ' + !!window.openpgp);
+	//alert('DEBUG: finished loading openpgp.js; window.openpgp: ' + !!window.openpgp);
 } else {
-	if(!window.dbgoff)console.log(' not loading openpgp.js; window.openpgp: ' + !!window.openpgp + ' document.getElementById: ' + !!document.getElementById + ' window.localStorage: ' + !!window.localStorage + ' window.Promise: ' + !!window.Promise);
+	//alert('DEBUG: not loading openpgp.js; window.openpgp: ' + !!window.openpgp + ' document.getElementById: ' + !!document.getElementById + ' window.localStorage: ' + !!window.localStorage + ' window.Promise: ' + !!window.Promise);
 }
 
 if (!(window.MakeKey) && document.head && document.head.appendChild && document.getElementById && window.localStorage) {
-	if(!window.dbgoff)console.log(' loading crypto2.js');
+	//alert('DEBUG: loading crypto2.js');
 
 	var script2 = document.createElement('script');
 	script2.src = '/crypto2.js';
 	script2.async = false; // This is required for synchronous execution
 	document.head.appendChild(script2);
 
-	if(!window.dbgoff)console.log(' finished loading crypto2.js; window.cryptoJs: ' + !!window.cryptoJs + '; document.getPrivateKey: ' + !!document.getPrivateKey + '; window.openpgp: ' + !!window.openpgp);
+	//alert('DEBUG: finished loading crypto2.js; window.cryptoJs: ' + !!window.cryptoJs + '; document.getPrivateKey: ' + !!document.getPrivateKey + '; window.openpgp: ' + !!window.openpgp);
 } else {
-	if(!window.dbgoff)console.log(' not loading crypto2.js; ' + ' window.MakeKey = ' + window.MakeKey + '; document.getElementById = ' + document.getElementById + ' window.localStorage = ' + window.localStorage );
+	//alert('DEBUG: not loading crypto2.js; ' + ' window.MakeKey = ' + window.MakeKey + '; document.getElementById = ' + document.getElementById + ' window.localStorage = ' + window.localStorage );
 }
 
 function btnSignOut_Click (t) { // event for 'Sign Out' button's click
-	if(!window.dbgoff)console.log(' btnSignOut_Click() begin');
+	//alert('DEBUG: btnSignOut_Click() begin');
 
 	if (window.localStorage) {
-		if(!window.dbgoff)console.log(' btnSignOut_Click: localStorage is true');
+		//alert('DEBUG: btnSignOut_Click: localStorage is true');
 
 		var ls = window.localStorage;
 		ls.removeItem('privatekey');
@@ -3048,20 +2763,20 @@ function btnSignOut_Click (t) { // event for 'Sign Out' button's click
 		form.setAttribute("method", "get");
 		//form.setAttribute("target", "ifrSharePubKey");
 
-		if(!window.dbgoff)console.log(' sharePubKey: creating input');
+		//alert('DEBUG: sharePubKey: creating input');
 
 		var txtComment = document.createElement('input');
 		txtComment.setAttribute("type", "hidden");
 		txtComment.setAttribute("value", 'exiting... ' + GetTime());
 		txtComment.setAttribute("name", "comment");
 
-		if(!window.dbgoff)console.log(' sharePubKey: adding txtComment to form');
+		//alert('DEBUG: sharePubKey: adding txtComment to form');
 
 		form.appendChild(txtComment);
-		if(!window.dbgoff)console.log(' sharePubKey: adding form to body');
+		//alert('DEBUG: sharePubKey: adding form to body');
 		//document.getElementsByTagName('body')[0].appendChild(form);
 		document.body.appendChild(form);
-		if(!window.dbgoff)console.log(' submitting form');
+		//alert('DEBUG: submitting form');
 		signMessage();
 		//form.submit();
 	}
@@ -3071,7 +2786,7 @@ function btnSignOut_Click (t) { // event for 'Sign Out' button's click
 
 function btnRegister_Click (t) { // event for 'Register' button's click
 // t is clicked button's "this" object
-	if(!window.dbgoff)console.log(' btnRegister_Click() begin');
+	//alert('DEBUG: btnRegister_Click() begin');
 	if (t) {
 		if (t.value) {
 			t.value = 'Meditate...';
@@ -3080,17 +2795,17 @@ function btnRegister_Click (t) { // event for 'Register' button's click
 
 	//if (window.localStorage && window.Promise) { // this extra check is disabled for some reason, I think IE?
 	if (window.localStorage && document.getElementById) {
-		if(!window.dbgoff)console.log(' btnRegister_Click: localStorage and Promise feature check pass');
+		//alert('DEBUG: btnRegister_Click: localStorage and Promise feature check pass');
 		if (window.MakeKey) {
-			if(!window.dbgoff)console.log(' btnRegister_Click: window.MakeKey exists, calling MakeKey()');
+			//alert('DEBUG: btnRegister_Click: window.MakeKey exists, calling MakeKey()');
 
 			var chkEnablePGP = document.getElementById('chkEnablePGP');
 			if (chkEnablePGP && chkEnablePGP.checked) {
-				if(!window.dbgoff)console.log(' chkEnablePGP is present and checked');
+				//alert('DEBUG: chkEnablePGP is present and checked');
 				var intKeyGenResult = MakeKey(t);
-				if(!window.dbgoff)console.log(' btnRegister_Click: intKeyGenResult = ' + intKeyGenResult);
+				//alert('DEBUG: btnRegister_Click: intKeyGenResult = ' + intKeyGenResult);
 				SetPrefs('latest_pubkey_ping', 1);
-				if(!window.dbgoff)console.log(' returning intKeyGenResult = ' + intKeyGenResult);
+				//alert('DEBUG: returning intKeyGenResult = ' + intKeyGenResult);
 				myFingerprint = window.localStorage.getItem('fingerprint');
 				if (myFingerprint) {
 					//window.location = '/profile.html?' + myFingerprint;
@@ -3114,7 +2829,7 @@ function btnRegister_Click (t) { // event for 'Register' button's click
 } // btnRegister_Click()
 
 function getUserFp () { // retrieve stored user fingerprint from LocalStorage
-	if(!window.dbgoff)console.log(' getUserFp() begin');
+	//alert('DEBUG: getUserFp() begin');
 
 	if (window.localStorage) {
 		// LocalStorage mode
@@ -3138,12 +2853,12 @@ function getUserFp () { // retrieve stored user fingerprint from LocalStorage
 function sharePubKey (t) { // shares current user's public key via injected form and iframe
 	// t is the clicked link's "this", which is used to display a notification next to it
 
-	if(!window.dbgoff)console.log(' profile.js: sharePubKey() begins');
+	//alert('DEBUG: profile.js: sharePubKey() begins');
 
 	if (window.getPublicKey) {
 		var pubKey = getPublicKey();
 
-		if(!window.dbgoff)console.log(' sharePubKey: pubKey = ' + (pubKey ? pubKey : '(false)'));
+		//alert('DEBUG: sharePubKey: pubKey = ' + (pubKey ? pubKey : '(false)'));
 
 		if (pubKey) {
 			if (window.displayNotification) {
@@ -3159,31 +2874,31 @@ function sharePubKey (t) { // shares current user's public key via injected form
 
 			if (0) {
 
-				if(!window.dbgoff)console.log(' sharePubKey: creating form');
+				//alert('DEBUG: sharePubKey: creating form');
 
 				var form = document.createElement('form');
 				form.setAttribute("action", "/post.html");
 				form.setAttribute("method", "GET");
 				//form.setAttribute("target", "ifrSharePubKey");
 
-				if(!window.dbgoff)console.log(' sharePubKey: creating input');
+				//alert('DEBUG: sharePubKey: creating input');
 
 				var txtComment = document.createElement('input');
 				txtComment.setAttribute("type", "hidden");
 				txtComment.setAttribute("value", pubKey);
 				txtComment.setAttribute("name", "comment");
 
-				if(!window.dbgoff)console.log(' sharePubKey: adding txtComment to form');
+				//alert('DEBUG: sharePubKey: adding txtComment to form');
 
 				form.appendChild(txtComment);
 
-				if(!window.dbgoff)console.log(' sharePubKey: adding form to body');
+				//alert('DEBUG: sharePubKey: adding form to body');
 
 				//document.getElementsByTagName('body')[0].appendChild(form);
 
 				document.body.appendChild(form);
 
-				if(!window.dbgoff)console.log(' submitting form');
+				//alert('DEBUG: submitting form');
 
 				form.submit();
 
@@ -3195,7 +2910,7 @@ function sharePubKey (t) { // shares current user's public key via injected form
 				PingUrl(postPubKeyUrl);
 			}
 		} else {
-			if(!window.dbgoff)console.log(' sharePubKey: pubKey was FALSE');
+			//alert('DEBUG: sharePubKey: pubKey was FALSE');
 
 			return true;
 		}
@@ -3218,17 +2933,17 @@ function AddPrivateKeyLinks () { // adds save/load links to profile page if feat
 // #todo make it so that this can be called repeatedly and hide/show appropriate links
 // this will allow to avoid having to reload profile page on status change
 
-	if(!window.dbgoff)console.log(' AddPrivateKeyLinks() begin');
+	//alert('DEBUG: AddPrivateKeyLinks() begin');
 	if (document.getElementById && window.getPrivateKey) {
-		if(!window.dbgoff)console.log(' AddPrivateKeyLinks: document.getElementById && window.getPrivateKey');
+		//alert('DEBUG: AddPrivateKeyLinks: document.getElementById && window.getPrivateKey');
 		var privateKey = getPrivateKey();
 		var fieldset = document.getElementById('fldRegistration');
 
 		if (fieldset && document.createElement) {
-			if(!window.dbgoff)console.log(' AddPrivateKeyLinks: fieldset && document.createElement');
+			//alert('DEBUG: AddPrivateKeyLinks: fieldset && document.createElement');
 
 			if (privateKey) {
-				if(!window.dbgoff)console.log(' AddPrivateKeyLinks: privateKey: true');
+				//alert('DEBUG: AddPrivateKeyLinks: privateKey: true');
 
 
 				// [go to profile]
@@ -3306,11 +3021,11 @@ function AddPrivateKeyLinks () { // adds save/load links to profile page if feat
 				}
 			} // privateKey is true
 			else {
-				if(!window.dbgoff)console.log(' AddPrivateKeyLinks: privateKey: false');
+				//alert('DEBUG: AddPrivateKeyLinks: privateKey: false');
 
 				var pLoadKeyFromTxt = document.createElement('p');
 
-				if(!window.dbgoff)console.log(' AddPrivateKeyLinks: creating file input...');
+				//alert('DEBUG: AddPrivateKeyLinks: creating file input...');
 
 			} // privateKey is FALSE
 
@@ -3319,29 +3034,29 @@ function AddPrivateKeyLinks () { // adds save/load links to profile page if feat
 			}
 		} // if (fieldset && document.createElement)
 		else {
-			if(!window.dbgoff)console.log(' AddPrivateKeyLinks: checks FAILED (fieldset && document.createElement)');
+			//alert('DEBUG: AddPrivateKeyLinks: checks FAILED (fieldset && document.createElement)');
 		}
 	} else {
-		if(!window.dbgoff)console.log(' AddPrivateKeyLinks: checks FAILED (document.getElementById && window.getPrivateKey)');
+		//alert('DEBUG: AddPrivateKeyLinks: checks FAILED (document.getElementById && window.getPrivateKey)');
 	}
 
 	return true;
 } // AddPrivateKeyLinks()
 
 function ShowPrivateKey () { // displays private key in textarea
-	if(!window.dbgoff)console.log(' ShowPrivateKey() begin');
+	//alert('DEBUG: ShowPrivateKey() begin');
 	if (document.getElementById) {
-		if(!window.dbgoff)console.log(' ShowPrivateKey: document.getElementById is true');
+		//alert('DEBUG: ShowPrivateKey: document.getElementById is true');
 
 		var txtPrivateKey = document.getElementById('txtPrivateKey');
 		if (txtPrivateKey) {
-			if(!window.dbgoff)console.log(' ShowPrivateKey: txtPrivateKey is true');
+			//alert('DEBUG: ShowPrivateKey: txtPrivateKey is true');
 
 			if (txtPrivateKey.style.display == 'none') {
-				if(!window.dbgoff)console.log(' style is none, set to block');
+				//alert('DEBUG: style is none, set to block');
 				txtPrivateKey.style.display = 'block';
 			} else {
-				if(!window.dbgoff)console.log(' style is block, set to none');
+				//alert('DEBUG: style is block, set to none');
 				txtPrivateKey.style.display = 'none';
 			}
 
@@ -3389,7 +3104,7 @@ function ShowPrivateKey () { // displays private key in textarea
 } // ShowPrivateKey()
 
 function openFile (event) {
-	if(!window.dbgoff)console.log(' openFile() begin');
+	//alert('DEBUG: openFile() begin');
 
 	var input = event.target;
 
@@ -3466,37 +3181,37 @@ function SavePrivateKeyAsTxt () { // initiates "download" of private key as text
 //if (document.cookie) {
 if (window.GetCookie) {
 	if (GetCookie('cookie')) {
-		if(!window.dbgoff)console.log(' cookie=' + document.cookie);
+		//alert('DEBUG: cookie=' + document.cookie);
 	} else {
-		if(!window.dbgoff)console.log(' document.cookie missing');
+		//alert('DEBUG: document.cookie missing');
 		if (window.localStorage) {
-			if(!window.dbgoff)console.log(' window.localStorage exists');
+			//alert('DEBUG: window.localStorage exists');
 			var fp = localStorage.getItem('fingerprint');
 			if (fp) {
-				if(!window.dbgoff)console.log(' fp exists, setting cookie via js');
+				//alert('DEBUG: fp exists, setting cookie via js');
 				document.cookie = 'test=' + fp;
 			}
 		}
 	}
 } else {
-	if(!window.dbgoff)console.log(' profile.js: warning: GetCookie() is missing');
+	//alert('DEBUG: profile.js: warning: GetCookie() is missing');
 }
 
 function PubkeyCheckProfileExists (fp) { // check if profile exists on server
-	if(!window.dbgoff)console.log(' PubkeyCheckProfileExists() begin');
+	//alert('DEBUG: PubkeyCheckProfileExists() begin');
 
-	if(!window.dbgoff)console.log(' PubkeyCheckProfileExists: fp = ' + fp);
+	//alert('DEBUG: PubkeyCheckProfileExists: fp = ' + fp);
 
 	//var profileUrl = '/author/' + fp + '/';
 	var profileUrl = '/author/' + fp + '.zip';
 
-	if(!window.dbgoff)console.log(' profileUrl = ' + profileUrl);
+	//alert('DEBUG: profileUrl = ' + profileUrl);
 
 	if (UrlExists(profileUrl)) {
-		if(!window.dbgoff)console.log(' lastPubKeyPing: profile exists');
+		//alert('DEBUG: lastPubKeyPing: profile exists');
 		return true;
 	} else {
-		if(!window.dbgoff)console.log(' lastPubKeyPing: profile NOT FOUND');
+		//alert('DEBUG: lastPubKeyPing: profile NOT FOUND');
 		return false;
 	}
 
@@ -3523,43 +3238,43 @@ function PubKeyPing () { // checks if user's public key is on server
 // function PingPublicKey ()
 // uploads it to server if it is missing
 //
-	if(!window.dbgoff)console.log(' PubKeyPing() begin');
+	//alert('DEBUG: PubKeyPing() begin');
 
 	var latestPing = GetPrefs('latest_pubkey_ping');
 
 	if (latestPing && (GetTime() < (latestPing + 3600))) {
-		if(!window.dbgoff)console.log(' PubKeyPing: latestPing+10 = ' + (latestPing+10) + ' < time() = ' + time());
+		//alert('DEBUG: PubKeyPing: latestPing+10 = ' + (latestPing+10) + ' < time() = ' + time());
 	} else {
-		if(!window.dbgoff)console.log(' PubKeyPing: latestPing was false or stale, doing a check at ' + time());
+		//alert('DEBUG: PubKeyPing: latestPing was false or stale, doing a check at ' + time());
 
 		if (window.location.href.indexOf('profile') != -1 && window.getUserFp) {
 			//alert('DEBUG; PubKeyPing: window.getUserFp check passed');
 
 			var myFingerprint = getUserFp();
 
-			if(!window.dbgoff)console.log(' PubKeyPing: myFingerprint = ' + myFingerprint);
+			//alert('DEBUG: PubKeyPing: myFingerprint = ' + myFingerprint);
 
 			if (myFingerprint) {
 				if (PubkeyCheckProfileExists(myFingerprint)) {
-					if(!window.dbgoff)console.log(' PubKeyPing: profile already exists');
+					//alert('DEBUG: PubKeyPing: profile already exists');
 				} else {
 					if (window.sharePubKey) {
-						if(!window.dbgoff)console.log(' PubKeyPing: latestPing: (window.sharePubKey) check passed, doing it...');
+						//alert('DEBUG: PubKeyPing: latestPing: (window.sharePubKey) check passed, doing it...');
 						sharePubKey();
 
 						latestPing = GetTime();
 						SetPrefs('latest_pubkey_ping', latestPing);
 					} else {
-						if(!window.dbgoff)console.log(' PubKeyPing: latestPing: (window.sharePubKey) check FAILED');
+						//alert('DEBUG: PubKeyPing: latestPing: (window.sharePubKey) check FAILED');
 					}
 				}
 			} else {
-				if(!window.dbgoff)console.log(' PubKeyPing: myFingerprint: false');
+				//alert('DEBUG: PubKeyPing: myFingerprint: false');
 			}
 
-			if(!window.dbgoff)console.log(' PubKeyPing: latestPing check complete, saving time');
+			//alert('DEBUG: PubKeyPing: latestPing check complete, saving time');
 		} else {
-			if(!window.dbgoff)console.log(' PubKeyPing: window.getUserFp check FAILED');
+			//alert('DEBUG: PubKeyPing: window.getUserFp check FAILED');
 		}
 	}
 
@@ -3597,29 +3312,29 @@ function selectLoadKey (keyName) {
 }
 
 function ProfileOnLoad () { // onload event for profile page
-	if(!window.dbgoff)console.log(' ProfileOnLoad() begin');
+	//alert('DEBUG: ProfileOnLoad() begin');
 	if (document.getElementById) {
-		if(!window.dbgoff)console.log(' ProfileOnLoad: document.getElementById check passed');
+		//alert('DEBUG: ProfileOnLoad: document.getElementById check passed');
 
 		var lblSigningIndicator = document.getElementById('lblSigningIndicator');
 
 		selectKeyPopulate();
 
 		if (window.getPrivateKey) {
-			if(!window.dbgoff)console.log(' ProfileOnLoad: window.getPrivateKey check passed');
+			//alert('DEBUG: ProfileOnLoad: window.getPrivateKey check passed');
 
 			if (window.localStorage) {
-				if(!window.dbgoff)console.log(' ProfileOnLoad: window.localStorage check passed, calling getPrivateKey()...');
+				//alert('DEBUG: ProfileOnLoad: window.localStorage check passed, calling getPrivateKey()...');
 
 				var configJsOpenPgp = 1; // this is templated from config/setting/admin/js/openpgp
 
 				var pk = getPrivateKey();
 
 				if (configJsOpenPgp && pk) {
-					if(!window.dbgoff)console.log(' ProfileOnLoad: pk = GetPrivateKey() = ' + !!pk);
+					//alert('DEBUG: ProfileOnLoad: pk = GetPrivateKey() = ' + !!pk);
 					// span used to indicate whether openpgp signing is available
 					if (lblSigningIndicator) {
-						if(!window.dbgoff)console.log(' lblSigningIndicator TRUE');
+						//alert('DEBUG: lblSigningIndicator TRUE');
 						// display value of "algorithm" which openpgp gives us
 						// in reality, this only give us rsa/not-rsa, and formatted poorly
 						// there's the bit count and the actual algo for non-rsa which needs
@@ -3644,7 +3359,7 @@ function ProfileOnLoad () { // onload event for profile page
 							pRegButton.style.display = 'none';
 						}
 					} else {
-						if(!window.dbgoff)console.log(' lblSigningIndicator FALSE');
+						//alert('DEBUG: lblSigningIndicator FALSE');
 					}
 
 
@@ -3666,23 +3381,23 @@ function ProfileOnLoad () { // onload event for profile page
 						}
 					}
 
-					if(!window.dbgoff)console.log(' ProfileOnLoad: calling PubKeyPing()');
+					//alert('DEBUG: ProfileOnLoad: calling PubKeyPing()');
 					PubKeyPing();
 				} // pk is true
 				else {
-					if(!window.dbgoff)console.log(' pk = false')
+					//alert('DEBUG: pk = false')
 					if (configJsOpenPgp && lblSigningIndicator) {
-						if(!window.dbgoff)console.log(' lblSigningIndicator check passed');
+						//alert('DEBUG: lblSigningIndicator check passed');
 						if (window.openpgp) {
 							var lblFingerprint = document.getElementById('lblFingerprint');
-							//if(!window.dbgoff)console.log(' lblFingerprint = ' + lblFingerprint.innerHTML);
+							////alert('DEBUG: lblFingerprint = ' + lblFingerprint.innerHTML);
 							if (lblFingerprint && lblFingerprint.innerHTML && (lblFingerprint.innerHTML != '')) { //#todo ...
 								//pgp is available, but we're already logged in via cookies
 
 								lblSigningIndicator.innerHTML = 'Signed in with cookie.';
 							} else {
 								// #todo why is window.openpgp false here??
-								if(!window.dbgoff)console.log(' window.openpgp check passed, setting no (available)');
+								//alert('DEBUG: window.openpgp check passed, setting no (available)');
 
 								var pExitButton = document.getElementById('pExitButton');
 								if (pExitButton) {
@@ -3715,22 +3430,22 @@ function ProfileOnLoad () { // onload event for profile page
 								AddPrivateKeyLinks(); // ProfileOnLoad()
 							}
 						} else {
-							if(!window.dbgoff)console.log(' warning: window.openpgp check FAILED');
+							//alert('DEBUG: warning: window.openpgp check FAILED');
 							lblSigningIndicator.innerHTML = 'Unavailable';
 						}
 					} else {
-						if(!window.dbgoff)console.log(' lblSigningIndicator check FAILED');
+						//alert('DEBUG: lblSigningIndicator check FAILED');
 					}
 					//AddPrivateKeyLinks();
 				}
 			} else {
-				if(!window.dbgoff)console.log(' ProfileOnLoad: window.localStorage check FAILED');
+				//alert('DEBUG: ProfileOnLoad: window.localStorage check FAILED');
 			}
 		} else {
-			if(!window.dbgoff)console.log(' ProfileOnLoad: window.getPrivateKey check FAILED');
+			//alert('debug: ProfileOnLoad: window.getPrivateKey check FAILED');
 		}
 	} else {
-		if(!window.dbgoff)console.log(' ProfileOnLoad: document.getElementById check FAILED');
+		//alert('DEBUG: ProfileOnLoad: document.getElementById check FAILED');
 	}
 
 	return true;
@@ -3757,7 +3472,7 @@ function GetDvorakKey (ekey) {
 	var keysDvorak = "axje.uidchtnmbrl'poygk,qf;s-_wvzAXJE"+gt+"UIDCHTNMBRL\"POYGK<QF:WVZS/=?+[{]}";
 
 	if (keysQwerty.length != keysDvorak.length) {
-		if(!window.dbgoff)console.log(' dvorakKey: warning: length mismatch keysEn and keysRu');
+		//alert('DEBUG: dvorakKey: warning: length mismatch keysEn and keysRu');
 	}
 
 	if (ekey && ekey.length == 1) {
@@ -3819,16 +3534,16 @@ function GetCyrillicKey (e) {
 		;
 
 		if (keysEn.length != keysRu.length) {
-			if(!window.dbgoff)console.log(' onKeyDown(e) Warning: length mismatch keysEn ' + keysEn.length + ' and keysRu ' + keysRu.length);
-			if(!window.dbgoff)console.log(' keysEn = ' + keysEn);
-			if(!window.dbgoff)console.log(' keysRu = ' + keysRu);
+			//alert('DEBUG: onKeyDown(e) Warning: length mismatch keysEn ' + keysEn.length + ' and keysRu ' + keysRu.length);
+			//alert('DEBUG: keysEn = ' + keysEn);
+			//alert('DEBUG: keysRu = ' + keysRu);
 		}
 
 		if (e.key) {
 			// if e.key, then try to find it in the lookup list
 			for (var i = 0; i < keysEn.length; i++) {
 				if (e.key == keysEn.substr(i, 1)) {
-					if(!window.dbgoff)console.log(' i = ' + i + ' keysEn.substr(i, 1): ' + keysEn.substr(i, 1) + ' ; keysRu.substr(i, 1): ' + keysRu.substr(i, 1));
+					//alert('DEBUG: i = ' + i + ' keysEn.substr(i, 1): ' + keysEn.substr(i, 1) + ' ; keysRu.substr(i, 1): ' + keysRu.substr(i, 1));
 					nl = keysRu.substr(i, 1);
 					break;
 				}
@@ -3841,7 +3556,7 @@ function GetCyrillicKey (e) {
 function UpdateOnscreenKeyboard () {
 //			var asdf = window.frames;
 //			var asdf = parent.frames;
-	if(!window.dbgoff)console.log(' UpdateOnscreenKeyboard()');
+	//alert('DEBUG: UpdateOnscreenKeyboard()');
 
 	{
 		//#todo should be somewhere else
@@ -3853,17 +3568,17 @@ function UpdateOnscreenKeyboard () {
 	}
 
 	if (window.parent) {
-		if(!window.dbgoff)console.log(' UpdateOnscreenKeyboard: window.parent checkpoint passed');
+		//alert('DEBUG: UpdateOnscreenKeyboard: window.parent checkpoint passed');
 		if (window.parent.frames) {
-			if(!window.dbgoff)console.log(' UpdateOnscreenKeyboard: window.parent.frames checkpoint passed');
+			//alert('DEBUG: UpdateOnscreenKeyboard: window.parent.frames checkpoint passed');
 			var framesRef = window.parent.frames;
 			if (framesRef.length) {
-				if(!window.dbgoff)console.log(' UpdateOnscreenKeyboard: window.parent.frames.length checkpoint passed');
+				//alert('DEBUG: UpdateOnscreenKeyboard: window.parent.frames.length checkpoint passed');
 				if (framesRef['kbd']) {
-					if(!window.dbgoff)console.log(' UpdateOnscreenKeyboard: framesRef[kbd] checkpoint passed');
+					//alert('DEBUG: UpdateOnscreenKeyboard: framesRef[kbd] checkpoint passed');
 					var kDoc = framesRef['kbd'].document;
 					if (kDoc.getElementsByTagName) {
-						if(!window.dbgoff)console.log(' UpdateOnscreenKeyboard: kDoc.getElementsByTagName checkpoint passed');
+						//alert('DEBUG: UpdateOnscreenKeyboard: kDoc.getElementsByTagName checkpoint passed');
 						var replaceMode; // which elements and attributes will we replace text on?
 						// it depends on what kind of keyboard we're working with ...
 
@@ -3893,7 +3608,7 @@ function UpdateOnscreenKeyboard () {
 							}
 						}
 
-						if(!window.dbgoff)console.log(' UpdateOnscreenKeyboard: replaceMode = ' + replaceMode);
+						//alert('DEBUG: UpdateOnscreenKeyboard: replaceMode = ' + replaceMode);
 
 						if (kbdKeys && kbdKeys.length) {
 							for (kbdKeysI = 0; kbdKeysI < kbdKeys.length; kbdKeysI++) {
@@ -3934,17 +3649,17 @@ function translitKey(e, t) { // replaces pressed qwerty key with russian or cyri
 // called via textarea or input's onkeydown event
 // e is event object passed by onkeydown event
 // t is the text field's "this"
-	if(!window.dbgoff)console.log(' translitKey() begins');
+	//alert('DEBUG: translitKey() begins');
 	var nl; // new letter
 	var key; // pressed key
 
 	if (e.key) {
 		// for browsers which return event.key
-		if(!window.dbgoff)console.log(' translitKey: e.key is TRUE, and equal to ' + e.key);
+		//alert('DEBUG: translitKey: e.key is TRUE, and equal to ' + e.key);
 		key = e.key;
 	} else if (e.keyCode) {
 		// older browsers only return event.keyCode
-		if(!window.dbgoff)console.log(' translitKey: e.key is FALSE, but e.keyCode is TRUE');
+		//alert('DEBUG: translitKey: e.key is FALSE, but e.keyCode is TRUE');
 		// this doesn't work yet becaue there's no way to
 		// switch into different modes using this method
 		key = String.fromCharCode((96 <= e.keyCode && e.keyCode <= 105)? (e.keyCode - 48) : (e.keyCode));
@@ -3954,20 +3669,20 @@ function translitKey(e, t) { // replaces pressed qwerty key with russian or cyri
 	} else {
 		return '';
 	}
-	if(!window.dbgoff)console.log(' key: ' + key);
+	//alert('DEBUG: key: ' + key);
 
 	if (e.keyCode == 13 && e.ctrlKey) {
-		if(!window.dbgoff)console.log(' found ctrl+enter');
+		//alert('DEBUG: found ctrl+enter');
 		if (t.parentElement) {
-			if(!window.dbgoff)console.log(' found t.parentElement');
+			//alert('DEBUG: found t.parentElement');
 			var formElement = t.parentElement;
 			while (formElement && formElement.parentElement && formElement.nodeName != 'FORM') {
 				formElement = formElement.parentElement;
 			}
 			if (formElement.nodeName == 'FORM') {
-				if(!window.dbgoff)console.log(' formElement.nodeName = FORM')
+				//alert('DEBUG: formElement.nodeName = FORM')
 				var inputElements = formElement.getElementsByTagName('input');
-				if(!window.dbgoff)console.log(' inputElements.length = ' + inputElements.length);
+				//alert('DEBUG: inputElements.length = ' + inputElements.length);
 				if (inputElements.length) {
 					var iElement = 0;
 					for (iElement = 0; iElement < inputElements.length; iElement++) {
@@ -3980,7 +3695,7 @@ function translitKey(e, t) { // replaces pressed qwerty key with russian or cyri
 			}
 		}
 	} else {
-		if(!window.dbgoff)console.log(' e.keyCode = ' + e.keyCode + '; e.ctrlKey = ' + e.ctrlKey);
+		//alert('DEBUG: e.keyCode = ' + e.keyCode + '; e.ctrlKey = ' + e.ctrlKey);
 	}
 
 	// alt+ ctrl+ meta+` will toggle translit mode
@@ -4082,7 +3797,7 @@ function translitKey(e, t) { // replaces pressed qwerty key with russian or cyri
 		e.preventDefault();
 	}
 
-	if(!window.dbgoff)console.log(' e.preventDefault() was called');
+	//alert('DEBUG: e.preventDefault() was called');
 	var txt = t;
 
 	// this block of code may still come in handy.
@@ -4106,7 +3821,7 @@ function translitKey(e, t) { // replaces pressed qwerty key with russian or cyri
 		txt.value = txt.value + nl;
 		//replaceSelectedText(txt, nl);
 	} else {
-		if(!window.dbgoff)console.log(' no text field');
+		//alert('DEBUG: no text field');
 	}
 
 	return false;
@@ -4173,14 +3888,14 @@ if (window.GetPrefs && GetPrefs('remember_translit_state') && GetPrefs('translit
 // == begin write.js
 
 function WriteOnload () { // onload handler for write page
-	if(!window.dbgoff)console.log(' WriteOnload() begin');
+	//alert('DEBUG: WriteOnload() begin');
 
 	if (document.getElementById) {
-		if(!window.dbgoff)console.log(' WriteOnload: document.getElementById is true');
+		//alert('DEBUG: WriteOnload: document.getElementById is true');
 		if (window.GetPrefs) {
-			if(!window.dbgoff)console.log(' window.GetPrefs = TRUE');
+			//alert('DEBUG: window.GetPrefs = TRUE');
 			if (GetPrefs('write_enhance')) {
-				if(!window.dbgoff)console.log(' write_enhance = TRUE');
+				//alert('DEBUG: write_enhance = TRUE');
 				var comment = document.getElementById('comment');
 				if (comment) {
 					if (window.location.href.indexOf('write') != -1) {
@@ -4192,32 +3907,32 @@ function WriteOnload () { // onload handler for write page
 					}
 				}
 			} else {
-				if(!window.dbgoff)console.log(' write_enhance = FALSE');
+				//alert('DEBUG: write_enhance = FALSE');
 			}
 		} else {
-			if(!window.dbgoff)console.log(' window.GetPrefs = FALSE');
+			//alert('DEBUG: window.GetPrefs = FALSE');
 		}
 		var pubKey = '';
 		if (window.getPublicKey) {
-			if(!window.dbgoff)console.log(' window.getPublicKey exists');
+			//alert('DEBUG: window.getPublicKey exists');
 			pubKey = getPublicKey();
 		}
 		var privKey = '';
 		if (window.getPrivateKey) {
-			if(!window.dbgoff)console.log(' window.getPrivateKey exists');
+			//alert('DEBUG: window.getPrivateKey exists');
 			privKey = getPrivateKey();
 		}
 
 		var configJsOpenPgp = 1; // this is templated from config/setting/admin/js/openpgp
 
 		if (configJsOpenPgp && privKey) {
-			if(!window.dbgoff)console.log(' privKey was true, adding options...');
+			//alert('DEBUG: privKey was true, adding options...');
 			if (document.getElementById('spanSignAs')) {
 				var gt = unescape('%3E');
 				if (window.getAvatar) {
 
 					if (window.solvePuzzle) {
-						if(!window.dbgoff)console.log(' window.solvePuzzle was true, adding button...');
+						//alert('DEBUG: window.solvePuzzle was true, adding button...');
 						var spanWriteAdvanced = document.getElementById('spanWriteAdvanced');
 						if (spanWriteAdvanced && window.solvePuzzle) {
 							var btnSolvePuzzle = document.createElement('input');
@@ -4286,30 +4001,30 @@ function WriteOnload () { // onload handler for write page
 		}
 
 		if (pubKey) {
-			if(!window.dbgoff)console.log(' pubKey was true, calling PubKeyPing()');
+			//alert('DEBUG: pubKey was true, calling PubKeyPing()');
 			if (window.PubKeyPing) {
 				PubKeyPing();
 			}
 		}
 
 		if (window.location.hash) {
-			if(!window.dbgoff)console.log(' window.location.hash = ' + window.location.hash);
+			//alert('DEBUG: window.location.hash = ' + window.location.hash);
 			if (window.location.hash == '#inspubkey') {
-				if(!window.dbgoff)console.log(' #inspubkey found');
+				//alert('DEBUG: #inspubkey found');
 				if (pubKey) {
-					if(!window.dbgoff)console.log(' pubKey is true, inserting it into comment');
+					//alert('DEBUG: pubKey is true, inserting it into comment');
 					var comment = document.getElementById('comment');
 					if (comment) {
 						comment.value = pubKey;
 					}
 				} else {
-					if(!window.dbgoff)console.log(' pubKey was false, this is unexpected. Giving up.');
+					//alert('DEBUG: pubKey was false, this is unexpected. Giving up.');
 				}
 			}
 		}
 	} // document.getElementById
 	else {
-		if(!window.dbgoff)console.log(' WriteOnload: document.getElementById was FALSE');
+		//alert('DEBUG: WriteOnload: document.getElementById was FALSE');
 	}
 
 	return true;
@@ -4332,21 +4047,21 @@ function CommentMakeWp (comment) { // makes editor textarea larger and gives it 
 } // CommentMakeWp()
 
 function writeSubmit (t) { // called when user submits write form //signMessage (
-	if(!window.dbgoff)console.log(' writeSubmit() begin');
+	//alert('DEBUG: writeSubmit() begin');
 	if (window.localStorage) {
-		if(!window.dbgoff)console.log(' window.localStorage');
+		//alert('DEBUG: window.localStorage');
 		if (window.ClearAutoSave) {
 			ClearAutoSave();
 		}
 	} else {
-		if(!window.dbgoff)console.log(' no window.localStorage');
+		//alert('DEBUG: no window.localStorage');
 	}
 
 	var configJsOpenPgp = 1; // this is templated from config/setting/admin/js/openpgp
 	if (configJsOpenPgp && window.getPrivateKey && window.signMessage) {
-		if(!window.dbgoff)console.log(' window.getPrivateKey && window.signMessage test passed');
+		//alert('DEBUG: window.getPrivateKey && window.signMessage test passed');
 		if (getPrivateKey()) {
-			if(!window.dbgoff)console.log(' getPrivateKey() is true, writeSubmit() Calling signMessage()');
+			//alert('DEBUG: getPrivateKey() is true, writeSubmit() Calling signMessage()');
 
 			if (document.getElementById) {
 				var chkSignAs = document.getElementById('chkSignAs');
@@ -4371,15 +4086,15 @@ function writeSubmit (t) { // called when user submits write form //signMessage 
 			}
 		} else {
 			// no private key
-			if(!window.dbgoff)console.log(' no private key, basic submit');
+			//alert('DEBUG: no private key, basic submit');
 		}
 	} else {
-		if(!window.dbgoff)console.log(' Test Failed: window.getPrivateKey: ' + !!window.getPrivateKey + '; window.signMessage: ' + !!window.signMessage);
+		//alert('DEBUG: Test Failed: window.getPrivateKey: ' + !!window.getPrivateKey + '; window.signMessage: ' + !!window.signMessage);
 	}
 
 	window.eventLoopFresh = 0; // disables fresh.js. may not be a wise move here.
 
-	if(!window.dbgoff)console.log(' writeSubmit: about to return true');
+	//alert('DEBUG: writeSubmit: about to return true');
 
 	return true;
 } // writeSubmit()
@@ -4405,13 +4120,13 @@ function DoAutoSave() {
 	}
 
 	if (document.getElementById) {
-		if(!window.dbgoff)console.log(' DoAutoSave: document.getElementById is true');
+		//alert('DEBUG: DoAutoSave: document.getElementById is true');
 
 		if (window.GetPrefs) {
-			if(!window.dbgoff)console.log(' DoAutoSave: window.GetPrefs = TRUE');
+			//alert('DEBUG: DoAutoSave: window.GetPrefs = TRUE');
 
 			if (GetPrefs('write_autosave')) { // #todo this can't be right
-				if(!window.dbgoff)console.log(' DoAutoSave: write_autosave = TRUE');
+				//alert('DEBUG: DoAutoSave: write_autosave = TRUE');
 
 				var comment = document.getElementById('comment');
 				if (comment) {
@@ -4423,10 +4138,10 @@ function DoAutoSave() {
 					}
 				}
 			} else {
-				if(!window.dbgoff)console.log(' write_autosave = FALSE');
+				//alert('DEBUG: write_autosave = FALSE');
 			}
 		} else {
-			if(!window.dbgoff)console.log(' window.GetPrefs = FALSE');
+			//alert('DEBUG: window.GetPrefs = FALSE');
 		}
 	}
 
@@ -4522,7 +4237,7 @@ function RoundNumber (num) {
 	//var ret = Math.floor(num * 10) / 10;
 	//leave one digit after the decimal point
 
-	//if(!window.dbgoff)console.log(' RoundNumber: num = ' + num + '; ret = ' + ret + '');
+	////alert('DEBUG: RoundNumber: num = ' + num + '; ret = ' + ret + '');
 
 	return ret;
 }
@@ -4634,7 +4349,7 @@ function LongAgo (seconds) { // returns string with time units
 function ShowTimestamps () { // finds any class=timestamp, updates its displayed time as needed
 // currently requires getElementsByClassName()
 // in the future, ie4+, nn4+, and others compat can be improved
-	if(!window.dbgoff)console.log(' ShowTimestamps()');
+	//alert('DEBUG: ShowTimestamps()');
 // function FormatTimestamps () {
 
 	var restAfter = 100; // stop after this many changes to avoid slowing things down
@@ -4644,10 +4359,10 @@ function ShowTimestamps () { // finds any class=timestamp, updates its displayed
 	) {
 		restAfter = 30;
 	}
-	if(!window.dbgoff)console.log(' ShowTimestamps() BEGIN');
+	//alert('DEBUG: ShowTimestamps() BEGIN');
 
 	if (document.getElementsByClassName) {
-		if(!window.dbgoff)console.log(' ShowTimestamps: document.getElementsByClassName feature check passed');
+		//alert('DEBUG: ShowTimestamps: document.getElementsByClassName feature check passed');
 		var d = new Date();
 		var curTime = d.getTime() / 1000;
 		//var curTime = Math.floor(d.getTime() / 1000);
@@ -4666,7 +4381,7 @@ function ShowTimestamps () { // finds any class=timestamp, updates its displayed
 		var te = document.getElementsByClassName("timestamp"); //#timestampTagFormat
 		//var te = document.getElementsByTagName("time"); //#timestampTagFormat
 
-		if(!window.dbgoff)console.log(' ShowTimestamps: class=timestamp elements found: ' + te.length);
+		//alert('DEBUG: ShowTimestamps: class=timestamp elements found: ' + te.length);
 		for (var i = 0; i < te.length; i++) {
 			// loop through all the timestamp elements on the page
 
@@ -4805,7 +4520,7 @@ function ShowTimestamps () { // finds any class=timestamp, updates its displayed
 function ItsYou () { // tells user it is their profile
 // looks for id=itsyou element on the page and sets its text
 // this can potentially output via document.write for nn3 and friends #todo
-if(!window.dbgoff)console.log(' ItsYou() begins');
+//alert('debug: ItsYou() begins');
 	if (window.localStorage && document.getElementById) {
 		var myFp = localStorage.getItem('fingerprint');
 		var itemFp = '00000000000000000'; // for templating;
@@ -4824,7 +4539,7 @@ if(!window.dbgoff)console.log(' ItsYou() begins');
 			}
 		}
 	} else {
-		if(!window.dbgoff)console.log(' need fallback for older browsers here');
+		//alert('debug: need fallback for older browsers here');
 	}
 } // ItsYou()
 
@@ -4982,7 +4697,7 @@ function ReplyCartUpdateCount () {
 } // ReplyCartUpdateCount()
 
 function ReplyCartAddAll () {
-	if(!window.dbgoff)console.log(' ReplyCartAddAll()');
+	//alert('DEBUG: ReplyCartAddAll()');
 
 	if (document.getElementsByClassName && document.getElementsByClassName('replyCartButton')) {
 		// update +/- buttons on page
@@ -5028,22 +4743,22 @@ function CommentOnChange (t, formId) {
 
 	//window.dbgoff = 0;
 
-	if(!window.dbgoff)console.log(' CommentOnChange() begin');
+	//alert('DEBUG: CommentOnChange() begin');
 
-	//if(!window.dbgoff)console.log(' CommentOnChange: t = ' + t + '; formId = ' + formId + '; t.value = ' + t.value + '; t.value.length = ' + t.value.length);
+	////alert('DEBUG: CommentOnChange: t = ' + t + '; formId = ' + formId + '; t.value = ' + t.value + '; t.value.length = ' + t.value.length);
 
 	if (!window.intCommentOnChangeLastValue) {
 		window.intCommentOnChangeLastValue = 0;
 	}
 
 	if (!t.value || !t.value.length) {
-		if(!window.dbgoff)console.log(' CommentOnChange: window.intCommentOnChangeLastValue <= 1024 && t.value.length <= 1024, return');
+		//alert('DEBUG: CommentOnChange: window.intCommentOnChangeLastValue <= 1024 && t.value.length <= 1024, return');
 		window.intCommentOnChangeLastValue = 0;
 		return true;
 	}
 
 	if (16 < (t.value.length - intCommentOnChangeLastValue)) {
-		if(!window.dbgoff)console.log(' CommentOnChange: paste detected');
+		//alert('DEBUG: CommentOnChange: paste detected');
 		if (GetPrefs('uncheck_sign_when_pasting')) {
 			var chkSignAs = document.getElementById('chkSignAs');
 			if (chkSignAs.checked) {
@@ -5053,20 +4768,20 @@ function CommentOnChange (t, formId) {
 	}
 
 	if ((window.intCommentOnChangeLastValue <= 1024) && t.value && t.value.length && (t.value.length <= 1024)) {
-		if(!window.dbgoff)console.log(' CommentOnChange: window.intCommentOnChangeLastValue <= 1024 && t.value.length <= 1024, return');
+		//alert('DEBUG: CommentOnChange: window.intCommentOnChangeLastValue <= 1024 && t.value.length <= 1024, return');
 		window.intCommentOnChangeLastValue = t.value.length;
 		return true;
 	}
 
 	if (1024 < window.intCommentOnChangeLastValue && t.value && t.value.length && (1024 < t.value.length)) {
-		if(!window.dbgoff)console.log(' CommentOnChange: 1024 < window.intCommentOnChangeLastValue && 1024 < t.value.length, return');
+		//alert('DEBUG: CommentOnChange: 1024 < window.intCommentOnChangeLastValue && 1024 < t.value.length, return');
 		window.intCommentOnChangeLastValue = t.value.length;
 		return true;
 	}
 
 	window.intCommentOnChangeLastValue = t.value.length;
 
-	if(!window.dbgoff)console.log(' CommentOnChange: window.intCommentOnChangeLastValue = t.value.length = ' + t.value.length);
+	//alert('DEBUG: CommentOnChange: window.intCommentOnChangeLastValue = t.value.length = ' + t.value.length);
 
 	var strFormMode;
 	var strWarnDisplay;
@@ -5076,15 +4791,15 @@ function CommentOnChange (t, formId) {
 	//var gt = '';
 	var gt = unescape('%3E');
 
-	if(!window.dbgoff)console.log(' CommentOnChange: gt = ' + gt);
+	//alert('DEBUG: CommentOnChange: gt = ' + gt);
 
 	if (t.value.length <= 1024) {
-		if(!window.dbgoff)console.log(' CommentOnChange: setting form method to GET');
+		//alert('DEBUG: CommentOnChange: setting form method to GET');
 		strFormMode = 'GET';
 		strWarnDisplay = 'none';
 		strInnerHtml = 'Long message mode.<br' + gt;
 	} else {
-		if(!window.dbgoff)console.log(' CommentOnChange: setting form method to POST');
+		//alert('DEBUG: CommentOnChange: setting form method to POST');
 		strFormMode = 'POST';
 		strWarnDisplay = 'block';
 		strInnerHtml = '';
@@ -5120,7 +4835,7 @@ var freshClient;
 //	var xmlhttp = window.xmlhttp2;
 //
 //	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-//		if(!window.dbgoff)console.log(' PingUrlCallbackReplaceCurrentPage() found status 200');
+//		//alert('DEBUG: PingUrlCallbackReplaceCurrentPage() found status 200');
 //		window.newPageContent = xmlhttp.responseText;
 //		window.newPageLocation = xmlhttp.responseURL;
 //
@@ -5133,7 +4848,7 @@ var freshClient;
 //
 //function FetchNewPageContent (url) {
 //	if (window.XMLHttpRequest) {
-//		if(!window.dbgoff)console.log(' PingUrl: window.XMLHttpRequest was true');
+//		//alert('DEBUG: PingUrl: window.XMLHttpRequest was true');
 //
 //		var xmlhttp;
 //		if (window.xmlhttp2) {
@@ -5157,7 +4872,7 @@ function GetLatestPostTime () {
 }
 
 function freshCallback() { // callback for requesting HEAD for current page
-if(!window.dbgoff)console.log(' freshCallback() this.readyState = ' + this.readyState);
+//alert('DEBUG: freshCallback() this.readyState = ' + this.readyState);
 //#todo update codestyle/improve smell
 
 //	if (1 || this.readyState == this.HEADERS_RECEIVED) { // headers received -- what we've been waiting for
@@ -5167,24 +4882,24 @@ if(!window.dbgoff)console.log(' freshCallback() this.readyState = ' + this.ready
 		this.status == 200
 	) { // headers received -- what we've been waiting for
 		// document.title = 'DEBUG: callback received 200';
-		if(!window.dbgoff)console.log(' freshCallback() this.readyState == this.HEADERS_RECEIVED');
+		//alert('DEBUG: freshCallback() this.readyState == this.HEADERS_RECEIVED');
 
 		var eTag = freshClient.getResponseHeader("ETag"); // etag header contains page 'fingerprint'
 
 		if (!eTag) {
 			if (window.myOwnETag) {
-				if(!window.dbgoff)console.log(' fresh.js: warning: eTag is FALSE; setting to equal myOwnETag');
+				//alert('DEBUG: fresh.js: warning: eTag is FALSE; setting to equal myOwnETag');
 				eTag = window.myOwnETag;
 			} else {
-				if(!window.dbgoff)console.log(' fresh.js: warning: eTag is FALSE; and myOwnETag is also FALSE');
+				//alert('DEBUG: fresh.js: warning: eTag is FALSE; and myOwnETag is also FALSE');
 			}
 		}
 
-		if(!window.dbgoff)console.log(' fresh.js: eTag = ' + eTag);
+		//alert('DEBUG: fresh.js: eTag = ' + eTag);
 
 		if (eTag) { // if ETag header has a value
 			if (window.myOwnETag) {
-				if(!window.dbgoff)console.log(' fresh.js:  eTag = ' + eTag + '; window.myOwnETag = ' + window.myOwnETag);
+				//alert('DEBUG: fresh.js:  eTag = ' + eTag + '; window.myOwnETag = ' + window.myOwnETag);
 				if (eTag != window.myOwnETag) {
 					if (eTag == window.lastEtag) { // if it's equal to the one we saved last time
 						// no new change change
@@ -5194,18 +4909,18 @@ if(!window.dbgoff)console.log(' freshCallback() this.readyState = ' + this.ready
 
 						if (freshUserWantsReload) {
 							// user wants reload
-							if(!window.dbgoff)console.log(' user wants automatic page reload');
+							//alert('DEBUG: user wants automatic page reload');
 							location.reload();
 						} else {
 							// user doesn't want reload, just show notification
-							if(!window.dbgoff)console.log(' user does not want automatic page reload, notify');
+							//alert('DEBUG: user does not want automatic page reload, notify');
 							window.lastEtag = eTag;
 
 							var ariaAlert;
 							ariaAlert = document.getElementById('ariaAlert');
 
 							if (!ariaAlert) {
-								if(!window.dbgoff)console.log(' ariaAlert created successfully');
+								//alert('DEBUG: ariaAlert created successfully');
 								ariaAlert = document.createElement('p');
 								ariaAlert.setAttribute('role', 'alert');
 								ariaAlert.setAttribute('id', 'ariaAlert');
@@ -5267,7 +4982,7 @@ if(!window.dbgoff)console.log(' freshCallback() this.readyState = ' + this.ready
 		} // if (eTag) // ETag header has value
 	} // status == 200
 	if (this.status == 404 && document.getElementById) {
-		if(!window.dbgoff)console.log(' page has gone away on server (404)');
+		//alert('DEBUG: page has gone away on server (404)');
 		var ariaAlert;
 		ariaAlert = document.getElementById('ariaAlert');
 		if (!ariaAlert) {
@@ -5289,18 +5004,18 @@ if(!window.dbgoff)console.log(' freshCallback() this.readyState = ' + this.ready
 
 function CheckIfFresh () {
 	var d = new Date();
-	if(!window.dbgoff)console.log(' CheckIfFresh: ' + d.getTime());
+	//alert('DEBUG: CheckIfFresh: ' + d.getTime());
 
 	var freshCheckRecent = window.freshCheckRecent;
 	if (freshCheckRecent) {
-		if(!window.dbgoff)console.log(' CheckIfFresh: freshCheckRecent = ' + freshCheckRecent);
+		//alert('DEBUG: CheckIfFresh: freshCheckRecent = ' + freshCheckRecent);
 		var d = new Date();
 		var curTime = d.getTime();
 		if (curTime < freshCheckRecent + 3000) {
 			return true;
 		}
 	}
-	if(!window.dbgoff)console.log(' CheckIfFresh: checkpoint passed');
+	//alert('DEBUG: CheckIfFresh: checkpoint passed');
 
 	var d = new Date();
 	window.freshCheckRecent = d.getTime();
@@ -5366,7 +5081,7 @@ function CheckIfFresh () {
 //	}
 //}
 
-if(!window.dbgoff)console.log(' fresh.js');
+//alert('DEBUG: fresh.js');
 
 
 if (window.EventLoop) {
@@ -5384,1282 +5099,15 @@ if (window.EventLoop) {
 // == end fresh.js
 
 
-/* dragging.js */
-// allows dragging of boxes on page with the mouse pointer
-
-/*
-	known issues:
-	* problem: syntax errors on older browsers like netscape and ie3
-	  proposed solution: remove nested function declarations
-	  -or-
-
-	* problem: no keyboard alternative at this time
-	  proposed solution: somehow allow moving through windows and moving them with keyboard
-
-	* problem: slow and janky, needs more polish
-	  proposed solution: optimizations, more elbow grease
-*/
-
-// props https://www.w3schools.com/howto/howto_js_draggable.asp
-
-/*
-		#mydiv {
-			position: absolute;
-			z-index: 9;
-		}
-
-		#mydivheader {
-			this is just the titlebar
-		}
-*/
-
-window.draggingZ = 0; // keeps track of the topmost box's zindex
-// incremented whenever dragging is initiated, that way element pops to top
-
-function dragElement (elmnt, header) { // initialize draggable state for dialog
-	if(!window.dbgoff)console.log(' dragElement()');
-
-	var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-	if (header) {
-		// if present, the header is where you move the DIV from:
-		header.onmousedown = dragMouseDown;
-		//header.ontouchstart = dragMouseDown; // #touchdrag
-	} else {
-		// otherwise, move the DIV from anywhere inside the DIV:
-		elmnt.onmousedown = dragMouseDown;
-		//elmnt.ontouchstart = dragMouseDown; // #touchdrag
-	}
-
-	// set element's position based on its initial box model position
-	var rect = elmnt.getBoundingClientRect();
-	elmnt.style.top = (rect.top) + "px";
-	elmnt.style.left = (rect.left) + "px";
-	elmnt.style.position = 'absolute';
-	elmnt.style.display = 'table';
-
-	UpdateDialogPropertyDialog(elmnt);
-
-	//console.log(rect.top, rect.right, rect.bottom, rect.left);
-	//elmnt.style.position = 'absolute';
-	//elmnt.style.z-index = '9';
-
-	function dragMouseDown (e) {
-		if(!window.dbgoff)console.log(' dragMouseDown');
-		//SetActiveDialog(elmnt);
-		window.dialogDragInProgress = 1;
-
-		e = e || window.event;
-		e.preventDefault();
-		// get the mouse cursor position at startup:
-		pos3 = e.clientX;
-		pos4 = e.clientY;
-
-		document.onmouseup = closeDragElement;
-		//document.ontouchend = closeDragElement; // #touchdrag
-		// call a function whenever the cursor moves:
-		document.onmousemove = elementDrag;
-		//document.ontouchmove = elementDrag; // #touchdrag
-	}
-
-	function elementDrag (e) {
-		if(!window.dbgoff)console.log(' elementDrag');
-		//document.title = pos1 + ',' + pos2 + ',' + pos3 + ',' + pos4;
-		//document.title = e.clientX + ',' + e.clientY;
-		//document.title = elmnt.offsetTop + ',' + elmnt.offsetLeft;
-		e = e || window.event;
-		e.preventDefault();
-		// calculate the new cursor position:
-		pos1 = pos3 - e.clientX;
-		pos2 = pos4 - e.clientY;
-		pos3 = e.clientX;
-		pos4 = e.clientY;
-		// set the element's new position:
-
-		elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-		elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-
-		UpdateDialogPropertyDialog(elmnt);
-	}
-
-	function closeDragElement () {
-		if(!window.dbgoff)console.log(' closeDragElement');
-		window.dialogDragInProgress = 0;
-
-		// stop moving when mouse button is released:
-		document.onmouseup = null;
-		document.onmousemove = null;
-
-		//document.ontouchend = null; // #touchdrag
-		//document.ontouchmove = null; // #touchdrag
-
-		SaveDialogPosition(elmnt);
-	}
-} // dragElement()
-
-function SaveDialogPosition (elmnt) {
-// function SaveWindowPosition () {
-// function SavePosition () {
-
-	if (elmnt) {
-		var elId = GetDialogId(elmnt);
-
-		if (elId && elId.length < 31) {
-			SetPrefs(elId + '.style.top', elmnt.style.top, 'dialogPosition');
-			SetPrefs(elId + '.style.left', elmnt.style.left, 'dialogPosition');
-		} else {
-			if(!window.dbgoff)console.log(' SaveDialogPosition: warning: elId is false');
-		}
-	} else {
-		if(!window.dbgoff)console.log(' SaveDialogPosition: warning: elmnt is false');
-	}
-} // SaveDialogPosition()
-
-function AddToDialogHistory (dialog) {
-	// #todo sanity
-	var dialogHistory = GetPrefs('dialog_history');
-	if (!dialogHistory) {
-		dialogHistory = dialog + '\n';
-	} else {
-		dialogHistory = dialogHistory + '\n' + dialog;
-	}
-	SetPrefs('dialog_history', dialogHistory);
-} // AddToDialogHistory()
-
-function DraggingSaveAllDialogPositions () {
-	if(!window.dbgoff)console.log(' DraggingSaveAllDialogPositions()');
-	var elements = document.getElementsByClassName('dialog');
-
-	for (var i = elements.length - 1; 0 <= i; i--) {
-		SaveDialogPosition(elements[i]);
-	}
-} // DraggingSaveAllDialogPositions()
-
-function CollapseAll () {
-	if(!window.dbgoff)console.log(' CollapseAll()');
-	if (document.getElementsByClassName) {
-		var elements = document.getElementsByClassName('dialog');
-		for (var i = elements.length - 1; 0 <= i; i--) { // walk backwards for positioning reasons
-			if (elements[i].getAttribute('id') == 'topmenu') {
-				// controls dialog
-			} else {
-				CollapseWindow(elements[i], 'none');
-			}
-		}
-	}
-} // CollapseAll()
-
-function CollapseMost () {
-	if(!window.dbgoff)console.log(' CollapseMost()');
-	if (document.getElementsByClassName) {
-		var elements = document.getElementsByClassName('dialog');
-		var changesMade = 0;
-		for (var i = elements.length - 1; 0 <= i; i--) { // walk backwards for positioning reasons
-			if (elements[i].getAttribute('id') == 'topmenu') {
-				// controls dialog
-			} else {
-				changesMade += CollapseWindow(elements[i], 'none');
-			}
-		}
-
-		return changesMade;
-	}
-
-	return '';
-} // CollapseMost()
-
-function ExpandAll () {
-	if(!window.dbgoff)console.log(' ExpandAll()');
-	if (document.getElementsByClassName) {
-		var elements = document.getElementsByClassName('dialog');
-		for (var i = elements.length - 1; 0 <= i; i--) { // walk backwards for positioning reasons
-			if (elements[i].getAttribute('id') == 'topmenu') {
-				// controls dialog
-			} else {
-				CollapseWindow(elements[i], 'initial');
-			}
-		}
-	}
-} // ExpandAll()
-
-function DraggingRetile () {
-	return DraggingRetile2(1);
-}
-
-function DraggingRetile2 (ignoreMenu) {
-	if(!window.dbgoff)console.log(' DraggingRetile()');
-
-	window.scrollTo(0, 0);
-
-	if (document.getElementsByClassName) {
-		if(!window.dbgoff)console.log(' DraggingRetile: document.getElementsByClassName feature check PASSED');
-		var elements = document.getElementsByClassName('dialog');
-
-		for (var i = elements.length - 1; 0 <= i; i--) {
-			if ((!ignoreMenu) || (elements[i].getAttribute('id') == 'topmenu')) { // controls dialog
-				// do not reposition the controls dialog
-			} else {
-				elements[i].style.position = 'static';
-				elements[i].style.display = 'inline-block';
-			}
-		}
-	} else {
-		if(!window.dbgoff)console.log(' DraggingRetile: document.getElementsByClassName is FALSE');
-		return '';
-	}
-//	for (var i = elements.length - 1; 0 <= i; i--) {
-//		var newTop = elements[i].style.top;
-//		var newLeft = elements[i].style.left;
-//		elements[i].style.position = 'absolute';
-//		elements[i].style.top = newTop;
-//		elements[i].style.left = newLeft;
-//	}
-//
-//	DraggingInit(0);
-}
-
-function UpdateDialogPropertyDialog (dialog) {
-	if (dialog && window.getComputedStyle && document.getElementById && document.getElementById('propDisplay')) {
-		var d = new Date();
-		if (
-			(!window.propRecentUpdate)
-				||
-			(100 < (d.getTime() - window.propRecentUpdate))
-		) {
-			var s = getComputedStyle(dialog);
-			if (s) {
-				document.getElementById('propDisplay').innerHTML = s.display;
-				document.getElementById('propPosition').innerHTML = s.position;
-				document.getElementById('propZindex').innerHTML = s.zIndex;
-				document.getElementById('propLeft').innerHTML = s.left;
-				document.getElementById('propTop').innerHTML = s.top;
-				document.getElementById('propWidth').innerHTML = s.width;
-				document.getElementById('propHeight').innerHTML = s.height;
-				document.getElementById('propRight').innerHTML = s.right;
-				document.getElementById('propBottom').innerHTML = s.bottom;
-			}
-
-			var allTitlebar = dialog.getElementsByClassName('titlebar');
-			if (allTitlebar) {
-				var firstTitlebar = allTitlebar[0];
-				if (firstTitlebar) {
-					//document.title = firstTitlebar.innerHTML;
-				}
-			}
-
-			window.propRecentUpdate = d.getTime();
-		}
-	}
-} // UpdateDialogPropertyDialog();
-
-function SetActiveDialogDelay (ths) {
-	//alert();
-		//set next window to focus to
-
-		window.nextWindowToFocusTo = ths;
-
-		//set timeout to focus to that window
-
-		setTimeout('window.SetActiveDialog(window.nextWindowToFocusTo);', 130);
-}
-
-function SetActiveDialog (ths) {
-// ActivateDialog {
-// FocusMe ShowMe ActivateMe {
-
-	if (!window.GetPrefs || !GetPrefs('draggable') || !GetPrefs('draggable_activate')) {
-		// #todo optimize
-		return '';
-	}
-
-	if (ths && ths.getAttribute('imactive') == '1') {
-		if(!window.dbgoff)console.log(' SetActiveDialog: cancelled due to imactive');
-		return true;
-	} else if (window.dialogDragInProgress) {
-		if(!window.dbgoff)console.log(' SetActiveDialog: cancelled due to window.dialogDragInProgress');
-		return true;
-	}
-
-	if(!window.dbgoff)console.log(' SetActiveDialog: conditions met!');
-
-	window.nextWindowToFocusTo = ths;
-	// window.nextWindowToFocusTo stores the next window to focus to for mouseover
-	// there is a short delay before a window gets focus after a mouseover
-	// otherwise the interface gets jittery
-
-	if(!window.dbgoff)console.log(' SetActiveDialog(ths = ' + ths + ')');
-		// #thoughts should this be dependent on GetPrefs?
-		// or should it unintentionally come on if GetPrefs is not available?
-
-	if (ths) {
-		ths.style.zIndex = ++window.draggingZ;
-		// document.title = window.draggingZ;
-	}
-
-	//draggable_activate
-	var colorWindow = '#403000'; // for templating
-	var colorTitlebar = '#fff0ef'; // for templating
-	var colorTitlebarInactive = '#fff0ef'; // for templating
-	var colorSecondary = '#fff0ef'; // for templating
-	var colorTitlebarText = '#403000'; // for templating
-
-	var doScale = GetPrefs('draggable_scale') ? 1 : 0; // SetActiveDialog()
-	var scaleLarge = '1.9';
-	var scaleSmall = '1.0';
-	// this doesn't work right  yet, but loks promising
-
-	var elements = document.getElementsByClassName('dialog');
-	for (var i = 0; i < elements.length; i++) {
-	// for (var i = elements.length - 1; 0 <= i; i--) { // walk backwards for positioning reasons
-		// walking backwards is necessary to preserve the element positioning on the page
-		// once we remove the element from the page flow, all the other elements reflow to account it
-		// if we walk forwards here, all the elements will end up in the top left corner
-		if (ths && elements[i] == ths) {
-			elements[i].setAttribute('imactive', '1');
-			elements[i].style.borderColor = colorTitlebar;
-
-			//var comStyle = window.getComputedStyle(elements[i], null);
-			//var iwidth = parseInt(comStyle.getPropertyValue("width"), 10);
-			//var iheight = parseInt(comStyle.getPropertyValue("height"), 10);
-			//if(!window.dbgoff)console.log(' SetActiveDialog: iwidth: ' + document.documentElement.clientWidth + ', iheight:' + iheight);
-			//if(!window.dbgoff)console.log(' SetActiveDialog: document.documentElement.clientWidth and .clientHeight: ' + document.documentElement.clientWidth + ',' + document.documentElement.clientHeight);
-			//if(!window.dbgoff)console.log(' SetActiveDialog: myScale = ' + myScale);
-
-		} else {
-			elements[i].setAttribute('imactive', '0');
-			elements[i].style.borderColor = colorTitlebarInactive;
-		}
-
-		if (elements[i].getAttribute('imactive') == 1) {
-			if (doScale) {
-				// this doesn't work yet, and there's no ui for the setting yet
-				//var myScale = 1 + (document.documentElement.clientWidth / (iwidth * 3));
-				var myScale = scaleLarge;
-
-				elements[i].style.transition = 'transform 0.15s';
-				//elements[i].style.transform = 'scale(' + myScale + ')';
-				elements[i].style.transform = 'scale(' + myScale + ')';
-				elements[i].style.transformOrigin = 'top left';
-
-				var css = window.getComputedStyle(elements[i]);
-//				document.title =
-//					css.getPropertyValue('top') +
-//					',' +
-//					css.getPropertyValue('left') +
-//					',' +
-//					css.getPropertyValue('height') +
-//					',' +
-//					css.getPropertyValue('width') +
-//					'...'
-//				;
-			}
-		} // imactive
-		else {
-			if (doScale) { // always de-scale window, because it may have been scaled up before user turned off scaling
-				//var myScale =(document.documentElement.clientWidth / (iwidth * 5));
-				var myScale = scaleSmall;
-				elements[i].style.transform = 'scale(' + myScale + ')';
-				elements[i].style.transformOrigin = 'top left';
-
-				//elements[i].style.transform = 'scale(0.5)';
-				//elements[i].style.transformOrigin = 'top center';
-			}
-		} // not imactive
-
-		var allTitlebar = elements[i].getElementsByClassName('titlebar'); // #todo factor out
-		var firstTitlebar = allTitlebar[0];
-
-		if (firstTitlebar && firstTitlebar.getElementsByTagName) {
-			if ((ths && elements[i] == ths) || elements[i].getAttribute('imactive') == 1) {
-				// active
-				firstTitlebar.style.backgroundColor = colorTitlebar;
-				firstTitlebar.style.color = colorTitlebarText;
-				//elements[i].style.boxShadow = '0 0 15pt #335555;';
-			} else {
-				// inactive
-				firstTitlebar.style.backgroundColor = colorSecondary;
-				firstTitlebar.style.color = colorWindow;
-				//elements[i].style.boxShadow = '';
-			}
-		}
-	}
-
-	//UpdateDialogPropertyDialog(ths);
-
-	return true;
-} // SetActiveDialog()
-
-function GetParentDialog (el) {
-	if (el) {
-		var parentDialog = el;
-		while (parentDialog && (parentDialog.className != 'dialog')) {
-			parentDialog = parentDialog.parentElement;
-		}
-		if (parentDialog) {
-			return parentDialog;
-		}
-	}
-	return '';
-} // GetParentDialog()
-
-function SetContainingDialogActive (ths) { // sets active dialog based on control which received focus
-//setfocus
-	if (ths) {
-		var parentDialog = ths;
-		while (parentDialog && (parentDialog.className != 'dialog')) {
-			parentDialog = parentDialog.parentElement;
-		}
-		if (parentDialog) {
-			SetActiveDialog(parentDialog); // SetContainingDialogActive()
-		}
-	}
-} // SetContainingDialogActive()
-
-function DraggingReset () {
-	if(!window.dbgoff)console.log(' DraggingReset()');
-
-	if (document.getElementsByClassName) {
-		// feature check
-		if(!window.dbgoff)console.log(' DraggingReset: feature check success');
-
-		localStorage.removeItem('dialogPosition'); // #todo this should be done via SetPrefs()
-
-		// find all class=dialog elements and walk through them
-		var elements = document.getElementsByClassName('dialog');
-		for (var i = elements.length - 1; 0 <= i; i--) { // walk backwards for positioning reasons
-			// walking backwards is necessary to preserve the element positioning on the page
-			// once we remove the element from the page flow, all the other elements reflow to account it
-			// if we walk forwards here, all the elements will end up in the top left corner
-			window.draggingZ++;
-			DraggingInitDialog(elements[i], 0); // DraggingReset()
-			CollapseWindow(elements[i], 'show');
-		} // for i in elements
-
-		return '';
-	} else {
-		return '';
-	}
-
-	return '';
-} // DraggingReset()
-
-function DraggingCascade () {
-	if(!window.dbgoff)console.log(' DraggingCascade()');
-	
-	var titlebarHeight = 0;
-
-	var curTop = 55;
-	var curLeft = 5;
-	var curZ = 0;
-
-	var maxLeft = document.documentElement.clientWidth / 2;
-
-	var elements = document.getElementsByClassName('dialog');
-	for (var i = 0; i < elements.length; i++) {
-		var allTitlebar = elements[i].getElementsByClassName('titlebar'); // #todo factor out
-		var firstTitlebar = allTitlebar[0];
-
-		var allMenubar = elements[i].getElementsByClassName('menubar');
-		var firstMenubar = allMenubar[0];
-
-		titlebarHeight = 30;
-
-		if (firstMenubar || elements[i].getAttribute('id') == 'topmenu') {
-			elements[i].style.zIndex = 1337;
-		} else {
-			if (firstTitlebar && firstTitlebar.getElementsByTagName) {
-				// dragElement(elements[i], firstTitlebar);
-
-				if (elements[i].getAttribute('id') == 'topmenu') {
-					// ignore the conrols dialog
-				} else {
-					if (
-						elements[i].style.display != 'none' &&
-						elements[i].parentElement.style.display != 'none' &&
-						elements[i].parentElement.parentElement.style.display != 'none'
-						// sometimes a dialog is hidden because its parent container is hidden
-						// so here, we check two layers up
-						// a bit of a hack, but it works
-					) {
-						curZ++;
-						curTop += titlebarHeight;
-						curLeft += titlebarHeight;
-
-						if (maxLeft < curLeft) {
-							curLeft = 5;
-						}
-
-						elements[i].style.top = curTop + 'px';
-						elements[i].style.left = curLeft +'px';
-						elements[i].style.zIndex = curZ;
-					}
-				}
-			}
-		}
-	}
-} // DraggingCascade()
-
-function DraggingInitDialog (el, doPosition) {
-// function DraggingRestoreDialogPosition () {
-// function DraggingInitElement () {
-// function RestorePosition () {
-
-	if (!el) {
-		if(!window.dbgoff)console.log(' DraggingInitDialog: warning: el argument is missing');
-		return '';
-	}
-
-	var elId = GetDialogId(el);
-	while (!elId && el && el.firstElement) {
-		el = el.firstElement;
-		elId = GetDialogId(el);
-	}
-	if (!elId) {}
-
-	if(!window.dbgoff)console.log(' DraggingInitDialog: elId = ' + elId);
-
-	// find all titlebars and remember the first one
-	var allTitlebar = el.getElementsByClassName('titlebar');
-	var firstTitlebar = allTitlebar[0];
-
-	if (firstTitlebar) {
-		if(!window.dbgoff)console.log(' DraggingInitDialog: titlebar found');
-		dragElement(el, firstTitlebar);
-	} else {
-		if(!window.dbgoff)console.log(' DraggingInitDialog: titlebar missing');
-		dragElement(el, el);
-	}
-
-	if (elId && elId.length < 31) {
-		if (doPosition) {
-			RestoreDialogPosition(el, elId);
-		}
-
-		if (GetPrefs('draggable_restore_collapsed')) {
-			if (GetPrefs(elId + '.collapse', 'dialogPosition') == 'none') {
-				CollapseWindow(el, 'none'); //#meh
-			} else {
-				//ok
-			}
-		} else {
-			// cool
-		}
-	} else {
-		if(!window.dbgoff)console.log(' DraggingInitDialog: warning: elId is false 2' + elements[i].innerHTML);
-	}
-//
-	if(!window.dbgoff)console.log(' DraggingInitDialog: finished');
-
-	//elements[i].style.display = 'table !important';
-
-	return '';
-} // DraggingInitDialog()
-//
-//function EnsureDialogIsInViewport (el) {
-//	var height = window.innerHeight;
-//	var width = window.innerWidth;
-//
-//	if (el.top + el.height
-//}
-//
-//function IsInViewport(element) {
-//    const rect = element.getBoundingClientRect();
-//    return (
-//        rect.top GT= 0 &&
-//        rect.left GT= 0 &&
-//        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-//        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-//    );
-//}
-
-function DraggingMakeFit (doPosition) { // initialize all class=dialog elements on the page to be draggable
-// function DraggableMakeFit () {
-// function ArrangeAll () {
-// function DraggingArrange {
-
-	if(!window.dbgoff)console.log(' DraggingMakeFit()');
-
-	if (!document.getElementsByClassName) {
-		// feature check
-		if(!window.dbgoff)console.log(' DraggingInit: feature check failed');
-		return '';
-	}
-
-	//if (window.GetPrefs && !GetPrefs('draggable')) {
-	//	if(!window.dbgoff)console.log(' DraggingInit: warning: GetPrefs(draggable) was false, returning');
-	//	return '';
-	//}
-
-	// find all class=dialog elements and walk through them
-	var elements = document.getElementsByClassName('dialog');
-	for (var i = elements.length - 1; 0 <= i; i--) { // walk backwards for positioning reasons
-		// walking backwards is necessary to preserve the element positioning on the page
-		// once we remove the element from the page flow, all the other elements reflow to account it
-		// if we walk forwards here, all the elements will end up in the top left corner
-		window.draggingZ++;
-		DraggingInitDialog(elements[i], doPosition); // DraggingMakeFit()
-	} // for i in elements
-
-	return '';
-} // DraggingMakeFit()
-
-function UnhideHiddenElements () {
-	if(!window.dbgoff)console.log(' UnhideHiddenElements()');
-
-	if (document.getElementById) {
-		// this gets rid of the style which hides dialogs on
-		// page load so that they can be positioned first
-		// dragging_hide_dialogs.js
-		// #todo optimize this
-		if (document.getElementById('styleHideDialogs')) {
-			if (document.getElementById('styleHideDialogs').remove) {
-				document.getElementById('styleHideDialogs').remove();
-			}
-		}
-
-		if (document.getElementById('loadingIndicator')) {
-			// put loading indicator above other dialogs if it is on page
-			document.getElementById('loadingIndicator').style.zIndex = 1336;
-		}
-	}
-} // UnhideHiddenElements()
-
-function DraggingInit (doPosition) { // initialize all class=dialog elements on the page to be draggable
-// InitDrag {
-// DragInit {
-// initialize all class=dialog elements on the page to be draggable
-
-	if(!window.dbgoff)console.log(' DraggingInit()');
-
-	if (!document.getElementsByClassName) {
-		// feature check
-		if(!window.dbgoff)console.log(' DraggingInit: feature check failed');
-		return '';
-	}
-
-	//if (window.GetPrefs && !GetPrefs('draggable')) {
-	//	if(!window.dbgoff)console.log(' DraggingInit: warning: GetPrefs(draggable) was false, returning');
-	//	return '';
-	//}
-
-	var doPosition = GetPrefs('draggable_restore');
-
-	UnhideHiddenElements();
-
-	// find all class=dialog elements and walk through them
-	var elements = document.getElementsByClassName('dialog');
-	for (var i = elements.length - 1; 0 <= i; i--) { // walk backwards for positioning reasons
-		// walking backwards is necessary to preserve the element positioning on the page
-		// once we remove the element from the page flow, all the other elements reflow to account it
-		// if we walk forwards here, all the elements will end up in the top left corner
-		window.draggingZ++;
-
-		DraggingInitDialog(elements[i], doPosition); // DraggingInit()
-	} // for i in elements
-
-	if (GetPrefs('draggable_activate')) {
-		var elements = document.getElementsByTagName('A');
-		for (var i = elements.length - 1; 0 <= i; i--) { // walk backwards for positioning reasons
-			elements[i].setAttribute('onfocus', 'SetContainingDialogActive(this)');
-		}
-		var elements = document.getElementsByTagName('INPUT');
-		for (var i = elements.length - 1; 0 <= i; i--) { // walk backwards for positioning reasons
-			elements[i].setAttribute('onfocus', 'SetContainingDialogActive(this)');
-		}
-		var elements = document.getElementsByTagName('TEXTAREA');
-		for (var i = elements.length - 1; 0 <= i; i--) { // walk backwards for positioning reasons
-			elements[i].setAttribute('onfocus', 'SetContainingDialogActive(this)');
-		}
-	} // if (GetPrefs('draggable_activate'))
-
-	return '';
-
-} // DraggingInit()
-
-function CenterDialog (el) { // #todo rename and test
-	if(!window.dbgoff)console.log(' CenterDialog()');
-
-
-	if (el.style.display == 'none') {
-		el.style.display = 'table';
-		needResetStyleDisplay = 1;
-	}
-
-	var newTop = '200px';
-	if (newTop) {
-		el.style.top = newTop;
-	}
-	var newLeft = '100px';
-	if (newLeft) {
-		el.style.left = newLeft;
-	}
-	if (needResetStyleDisplay) {
-		el.style.display = 'inline-block';
-	}
-
-
-	return '';
-
-} // CenterDialog()
-
-function RestoreDialogPosition (el, elId) {
-// function RestoreWindowPosition {
-	if(!window.dbgoff)console.log(' RestoreDialogPosition()');
-	if (!elId) {
-		elId = GetDialogId(el);
-	}
-	if (!elId) {
-		if(!window.dbgoff)console.log(' RestoreDialogPosition: warning: elId missing');
-		return '';
-	}
-
-	var needResetStyleDisplay = 0;
-	if (el.style.display == 'none') {
-		// #todo why are we setting it here and then resetting?
-		// #needsdoc
-		el.style.display = 'table';
-		needResetStyleDisplay = 1;
-	}
-
-	var newTop = GetPrefs(elId + '.style.top', 'dialogPosition');
-	if (newTop) {
-		el.style.top = newTop;
-	}
-	var newLeft = GetPrefs(elId + '.style.left', 'dialogPosition');
-	if (newLeft) {
-		el.style.left = newLeft;
-	}
-	if (needResetStyleDisplay) {
-		el.style.display = 'inline-block';
-	}
-
-	return '';
-} // RestoreDialogPosition()
-
-function GetDialogId (win) { // returns dialog id (based on id= or title bar caption)
-	if(!window.dbgoff)console.log(' GetDialogId()');
-	if (win && win.getElementsByClassName) {
-		if (win && win.getAttribute && win.getAttribute('id')) {
-			// easy
-			if(!window.dbgoff)console.log(' GetDialogId: returning win.getAttribute(id) = ' + win.getAttribute('id') );
-			return win.getAttribute('id');
-
-		} else {
-			// hard
-			if(!window.dbgoff)console.log(' GetDialogId: hard mode!');
-
-			var allTitlebar = win.getElementsByClassName('titlebar');
-			var firstTitlebar = allTitlebar[0];
-
-			if (firstTitlebar && firstTitlebar.getElementsByTagName) {
-				var elId = firstTitlebar.getElementsByTagName('b');
-				if (elId && elId[0]) {
-					elId = elId[0];
-
-					if (elId && elId.innerHTML) {
-						if (elId.innerHTML.length <= 31) {
-							if(!window.dbgoff)console.log(' GetDialogId: returning elId.innerHTML = ' + elId.innerHTML);
-
-							return elId.innerHTML;
-						} else {
-							if(!window.dbgoff)console.log(' GetDialogId: returning elId.innerHTML.substr(0, 31) = ' + elId.innerHTML.substr(0, 31));
-
-							return elId.innerHTML.substr(0, 31);
-						}
-					}
-				}
-			}
-		}
-	} else {
-		//alert('GetDialogId: warning: fallback');
-	}
-	return '';
-} // GetDialogId()
-
-function SpotlightDialog (dialogId) {
-// should actually be called ToggleDialog()
-	var dialog = document.getElementById('d' + dialogId);
-	if (dialog) {
-		var dialogDisplay = dialog.style.display;
-		if (dialogDisplay == 'none') {
-			dialog.style.display = 'inline';
-		} else {
-			dialog.style.display = 'none';
-		}
-	} else {
-		if(!window.dbgoff)console.log(' SpotlightDialog: warning: dialog not found');
-	}
-	return false;
-} // SpotlightDialog()
-
-function HideDialog (dialog) { // takes dialog element as reference
-	if(!window.dbgoff)console.log(' HideDialog: dialog = ' + dialog);
-	if (dialog && dialog.style) {
-		if(!window.dbgoff)console.log(' HideDialog: sanity check passed');
-		dialog.style.display = 'none';
-	}
-} // HideDialog()
-
-function UpdateDialogList () { // DialogListDialog () dialog_list.template
-	var lstDialog = document.getElementById('lstDialog');
-	if (lstDialog) {
-		var allOpenDialogs = document.getElementsByClassName('dialog');
-		if (allOpenDialogs.length) {
-//			var gt = unescape('%3E');
-//			var listContent = '<form' + gt; // id=formListDialog name=formListDialog
-			var listContent = ''; // id=formListDialog name=formListDialog
-			for (var iDialog = 0; iDialog < allOpenDialogs.length; iDialog++) {
-				var dialogTitle = GetDialogTitle(allOpenDialogs[iDialog]);
-				var dialogId = GetDialogId(allOpenDialogs[iDialog]);
-				allOpenDialogs[iDialog].setAttribute('id', 'd' + dialogId);
-				var gt = unescape('%3E');
-
-				if (24 < dialogTitle.length) {
-					dialogTitle = dialogTitle.substr(0, 24);
-				}
-
-				listContent = listContent + '<a href="#' + dialogId + '" onclick="if (window.SpotlightDialog) { return SpotlightDialog(\'' + dialogId + '\'); }"' + gt + dialogTitle + '</a' + gt + '<br' + gt;
-				//listContent = listContent + '<label for="c' + dialogId + '"' + gt + '<input type=checkbox name="c' + dialogId + '" id="c' + dialogId + '"' + gt + dialogId + '</label' + gt + '<br' + gt;
-				lstDialog.innerHTML = lstDialog.innerHTML + iDialog;
-
-				/* #todo
-				var newLink = document.createElement('a');
-				newLink.setAttribute('href', '#');
-				newLink.setAttribute('onclick', "if (window.SpotlightDialog) { SpotlightDialog(' + dialogId + '); }");
-				//newLink.innerHTML = dialogTitle;
-				var newText = document.createTextNode(dialogTitle);
-				var newBr = document.createElement('br');
-
-				newLink.appendChild(newText);
-				lstDialog.appendChild(newLink);
-				lstDialog.appendChild(newBr);
-				*/
-			}
-//			listContent = listContent + '</form' + gt;
-
-			if (lstDialog.innerHTML != listContent) {
-				lstDialog.innerHTML = listContent;
-			}
-		}
-	}
-	//#todo this should go into a sep module
-} // UpdateDialogList()
-
-function GetDialogTitle (win) { // returns dialog title (based on title bar caption)
-	if(!window.dbgoff)console.log(' GetDialogTitle()');
-	//document.title = 0;
-	if (win && win.getElementsByClassName) {
-		//document.title = 1;
-		var allTitlebar = win.getElementsByClassName('titlebar');
-		var firstTitlebar = allTitlebar[0];
-
-		if (firstTitlebar && firstTitlebar.getElementsByTagName) {
-			//document.title = 2;
-			var elId = firstTitlebar.getElementsByTagName('b');
-			if (elId && elId[0]) {
-				elId = elId[0];
-
-				if (elId && elId.innerHTML) {
-					if(!window.dbgoff)console.log(' GetDialogTitle: returning elId.innerHTML = ' + elId.innerHTML);
-					return elId.innerHTML;
-				}
-			}
-		}
-	} else {
-		//alert('GetDialogTitle: warning: fallback');
-	}
-	return '';
-} // GetDialogId()
-
-function CollapseWindow (p, newVisible) { // p = dialog element ; newVisible = 'none'/0 or anything else
-// should be called CollapseExpandDialog ?
-// collapses or expands specified window/dialog
-// function CollapseDialog (
-	// collapse: newVisible = none
-	// expand: newVisible = anything else
-	if(!window.dbgoff)console.log(' CollapseWindow()');
-	var changesMade = 0;
-
-	if (p.getElementsByClassName) {
-		var content = p.getElementsByClassName('content');
-
-		if (content.length) {
-			changesMade += SetElementVisible(content[0], newVisible);
-		}
-		content = p.getElementsByClassName('menubar');
-		if (content.length) {
-			changesMade += SetElementVisible(content[0], newVisible);
-		}
-		content = p.getElementsByClassName('heading');
-		if (content.length) {
-			changesMade += SetElementVisible(content[0], newVisible);
-		}
-		content = p.getElementsByClassName('statusbar');
-		if (content.length) {
-			changesMade += SetElementVisible(content[0], newVisible);
-		}
-
-		var btnSkip = p.getElementsByClassName('skip');
-		if (btnSkip && btnSkip[0]) {
-			if (newVisible == 'none') {
-				if (btnSkip[0].innerHTML != '~') {
-					btnSkip[0].innerHTML = '~';
-					changesMade++;
-				}
-			} else {
-				if (btnSkip[0].innerHTML != '#') {
-					btnSkip[0].innerHTML = '#';
-					changesMade++;
-				}
-			}
-		}
-	}
-
-	return !changesMade;
-	// if changes were made, then it should return false, because this will cancel the double-click event
-	// if changes were not made, it should return true, because it should let the double-click event happen
-} // CollapseWindow()
-
-function CollapseWindowFromButton (t) { // collapses or expands window based on button pressed (t)
-// t is presumed to be clicked element's this, but can be any other element
-// if t's caption is '~', window is re-expanded
-// if '#' (or anything else) collapses window
-// this is done by navigating up until a table is reached
-// and then hiding the first class=content element within
-// presumably a TR but doesn't matter really because SetElementVisible() is used
-// pretty basic, but it works.
-	if (t.innerHTML && t.firstChild) {
-		if (t.firstChild.nodeName == 'FONT') {
-			// small hack in case link has a font tag inside
-			// the font tag is typically used to style the link a different color for older browsers
-			t = t.firstChild;
-		}
-		var newVisible = 'initial';
-		if (t.innerHTML == '~') { //#collapseButton
-			//currently collapsed, expand
-			t.innerHTML = '#'; // //#collapseButton
-		} else {
-			// currently expanded, collapse
-			t.innerHTML = '~'; //#collapseButton
-			newVisible = 'none';
-		}
-		if (t.parentElement) {
-			//hide content elements
-			var p = t;
-
-			var sanityCounter = 20;
-
-			while (p.nodeName != 'TABLE') {
-				p = p.parentElement;
-				sanityCounter--;
-				if (sanityCounter < 1) {
-					if(!window.dbgoff)console.log(' CollapseWindowFromButton: warning: sanity check failed');
-					return '';
-				}
-			}
-
-			var winId = GetDialogId(p);
-			SetPrefs(winId + '.collapse', newVisible, 'dialogPosition');
-
-			return CollapseWindow(p, newVisible);
-		}
-	}
-
-	return true;
-} // CollapseWindowFromButton()
-
-function SelectMe (ths) {
-	// not worky yet
-
-	if(!window.dbgoff)console.log(' SelectMe()');
-	if (!ths) {
-		if(!window.dbgoff)console.log(' SelectMe: warning: ths missing');
-		return '';
-	}
-
-	if (window.getSelection && document.createRange) {
-		var selection = window.getSelection();
-		var range = document.createRange();
-		range.selectNodeContents(ths);
-		selection.removeAllRanges();
-		selection.addRange(range);
-	} else if (document.selection && document.body.createTextRange) {
-		var range = document.body.createTextRange();
-		range.moveToElementText(ths);
-		range.select();
-	}
-
-	return true;
-} // SelectMe()
-
-function InsertFetchedDialog () {
-if(!window.dbgoff)console.log(' InsertFetchedDialog()');
-// inserts dialog at the top of the document, before the first child
-// function InjectDialog () { // InsertFetchedDialog()
-// function InsertDialog () {
-	//debug document.title = 'InsertFetchedDialog';
-
-	var xmlhttp = window.xmlhttp2;
-	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-		if(!window.dbgoff)console.log(' InsertFetchedDialog: found status 200');
-
-		var inject = document.createElement('span'); // temporary
-		inject.innerHTML = xmlhttp.responseText;
-
-		if (1) {
-		//if (1 || window.location.href.indexOf('chat') != -1) {
-			// insert dialog at the top of the document, before the first child
-
-			//debug document.title += 1;
-			// #todo this should probably be somewhere else, as it relates to chat only
-			// this is a special case handler for the chat page, allowing
-			// new chats to be injected at the top of maincontent
-			var mainC = document.getElementById('maincontent');
-			if (mainC) {
-				if (mainC.firstElementChild) {
-					//debug document.title += 6;
-					mainC.insertBefore(inject, mainC.firstElementChild);
-				} else {
-					//debug document.title += 7;
-					mainC.appendChild(inject);
-				}
-				//debug document.title += 3;
-			} else {
-				if(!window.dbgoff)console.log(' InsertFetchedDialog: warning: maincontent is missing');
-				if (document.body) {
-					if (document.body.firstElementChild) {
-						// #todo eliminate race cond
-						//debug document.title += 8;
-						document.body.insertBefore(inject, document.body.firstElementChild);
-					} else {
-						document.body.appendChild(inject);
-						//debug document.title += 4;
-					}
-				}
-			}
-			if (window.UpdateDialogList) {
-				UpdateDialogList();
-			}
-		} else {
-			//debug document.title += 2;
-			// add the dialog at the bottom/end of the document
-			document.body.appendChild(inject);
-		}
-		//debug document.title += 5;
-
-		var newDialog = inject.getElementsByClassName('dialog');
-		if(!window.dbgoff)console.log(' InsertFetchedDialog: newDialog.length = ' + newDialog.length);
-		if(!window.dbgoff)console.log(' InsertFetchedDialog: newDialog = ' + newDialog);
-
-		//var actualDialog = newDialog.firstElement;
-		//var actualDialog = newDialog[0]; #todo
-		//if(!window.dbgoff)console.log(' InsertFetchedDialog: actualDialog = ' + actualDialog);
-
-		if (window.ShowTimestamps) {
-			ShowTimestamps();
-		}
-		if (window.LoadCheckboxValues) {
-			LoadCheckboxValues();
-		}
-		if (window.DraggingInit && window.GetPrefs && GetPrefs('draggable')) {
-			//DraggingInit(0);
-			DraggingInitDialog(newDialog[0], 1); // InsertFetchedDialog()
-			//document.title = 'asdf';
-		} else {
-			//document.title = 'qwer';
-		}
-		if (newDialog.length) {
-			// new dialog was found in page, and is referenced by newDialog
-
-			if (GetPrefs('draggable_spawn_focus')) {
-				// focus newly inserted dialog
-				SetActiveDialog(newDialog[0]); // InsertFetchedDialog()
-			}
-
-			// if it is profile dialog, call ProfileOnLoad()
-			var frmProfile = newDialog[0].getElementsByClassName('frmProfile');
-			if (frmProfile) {
-				if (window.ProfileOnLoad) {
-					ProfileOnLoad();
-				}
-			}
-
-			// if there is a textarea inside new dialog, focus the textarea
-			var textareaNew = newDialog[0].getElementsByClassName('txtarea');
-			if (textareaNew && textareaNew.length && textareaNew[0]) {
-				if (textareaNew[0].focus) {
-					textareaNew[0].focus();
-				}
-				if (window.WriteOnLoad) {
-					// #todo load and/or inject write.js as necessary?
-					// i think there's a bug here, but it's better than not doing it
-					WriteOnLoad();
-				}
-			} else {
-				// if there is no textarea, look for a skip link
-				var dialogLinks = newDialog[0].getElementsByClassName('skip');
-				if (dialogLinks && dialogLinks[0]) {
-					dialogLinks[0].focus();
-				} else {
-					if(!window.dbgoff)console.log(' InsertFetchedDialog: dialogLinks missing');
-					//return '';
-				}
-			}
-		} // if (newDialog.length)
-
-		if (window.ShowAdvanced) {
-			if(!window.dbgoff)console.log(' InsertFetchedDialog: ShowAdvanced found, calling');
-
-			// show/hide document layers based on user settings
-			// #todo this doesn't actually seem to work.
-			ShowAdvanced(1, newDialog[0]);
-			//ShowAdvanced(1); // call global ShowAdvanced(), which is slightly less efficient, but should actually work
-		} else {
-			if(!window.dbgoff)console.log(' InsertFetchedDialog: ShowAdvanced NOT found');
-		}
-
-		//var isinv = IsInViewport(newDialog[0]);
-		////debug document.title = isinv;
-
-		if (document.getElementsByClassName) {
-			var notifications = document.getElementsByClassName('notification');
-			if (notifications) {
-				if(!window.dbgoff)console.log(' InsertFetchedDialog: notifications found, removing');
-				for (var notif = 0; notif < notifications.length; notif++) {
-					notifications[notif].remove();
-				}
-			} else {
-				if(!window.dbgoff)console.log(' InsertFetchedDialog: notifications NOT found');
-			}
-
-			// #todo
-			//if (window.displayNotification) {
-			//	var notificationString = 'Repeat to go to page';
-			//	displayNotification('hi');
-			//}
-		} // getElementsByClassName feature check
-	} // status 200
-
-	return '';
-} // InsertFetchedDialog()
-
-function FetchDialog (dialogName) {
-// function InjectDialog () { // FetchDialog
-	if (window.GetPrefs && !GetPrefs('draggable_spawn')) {
-		if(!window.dbgoff)console.log(' FetchDialog: warning: draggable_spawn is FALSE');
-		return true; // #todo..
-	}
-
-	if(!window.dbgoff)console.log(' FetchDialog(' + dialogName + ')');
-
-	var url = '/dialog/' + dialogName + '.html';
-	var dialogId = dialogName.replace('/', '_');
-
-	if (document.getElementById) {
-		var dialogExists = document.getElementById(dialogId);
-		if (dialogExists) {
-			if(!window.dbgoff)console.log(' FetchDialog: dialogExists');
-			if (GetPrefs('draggable_spawn')) {
-				//document.title = !!dialogExists.getAttribute('imactive');
-				SetActiveDialog(dialogExists);
-				return false;
-			}
-			return false; // #todo refactor this
-		}
-	}
-
-	//alert(dialogName);
-	var openDialogs = GetPrefs('open_dialogs');
-	if (openDialogs && openDialogs.indexOf(dialogId) != -1) {
-		//
-	} else {
-		SetPrefs('open_dialogs', openDialogs + ',' + dialogId);
-	}
-	//alert(openDialogs);
-
-	return FetchDialogFromUrl(url);
-} // FetchDialog()
-
-function CloseDialog(t) {
-	if(!window.dbgoff)console.log(' CloseDialog()');
-	if (window.GetParentDialog) {
-		var parentDialog = GetParentDialog(t);
-
-		var dialogTitle = GetDialogTitle(parentDialog);
-		//dialogTitle = dialogTitle.toLowerCase();
-		var dialogId = GetDialogId(parentDialog);
-
-		//alert(dialogName);
-		var openDialogs = GetPrefs('open_dialogs');
-		if (openDialogs && openDialogs.indexOf(dialogId) != -1) {
-			var withoutDialog = openDialogs.replace(',' + dialogId, '');
-			SetPrefs('open_dialogs', withoutDialog);
-		} else {
-			//don't need to do anything
-		}
-		//alert(openDialogs);
-
-		//GetParentDialog(t).remove();
-		parentDialog.remove();
-
-		if (window.UpdateDialogList) {
-			UpdateDialogList();
-		}
-	}
-	return false;
-}
-
-function FetchDialogFromUrl (url) {
-// function InjectDialog () {
-// function FetchDialogFromUrl () {
-// function SpawnDialog () {
-	if (window.GetPrefs && !window.GetPrefs('draggable_spawn')) {
-		// #should be one layer above #todo
-		// not cool
-		if(!window.dbgoff)console.log(' warning: FetchDialogFromUrl() called, but draggable_spawn is FALSE');
-		return true; // return true so that click can happen
-	}
-
-	if (window.XMLHttpRequest) {
-		if(!window.dbgoff)console.log(' FetchDialogFromUrl: window.XMLHttpRequest feature check PASSED');
-
-		var xmlhttp;
-		if (window.xmlhttp2) {
-			xmlhttp = window.xmlhttp2;
-		} else {
-			window.xmlhttp2 = new XMLHttpRequest();
-			xmlhttp = window.xmlhttp2;
-		}
-
-		if (window.displayNotification) {
-			displayNotification('Meditate...');
-		}
-
-		xmlhttp.onreadystatechange = window.InsertFetchedDialog;
-		xmlhttp.open("GET", url, true);
-		xmlhttp.setRequestHeader('Cache-Control', 'no-cache');
-		xmlhttp.send();
-
-		if(!window.dbgoff)console.log(' FetchDialog: finished xmlhttp.send()');
-
-		return false; // cancel triggering event
-	} else {
-		if(!window.dbgoff)console.log(' FetchDialogFromUrl: window.XMLHttpRequest feature check FAILED');
-		return true; // if there was a click, let it happen
-	}
-} // FetchDialogFromUrl()
-
-/* / dragging.js */
-
-
 /* table_sort.js */
 
 function SortTable (t, sortOrder) {
 // TableSort (
-	if(!window.dbgoff)console.log(' SortTable() begins');
+	//alert('DEBUG: SortTable() begins');
 	//caution: bubble sort inside
 
 	if (! document.body.textContent) {
-		if(!window.dbgoff)console.log(' SortTable: warning: textContent feature check FAILED');
+		//alert('DEBUG: SortTable: warning: textContent feature check FAILED');
 		return '';
 	}
 
@@ -6686,7 +5134,7 @@ function SortTable (t, sortOrder) {
 	var tOrig = t;
 
 	if (!t) {
-		if(!window.dbgoff)console.log(' SortTable: warning: t missing');
+		//alert('DEBUG: SortTable: warning: t missing');
 		return '';
 	}
 
@@ -6736,10 +5184,10 @@ function SortTable (t, sortOrder) {
 	}
 
 	if (!table) {
-		if(!window.dbgoff)console.log(' SortTable: warning: table missing');
+		//alert('DEBUG: SortTable: warning: table missing');
 		return '';
 	} else {
-		if(!window.dbgoff)console.log(' SortTable: table exists, proceeding');
+		//alert('DEBUG: SortTable: table exists, proceeding');
 	}
 
 	if (table && table.getAttribute) {
@@ -6750,11 +5198,11 @@ function SortTable (t, sortOrder) {
 			}
 		}
 	} else {
-		if(!window.dbgoff)console.log(' SortTable: warning: table is missing');
+		//alert('DEBUG: SortTable: warning: table is missing');
 		return '';
 	}
 
-	if(!window.dbgoff)console.log(' SortTable: sortOrder = ' + sortOrder + '; sortMethod = ' + sortMethod);
+	//alert('DEBUG: SortTable: sortOrder = ' + sortOrder + '; sortMethod = ' + sortMethod);
 
 	// bubble sort below by some website...
 
@@ -6872,7 +5320,7 @@ function SortTable (t, sortOrder) {
 		}
 	}
 
-	if(!window.dbgoff)console.log(' SortTable() finished');
+	//alert('DEBUG: SortTable() finished');
 
 	return '';
 } // SortTable()
@@ -6908,7 +5356,7 @@ function HideLoadingIndicator () {
 	}
 
 	if (!loadingIndicator) {
-	    if(!window.dbgoff)console.log(' HideLoadingIndicator: warning: loadingIndicator is FALSE');
+	    //alert('DEBUG: HideLoadingIndicator: warning: loadingIndicator is FALSE');
 	    return '';
 	}
 
@@ -6936,7 +5384,7 @@ function HideLoadingIndicator () {
 } // HideLoadingIndicator()
 
 function WaitForOpenPgp () {
-	if(!window.dbgoff)console.log(' WaitForOpenPgp()');
+	//alert('debug: WaitForOpenPgp()');
 	var d = new Date();
 	if (window.openPgpJsLoadBegin && window.openpgp) {
 		HideLoadingIndicator();

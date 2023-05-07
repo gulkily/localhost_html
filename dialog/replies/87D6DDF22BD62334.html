@@ -1,0 +1,59 @@
+
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td colspan=3>
+		<font color="#403000"><b>Inbox</b></font> <a href=#Inbox>#</a><a name=Inbox></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th style="cursor: pointer" onclick="if (window.SortTable) { SortTable(this); } else { }" class=advanced align=left>file_hash</th>
+<!-- / header_column.template -->
+
+<!-- header_column.template -->
+<th style="cursor: pointer" onclick="if (window.SortTable) { SortTable(this); } else { }" align=left>item_title</th>
+<!-- / header_column.template -->
+
+<!-- header_column.template -->
+<th style="cursor: pointer" onclick="if (window.SortTable) { SortTable(this); } else { }" align=left>add_timestamp<br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr bgcolor="#fff0ef"><td class=advanced>3aa47d66</td>
+<td><b><a href="/3a/a4/3aa47d66.html">js/debug 0</a></b></td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683443068.45747 title="03:04:28">03:04</time><!-- / timestamp_time.template --></td>
+</tr>
+<tr bgcolor="#fff0ef"><td class=advanced>8ce6fd09</td>
+<td><b><a href="/8c/e6/8ce6fd09.html">dragging 0</a></b></td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683443059.55963 title="03:04:19">03:04</time><!-- / timestamp_time.template --></td>
+</tr>
+</tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td colspan=3>
+		2 item(s)
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
