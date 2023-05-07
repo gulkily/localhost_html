@@ -35,7 +35,24 @@
 <!-- / header_wrapper.template -->
 
 
-		<tbody class=content><tr bgcolor="#fff0ef"><td class=advanced>1f4c1c0f</td>
+		<tbody class=content><tr bgcolor="#fff0ef"><td class=advanced>af47f934</td>
+<td><b><a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('af47f934')) {
+							SetActiveDialog(document.getElementById('af47f934'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/af/47/af47f934.html');
+						}
+					}
+				" href="/af/47/af47f934.html">add profile page</a></b></td>
+<td><!-- timestamp_time.template --><time class=timestamp datetime=1683441745.57798 title="02:42:25">02:42</time><!-- / timestamp_time.template --></td>
+</tr>
+<tr bgcolor="#fff0ef"><td class=advanced>1f4c1c0f</td>
 <td><b><a  onclick="
 					if (
 						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
@@ -262,7 +279,7 @@
 <!-- window/status.template -->
 <tr class=statusbar>
 	<td colspan=3>
-		13 item(s)
+		14 item(s)
 	</td>
 </tr>
 <!-- / window/status.template -->
