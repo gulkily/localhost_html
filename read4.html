@@ -121,6 +121,33 @@ input[type=button], button, input[type=submit] {
 }
 /* end css/default.css */
 
+/* dragging.css */
+
+/* should be called inline-block.css ? */
+
+/* makes some dialogs horizontal */
+table.dialog { /* inline-table table-block */
+	display: inline-block;
+	vertical-align: top;
+}
+form {
+	display: inline;
+}
+
+/*
+#topmenu.dialog {
+	position: fixed !important;
+	top: 0;
+	right: 0;
+}
+*/
+
+/* / dragging.css */
+
+.dialog .txt {
+	max-width: 30em;
+}
+
 /* inbox_top.css */
 
 #messages {
@@ -250,25 +277,43 @@ pre time {
 <body link="#403000" vlink="#403000" text="#403000" bgcolor="#fff0ef" background="/hypercode_bg.jpg" onclick="if (window.ShowPreNavigateNotification && event.target && (event.target.tagName == 'A') && !(event.target.onclick)) { ShowPreNavigateNotification(); }" onload="if (window.OnLoadEverything) { OnLoadEverything(); }" >
 <b>
 <!-- template/topmenu2.template -->
-<table cellspacing=0 cellpadding=3 border=0 bgcolor="#fff0ef" class=dialog id=topmenu>
+<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialog) { return SetActiveDialog(this); }" cellspacing=0 cellpadding=3 border=0 bgcolor="#fff0ef" class=dialog id=topmenu>
 	<tr bgcolor="#fff0ef" class=topmenubar>
 		<td colspan=2>
 			<big>
 				<big>
 <!-- menuitem.template -->
-<a accesskey=w href="/write.html"><u>W</u>rite</a>
+<a  onclick="if ((!window.GetPrefs || GetPrefs('draggable_spawn'))) { return FetchDialog('write'); }" accesskey=w href="/write.html"><u>W</u>rite</a>
 <!-- / menuitem.template -->
 ;
 
 
 <!-- menuitem.template -->
-<a accesskey=a href="/active.html"><u>A</u>ctive</a>
+<a  onclick="if ((!window.GetPrefs || GetPrefs('draggable_spawn'))) { return FetchDialog('active'); }" accesskey=a href="/active.html"><u>A</u>ctive</a>
 <!-- / menuitem.template -->
 ;
 
 
 <!-- menuitem.template -->
-<a accesskey=p href="/profile.html"><u>P</u>rofile</a>
+<a  onclick="if ((!window.GetPrefs || GetPrefs('draggable_spawn'))) { return FetchDialog('profile'); }" accesskey=p href="/profile.html"><u>P</u>rofile</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a  onclick="if ((!window.GetPrefs || GetPrefs('draggable_spawn'))) { return FetchDialog('chain'); }" accesskey=c href="/chain.html"><u>C</u>hain</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a  onclick="if ((!window.GetPrefs || GetPrefs('draggable_spawn'))) { return FetchDialog('authors'); }" accesskey=u href="/authors.html">A<u>u</u>thors(11)</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=e href="/people.html">P<u>e</u>ople(3)</a>
 <!-- / menuitem.template -->
 </big>
 				<span class=advanced></span>
@@ -286,7 +331,122 @@ pre time {
 		</td>
 		<td align=right>
 			<small>
-				
+				<span id=spanDialogControls>
+<!-- layer_controls.template -->
+
+<noscript>*</noscript>
+
+<span>
+	<a id=btnAdvanced href=#
+		accesskey=o
+		onclick="
+			if (window.SetPrefs) {
+				SetPrefs('show_advanced', 1);
+				SetPrefs('advanced_highlight', 0);
+				SetPrefs('beginner', 0);
+				SetPrefs('beginner_highlight', 0);
+				SetPrefs('notify_on_change', 1);
+			}
+			if (window.ShowAdvanced) {
+				ShowAdvanced(0, 0);
+				return false;
+			}
+		"
+	>Expand</a>;
+
+	<a id=btnMinimal href=#
+		accesskey=n
+		onclick="
+			if (window.SetPrefs) {
+				SetPrefs('show_advanced', 0);
+				SetPrefs('admin', 0);
+			}
+			if (window.ShowAdvanced) {
+				ShowAdvanced(0, 0);
+				return false;
+			}
+		"
+	title=Minimal>Minimal</a>;
+
+	<a id=btnReprint href=# accesskey=r onclick="
+		var winLoc = window.location.href;
+		if (winLoc.indexOf('?')) {
+			winLoc = winLoc.substr(0, winLoc.indexOf('?'));
+		}
+		var d = new Date();
+		var n = d.getTime();
+		n = Math.ceil(n / 1000);
+		n = n + 86400;
+		winLoc = winLoc + '?time=' + n;
+		window.location = winLoc;
+		return false;
+	" title="Reprint">Reprint</a>;
+
+</span>
+
+<!-- / layer_controls.template -->
+
+<!-- dialog_controls.template 'Interface Controls' -->
+
+<span class=advanced>
+	<a id=btnCascade href=# onclick="
+		if (window.DraggingCascade) {
+			SetPrefs('draggable', 1);
+			DraggingInit(0);
+			DraggingMakeFit(0);
+			DraggingCascade();
+			DraggingInit(0);
+		}
+	" title=Cascade>Cascade</a>;
+
+	<a id=btnArrange href=# onclick="
+		if (window.DraggingRetile) {
+			SetPrefs('draggable', 1);
+			DraggingInit(0);
+			DraggingMakeFit(0);
+			DraggingRetile();
+			DraggingInit(0);
+		}
+	" title=Arrange>Arrange</a>;
+</span>
+
+<a id=btnAnnoy href=# onclick="
+	if (window.DraggingRetile) {
+		SetPrefs('draggable', 1);
+		SetPrefs('draggable_activate', 1);
+		SetPrefs('draggable_spawn', 1);
+		SetPrefs('draggable_spawn_focus', 1);
+		SetPrefs('draggable', 1);
+		SetPrefs('draggable_restore', 1);
+		SetPrefs('draggable_restore_collapsed', 1);
+		SetActiveDialog(GetParentDialog(this));
+		DraggingInit(0);
+		DraggingMakeFit(0);
+		DraggingInit(0);
+	}
+" title=Annoy>Annoy</a>;
+
+<a id=btnDraggingReset href=# onclick="
+	if (window.DraggingReset && window.SetPrefs) {
+		SetPrefs('beginner', 1);
+		SetPrefs('show_advanced', 0);
+		SetPrefs('show_admin', 0);
+		SetPrefs('draggable_activate', 0);
+		SetPrefs('draggable_spawn', 0);
+		SetPrefs('draggable_spawn_focus', 0);
+		SetPrefs('draggable', 0);
+		SetPrefs('draggable_restore', 0);
+		SetPrefs('draggable_scale', 0);
+		SetPrefs('draggable_restore_collapsed', 0);
+		DraggingReset();
+		//window.location = '/help.html'; #option
+		window.location.reload(false);
+	}
+" title="Reset">Reset</a>
+
+<!-- #todo redo this whole template -->
+<!-- / dialog_controls.template -->
+</span>
 			</small>
 		</td>
 	</tr>
@@ -296,7 +456,7 @@ pre time {
 <p>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=page_intro cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=page_intro cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#fff0ef" class=titlebar>
@@ -321,7 +481,7 @@ pre time {
 
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=Pages cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=Pages cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#fff0ef" class=titlebar>
@@ -364,7 +524,7 @@ pre time {
 <span class=itemList>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=471af27a cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=f6210b06 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -374,7 +534,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/operator_please'); }" href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -383,7 +543,298 @@ pre time {
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/f4/5a/f45afada.html">add OpenPGP.js t</a><br><br>#like<span class=admin><br>
+<p class="txt">[Operator]<span class=admin><br>
+-- <br>
+<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/f6/21/f6210b06.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683442139 title="02:48:59">02:48</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>f6210b06</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'f6210b0628fe6d9141472c909e0fadc5d7e45592\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=f6210b0628fe6d9141472c909e0fadc5d7e45592"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'f6210b0628fe6d9141472c909e0fadc5d7e45592\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=f6210b0628fe6d9141472c909e0fadc5d7e45592"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('f6210b0628fe6d9141472c909e0fadc5d7e45592', this); }" item-id=f6210b0628fe6d9141472c909e0fadc5d7e45592 class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=c83f7272 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/bug'); }" href="/tag/bug.html"><font color="#403000">#</font>bug</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hashtag'); }" href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">#bug<span class=admin><br>
+-- <br>
+<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/c8/3f/c83f7272.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683442712 title="02:58:32">02:58</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>c83f7272</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'c83f7272e531e4b51a4bc2561f3e6279f133d9a4\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=c83f7272e531e4b51a4bc2561f3e6279f133d9a4"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'c83f7272e531e4b51a4bc2561f3e6279f133d9a4\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=c83f7272e531e4b51a4bc2561f3e6279f133d9a4"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('c83f7272e531e4b51a4bc2561f3e6279f133d9a4', this); }" item-id=c83f7272e531e4b51a4bc2561f3e6279f133d9a4 class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=e5088900 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hashtag'); }" href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('2d7efdce')) {
+							SetActiveDialog(document.getElementById('2d7efdce'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/2d/7e/2d7efdce.html');
+						}
+					}
+				" href="/2d/7e/2d7efdce.html">chain dialog is </a><br><br>#javascript #dragging<span class=admin><br>
+-- <br>
+<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/e5/08/e5088900.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683442766 title="02:59:26">02:59</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>e5088900</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'e50889005bba5f459c360271294b36e73260fce8\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=e50889005bba5f459c360271294b36e73260fce8"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'e50889005bba5f459c360271294b36e73260fce8\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=e50889005bba5f459c360271294b36e73260fce8"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('e50889005bba5f459c360271294b36e73260fce8', this); }" item-id=e50889005bba5f459c360271294b36e73260fce8 class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=da3b0cd3 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hashtag'); }" href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('e8cf2e35')) {
+							SetActiveDialog(document.getElementById('e8cf2e35'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/e8/cf/e8cf2e35.html');
+						}
+					}
+				" href="/e8/cf/e8cf2e35.html">i'm not going to</a><br><br>#like<span class=admin><br>
+-- <br>
+<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/da/3b/da3b0cd3.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683442944 title="03:02:24">03:02</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>da3b0cd3</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'da3b0cd3f242ef6dc9c6dd141fda04eff0437156\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=da3b0cd3f242ef6dc9c6dd141fda04eff0437156"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'da3b0cd3f242ef6dc9c6dd141fda04eff0437156\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=da3b0cd3f242ef6dc9c6dd141fda04eff0437156"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('da3b0cd3f242ef6dc9c6dd141fda04eff0437156', this); }" item-id=da3b0cd3f242ef6dc9c6dd141fda04eff0437156 class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=471af27a cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hashtag'); }" href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('f45afada')) {
+							SetActiveDialog(document.getElementById('f45afada'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/f4/5a/f45afada.html');
+						}
+					}
+				" href="/f4/5a/f45afada.html">add OpenPGP.js t</a><br><br>#like<span class=admin><br>
 -- <br>
 <br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
 <!-- / item/item.template -->
@@ -427,7 +878,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=6ff7ff41 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=6ff7ff41 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#fff0ef" class=titlebar>
@@ -446,7 +897,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -499,7 +950,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=97ed0107 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=97ed0107 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -509,7 +960,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/hike_set.html"><font color="#403000">#</font>hike_set</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hike_set'); }" href="/tag/hike_set.html"><font color="#403000">#</font>hike_set</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -562,7 +1013,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=373923e8 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=373923e8 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -572,7 +1023,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/hike_set.html"><font color="#403000">#</font>hike_set</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hike_set'); }" href="/tag/hike_set.html"><font color="#403000">#</font>hike_set</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -581,7 +1032,20 @@ pre time {
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/97/ed/97ed0107.html">97ed0107..</a><br><br>[hike set]<span class=admin><br>
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('97ed0107')) {
+							SetActiveDialog(document.getElementById('97ed0107'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/97/ed/97ed0107.html');
+						}
+					}
+				" href="/97/ed/97ed0107.html">97ed0107..</a><br><br>[hike set]<span class=admin><br>
 -- <br>
 <br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
 <!-- / item/item.template -->
@@ -625,7 +1089,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=321ea310 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=321ea310 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -635,7 +1099,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -688,7 +1152,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=8b6692d4 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=8b6692d4 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -698,7 +1162,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/operator_please'); }" href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -751,7 +1215,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=9086bd54 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=9086bd54 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#fff0ef" class=titlebar>
@@ -769,7 +1233,33 @@ pre time {
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/8b/66/8b6692d4.html">8b6692d4..</a><br><br>reset this website<br><a href="/e3/92/e392f9d9.html">e392f9d9..</a><br><br>ok, I reset the website settings<br><br>===<br></p>
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('8b6692d4')) {
+							SetActiveDialog(document.getElementById('8b6692d4'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/8b/66/8b6692d4.html');
+						}
+					}
+				" href="/8b/66/8b6692d4.html">8b6692d4..</a><br><br>reset this website<br><a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('e392f9d9')) {
+							SetActiveDialog(document.getElementById('e392f9d9'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/e3/92/e392f9d9.html');
+						}
+					}
+				" href="/e3/92/e392f9d9.html">e392f9d9..</a><br><br>ok, I reset the website settings<br><br>===<br></p>
 <!-- / item/item.template -->
 </td></tr></tbody>
 
@@ -811,7 +1301,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=9014daee cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=9014daee cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -821,7 +1311,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/operator_please'); }" href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -830,7 +1320,20 @@ pre time {
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/90/86/9086bd54.html">reset this websi</a><br><br>[Operator]<span class=admin><br>
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('9086bd54')) {
+							SetActiveDialog(document.getElementById('9086bd54'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/90/86/9086bd54.html');
+						}
+					}
+				" href="/90/86/9086bd54.html">reset this websi</a><br><br>[Operator]<span class=admin><br>
 -- <br>
 <br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
 <!-- / item/item.template -->
@@ -874,7 +1377,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=b6f4c358 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=b6f4c358 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -884,7 +1387,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hashtag'); }" href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -893,7 +1396,20 @@ pre time {
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/3a/a4/3aa47d66.html">js/debug 0</a><br><br>#like<span class=admin><br>
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('3aa47d66')) {
+							SetActiveDialog(document.getElementById('3aa47d66'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/3a/a4/3aa47d66.html');
+						}
+					}
+				" href="/3a/a4/3aa47d66.html">js/debug 0</a><br><br>#like<span class=admin><br>
 -- <br>
 <br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
 <!-- / item/item.template -->
@@ -937,7 +1453,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=ecb83600 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=ecb83600 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -947,7 +1463,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hashtag'); }" href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -956,7 +1472,20 @@ pre time {
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/8c/e6/8ce6fd09.html">dragging 0</a><br><br>#like<span class=admin><br>
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('8ce6fd09')) {
+							SetActiveDialog(document.getElementById('8ce6fd09'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/8c/e6/8ce6fd09.html');
+						}
+					}
+				" href="/8c/e6/8ce6fd09.html">dragging 0</a><br><br>#like<span class=admin><br>
 -- <br>
 <br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
 <!-- / item/item.template -->
@@ -1000,7 +1529,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=b2753149 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=b2753149 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -1010,7 +1539,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hashtag'); }" href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -1019,7 +1548,20 @@ pre time {
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/ca/7f/ca7f5de4.html">add inbox featur</a><br><br>#like<span class=admin><br>
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('ca7f5de4')) {
+							SetActiveDialog(document.getElementById('ca7f5de4'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/ca/7f/ca7f5de4.html');
+						}
+					}
+				" href="/ca/7f/ca7f5de4.html">add inbox featur</a><br><br>#like<span class=admin><br>
 -- <br>
 <br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
 <!-- / item/item.template -->
@@ -1063,7 +1605,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=cf41c966 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=cf41c966 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -1073,7 +1615,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/operator_please'); }" href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -1126,7 +1668,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=67094ba3 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=67094ba3 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -1136,7 +1678,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hashtag'); }" href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -1145,7 +1687,20 @@ pre time {
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/93/a3/93a324ac.html">add javascript s</a><br><br>#like<span class=admin><br>
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('93a324ac')) {
+							SetActiveDialog(document.getElementById('93a324ac'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/93/a3/93a324ac.html');
+						}
+					}
+				" href="/93/a3/93a324ac.html">add javascript s</a><br><br>#like<span class=admin><br>
 -- <br>
 <br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
 <!-- / item/item.template -->
@@ -1189,7 +1744,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=d619b151 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=d619b151 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -1199,7 +1754,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/operator_please'); }" href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -1208,7 +1763,20 @@ pre time {
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/93/a3/93a324ac.html">add javascript s</a><br><br>[Operator]<span class=admin><br>
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('93a324ac')) {
+							SetActiveDialog(document.getElementById('93a324ac'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/93/a3/93a324ac.html');
+						}
+					}
+				" href="/93/a3/93a324ac.html">add javascript s</a><br><br>[Operator]<span class=admin><br>
 -- <br>
 <br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
 <!-- / item/item.template -->
@@ -1252,7 +1820,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=a0fefe3c cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=a0fefe3c cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -1262,7 +1830,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hashtag'); }" href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -1271,7 +1839,20 @@ pre time {
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/57/4e/574e8a96.html">add profile page</a><br><br>#like<span class=admin><br>
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('574e8a96')) {
+							SetActiveDialog(document.getElementById('574e8a96'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/57/4e/574e8a96.html');
+						}
+					}
+				" href="/57/4e/574e8a96.html">add profile page</a><br><br>#like<span class=admin><br>
 -- <br>
 <br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
 <!-- / item/item.template -->
@@ -1315,7 +1896,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=2cd3a755 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=2cd3a755 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -1325,7 +1906,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/operator_please'); }" href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -1378,7 +1959,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=17e057ba cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=17e057ba cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -1388,7 +1969,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hashtag'); }" href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -1397,7 +1978,20 @@ pre time {
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/3d/6c/3d6cc58a.html">add loading indi</a><br><br>#like<span class=admin><br>
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('3d6cc58a')) {
+							SetActiveDialog(document.getElementById('3d6cc58a'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/3d/6c/3d6cc58a.html');
+						}
+					}
+				" href="/3d/6c/3d6cc58a.html">add loading indi</a><br><br>#like<span class=admin><br>
 -- <br>
 <br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
 <!-- / item/item.template -->
@@ -1441,7 +2035,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=90136759 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=90136759 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -1451,7 +2045,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/operator_please'); }" href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -1504,7 +2098,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=b85a7b36 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=b85a7b36 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -1514,7 +2108,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/operator_please'); }" href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -1567,7 +2161,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=cdae0f63 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=cdae0f63 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -1577,7 +2171,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/operator_please'); }" href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -1586,7 +2180,20 @@ pre time {
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/b8/5a/b85a7b36.html">b85a7b36..</a><br><br>[Operator]<span class=admin><br>
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('b85a7b36')) {
+							SetActiveDialog(document.getElementById('b85a7b36'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/b8/5a/b85a7b36.html');
+						}
+					}
+				" href="/b8/5a/b85a7b36.html">b85a7b36..</a><br><br>[Operator]<span class=admin><br>
 -- <br>
 <br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
 <!-- / item/item.template -->
@@ -1630,7 +2237,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=eee45ebc cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=eee45ebc cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#fff0ef" class=titlebar>
@@ -1648,7 +2255,33 @@ pre time {
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/cd/ae/cdae0f63.html">cdae0f63..</a><br><br>add settings page<br><a href="/9a/df/9adf5108.html">9adf5108..</a><br><br>I did not understand that query<br><br>===<br></p>
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('cdae0f63')) {
+							SetActiveDialog(document.getElementById('cdae0f63'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/cd/ae/cdae0f63.html');
+						}
+					}
+				" href="/cd/ae/cdae0f63.html">cdae0f63..</a><br><br>add settings page<br><a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('9adf5108')) {
+							SetActiveDialog(document.getElementById('9adf5108'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/9a/df/9adf5108.html');
+						}
+					}
+				" href="/9a/df/9adf5108.html">9adf5108..</a><br><br>I did not understand that query<br><br>===<br></p>
 <!-- / item/item.template -->
 </td></tr></tbody>
 
@@ -1690,7 +2323,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=ae7342d1 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=ae7342d1 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#fff0ef" class=titlebar>
@@ -1709,7 +2342,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/todo.html"><font color="#403000">#</font>todo</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/todo'); }" href="/tag/todo.html"><font color="#403000">#</font>todo</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -1718,7 +2351,20 @@ pre time {
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/ee/e4/eee45ebc.html">add settings pag</a><br><br>#!/bin/sh<br><br>echo &quot;settings&quot; &gt;&gt; config/template/list/menu<span class=admin><br>
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('eee45ebc')) {
+							SetActiveDialog(document.getElementById('eee45ebc'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/ee/e4/eee45ebc.html');
+						}
+					}
+				" href="/ee/e4/eee45ebc.html">add settings pag</a><br><br>#!/bin/sh<br><br>echo &quot;settings&quot; &gt;&gt; config/template/list/menu<span class=admin><br>
 -- <br>
 <br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
 <!-- / item/item.template -->
@@ -1762,7 +2408,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=54eeb91d cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=54eeb91d cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#fff0ef" class=titlebar>
@@ -1781,7 +2427,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hashtag'); }" href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -1790,7 +2436,20 @@ pre time {
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/ae/73/ae7342d1.html">#!/bin/sh</a><br><br>#todo implement this (parts already written in do_sh.pl)<span class=admin><br>
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('ae7342d1')) {
+							SetActiveDialog(document.getElementById('ae7342d1'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/ae/73/ae7342d1.html');
+						}
+					}
+				" href="/ae/73/ae7342d1.html">#!/bin/sh</a><br><br>#todo implement this (parts already written in do_sh.pl)<span class=admin><br>
 -- <br>
 <br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
 <!-- / item/item.template -->
@@ -1834,7 +2493,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=eba2461e cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=eba2461e cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -1844,7 +2503,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hashtag'); }" href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -1853,7 +2512,20 @@ pre time {
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/eb/c5/ebc5c48e.html">add inline-block</a><br><br>#like<span class=admin><br>
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('ebc5c48e')) {
+							SetActiveDialog(document.getElementById('ebc5c48e'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/eb/c5/ebc5c48e.html');
+						}
+					}
+				" href="/eb/c5/ebc5c48e.html">add inline-block</a><br><br>#like<span class=admin><br>
 -- <br>
 <br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
 <!-- / item/item.template -->
@@ -1897,7 +2569,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=eb3540b7 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=eb3540b7 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -1907,7 +2579,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hashtag'); }" href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -1916,7 +2588,20 @@ pre time {
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/21/a4/21a431f9.html">make the interfa</a><br><br>#like<span class=admin><br>
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('21a431f9')) {
+							SetActiveDialog(document.getElementById('21a431f9'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/21/a4/21a431f9.html');
+						}
+					}
+				" href="/21/a4/21a431f9.html">make the interfa</a><br><br>#like<span class=admin><br>
 -- <br>
 <br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
 <!-- / item/item.template -->
@@ -1960,7 +2645,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=8072c40e cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=8072c40e cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#fff0ef" class=titlebar>
@@ -1979,7 +2664,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -2032,7 +2717,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=52c30016 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=52c30016 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -2042,7 +2727,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hashtag'); }" href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -2051,7 +2736,20 @@ pre time {
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/2d/7e/2d7efdce.html">chain dialog is </a><br><br>#like<span class=admin><br>
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('2d7efdce')) {
+							SetActiveDialog(document.getElementById('2d7efdce'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/2d/7e/2d7efdce.html');
+						}
+					}
+				" href="/2d/7e/2d7efdce.html">chain dialog is </a><br><br>#like<span class=admin><br>
 -- <br>
 <br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
 <!-- / item/item.template -->
@@ -2095,7 +2793,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=ffcc4abf cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=ffcc4abf cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#fff0ef" class=titlebar>
@@ -2114,7 +2812,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/bug.html"><font color="#403000">#</font>bug</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/bug'); }" href="/tag/bug.html"><font color="#403000">#</font>bug</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hashtag'); }" href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -2167,7 +2865,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=0555a294 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=0555a294 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#fff0ef" class=titlebar>
@@ -2186,7 +2884,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -2195,7 +2893,20 @@ pre time {
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/ff/cc/ffcc4abf.html">rest button does</a><br><br>nn3<span class=admin><br>
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('ffcc4abf')) {
+							SetActiveDialog(document.getElementById('ffcc4abf'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/ff/cc/ffcc4abf.html');
+						}
+					}
+				" href="/ff/cc/ffcc4abf.html">rest button does</a><br><br>nn3<span class=admin><br>
 -- <br>
 <br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
 <!-- / item/item.template -->
@@ -2239,7 +2950,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=3cc5b49b cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=3cc5b49b cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#fff0ef" class=titlebar>
@@ -2258,7 +2969,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -2311,7 +3022,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=7f9312f5 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=7f9312f5 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -2321,7 +3032,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hashtag'); }" href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -2330,7 +3041,20 @@ pre time {
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/09/c1/09c1c727.html">volunteering pal</a><br><br>#like<span class=admin><br>
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('09c1c727')) {
+							SetActiveDialog(document.getElementById('09c1c727'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/09/c1/09c1c727.html');
+						}
+					}
+				" href="/09/c1/09c1c727.html">volunteering pal</a><br><br>#like<span class=admin><br>
 -- <br>
 <br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
 <!-- / item/item.template -->
@@ -2374,7 +3098,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=3f3b8096 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=3f3b8096 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -2384,7 +3108,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/operator_please'); }" href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -2437,7 +3161,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=e3bc2f5b cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=e3bc2f5b cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -2447,7 +3171,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/operator_please'); }" href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -2456,7 +3180,20 @@ pre time {
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/3f/3b/3f3b8096.html">3f3b8096..</a><br><br>[Operator]<span class=admin><br>
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('3f3b8096')) {
+							SetActiveDialog(document.getElementById('3f3b8096'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/3f/3b/3f3b8096.html');
+						}
+					}
+				" href="/3f/3b/3f3b8096.html">3f3b8096..</a><br><br>[Operator]<span class=admin><br>
 -- <br>
 <br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
 <!-- / item/item.template -->
@@ -2500,7 +3237,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=7edfc75f cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=7edfc75f cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -2510,7 +3247,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hashtag'); }" href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -2519,7 +3256,20 @@ pre time {
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/2b/9e/2b9e2848.html">add inbox featur</a><br><br>#like<span class=admin><br>
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('2b9e2848')) {
+							SetActiveDialog(document.getElementById('2b9e2848'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/2b/9e/2b9e2848.html');
+						}
+					}
+				" href="/2b/9e/2b9e2848.html">add inbox featur</a><br><br>#like<span class=admin><br>
 -- <br>
 <br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
 <!-- / item/item.template -->
@@ -2563,7 +3313,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=876b83f8 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=876b83f8 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -2573,7 +3323,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/operator_please'); }" href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -2626,7 +3376,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=602a707d cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=602a707d cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -2636,7 +3386,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/operator_please'); }" href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -2689,7 +3439,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=03b61172 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=03b61172 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -2699,7 +3449,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hashtag'); }" href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -2708,7 +3458,20 @@ pre time {
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/63/7c/637c4182.html">reset this websi</a><br><br>#like<span class=admin><br>
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('637c4182')) {
+							SetActiveDialog(document.getElementById('637c4182'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/63/7c/637c4182.html');
+						}
+					}
+				" href="/63/7c/637c4182.html">reset this websi</a><br><br>#like<span class=admin><br>
 -- <br>
 <br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
 <!-- / item/item.template -->
@@ -2752,7 +3515,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=e6854af8 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=e6854af8 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -2762,7 +3525,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/operator_please'); }" href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -2815,7 +3578,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=ef9c171e cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=ef9c171e cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#fff0ef" class=titlebar>
@@ -2833,7 +3596,33 @@ pre time {
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/e6/85/e6854af8.html">e6854af8..</a><br><br>add profile page<br><a href="/e1/3e/e13e31e4.html">e13e31e4..</a><br><br>ok, I added profile page with basic cookie authentication.<br><br>===<br></p>
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('e6854af8')) {
+							SetActiveDialog(document.getElementById('e6854af8'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/e6/85/e6854af8.html');
+						}
+					}
+				" href="/e6/85/e6854af8.html">e6854af8..</a><br><br>add profile page<br><a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('e13e31e4')) {
+							SetActiveDialog(document.getElementById('e13e31e4'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/e1/3e/e13e31e4.html');
+						}
+					}
+				" href="/e1/3e/e13e31e4.html">e13e31e4..</a><br><br>ok, I added profile page with basic cookie authentication.<br><br>===<br></p>
 <!-- / item/item.template -->
 </td></tr></tbody>
 
@@ -2875,7 +3664,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=c5b559ae cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=c5b559ae cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -2885,7 +3674,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hashtag'); }" href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -2894,7 +3683,20 @@ pre time {
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/e2/32/e2325f0e.html">add javascript s</a><br><br>#like<span class=admin><br>
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('e2325f0e')) {
+							SetActiveDialog(document.getElementById('e2325f0e'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/e2/32/e2325f0e.html');
+						}
+					}
+				" href="/e2/32/e2325f0e.html">add javascript s</a><br><br>#like<span class=admin><br>
 -- <br>
 <br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
 <!-- / item/item.template -->
@@ -2938,7 +3740,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=0083626c cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=0083626c cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
 		
@@ -2948,7 +3750,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hashtag'); }" href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -2957,7 +3759,20 @@ pre time {
 
 		<tbody class=content><tr class=content><td>
 <!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/2c/44/2c445351.html">add profile page</a><br><br>#like<span class=admin><br>
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('2c445351')) {
+							SetActiveDialog(document.getElementById('2c445351'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/2c/44/2c445351.html');
+						}
+					}
+				" href="/2c/44/2c445351.html">add profile page</a><br><br>#like<span class=admin><br>
 -- <br>
 <br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
 <!-- / item/item.template -->
@@ -2998,12 +3813,1051 @@ pre time {
 	</table>
 </font>
 <!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=36cc83c9 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/operator_please'); }" href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">[Operator]<span class=admin><br>
+-- <br>
+<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/36/cc/36cc83c9.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446304 title="03:58:24">03:58</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>36cc83c9</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'36cc83c9dac9c285e0fd4885cb652feef563795a\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=36cc83c9dac9c285e0fd4885cb652feef563795a"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'36cc83c9dac9c285e0fd4885cb652feef563795a\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=36cc83c9dac9c285e0fd4885cb652feef563795a"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('36cc83c9dac9c285e0fd4885cb652feef563795a', this); }" item-id=36cc83c9dac9c285e0fd4885cb652feef563795a class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=592f058d cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>add OpenPGP.js to profiles</b></font> <a href=#592f058d>#</a><a name=592f058d></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('36cc83c9')) {
+							SetActiveDialog(document.getElementById('36cc83c9'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/36/cc/36cc83c9.html');
+						}
+					}
+				" href="/36/cc/36cc83c9.html">36cc83c9..</a><br><br>add OpenPGP.js to profiles<br><a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('02cf637e')) {
+							SetActiveDialog(document.getElementById('02cf637e'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/02/cf/02cf637e.html');
+						}
+					}
+				" href="/02/cf/02cf637e.html">02cf637e..</a><br><br>ok, I added basic OpenPGP.js integration to the profiles.<br><br>===<br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/59/2f/592f058d.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446306 title="03:58:26">03:58</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>592f058d</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'592f058d5045a0ed2a17d210b807f0a3a2936a96\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=592f058d5045a0ed2a17d210b807f0a3a2936a96"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'592f058d5045a0ed2a17d210b807f0a3a2936a96\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=592f058d5045a0ed2a17d210b807f0a3a2936a96"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('592f058d5045a0ed2a17d210b807f0a3a2936a96', this); }" item-id=592f058d5045a0ed2a17d210b807f0a3a2936a96 class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=c5445690 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/operator_please'); }" href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">[Operator]<span class=admin><br>
+-- <br>
+<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/c5/44/c5445690.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446315 title="03:58:35">03:58</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>c5445690</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'c54456908605f3afa4d1a8275c03a47971ff8bc5\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=c54456908605f3afa4d1a8275c03a47971ff8bc5"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'c54456908605f3afa4d1a8275c03a47971ff8bc5\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=c54456908605f3afa4d1a8275c03a47971ff8bc5"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('c54456908605f3afa4d1a8275c03a47971ff8bc5', this); }" item-id=c54456908605f3afa4d1a8275c03a47971ff8bc5 class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=15b9ca8b cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/operator_please'); }" href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">[Operator]<span class=admin><br>
+-- <br>
+<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/15/b9/15b9ca8b.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446330 title="03:58:50">03:58</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>15b9ca8b</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'15b9ca8b65f8a49bc5133af4831029d27123f269\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=15b9ca8b65f8a49bc5133af4831029d27123f269"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'15b9ca8b65f8a49bc5133af4831029d27123f269\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=15b9ca8b65f8a49bc5133af4831029d27123f269"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('15b9ca8b65f8a49bc5133af4831029d27123f269', this); }" item-id=15b9ca8b65f8a49bc5133af4831029d27123f269 class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=620b445e cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>add notarization chain</b></font> <a href=#620b445e>#</a><a name=620b445e></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('15b9ca8b')) {
+							SetActiveDialog(document.getElementById('15b9ca8b'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/15/b9/15b9ca8b.html');
+						}
+					}
+				" href="/15/b9/15b9ca8b.html">15b9ca8b..</a><br><br>add notarization chain<br><a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('8fdb1234')) {
+							SetActiveDialog(document.getElementById('8fdb1234'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/8f/db/8fdb1234.html');
+						}
+					}
+				" href="/8f/db/8fdb1234.html">8fdb1234..</a><br><br>ok, I added a notarization chain page.<br><br>===<br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/62/0b/620b445e.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446334 title="03:58:54">03:58</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>620b445e</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'620b445e0cc08e368fc1cea22a5f838fa4049721\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=620b445e0cc08e368fc1cea22a5f838fa4049721"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'620b445e0cc08e368fc1cea22a5f838fa4049721\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=620b445e0cc08e368fc1cea22a5f838fa4049721"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('620b445e0cc08e368fc1cea22a5f838fa4049721', this); }" item-id=620b445e0cc08e368fc1cea22a5f838fa4049721 class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=7556b556 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>#like</b></font> <a href=#7556b556>#</a><a name=7556b556></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hashtag'); }" href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('85c2d7a9')) {
+							SetActiveDialog(document.getElementById('85c2d7a9'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/85/c2/85c2d7a9.html');
+						}
+					}
+				" href="/85/c2/85c2d7a9.html">make the interfa</a><br>#like<br><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/75/56/7556b556.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446359 title="03:59:19">03:59</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>7556b556</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'7556b5565700f2ddf0275b16227d54c4fe61e6d3\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=7556b5565700f2ddf0275b16227d54c4fe61e6d3"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'7556b5565700f2ddf0275b16227d54c4fe61e6d3\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=7556b5565700f2ddf0275b16227d54c4fe61e6d3"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('7556b5565700f2ddf0275b16227d54c4fe61e6d3', this); }" item-id=7556b5565700f2ddf0275b16227d54c4fe61e6d3 class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=301989e5 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/operator_please'); }" href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/received'); }" href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">[Operator]<span class=admin><br>
+-- <br>
+<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/30/19/301989e5.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446376 title="03:59:36">03:59</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>301989e5</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'301989e50c22acd7a198f59862f44fd6c2c55350\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=301989e50c22acd7a198f59862f44fd6c2c55350"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'301989e50c22acd7a198f59862f44fd6c2c55350\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=301989e50c22acd7a198f59862f44fd6c2c55350"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('301989e50c22acd7a198f59862f44fd6c2c55350', this); }" item-id=301989e50c22acd7a198f59862f44fd6c2c55350 class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=d36c04b5 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>#like</b></font> <a href=#d36c04b5>#</a><a name=d36c04b5></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hashtag'); }" href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('939fd71e')) {
+							SetActiveDialog(document.getElementById('939fd71e'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/93/9f/939fd71e.html');
+						}
+					}
+				" href="/93/9f/939fd71e.html">stop caching the</a><br>#like<br><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/d3/6c/d36c04b5.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446391 title="03:59:51">03:59</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>d36c04b5</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'d36c04b516d56f9d1ff6923676e0eead3209e4bd\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=d36c04b516d56f9d1ff6923676e0eead3209e4bd"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'d36c04b516d56f9d1ff6923676e0eead3209e4bd\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=d36c04b516d56f9d1ff6923676e0eead3209e4bd"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('d36c04b516d56f9d1ff6923676e0eead3209e4bd', this); }" item-id=d36c04b516d56f9d1ff6923676e0eead3209e4bd class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=a575396d cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>#flag</b></font> <a href=#a575396d>#</a><a name=a575396d></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hashtag'); }" href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('939fd71e')) {
+							SetActiveDialog(document.getElementById('939fd71e'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/93/9f/939fd71e.html');
+						}
+					}
+				" href="/93/9f/939fd71e.html">stop caching the</a><br>#flag<br><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/a5/75/a575396d.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446394 title="03:59:54">03:59</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>a575396d</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'a575396db680a39f4d55a244d41efca285441da1\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=a575396db680a39f4d55a244d41efca285441da1"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'a575396db680a39f4d55a244d41efca285441da1\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=a575396db680a39f4d55a244d41efca285441da1"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('a575396db680a39f4d55a244d41efca285441da1', this); }" item-id=a575396db680a39f4d55a244d41efca285441da1 class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=bb0e65e5 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>Operator, please...</b></font> <a href=#bb0e65e5>#</a><a name=bb0e65e5></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/operator_please'); }" href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">[Operator]<br><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/bb/0e/bb0e65e5.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446412 title="04:00:12">04:00</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>bb0e65e5</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'bb0e65e58be6b1d4c790300be23ba85f8ff4dcf6\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=bb0e65e58be6b1d4c790300be23ba85f8ff4dcf6"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'bb0e65e58be6b1d4c790300be23ba85f8ff4dcf6\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=bb0e65e58be6b1d4c790300be23ba85f8ff4dcf6"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('bb0e65e58be6b1d4c790300be23ba85f8ff4dcf6', this); }" item-id=bb0e65e58be6b1d4c790300be23ba85f8ff4dcf6 class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=fb06418f cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>Operator, please...</b></font> <a href=#fb06418f>#</a><a name=fb06418f></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/operator_please'); }" href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">[Operator]<br><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/fb/06/fb06418f.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446430 title="04:00:30">04:00</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>fb06418f</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'fb06418f2d30a880462b392b7c01338c45ebd850\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=fb06418f2d30a880462b392b7c01338c45ebd850"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'fb06418f2d30a880462b392b7c01338c45ebd850\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=fb06418f2d30a880462b392b7c01338c45ebd850"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('fb06418f2d30a880462b392b7c01338c45ebd850', this); }" item-id=fb06418f2d30a880462b392b7c01338c45ebd850 class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=a44a9f13 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>#like</b></font> <a href=#a44a9f13>#</a><a name=a44a9f13></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hashtag'); }" href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('e48301e0')) {
+							SetActiveDialog(document.getElementById('e48301e0'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/e4/83/e48301e0.html');
+						}
+					}
+				" href="/e4/83/e48301e0.html">add people page</a><br>#like<br><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/a4/4a/a44a9f13.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446441 title="04:00:41">04:00</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>a44a9f13</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'a44a9f13732e2561cf492f1b7382c25fa0a8d828\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=a44a9f13732e2561cf492f1b7382c25fa0a8d828"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'a44a9f13732e2561cf492f1b7382c25fa0a8d828\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=a44a9f13732e2561cf492f1b7382c25fa0a8d828"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('a44a9f13732e2561cf492f1b7382c25fa0a8d828', this); }" item-id=a44a9f13732e2561cf492f1b7382c25fa0a8d828 class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=a830b7ce cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>#like</b></font> <a href=#a830b7ce>#</a><a name=a830b7ce></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a  onclick="if (window.GetPrefs && GetPrefs('draggable_spawn') && window.FetchDialog) { return FetchDialog('/tag/hashtag'); }" href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a  onclick="
+					if (
+						(!window.GetPrefs || GetPrefs('draggable_spawn')) &&
+						(window.FetchDialogFromUrl) &&
+						document.getElementById
+					) {
+						if (document.getElementById('7ac061be')) {
+							SetActiveDialog(document.getElementById('7ac061be'));
+							return false;
+						} else {
+							return FetchDialogFromUrl('/dialog/7a/c0/7ac061be.html');
+						}
+					}
+				" href="/7a/c0/7ac061be.html">add authors page</a><br>#like<br><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/a8/30/a830b7ce.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446446 title="04:00:46">04:00</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>a830b7ce</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'a830b7ceb9cbf6708bb1aef361f8a554f84b7771\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=a830b7ceb9cbf6708bb1aef361f8a554f84b7771"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'a830b7ceb9cbf6708bb1aef361f8a554f84b7771\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=a830b7ceb9cbf6708bb1aef361f8a554f84b7771"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('a830b7ceb9cbf6708bb1aef361f8a554f84b7771', this); }" item-id=a830b7ceb9cbf6708bb1aef361f8a554f84b7771 class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=8813e5fe cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>ilyag has self-identified</b></font> <a href=#8813e5fe>#</a><a name=8813e5fe></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">[my name is: ilyag]<br><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/88/13/8813e5fe.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446479 title="04:01:19">04:01</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>8813e5fe</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'8813e5fe60b253a6642cc8807d03796732b3cc57\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=8813e5fe60b253a6642cc8807d03796732b3cc57"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'8813e5fe60b253a6642cc8807d03796732b3cc57\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=8813e5fe60b253a6642cc8807d03796732b3cc57"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('8813e5fe60b253a6642cc8807d03796732b3cc57', this); }" item-id=8813e5fe60b253a6642cc8807d03796732b3cc57 class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
 <replies></replies></span>
 <!-- / item_list.template -->
 <br>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=Pages cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=Pages cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#fff0ef" class=titlebar>
@@ -3044,7 +4898,7 @@ pre time {
 <span class=advanced>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=readsql cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=readsql cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#fff0ef" class=titlebar>
@@ -3085,10 +4939,36 @@ ORDER BY
 </span></main>
 <span id=messages></span>
 <img src="/p.gif" alt="" height=1 width=1>
-<br><noscript>
+
+<!-- reset_button.template -->
+<a href="/help.html?light=0&time=9999999999&ui=Beginner" onclick="
+	if (window.DraggingReset && window.SetPrefs) {
+		SetPrefs('beginner', 1);
+		SetPrefs('show_advanced', 0);
+		SetPrefs('show_admin', 0);
+		SetPrefs('draggable_activate', 0);
+		SetPrefs('draggable_spawn', 0);
+		SetPrefs('draggable_spawn_focus', 0);
+		SetPrefs('draggable', 0);
+		SetPrefs('draggable_restore', 0);
+		SetPrefs('draggable_restore_collapsed', 0);
+		DraggingReset();
+		//window.location.reload();
+
+		var winLoc = window.location.href;
+		//var winLoc = '/help.html'; #option
+		if (winLoc.indexOf('?')) {
+			winLoc = winLoc.substr(0, winLoc.indexOf('?'));
+		}
+		winLoc = winLoc + '?time=9999999999';
+		window.location = winLoc;
+		return false;
+	}
+" style="float:right; z-index: 99999;"><button>RESET</button></a>
+<!-- / reset_button.template --><br><noscript>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=Notice cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=Notice cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#fff0ef" class=titlebar>
@@ -3111,7 +4991,7 @@ ORDER BY
 </font>
 <!-- / default/template/html/window/standard.template -->
 </noscript>
-<!-- InjectJs: utils settings avatar voting table_sort profile timestamp reply_cart fresh table_sort -->
+<!-- InjectJs: utils settings avatar voting table_sort profile timestamp reply_cart fresh dragging table_sort -->
 
 
 <!-- html/utils/scriptinject.template -->
@@ -4650,7 +6530,7 @@ if (window.EventLoop) {
 
 // == begin avatar.js
 
-var configJsOpenPgp = 0; // this is templated from config/setting/admin/js/openpgp
+var configJsOpenPgp = 1; // this is templated from config/setting/admin/js/openpgp
 
 function setAva () { // sets avatar widgets (and italicizes Profile link)
 	//alert('DEBUG: setAva() begins');
@@ -4693,7 +6573,7 @@ function setAva () { // sets avatar widgets (and italicizes Profile link)
 					signinBox.innerHTML = '<a href="/profile.html"' + gt + '<i' + gt + 'Change</i' + gt + '</a' + gt + '';
 				}
 
-				var configJsOpenPgp = 0; // this is templated from config/setting/admin/js/openpgp
+				var configJsOpenPgp = 1; // this is templated from config/setting/admin/js/openpgp
 
 				if (configJsOpenPgp && !window.openpgp && document.head && document.getElementById && window.localStorage) {
 					//alert('DEBUG: setAva: loading openpgp.js');
@@ -5188,7 +7068,7 @@ function SortTable (t, sortOrder) {
 
 // profile.js
 
-var configJsOpenPgp = 0; // this is templated from config/setting/admin/js/openpgp
+var configJsOpenPgp = 1; // this is templated from config/setting/admin/js/openpgp
 
 if (configJsOpenPgp && !window.openpgp && document.head && document.head.appendChild && document.getElementById && window.localStorage) {
 	//alert('DEBUG: loading openpgp.js');
@@ -5811,7 +7691,7 @@ function ProfileOnLoad () { // onload event for profile page
 			if (window.localStorage) {
 				//alert('DEBUG: ProfileOnLoad: window.localStorage check passed, calling getPrivateKey()...');
 
-				var configJsOpenPgp = 0; // this is templated from config/setting/admin/js/openpgp
+				var configJsOpenPgp = 1; // this is templated from config/setting/admin/js/openpgp
 
 				var pk = getPrivateKey();
 
@@ -6680,6 +8560,1273 @@ if (window.EventLoop) {
 }
 
 // == end fresh.js
+
+
+/* dragging.js */
+// allows dragging of boxes on page with the mouse pointer
+
+/*
+	known issues:
+	* problem: syntax errors on older browsers like netscape and ie3
+	  proposed solution: remove nested function declarations
+	  -or-
+
+	* problem: no keyboard alternative at this time
+	  proposed solution: somehow allow moving through windows and moving them with keyboard
+
+	* problem: slow and janky, needs more polish
+	  proposed solution: optimizations, more elbow grease
+*/
+
+// props https://www.w3schools.com/howto/howto_js_draggable.asp
+
+/*
+		#mydiv {
+			position: absolute;
+			z-index: 9;
+		}
+
+		#mydivheader {
+			this is just the titlebar
+		}
+*/
+
+window.draggingZ = 0; // keeps track of the topmost box's zindex
+// incremented whenever dragging is initiated, that way element pops to top
+
+function dragElement (elmnt, header) { // initialize draggable state for dialog
+	//alert('DEBUG: dragElement()');
+
+	var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+	if (header) {
+		// if present, the header is where you move the DIV from:
+		header.onmousedown = dragMouseDown;
+		//header.ontouchstart = dragMouseDown; // #touchdrag
+	} else {
+		// otherwise, move the DIV from anywhere inside the DIV:
+		elmnt.onmousedown = dragMouseDown;
+		//elmnt.ontouchstart = dragMouseDown; // #touchdrag
+	}
+
+	// set element's position based on its initial box model position
+	var rect = elmnt.getBoundingClientRect();
+	elmnt.style.top = (rect.top) + "px";
+	elmnt.style.left = (rect.left) + "px";
+	elmnt.style.position = 'absolute';
+	elmnt.style.display = 'table';
+
+	UpdateDialogPropertyDialog(elmnt);
+
+	//console.log(rect.top, rect.right, rect.bottom, rect.left);
+	//elmnt.style.position = 'absolute';
+	//elmnt.style.z-index = '9';
+
+	function dragMouseDown (e) {
+		//alert('DEBUG: dragMouseDown');
+		//SetActiveDialog(elmnt);
+		window.dialogDragInProgress = 1;
+
+		e = e || window.event;
+		e.preventDefault();
+		// get the mouse cursor position at startup:
+		pos3 = e.clientX;
+		pos4 = e.clientY;
+
+		document.onmouseup = closeDragElement;
+		//document.ontouchend = closeDragElement; // #touchdrag
+		// call a function whenever the cursor moves:
+		document.onmousemove = elementDrag;
+		//document.ontouchmove = elementDrag; // #touchdrag
+	}
+
+	function elementDrag (e) {
+		//alert('DEBUG: elementDrag');
+		//document.title = pos1 + ',' + pos2 + ',' + pos3 + ',' + pos4;
+		//document.title = e.clientX + ',' + e.clientY;
+		//document.title = elmnt.offsetTop + ',' + elmnt.offsetLeft;
+		e = e || window.event;
+		e.preventDefault();
+		// calculate the new cursor position:
+		pos1 = pos3 - e.clientX;
+		pos2 = pos4 - e.clientY;
+		pos3 = e.clientX;
+		pos4 = e.clientY;
+		// set the element's new position:
+
+		elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+		elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+
+		UpdateDialogPropertyDialog(elmnt);
+	}
+
+	function closeDragElement () {
+		//alert('DEBUG: closeDragElement');
+		window.dialogDragInProgress = 0;
+
+		// stop moving when mouse button is released:
+		document.onmouseup = null;
+		document.onmousemove = null;
+
+		//document.ontouchend = null; // #touchdrag
+		//document.ontouchmove = null; // #touchdrag
+
+		SaveDialogPosition(elmnt);
+	}
+} // dragElement()
+
+function SaveDialogPosition (elmnt) {
+// function SaveWindowPosition () {
+// function SavePosition () {
+
+	if (elmnt) {
+		var elId = GetDialogId(elmnt);
+
+		if (elId && elId.length < 31) {
+			SetPrefs(elId + '.style.top', elmnt.style.top, 'dialogPosition');
+			SetPrefs(elId + '.style.left', elmnt.style.left, 'dialogPosition');
+		} else {
+			//alert('DEBUG: SaveDialogPosition: warning: elId is false');
+		}
+	} else {
+		//alert('DEBUG: SaveDialogPosition: warning: elmnt is false');
+	}
+} // SaveDialogPosition()
+
+function AddToDialogHistory (dialog) {
+	// #todo sanity
+	var dialogHistory = GetPrefs('dialog_history');
+	if (!dialogHistory) {
+		dialogHistory = dialog + '\n';
+	} else {
+		dialogHistory = dialogHistory + '\n' + dialog;
+	}
+	SetPrefs('dialog_history', dialogHistory);
+} // AddToDialogHistory()
+
+function DraggingSaveAllDialogPositions () {
+	//alert('DEBUG: DraggingSaveAllDialogPositions()');
+	var elements = document.getElementsByClassName('dialog');
+
+	for (var i = elements.length - 1; 0 <= i; i--) {
+		SaveDialogPosition(elements[i]);
+	}
+} // DraggingSaveAllDialogPositions()
+
+function CollapseAll () {
+	//alert('DEBUG: CollapseAll()');
+	if (document.getElementsByClassName) {
+		var elements = document.getElementsByClassName('dialog');
+		for (var i = elements.length - 1; 0 <= i; i--) { // walk backwards for positioning reasons
+			if (elements[i].getAttribute('id') == 'topmenu') {
+				// controls dialog
+			} else {
+				CollapseWindow(elements[i], 'none');
+			}
+		}
+	}
+} // CollapseAll()
+
+function CollapseMost () {
+	//alert('DEBUG: CollapseMost()');
+	if (document.getElementsByClassName) {
+		var elements = document.getElementsByClassName('dialog');
+		var changesMade = 0;
+		for (var i = elements.length - 1; 0 <= i; i--) { // walk backwards for positioning reasons
+			if (elements[i].getAttribute('id') == 'topmenu') {
+				// controls dialog
+			} else {
+				changesMade += CollapseWindow(elements[i], 'none');
+			}
+		}
+
+		return changesMade;
+	}
+
+	return '';
+} // CollapseMost()
+
+function ExpandAll () {
+	//alert('DEBUG: ExpandAll()');
+	if (document.getElementsByClassName) {
+		var elements = document.getElementsByClassName('dialog');
+		for (var i = elements.length - 1; 0 <= i; i--) { // walk backwards for positioning reasons
+			if (elements[i].getAttribute('id') == 'topmenu') {
+				// controls dialog
+			} else {
+				CollapseWindow(elements[i], 'initial');
+			}
+		}
+	}
+} // ExpandAll()
+
+function DraggingRetile () {
+	return DraggingRetile2(1);
+}
+
+function DraggingRetile2 (ignoreMenu) {
+	//alert('DEBUG: DraggingRetile()');
+
+	window.scrollTo(0, 0);
+
+	if (document.getElementsByClassName) {
+		//alert('DEBUG: DraggingRetile: document.getElementsByClassName feature check PASSED');
+		var elements = document.getElementsByClassName('dialog');
+
+		for (var i = elements.length - 1; 0 <= i; i--) {
+			if ((!ignoreMenu) || (elements[i].getAttribute('id') == 'topmenu')) { // controls dialog
+				// do not reposition the controls dialog
+			} else {
+				elements[i].style.position = 'static';
+				elements[i].style.display = 'inline-block';
+			}
+		}
+	} else {
+		//alert('DEBUG: DraggingRetile: document.getElementsByClassName is FALSE');
+		return '';
+	}
+//	for (var i = elements.length - 1; 0 <= i; i--) {
+//		var newTop = elements[i].style.top;
+//		var newLeft = elements[i].style.left;
+//		elements[i].style.position = 'absolute';
+//		elements[i].style.top = newTop;
+//		elements[i].style.left = newLeft;
+//	}
+//
+//	DraggingInit(0);
+}
+
+function UpdateDialogPropertyDialog (dialog) {
+	if (dialog && window.getComputedStyle && document.getElementById && document.getElementById('propDisplay')) {
+		var d = new Date();
+		if (
+			(!window.propRecentUpdate)
+				||
+			(100 < (d.getTime() - window.propRecentUpdate))
+		) {
+			var s = getComputedStyle(dialog);
+			if (s) {
+				document.getElementById('propDisplay').innerHTML = s.display;
+				document.getElementById('propPosition').innerHTML = s.position;
+				document.getElementById('propZindex').innerHTML = s.zIndex;
+				document.getElementById('propLeft').innerHTML = s.left;
+				document.getElementById('propTop').innerHTML = s.top;
+				document.getElementById('propWidth').innerHTML = s.width;
+				document.getElementById('propHeight').innerHTML = s.height;
+				document.getElementById('propRight').innerHTML = s.right;
+				document.getElementById('propBottom').innerHTML = s.bottom;
+			}
+
+			var allTitlebar = dialog.getElementsByClassName('titlebar');
+			if (allTitlebar) {
+				var firstTitlebar = allTitlebar[0];
+				if (firstTitlebar) {
+					//document.title = firstTitlebar.innerHTML;
+				}
+			}
+
+			window.propRecentUpdate = d.getTime();
+		}
+	}
+} // UpdateDialogPropertyDialog();
+
+function SetActiveDialogDelay (ths) {
+	//alert();
+		//set next window to focus to
+
+		window.nextWindowToFocusTo = ths;
+
+		//set timeout to focus to that window
+
+		setTimeout('window.SetActiveDialog(window.nextWindowToFocusTo);', 130);
+}
+
+function SetActiveDialog (ths) {
+// ActivateDialog {
+// FocusMe ShowMe ActivateMe {
+
+	if (!window.GetPrefs || !GetPrefs('draggable') || !GetPrefs('draggable_activate')) {
+		// #todo optimize
+		return '';
+	}
+
+	if (ths && ths.getAttribute('imactive') == '1') {
+		//alert('DEBUG: SetActiveDialog: cancelled due to imactive');
+		return true;
+	} else if (window.dialogDragInProgress) {
+		//alert('DEBUG: SetActiveDialog: cancelled due to window.dialogDragInProgress');
+		return true;
+	}
+
+	//alert('DEBUG: SetActiveDialog: conditions met!');
+
+	window.nextWindowToFocusTo = ths;
+	// window.nextWindowToFocusTo stores the next window to focus to for mouseover
+	// there is a short delay before a window gets focus after a mouseover
+	// otherwise the interface gets jittery
+
+	//alert('DEBUG: SetActiveDialog(ths = ' + ths + ')');
+		// #thoughts should this be dependent on GetPrefs?
+		// or should it unintentionally come on if GetPrefs is not available?
+
+	if (ths) {
+		ths.style.zIndex = ++window.draggingZ;
+		// document.title = window.draggingZ;
+	}
+
+	//draggable_activate
+	var colorWindow = '#403000'; // for templating
+	var colorTitlebar = '#fff0ef'; // for templating
+	var colorTitlebarInactive = '#fff0ef'; // for templating
+	var colorSecondary = '#fff0ef'; // for templating
+	var colorTitlebarText = '#403000'; // for templating
+
+	var doScale = GetPrefs('draggable_scale') ? 1 : 0; // SetActiveDialog()
+	var scaleLarge = '1.9';
+	var scaleSmall = '1.0';
+	// this doesn't work right  yet, but loks promising
+
+	var elements = document.getElementsByClassName('dialog');
+	for (var i = 0; i < elements.length; i++) {
+	// for (var i = elements.length - 1; 0 <= i; i--) { // walk backwards for positioning reasons
+		// walking backwards is necessary to preserve the element positioning on the page
+		// once we remove the element from the page flow, all the other elements reflow to account it
+		// if we walk forwards here, all the elements will end up in the top left corner
+		if (ths && elements[i] == ths) {
+			elements[i].setAttribute('imactive', '1');
+			elements[i].style.borderColor = colorTitlebar;
+
+			//var comStyle = window.getComputedStyle(elements[i], null);
+			//var iwidth = parseInt(comStyle.getPropertyValue("width"), 10);
+			//var iheight = parseInt(comStyle.getPropertyValue("height"), 10);
+			////alert('DEBUG: SetActiveDialog: iwidth: ' + document.documentElement.clientWidth + ', iheight:' + iheight);
+			////alert('DEBUG: SetActiveDialog: document.documentElement.clientWidth and .clientHeight: ' + document.documentElement.clientWidth + ',' + document.documentElement.clientHeight);
+			////alert('DEBUG: SetActiveDialog: myScale = ' + myScale);
+
+		} else {
+			elements[i].setAttribute('imactive', '0');
+			elements[i].style.borderColor = colorTitlebarInactive;
+		}
+
+		if (elements[i].getAttribute('imactive') == 1) {
+			if (doScale) {
+				// this doesn't work yet, and there's no ui for the setting yet
+				//var myScale = 1 + (document.documentElement.clientWidth / (iwidth * 3));
+				var myScale = scaleLarge;
+
+				elements[i].style.transition = 'transform 0.15s';
+				//elements[i].style.transform = 'scale(' + myScale + ')';
+				elements[i].style.transform = 'scale(' + myScale + ')';
+				elements[i].style.transformOrigin = 'top left';
+
+				var css = window.getComputedStyle(elements[i]);
+//				document.title =
+//					css.getPropertyValue('top') +
+//					',' +
+//					css.getPropertyValue('left') +
+//					',' +
+//					css.getPropertyValue('height') +
+//					',' +
+//					css.getPropertyValue('width') +
+//					'...'
+//				;
+			}
+		} // imactive
+		else {
+			if (doScale) { // always de-scale window, because it may have been scaled up before user turned off scaling
+				//var myScale =(document.documentElement.clientWidth / (iwidth * 5));
+				var myScale = scaleSmall;
+				elements[i].style.transform = 'scale(' + myScale + ')';
+				elements[i].style.transformOrigin = 'top left';
+
+				//elements[i].style.transform = 'scale(0.5)';
+				//elements[i].style.transformOrigin = 'top center';
+			}
+		} // not imactive
+
+		var allTitlebar = elements[i].getElementsByClassName('titlebar'); // #todo factor out
+		var firstTitlebar = allTitlebar[0];
+
+		if (firstTitlebar && firstTitlebar.getElementsByTagName) {
+			if ((ths && elements[i] == ths) || elements[i].getAttribute('imactive') == 1) {
+				// active
+				firstTitlebar.style.backgroundColor = colorTitlebar;
+				firstTitlebar.style.color = colorTitlebarText;
+				//elements[i].style.boxShadow = '0 0 15pt #335555;';
+			} else {
+				// inactive
+				firstTitlebar.style.backgroundColor = colorSecondary;
+				firstTitlebar.style.color = colorWindow;
+				//elements[i].style.boxShadow = '';
+			}
+		}
+	}
+
+	//UpdateDialogPropertyDialog(ths);
+
+	return true;
+} // SetActiveDialog()
+
+function GetParentDialog (el) {
+	if (el) {
+		var parentDialog = el;
+		while (parentDialog && (parentDialog.className != 'dialog')) {
+			parentDialog = parentDialog.parentElement;
+		}
+		if (parentDialog) {
+			return parentDialog;
+		}
+	}
+	return '';
+} // GetParentDialog()
+
+function SetContainingDialogActive (ths) { // sets active dialog based on control which received focus
+//setfocus
+	if (ths) {
+		var parentDialog = ths;
+		while (parentDialog && (parentDialog.className != 'dialog')) {
+			parentDialog = parentDialog.parentElement;
+		}
+		if (parentDialog) {
+			SetActiveDialog(parentDialog); // SetContainingDialogActive()
+		}
+	}
+} // SetContainingDialogActive()
+
+function DraggingReset () {
+	//alert('DEBUG: DraggingReset()');
+
+	if (document.getElementsByClassName) {
+		// feature check
+		//alert('DEBUG: DraggingReset: feature check success');
+
+		localStorage.removeItem('dialogPosition'); // #todo this should be done via SetPrefs()
+
+		// find all class=dialog elements and walk through them
+		var elements = document.getElementsByClassName('dialog');
+		for (var i = elements.length - 1; 0 <= i; i--) { // walk backwards for positioning reasons
+			// walking backwards is necessary to preserve the element positioning on the page
+			// once we remove the element from the page flow, all the other elements reflow to account it
+			// if we walk forwards here, all the elements will end up in the top left corner
+			window.draggingZ++;
+			DraggingInitDialog(elements[i], 0); // DraggingReset()
+			CollapseWindow(elements[i], 'show');
+		} // for i in elements
+
+		return '';
+	} else {
+		return '';
+	}
+
+	return '';
+} // DraggingReset()
+
+function DraggingCascade () {
+	//alert('DEBUG: DraggingCascade()');
+	
+	var titlebarHeight = 0;
+
+	var curTop = 55;
+	var curLeft = 5;
+	var curZ = 0;
+
+	var maxLeft = document.documentElement.clientWidth / 2;
+
+	var elements = document.getElementsByClassName('dialog');
+	for (var i = 0; i < elements.length; i++) {
+		var allTitlebar = elements[i].getElementsByClassName('titlebar'); // #todo factor out
+		var firstTitlebar = allTitlebar[0];
+
+		var allMenubar = elements[i].getElementsByClassName('menubar');
+		var firstMenubar = allMenubar[0];
+
+		titlebarHeight = 30;
+
+		if (firstMenubar || elements[i].getAttribute('id') == 'topmenu') {
+			elements[i].style.zIndex = 1337;
+		} else {
+			if (firstTitlebar && firstTitlebar.getElementsByTagName) {
+				// dragElement(elements[i], firstTitlebar);
+
+				if (elements[i].getAttribute('id') == 'topmenu') {
+					// ignore the conrols dialog
+				} else {
+					if (
+						elements[i].style.display != 'none' &&
+						elements[i].parentElement.style.display != 'none' &&
+						elements[i].parentElement.parentElement.style.display != 'none'
+						// sometimes a dialog is hidden because its parent container is hidden
+						// so here, we check two layers up
+						// a bit of a hack, but it works
+					) {
+						curZ++;
+						curTop += titlebarHeight;
+						curLeft += titlebarHeight;
+
+						if (maxLeft < curLeft) {
+							curLeft = 5;
+						}
+
+						elements[i].style.top = curTop + 'px';
+						elements[i].style.left = curLeft +'px';
+						elements[i].style.zIndex = curZ;
+					}
+				}
+			}
+		}
+	}
+} // DraggingCascade()
+
+function DraggingInitDialog (el, doPosition) {
+// function DraggingRestoreDialogPosition () {
+// function DraggingInitElement () {
+// function RestorePosition () {
+
+	if (!el) {
+		//alert('DEBUG: DraggingInitDialog: warning: el argument is missing');
+		return '';
+	}
+
+	var elId = GetDialogId(el);
+	while (!elId && el && el.firstElement) {
+		el = el.firstElement;
+		elId = GetDialogId(el);
+	}
+	if (!elId) {}
+
+	//alert('DEBUG: DraggingInitDialog: elId = ' + elId);
+
+	// find all titlebars and remember the first one
+	var allTitlebar = el.getElementsByClassName('titlebar');
+	var firstTitlebar = allTitlebar[0];
+
+	if (firstTitlebar) {
+		//alert('DEBUG: DraggingInitDialog: titlebar found');
+		dragElement(el, firstTitlebar);
+	} else {
+		//alert('DEBUG: DraggingInitDialog: titlebar missing');
+		dragElement(el, el);
+	}
+
+	if (elId && elId.length < 31) {
+		if (doPosition) {
+			RestoreDialogPosition(el, elId);
+		}
+
+		if (GetPrefs('draggable_restore_collapsed')) {
+			if (GetPrefs(elId + '.collapse', 'dialogPosition') == 'none') {
+				CollapseWindow(el, 'none'); //#meh
+			} else {
+				//ok
+			}
+		} else {
+			// cool
+		}
+	} else {
+		//alert('DEBUG: DraggingInitDialog: warning: elId is false 2' + elements[i].innerHTML);
+	}
+//
+	//alert('DEBUG: DraggingInitDialog: finished');
+
+	//elements[i].style.display = 'table !important';
+
+	return '';
+} // DraggingInitDialog()
+//
+//function EnsureDialogIsInViewport (el) {
+//	var height = window.innerHeight;
+//	var width = window.innerWidth;
+//
+//	if (el.top + el.height
+//}
+//
+//function IsInViewport(element) {
+//    const rect = element.getBoundingClientRect();
+//    return (
+//        rect.top GT= 0 &&
+//        rect.left GT= 0 &&
+//        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+//        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+//    );
+//}
+
+function DraggingMakeFit (doPosition) { // initialize all class=dialog elements on the page to be draggable
+// function DraggableMakeFit () {
+// function ArrangeAll () {
+// function DraggingArrange {
+
+	//alert('DEBUG: DraggingMakeFit()');
+
+	if (!document.getElementsByClassName) {
+		// feature check
+		//alert('DEBUG: DraggingInit: feature check failed');
+		return '';
+	}
+
+	//if (window.GetPrefs && !GetPrefs('draggable')) {
+	//	//alert('DEBUG: DraggingInit: warning: GetPrefs(draggable) was false, returning');
+	//	return '';
+	//}
+
+	// find all class=dialog elements and walk through them
+	var elements = document.getElementsByClassName('dialog');
+	for (var i = elements.length - 1; 0 <= i; i--) { // walk backwards for positioning reasons
+		// walking backwards is necessary to preserve the element positioning on the page
+		// once we remove the element from the page flow, all the other elements reflow to account it
+		// if we walk forwards here, all the elements will end up in the top left corner
+		window.draggingZ++;
+		DraggingInitDialog(elements[i], doPosition); // DraggingMakeFit()
+	} // for i in elements
+
+	return '';
+} // DraggingMakeFit()
+
+function UnhideHiddenElements () {
+	//alert('DEBUG: UnhideHiddenElements()');
+
+	if (document.getElementById) {
+		// this gets rid of the style which hides dialogs on
+		// page load so that they can be positioned first
+		// dragging_hide_dialogs.js
+		// #todo optimize this
+		if (document.getElementById('styleHideDialogs')) {
+			if (document.getElementById('styleHideDialogs').remove) {
+				document.getElementById('styleHideDialogs').remove();
+			}
+		}
+
+		if (document.getElementById('loadingIndicator')) {
+			// put loading indicator above other dialogs if it is on page
+			document.getElementById('loadingIndicator').style.zIndex = 1336;
+		}
+	}
+} // UnhideHiddenElements()
+
+function DraggingInit (doPosition) { // initialize all class=dialog elements on the page to be draggable
+// InitDrag {
+// DragInit {
+// initialize all class=dialog elements on the page to be draggable
+
+	//alert('DEBUG: DraggingInit()');
+
+	if (!document.getElementsByClassName) {
+		// feature check
+		//alert('DEBUG: DraggingInit: feature check failed');
+		return '';
+	}
+
+	//if (window.GetPrefs && !GetPrefs('draggable')) {
+	//	//alert('DEBUG: DraggingInit: warning: GetPrefs(draggable) was false, returning');
+	//	return '';
+	//}
+
+	var doPosition = GetPrefs('draggable_restore');
+
+	UnhideHiddenElements();
+
+	// find all class=dialog elements and walk through them
+	var elements = document.getElementsByClassName('dialog');
+	for (var i = elements.length - 1; 0 <= i; i--) { // walk backwards for positioning reasons
+		// walking backwards is necessary to preserve the element positioning on the page
+		// once we remove the element from the page flow, all the other elements reflow to account it
+		// if we walk forwards here, all the elements will end up in the top left corner
+		window.draggingZ++;
+
+		DraggingInitDialog(elements[i], doPosition); // DraggingInit()
+	} // for i in elements
+
+	if (GetPrefs('draggable_activate')) {
+		var elements = document.getElementsByTagName('A');
+		for (var i = elements.length - 1; 0 <= i; i--) { // walk backwards for positioning reasons
+			elements[i].setAttribute('onfocus', 'SetContainingDialogActive(this)');
+		}
+		var elements = document.getElementsByTagName('INPUT');
+		for (var i = elements.length - 1; 0 <= i; i--) { // walk backwards for positioning reasons
+			elements[i].setAttribute('onfocus', 'SetContainingDialogActive(this)');
+		}
+		var elements = document.getElementsByTagName('TEXTAREA');
+		for (var i = elements.length - 1; 0 <= i; i--) { // walk backwards for positioning reasons
+			elements[i].setAttribute('onfocus', 'SetContainingDialogActive(this)');
+		}
+	} // if (GetPrefs('draggable_activate'))
+
+	return '';
+
+} // DraggingInit()
+
+function CenterDialog (el) { // #todo rename and test
+	//alert('DEBUG: CenterDialog()');
+
+
+	if (el.style.display == 'none') {
+		el.style.display = 'table';
+		needResetStyleDisplay = 1;
+	}
+
+	var newTop = '200px';
+	if (newTop) {
+		el.style.top = newTop;
+	}
+	var newLeft = '100px';
+	if (newLeft) {
+		el.style.left = newLeft;
+	}
+	if (needResetStyleDisplay) {
+		el.style.display = 'inline-block';
+	}
+
+
+	return '';
+
+} // CenterDialog()
+
+function RestoreDialogPosition (el, elId) {
+// function RestoreWindowPosition {
+	//alert('DEBUG: RestoreDialogPosition()');
+	if (!elId) {
+		elId = GetDialogId(el);
+	}
+	if (!elId) {
+		//alert('DEBUG: RestoreDialogPosition: warning: elId missing');
+		return '';
+	}
+
+	var needResetStyleDisplay = 0;
+	if (el.style.display == 'none') {
+		// #todo why are we setting it here and then resetting?
+		// #needsdoc
+		el.style.display = 'table';
+		needResetStyleDisplay = 1;
+	}
+
+	var newTop = GetPrefs(elId + '.style.top', 'dialogPosition');
+	if (newTop) {
+		el.style.top = newTop;
+	}
+	var newLeft = GetPrefs(elId + '.style.left', 'dialogPosition');
+	if (newLeft) {
+		el.style.left = newLeft;
+	}
+	if (needResetStyleDisplay) {
+		el.style.display = 'inline-block';
+	}
+
+	return '';
+} // RestoreDialogPosition()
+
+function GetDialogId (win) { // returns dialog id (based on id= or title bar caption)
+	//alert('DEBUG: GetDialogId()');
+	if (win && win.getElementsByClassName) {
+		if (win && win.getAttribute && win.getAttribute('id')) {
+			// easy
+			//alert('DEBUG: GetDialogId: returning win.getAttribute(id) = ' + win.getAttribute('id') );
+			return win.getAttribute('id');
+
+		} else {
+			// hard
+			//alert('DEBUG: GetDialogId: hard mode!');
+
+			var allTitlebar = win.getElementsByClassName('titlebar');
+			var firstTitlebar = allTitlebar[0];
+
+			if (firstTitlebar && firstTitlebar.getElementsByTagName) {
+				var elId = firstTitlebar.getElementsByTagName('b');
+				if (elId && elId[0]) {
+					elId = elId[0];
+
+					if (elId && elId.innerHTML) {
+						if (elId.innerHTML.length <= 31) {
+							//alert('DEBUG: GetDialogId: returning elId.innerHTML = ' + elId.innerHTML);
+
+							return elId.innerHTML;
+						} else {
+							//alert('DEBUG: GetDialogId: returning elId.innerHTML.substr(0, 31) = ' + elId.innerHTML.substr(0, 31));
+
+							return elId.innerHTML.substr(0, 31);
+						}
+					}
+				}
+			}
+		}
+	} else {
+		//alert('GetDialogId: warning: fallback');
+	}
+	return '';
+} // GetDialogId()
+
+function SpotlightDialog (dialogId) {
+// should actually be called ToggleDialog()
+	var dialog = document.getElementById('d' + dialogId);
+	if (dialog) {
+		var dialogDisplay = dialog.style.display;
+		if (dialogDisplay == 'none') {
+			dialog.style.display = 'inline';
+		} else {
+			dialog.style.display = 'none';
+		}
+	} else {
+		//alert('DEBUG: SpotlightDialog: warning: dialog not found');
+	}
+	return false;
+} // SpotlightDialog()
+
+function HideDialog (dialog) { // takes dialog element as reference
+	//alert('DEBUG: HideDialog: dialog = ' + dialog);
+	if (dialog && dialog.style) {
+		//alert('DEBUG: HideDialog: sanity check passed');
+		dialog.style.display = 'none';
+	}
+} // HideDialog()
+
+function UpdateDialogList () { // DialogListDialog () dialog_list.template
+	var lstDialog = document.getElementById('lstDialog');
+	if (lstDialog) {
+		var allOpenDialogs = document.getElementsByClassName('dialog');
+		if (allOpenDialogs.length) {
+//			var gt = unescape('%3E');
+//			var listContent = '<form' + gt; // id=formListDialog name=formListDialog
+			var listContent = ''; // id=formListDialog name=formListDialog
+			for (var iDialog = 0; iDialog < allOpenDialogs.length; iDialog++) {
+				var dialogTitle = GetDialogTitle(allOpenDialogs[iDialog]);
+				var dialogId = GetDialogId(allOpenDialogs[iDialog]);
+				allOpenDialogs[iDialog].setAttribute('id', 'd' + dialogId);
+				var gt = unescape('%3E');
+
+				if (24 < dialogTitle.length) {
+					dialogTitle = dialogTitle.substr(0, 24);
+				}
+
+				listContent = listContent + '<a href="#' + dialogId + '" onclick="if (window.SpotlightDialog) { return SpotlightDialog(\'' + dialogId + '\'); }"' + gt + dialogTitle + '</a' + gt + '<br' + gt;
+				//listContent = listContent + '<label for="c' + dialogId + '"' + gt + '<input type=checkbox name="c' + dialogId + '" id="c' + dialogId + '"' + gt + dialogId + '</label' + gt + '<br' + gt;
+				lstDialog.innerHTML = lstDialog.innerHTML + iDialog;
+
+				/* #todo
+				var newLink = document.createElement('a');
+				newLink.setAttribute('href', '#');
+				newLink.setAttribute('onclick', "if (window.SpotlightDialog) { SpotlightDialog(' + dialogId + '); }");
+				//newLink.innerHTML = dialogTitle;
+				var newText = document.createTextNode(dialogTitle);
+				var newBr = document.createElement('br');
+
+				newLink.appendChild(newText);
+				lstDialog.appendChild(newLink);
+				lstDialog.appendChild(newBr);
+				*/
+			}
+//			listContent = listContent + '</form' + gt;
+
+			if (lstDialog.innerHTML != listContent) {
+				lstDialog.innerHTML = listContent;
+			}
+		}
+	}
+	//#todo this should go into a sep module
+} // UpdateDialogList()
+
+function GetDialogTitle (win) { // returns dialog title (based on title bar caption)
+	//alert('DEBUG: GetDialogTitle()');
+	//document.title = 0;
+	if (win && win.getElementsByClassName) {
+		//document.title = 1;
+		var allTitlebar = win.getElementsByClassName('titlebar');
+		var firstTitlebar = allTitlebar[0];
+
+		if (firstTitlebar && firstTitlebar.getElementsByTagName) {
+			//document.title = 2;
+			var elId = firstTitlebar.getElementsByTagName('b');
+			if (elId && elId[0]) {
+				elId = elId[0];
+
+				if (elId && elId.innerHTML) {
+					//alert('DEBUG: GetDialogTitle: returning elId.innerHTML = ' + elId.innerHTML);
+					return elId.innerHTML;
+				}
+			}
+		}
+	} else {
+		//alert('GetDialogTitle: warning: fallback');
+	}
+	return '';
+} // GetDialogId()
+
+function CollapseWindow (p, newVisible) { // p = dialog element ; newVisible = 'none'/0 or anything else
+// should be called CollapseExpandDialog ?
+// collapses or expands specified window/dialog
+// function CollapseDialog (
+	// collapse: newVisible = none
+	// expand: newVisible = anything else
+	//alert('DEBUG: CollapseWindow()');
+	var changesMade = 0;
+
+	if (p.getElementsByClassName) {
+		var content = p.getElementsByClassName('content');
+
+		if (content.length) {
+			changesMade += SetElementVisible(content[0], newVisible);
+		}
+		content = p.getElementsByClassName('menubar');
+		if (content.length) {
+			changesMade += SetElementVisible(content[0], newVisible);
+		}
+		content = p.getElementsByClassName('heading');
+		if (content.length) {
+			changesMade += SetElementVisible(content[0], newVisible);
+		}
+		content = p.getElementsByClassName('statusbar');
+		if (content.length) {
+			changesMade += SetElementVisible(content[0], newVisible);
+		}
+
+		var btnSkip = p.getElementsByClassName('skip');
+		if (btnSkip && btnSkip[0]) {
+			if (newVisible == 'none') {
+				if (btnSkip[0].innerHTML != '~') {
+					btnSkip[0].innerHTML = '~';
+					changesMade++;
+				}
+			} else {
+				if (btnSkip[0].innerHTML != '#') {
+					btnSkip[0].innerHTML = '#';
+					changesMade++;
+				}
+			}
+		}
+	}
+
+	return !changesMade;
+	// if changes were made, then it should return false, because this will cancel the double-click event
+	// if changes were not made, it should return true, because it should let the double-click event happen
+} // CollapseWindow()
+
+function CollapseWindowFromButton (t) { // collapses or expands window based on button pressed (t)
+// t is presumed to be clicked element's this, but can be any other element
+// if t's caption is '~', window is re-expanded
+// if '#' (or anything else) collapses window
+// this is done by navigating up until a table is reached
+// and then hiding the first class=content element within
+// presumably a TR but doesn't matter really because SetElementVisible() is used
+// pretty basic, but it works.
+	if (t.innerHTML && t.firstChild) {
+		if (t.firstChild.nodeName == 'FONT') {
+			// small hack in case link has a font tag inside
+			// the font tag is typically used to style the link a different color for older browsers
+			t = t.firstChild;
+		}
+		var newVisible = 'initial';
+		if (t.innerHTML == '~') { //#collapseButton
+			//currently collapsed, expand
+			t.innerHTML = '#'; // //#collapseButton
+		} else {
+			// currently expanded, collapse
+			t.innerHTML = '~'; //#collapseButton
+			newVisible = 'none';
+		}
+		if (t.parentElement) {
+			//hide content elements
+			var p = t;
+
+			var sanityCounter = 20;
+
+			while (p.nodeName != 'TABLE') {
+				p = p.parentElement;
+				sanityCounter--;
+				if (sanityCounter < 1) {
+					//alert('DEBUG: CollapseWindowFromButton: warning: sanity check failed');
+					return '';
+				}
+			}
+
+			var winId = GetDialogId(p);
+			SetPrefs(winId + '.collapse', newVisible, 'dialogPosition');
+
+			return CollapseWindow(p, newVisible);
+		}
+	}
+
+	return true;
+} // CollapseWindowFromButton()
+
+function SelectMe (ths) {
+	// not worky yet
+
+	//alert('DEBUG: SelectMe()');
+	if (!ths) {
+		//alert('DEBUG: SelectMe: warning: ths missing');
+		return '';
+	}
+
+	if (window.getSelection && document.createRange) {
+		var selection = window.getSelection();
+		var range = document.createRange();
+		range.selectNodeContents(ths);
+		selection.removeAllRanges();
+		selection.addRange(range);
+	} else if (document.selection && document.body.createTextRange) {
+		var range = document.body.createTextRange();
+		range.moveToElementText(ths);
+		range.select();
+	}
+
+	return true;
+} // SelectMe()
+
+function InsertFetchedDialog () {
+//alert('DEBUG: InsertFetchedDialog()');
+// inserts dialog at the top of the document, before the first child
+// function InjectDialog () { // InsertFetchedDialog()
+// function InsertDialog () {
+	//debug document.title = 'InsertFetchedDialog';
+
+	var xmlhttp = window.xmlhttp2;
+	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		//alert('DEBUG: InsertFetchedDialog: found status 200');
+
+		var inject = document.createElement('span'); // temporary
+		inject.innerHTML = xmlhttp.responseText;
+
+		if (1) {
+		//if (1 || window.location.href.indexOf('chat') != -1) {
+			// insert dialog at the top of the document, before the first child
+
+			//debug document.title += 1;
+			// #todo this should probably be somewhere else, as it relates to chat only
+			// this is a special case handler for the chat page, allowing
+			// new chats to be injected at the top of maincontent
+			var mainC = document.getElementById('maincontent');
+			if (mainC) {
+				if (mainC.firstElementChild) {
+					//debug document.title += 6;
+					mainC.insertBefore(inject, mainC.firstElementChild);
+				} else {
+					//debug document.title += 7;
+					mainC.appendChild(inject);
+				}
+				//debug document.title += 3;
+			} else {
+				//alert('DEBUG: InsertFetchedDialog: warning: maincontent is missing');
+				if (document.body) {
+					if (document.body.firstElementChild) {
+						// #todo eliminate race cond
+						//debug document.title += 8;
+						document.body.insertBefore(inject, document.body.firstElementChild);
+					} else {
+						document.body.appendChild(inject);
+						//debug document.title += 4;
+					}
+				}
+			}
+			if (window.UpdateDialogList) {
+				UpdateDialogList();
+			}
+		} else {
+			//debug document.title += 2;
+			// add the dialog at the bottom/end of the document
+			document.body.appendChild(inject);
+		}
+		//debug document.title += 5;
+
+		var newDialog = inject.getElementsByClassName('dialog');
+		//alert('DEBUG: InsertFetchedDialog: newDialog.length = ' + newDialog.length);
+		//alert('DEBUG: InsertFetchedDialog: newDialog = ' + newDialog);
+
+		//var actualDialog = newDialog.firstElement;
+		//var actualDialog = newDialog[0]; #todo
+		////alert('DEBUG: InsertFetchedDialog: actualDialog = ' + actualDialog);
+
+		if (window.ShowTimestamps) {
+			ShowTimestamps();
+		}
+		if (window.LoadCheckboxValues) {
+			LoadCheckboxValues();
+		}
+		if (window.DraggingInit && window.GetPrefs && GetPrefs('draggable')) {
+			//DraggingInit(0);
+			DraggingInitDialog(newDialog[0], 1); // InsertFetchedDialog()
+			//document.title = 'asdf';
+		} else {
+			//document.title = 'qwer';
+		}
+		if (newDialog.length) {
+			// new dialog was found in page, and is referenced by newDialog
+
+			if (GetPrefs('draggable_spawn_focus')) {
+				// focus newly inserted dialog
+				SetActiveDialog(newDialog[0]); // InsertFetchedDialog()
+			}
+
+			// if it is profile dialog, call ProfileOnLoad()
+			var frmProfile = newDialog[0].getElementsByClassName('frmProfile');
+			if (frmProfile) {
+				if (window.ProfileOnLoad) {
+					ProfileOnLoad();
+				}
+			}
+
+			// if there is a textarea inside new dialog, focus the textarea
+			var textareaNew = newDialog[0].getElementsByClassName('txtarea');
+			if (textareaNew && textareaNew.length && textareaNew[0]) {
+				if (textareaNew[0].focus) {
+					textareaNew[0].focus();
+				}
+				if (window.WriteOnLoad) {
+					// #todo load and/or inject write.js as necessary?
+					// i think there's a bug here, but it's better than not doing it
+					WriteOnLoad();
+				}
+			} else {
+				// if there is no textarea, look for a skip link
+				var dialogLinks = newDialog[0].getElementsByClassName('skip');
+				if (dialogLinks && dialogLinks[0]) {
+					dialogLinks[0].focus();
+				} else {
+					//alert('DEBUG: InsertFetchedDialog: dialogLinks missing');
+					//return '';
+				}
+			}
+		} // if (newDialog.length)
+
+		if (window.ShowAdvanced) {
+			//alert('DEBUG: InsertFetchedDialog: ShowAdvanced found, calling');
+
+			// show/hide document layers based on user settings
+			// #todo this doesn't actually seem to work.
+			ShowAdvanced(1, newDialog[0]);
+			//ShowAdvanced(1); // call global ShowAdvanced(), which is slightly less efficient, but should actually work
+		} else {
+			//alert('DEBUG: InsertFetchedDialog: ShowAdvanced NOT found');
+		}
+
+		//var isinv = IsInViewport(newDialog[0]);
+		////debug document.title = isinv;
+
+		if (document.getElementsByClassName) {
+			var notifications = document.getElementsByClassName('notification');
+			if (notifications) {
+				//alert('DEBUG: InsertFetchedDialog: notifications found, removing');
+				for (var notif = 0; notif < notifications.length; notif++) {
+					notifications[notif].remove();
+				}
+			} else {
+				//alert('DEBUG: InsertFetchedDialog: notifications NOT found');
+			}
+
+			// #todo
+			//if (window.displayNotification) {
+			//	var notificationString = 'Repeat to go to page';
+			//	displayNotification('hi');
+			//}
+		} // getElementsByClassName feature check
+	} // status 200
+
+	return '';
+} // InsertFetchedDialog()
+
+function FetchDialog (dialogName) {
+// function InjectDialog () { // FetchDialog
+	if (window.GetPrefs && !GetPrefs('draggable_spawn')) {
+		//alert('DEBUG: FetchDialog: warning: draggable_spawn is FALSE');
+		return true; // #todo..
+	}
+
+	//alert('DEBUG: FetchDialog(' + dialogName + ')');
+
+	var url = '/dialog/' + dialogName + '.html';
+	var dialogId = dialogName.replace('/', '_');
+
+	if (document.getElementById) {
+		var dialogExists = document.getElementById(dialogId);
+		if (dialogExists) {
+			//alert('DEBUG: FetchDialog: dialogExists');
+			if (GetPrefs('draggable_spawn')) {
+				//document.title = !!dialogExists.getAttribute('imactive');
+				SetActiveDialog(dialogExists);
+				return false;
+			}
+			return false; // #todo refactor this
+		}
+	}
+
+	//alert(dialogName);
+	var openDialogs = GetPrefs('open_dialogs');
+	if (openDialogs && openDialogs.indexOf(dialogId) != -1) {
+		//
+	} else {
+		SetPrefs('open_dialogs', openDialogs + ',' + dialogId);
+	}
+	//alert(openDialogs);
+
+	return FetchDialogFromUrl(url);
+} // FetchDialog()
+
+function CloseDialog(t) {
+	//alert('DEBUG: CloseDialog()');
+	if (window.GetParentDialog) {
+		var parentDialog = GetParentDialog(t);
+
+		var dialogTitle = GetDialogTitle(parentDialog);
+		//dialogTitle = dialogTitle.toLowerCase();
+		var dialogId = GetDialogId(parentDialog);
+
+		//alert(dialogName);
+		var openDialogs = GetPrefs('open_dialogs');
+		if (openDialogs && openDialogs.indexOf(dialogId) != -1) {
+			var withoutDialog = openDialogs.replace(',' + dialogId, '');
+			SetPrefs('open_dialogs', withoutDialog);
+		} else {
+			//don't need to do anything
+		}
+		//alert(openDialogs);
+
+		//GetParentDialog(t).remove();
+		parentDialog.remove();
+
+		if (window.UpdateDialogList) {
+			UpdateDialogList();
+		}
+	}
+	return false;
+}
+
+function FetchDialogFromUrl (url) {
+// function InjectDialog () {
+// function FetchDialogFromUrl () {
+// function SpawnDialog () {
+	if (window.GetPrefs && !window.GetPrefs('draggable_spawn')) {
+		// #should be one layer above #todo
+		// not cool
+		//alert('DEBUG: warning: FetchDialogFromUrl() called, but draggable_spawn is FALSE');
+		return true; // return true so that click can happen
+	}
+
+	if (window.XMLHttpRequest) {
+		//alert('DEBUG: FetchDialogFromUrl: window.XMLHttpRequest feature check PASSED');
+
+		var xmlhttp;
+		if (window.xmlhttp2) {
+			xmlhttp = window.xmlhttp2;
+		} else {
+			window.xmlhttp2 = new XMLHttpRequest();
+			xmlhttp = window.xmlhttp2;
+		}
+
+		if (window.displayNotification) {
+			displayNotification('Meditate...');
+		}
+
+		xmlhttp.onreadystatechange = window.InsertFetchedDialog;
+		xmlhttp.open("GET", url, true);
+		xmlhttp.setRequestHeader('Cache-Control', 'no-cache');
+		xmlhttp.send();
+
+		//alert('DEBUG: FetchDialog: finished xmlhttp.send()');
+
+		return false; // cancel triggering event
+	} else {
+		//alert('DEBUG: FetchDialogFromUrl: window.XMLHttpRequest feature check FAILED');
+		return true; // if there was a click, let it happen
+	}
+} // FetchDialogFromUrl()
+
+/* / dragging.js */
 
 // -->
 </script>
