@@ -15,7 +15,7 @@
 .tag-slash,
 .tag-abuse {
 /* negative (red) tags */
-	color: #403000;
+	color: #c00000;
 	font-weight: bold;
 }
 
@@ -31,7 +31,7 @@
 .tag-like,
 .tag-vouch {
 /* positive (green) tags */
-	color: #403000;
+	color: #008000;
 	font-weight: bold;
 }
 
@@ -74,19 +74,19 @@ div.txt {
 
 #eventLocation {
 /* event form */
-	background-color: #fff0ef;
+	background-color: #ffffff;
 	padding: 5pt;
 }
 
 #eventDate {
 /* event form */
-	background-color: #fff0ef;
+	background-color: #e0e0e0;
 	padding: 5pt;
 }
 
 #loadingIndicator, #spanLoadingIndicator, #ariaAlert {
-	color: #403000;
-	background-color: #fff0ef;
+	color: #000000;
+	background-color: #f0f0d0;
 	padding: 3pt;
 	position: fixed;
 	top: 0;
@@ -99,8 +99,8 @@ div.txt {
 	/* style for links in loading indicator */
 }
 .notification {
-	color: #403000;
-	background-color: #fff0ef;
+	color: #000000;
+	background-color: #f0f0d0;
 	padding: 3pt;
 	font-weight: bold;
 	padding: 3pt;
@@ -110,14 +110,14 @@ noscript, .noscript {
 }
 .menubar a, .titlebar a, .topmenubar a {
 	text-decoration: none;
-	color: #403000;
+	color: #000000;
 }
 nobr {
 	white-space:nowrap;
 }
 input[type=button], button, input[type=submit] {
-	color: #403000;
-	background-color: #fff0ef
+	color: #000000;
+	background-color: #c0c0c0
 }
 /* end css/default.css */
 
@@ -158,16 +158,16 @@ input, textarea {
 /* theme/chicago/additional.css */
 body {
 	font-family: Tahoma, Arial, Helvetica, sans-serif;
-	background-color: #fff0ef;
+	background-color: #008080;
 }
 input {
 }
 input[type=text], input[type=password], select, option, textarea {
-	background-color: #fff0ef;
-	color: #403000;
+	background-color: #ffffff;
+	color: #000000;
 }
 #txtClock {
-	border: 1pt inset #fff0ef;
+	border: 1pt inset #c0c0c0;
 }
 @media (prefers-color-scheme: dark) {
 
@@ -177,7 +177,7 @@ input[type=text], input[type=password], select, option, textarea {
 .dialog {
 	box-shadow: 5pt 5pt 0 rgba(0, 20, 20, 0.3);
 	border: #c0c0c0 outset 2pt;
-	background-color: #fff0ef;
+	background-color: #c0c0c0;
 	border-radius: 1pt;
 	font-family: Tahoma, Arial, Helvetica, sans-serif;
 	font-size: 10pt;
@@ -205,21 +205,21 @@ input:focus {
 }
 #serverResponse {
 /* response messages from the server */
-    background-color: #fff0ef;
-    color: #403000;
+    background-color: #ffc080;
+    color: #000000;
     padding: 5pt;
     border: 0;
 	box-shadow: 5pt 5pt 0 rgba(0, 20, 20, 0.5);
 }
 #txtClock {
-	border: 1pt inset #fff0ef;
-	background-color: #fff0ef;
+	border: 1pt inset #c0c0c0;
+	background-color: #c0c0c0;
 }
 .fileHashShort {
 	text-decoration: underline dotted;
 }
 #spanDialogControls a {
-	color: #fff0efText;
+	color: #000080Text;
 }
 .titlebarButtons {
 	float: right;
@@ -233,7 +233,7 @@ button:hover {
 	color: red;
 }
 #spanDialogControls a {
-	color: #403000;
+	color: #ffffff;
 }
 /* / theme/chicago/additional.css */
 /* pre_time_sans.css */
@@ -247,16 +247,28 @@ pre time {
 -->
 </style>
 </head>
-<body link="#403000" vlink="#403000" text="#403000" bgcolor="#fff0ef" background="/hypercode_bg.jpg">
+<body link="#0000cc" vlink="#6000c0" text="#000000" bgcolor="#008080" background="/hypercode_bg.jpg">
 <b>
 <!-- template/topmenu2.template -->
-<table cellspacing=0 cellpadding=3 border=0 bgcolor="#fff0ef" class=dialog id=topmenu>
-	<tr bgcolor="#fff0ef" class=topmenubar>
+<table cellspacing=0 cellpadding=3 border=0 bgcolor="#c0c0c0" class=dialog id=topmenu>
+	<tr bgcolor="#c0c0c0" class=topmenubar>
 		<td colspan=2>
 			<big>
 				<big>
 <!-- menuitem.template -->
 <a accesskey=w href="/write.html"><u>W</u>rite</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=a href="/active.html"><u>A</u>ctive</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=c href="/chain.html"><u>C</u>hain</a>
 <!-- / menuitem.template -->
 </big>
 				<span class=advanced></span>
@@ -266,10 +278,10 @@ pre time {
 			</big>
 		</td>
 	</tr>
-	<tr bgcolor="#fff0ef" class=titlebar>
+	<tr bgcolor="#000080" class=titlebar>
 		<td>
 			<small>
-				<font color="#403000"><b>Welcome</b></font>
+				<font color="#ffffff"><b>Welcome</b></font>
 			</small>
 		</td>
 		<td align=right>
@@ -286,12 +298,12 @@ pre time {
 
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=upload cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=upload cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>Upload</b></font> <a href=#upload>#</a><a name=upload></a><br>
+		<font color="#ffffff"><b>Upload</b></font> <a href=#upload>#</a><a name=upload></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>

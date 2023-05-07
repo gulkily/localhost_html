@@ -15,7 +15,7 @@
 .tag-slash,
 .tag-abuse {
 /* negative (red) tags */
-	color: #403000;
+	color: #c00000;
 	font-weight: bold;
 }
 
@@ -31,7 +31,7 @@
 .tag-like,
 .tag-vouch {
 /* positive (green) tags */
-	color: #403000;
+	color: #008000;
 	font-weight: bold;
 }
 
@@ -74,19 +74,19 @@ div.txt {
 
 #eventLocation {
 /* event form */
-	background-color: #fff0ef;
+	background-color: #ffffff;
 	padding: 5pt;
 }
 
 #eventDate {
 /* event form */
-	background-color: #fff0ef;
+	background-color: #e0e0e0;
 	padding: 5pt;
 }
 
 #loadingIndicator, #spanLoadingIndicator, #ariaAlert {
-	color: #403000;
-	background-color: #fff0ef;
+	color: #000000;
+	background-color: #f0f0d0;
 	padding: 3pt;
 	position: fixed;
 	top: 0;
@@ -99,8 +99,8 @@ div.txt {
 	/* style for links in loading indicator */
 }
 .notification {
-	color: #403000;
-	background-color: #fff0ef;
+	color: #000000;
+	background-color: #f0f0d0;
 	padding: 3pt;
 	font-weight: bold;
 	padding: 3pt;
@@ -110,14 +110,14 @@ noscript, .noscript {
 }
 .menubar a, .titlebar a, .topmenubar a {
 	text-decoration: none;
-	color: #403000;
+	color: #000000;
 }
 nobr {
 	white-space:nowrap;
 }
 input[type=button], button, input[type=submit] {
-	color: #403000;
-	background-color: #fff0ef
+	color: #000000;
+	background-color: #c0c0c0
 }
 /* end css/default.css */
 
@@ -158,16 +158,16 @@ input, textarea {
 /* theme/chicago/additional.css */
 body {
 	font-family: Tahoma, Arial, Helvetica, sans-serif;
-	background-color: #fff0ef;
+	background-color: #008080;
 }
 input {
 }
 input[type=text], input[type=password], select, option, textarea {
-	background-color: #fff0ef;
-	color: #403000;
+	background-color: #ffffff;
+	color: #000000;
 }
 #txtClock {
-	border: 1pt inset #fff0ef;
+	border: 1pt inset #c0c0c0;
 }
 @media (prefers-color-scheme: dark) {
 
@@ -177,7 +177,7 @@ input[type=text], input[type=password], select, option, textarea {
 .dialog {
 	box-shadow: 5pt 5pt 0 rgba(0, 20, 20, 0.3);
 	border: #c0c0c0 outset 2pt;
-	background-color: #fff0ef;
+	background-color: #c0c0c0;
 	border-radius: 1pt;
 	font-family: Tahoma, Arial, Helvetica, sans-serif;
 	font-size: 10pt;
@@ -205,21 +205,21 @@ input:focus {
 }
 #serverResponse {
 /* response messages from the server */
-    background-color: #fff0ef;
-    color: #403000;
+    background-color: #ffc080;
+    color: #000000;
     padding: 5pt;
     border: 0;
 	box-shadow: 5pt 5pt 0 rgba(0, 20, 20, 0.5);
 }
 #txtClock {
-	border: 1pt inset #fff0ef;
-	background-color: #fff0ef;
+	border: 1pt inset #c0c0c0;
+	background-color: #c0c0c0;
 }
 .fileHashShort {
 	text-decoration: underline dotted;
 }
 #spanDialogControls a {
-	color: #fff0efText;
+	color: #000080Text;
 }
 .titlebarButtons {
 	float: right;
@@ -233,7 +233,7 @@ button:hover {
 	color: red;
 }
 #spanDialogControls a {
-	color: #403000;
+	color: #ffffff;
 }
 /* / theme/chicago/additional.css */
 /* pre_time_sans.css */
@@ -247,16 +247,28 @@ pre time {
 -->
 </style>
 </head>
-<body link="#403000" vlink="#403000" text="#403000" bgcolor="#fff0ef" background="/hypercode_bg.jpg">
+<body link="#0000cc" vlink="#6000c0" text="#000000" bgcolor="#008080" background="/hypercode_bg.jpg">
 <b>
 <!-- template/topmenu2.template -->
-<table cellspacing=0 cellpadding=3 border=0 bgcolor="#fff0ef" class=dialog id=topmenu>
-	<tr bgcolor="#fff0ef" class=topmenubar>
+<table cellspacing=0 cellpadding=3 border=0 bgcolor="#c0c0c0" class=dialog id=topmenu>
+	<tr bgcolor="#c0c0c0" class=topmenubar>
 		<td colspan=2>
 			<big>
 				<big>
 <!-- menuitem.template -->
 <a accesskey=w href="/write.html"><u>W</u>rite</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=a href="/active.html"><u>A</u>ctive</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=c href="/chain.html"><u>C</u>hain</a>
 <!-- / menuitem.template -->
 </big>
 				<span class=advanced></span>
@@ -266,10 +278,10 @@ pre time {
 			</big>
 		</td>
 	</tr>
-	<tr bgcolor="#fff0ef" class=titlebar>
+	<tr bgcolor="#000080" class=titlebar>
 		<td>
 			<small>
-				<font color="#403000"><b>Welcome</b></font>
+				<font color="#ffffff"><b>Welcome</b></font>
 			</small>
 		</td>
 		<td align=right>
@@ -284,12 +296,12 @@ pre time {
 <p>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=page_intro cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=page_intro cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>read</b></font> <a href=#page_intro>#</a><a name=page_intro></a><br>
+		<font color="#ffffff"><b>read</b></font> <a href=#page_intro>#</a><a name=page_intro></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -309,12 +321,12 @@ pre time {
 
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=Pages cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=Pages cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>Pages</b></font> <a href=#Pages>#</a><a name=Pages></a><br>
+		<font color="#ffffff"><b>Pages</b></font> <a href=#Pages>#</a><a name=Pages></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -352,12 +364,12 @@ pre time {
 <span class=itemList>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=d6c32894 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=96f960b6 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>Can this be used to deploy an active learning model that lear</b></font> <a href=#d6c32894>#</a><a name=d6c32894></a><br>
+		<font color="#ffffff"><b>c) paste into new item</b></font> <a href=#96f960b6>#</a><a name=96f960b6></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -371,7 +383,139 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/5a/41/5a417d41.html">5a417d41..</a><br><br>c) paste into new item<br><br>(remember to not sign!)<br><br>the signature conflict to be fixed later<span class=admin><br>
+-- <br>
+--- <br>[Cookie]<br>[Client]<br>[Received]</span><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/96/f9/96f960b6.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683226493 title="05/04">05/04</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>96f960b6</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=96f960b623488117a6fe42ecbed0f335d6232d76"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=96f960b623488117a6fe42ecbed0f335d6232d76"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+<!-- add_to_reply_cart button requires js, but it is not enabled -->
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=4feabcd2 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#000080" class=titlebar>
+	<td>
+		<font color="#ffffff"><b>operator, please add inbox feature</b></font> <a href=#4feabcd2>#</a><a name=4feabcd2></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/64/38/643826ca.html">add profile feat</a><br><br>operator, please add inbox feature<span class=admin><br>
+-- <br>
+<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/4f/ea/4feabcd2.html">no timestamp</a>;
+
+<span class=advanced>
+	<span class=fileHashShort></span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=4feabcd29ff59876402dc1780bc81c0fb548d383"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=4feabcd29ff59876402dc1780bc81c0fb548d383"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+<!-- add_to_reply_cart button requires js, but it is not enabled -->
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=d6c32894 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#000080" class=titlebar>
+	<td>
+		<font color="#ffffff"><b>Can this be used to deploy an active learning model that lear</b></font> <a href=#d6c32894>#</a><a name=d6c32894></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -418,12 +562,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=ff6025bc cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=ff6025bc cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>operator, please add tags page</b></font> <a href=#ff6025bc>#</a><a name=ff6025bc></a><br>
+		<font color="#ffffff"><b>operator, please add tags page</b></font> <a href=#ff6025bc>#</a><a name=ff6025bc></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -472,12 +616,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=0f524ee4 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=0f524ee4 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>d) apply  tag to new item</b></font> <a href=#0f524ee4>#</a><a name=0f524ee4></a><br>
+		<font color="#ffffff"><b>d) apply  tag to new item</b></font> <a href=#0f524ee4>#</a><a name=0f524ee4></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -491,7 +635,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -538,12 +682,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=54451687 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=54451687 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>hypercode.hypercode.com (and www.hypercode.hypercode.com)</b></font> <a href=#54451687>#</a><a name=54451687></a><br>
+		<font color="#ffffff"><b>hypercode.hypercode.com (and www.hypercode.hypercode.com)</b></font> <a href=#54451687>#</a><a name=54451687></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -557,7 +701,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -604,12 +748,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=9dc78579 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=9dc78579 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>Will that also apply to plans?  I'd love to see ML models come </b></font> <a href=#9dc78579>#</a><a name=9dc78579></a><br>
+		<font color="#ffffff"><b>Will that also apply to plans?  I'd love to see ML models come </b></font> <a href=#9dc78579>#</a><a name=9dc78579></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -623,7 +767,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -670,12 +814,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=9d4da7b8 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=9d4da7b8 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>hike set reply_cart 1</b></font> <a href=#9d4da7b8>#</a><a name=9d4da7b8></a><br>
+		<font color="#ffffff"><b>hike set reply_cart 1</b></font> <a href=#9d4da7b8>#</a><a name=9d4da7b8></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -724,12 +868,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=1964acc1 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=1964acc1 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>This can be done manually by configuring Postgres replication</b></font> <a href=#1964acc1>#</a><a name=1964acc1></a><br>
+		<font color="#ffffff"><b>This can be done manually by configuring Postgres replication</b></font> <a href=#1964acc1>#</a><a name=1964acc1></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -743,7 +887,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -790,12 +934,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=1948c120 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=1948c120 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>Anyone care to reframe the question or improve it?</b></font> <a href=#1948c120>#</a><a name=1948c120></a><br>
+		<font color="#ffffff"><b>Anyone care to reframe the question or improve it?</b></font> <a href=#1948c120>#</a><a name=1948c120></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -809,7 +953,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -856,12 +1000,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=f7e3215e cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=f7e3215e cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>add OpenPGP.js to profile feature</b></font> <a href=#f7e3215e>#</a><a name=f7e3215e></a><br>
+		<font color="#ffffff"><b>add OpenPGP.js to profile feature</b></font> <a href=#f7e3215e>#</a><a name=f7e3215e></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -910,12 +1054,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=c9f8aa6d cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=c9f8aa6d cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>operator, please let me download our conversation</b></font> <a href=#c9f8aa6d>#</a><a name=c9f8aa6d></a><br>
+		<font color="#ffffff"><b>operator, please let me download our conversation</b></font> <a href=#c9f8aa6d>#</a><a name=c9f8aa6d></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -929,7 +1073,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -976,12 +1120,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=b984e76a cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=b984e76a cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>Well, you would also need new labels to retrain.</b></font> <a href=#b984e76a>#</a><a name=b984e76a></a><br>
+		<font color="#ffffff"><b>Well, you would also need new labels to retrain.</b></font> <a href=#b984e76a>#</a><a name=b984e76a></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -995,7 +1139,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -1042,12 +1186,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=79c932f7 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=79c932f7 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>Software Updated to Version 07588b07..</b></font> <a href=#79c932f7>#</a><a name=79c932f7></a><br>
+		<font color="#ffffff"><b>Software Updated to Version 07588b07..</b></font> <a href=#79c932f7>#</a><a name=79c932f7></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -1061,7 +1205,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/changelog.html"><font color="#403000">#</font>changelog</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/changelog.html"><font color="#46e2bf">#</font>changelog</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -1106,12 +1250,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=e0e58600 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=e0e58600 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>add tags page</b></font> <a href=#e0e58600>#</a><a name=e0e58600></a><br>
+		<font color="#ffffff"><b>add tags page</b></font> <a href=#e0e58600>#</a><a name=e0e58600></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -1160,12 +1304,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=3461baca cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=3461baca cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>thank you for this battery</b></font> <a href=#3461baca>#</a><a name=3461baca></a><br>
+		<font color="#ffffff"><b>thank you for this battery</b></font> <a href=#3461baca>#</a><a name=3461baca></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -1214,12 +1358,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=5cea32a3 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=5cea32a3 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>thank you for this computer</b></font> <a href=#5cea32a3>#</a><a name=5cea32a3></a><br>
+		<font color="#ffffff"><b>thank you for this computer</b></font> <a href=#5cea32a3>#</a><a name=5cea32a3></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -1268,12 +1412,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=785622b8 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=785622b8 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>This is an interesting benchmark I'll try to code up. Although,</b></font> <a href=#785622b8>#</a><a name=785622b8></a><br>
+		<font color="#ffffff"><b>This is an interesting benchmark I'll try to code up. Although,</b></font> <a href=#785622b8>#</a><a name=785622b8></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -1287,7 +1431,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -1334,12 +1478,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=1a5212fb cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=1a5212fb cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>Software Updated to Version 11dedf3b..</b></font> <a href=#1a5212fb>#</a><a name=1a5212fb></a><br>
+		<font color="#ffffff"><b>Software Updated to Version 11dedf3b..</b></font> <a href=#1a5212fb>#</a><a name=1a5212fb></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -1353,7 +1497,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/changelog.html"><font color="#403000">#</font>changelog</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/changelog.html"><font color="#46e2bf">#</font>changelog</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -1398,12 +1542,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=5f8c9c1d cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=5f8c9c1d cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>Yep! Part of the power of being inside the OLTP is that you can</b></font> <a href=#5f8c9c1d>#</a><a name=5f8c9c1d></a><br>
+		<font color="#ffffff"><b>Yep! Part of the power of being inside the OLTP is that you can</b></font> <a href=#5f8c9c1d>#</a><a name=5f8c9c1d></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -1417,7 +1561,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -1464,12 +1608,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=2db3251e cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=2db3251e cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>#flag</b></font> <a href=#2db3251e>#</a><a name=2db3251e></a><br>
+		<font color="#ffffff"><b>#flag</b></font> <a href=#2db3251e>#</a><a name=2db3251e></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -1483,7 +1627,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -1528,12 +1672,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=059b8a61 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=059b8a61 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>Itâs probably a stretch to run GPT-3 inside a db, but most of t</b></font> <a href=#059b8a61>#</a><a name=059b8a61></a><br>
+		<font color="#ffffff"><b>Itâs probably a stretch to run GPT-3 inside a db, but most of t</b></font> <a href=#059b8a61>#</a><a name=059b8a61></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -1547,7 +1691,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -1594,12 +1738,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=26ac38b3 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=26ac38b3 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>Â«Ð¯ Ð·Ð°Ð±Ð¾ÑÑÑÑ Ð¾ ÑÐ²Ð¾ÐµÐ¼ Ð¼Ð¸ÑÐµ, Ð° Ð¼Ð¾Ð¹ Ð¼Ð¸Ñ Ð·Ð°Ð±Ð¾ÑÐ¸ÑÑÑ Ð¾Ð±Ð¾ Ð¼Ð½Ðµ. ÐÐ¾Ð¹ Ð¼Ð¸Ñ </b></font> <a href=#26ac38b3>#</a><a name=26ac38b3></a><br>
+		<font color="#ffffff"><b>Â«Ð¯ Ð·Ð°Ð±Ð¾ÑÑÑÑ Ð¾ ÑÐ²Ð¾ÐµÐ¼ Ð¼Ð¸ÑÐµ, Ð° Ð¼Ð¾Ð¹ Ð¼Ð¸Ñ Ð·Ð°Ð±Ð¾ÑÐ¸ÑÑÑ Ð¾Ð±Ð¾ Ð¼Ð½Ðµ. ÐÐ¾Ð¹ Ð¼Ð¸Ñ </b></font> <a href=#26ac38b3>#</a><a name=26ac38b3></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -1613,7 +1757,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -1660,12 +1804,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=57a64828 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=57a64828 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>Is this a competitor to bigquery autoML or to something like ku</b></font> <a href=#57a64828>#</a><a name=57a64828></a><br>
+		<font color="#ffffff"><b>Is this a competitor to bigquery autoML or to something like ku</b></font> <a href=#57a64828>#</a><a name=57a64828></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -1679,7 +1823,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -1726,12 +1870,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=023d34ed cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=023d34ed cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>We currently calculate those as applicable to classification an</b></font> <a href=#023d34ed>#</a><a name=023d34ed></a><br>
+		<font color="#ffffff"><b>We currently calculate those as applicable to classification an</b></font> <a href=#023d34ed>#</a><a name=023d34ed></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -1745,7 +1889,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/https.html"><font color="#403000">#</font>https</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/https.html"><font color="#c3437d">#</font>https</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -1792,12 +1936,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=1a484f61 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=1a484f61 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>thank you</b></font> <a href=#1a484f61>#</a><a name=1a484f61></a><br>
+		<font color="#ffffff"><b>thank you</b></font> <a href=#1a484f61>#</a><a name=1a484f61></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -1811,7 +1955,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -1858,12 +2002,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=24429e62 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=24429e62 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>Very cool! Will probably use it soon.</b></font> <a href=#24429e62>#</a><a name=24429e62></a><br>
+		<font color="#ffffff"><b>Very cool! Will probably use it soon.</b></font> <a href=#24429e62>#</a><a name=24429e62></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -1877,7 +2021,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -1924,12 +2068,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=24598868 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=24598868 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>Landed a PR to enable GridSearchCV and RandomSearchCV. https://</b></font> <a href=#24598868>#</a><a name=24598868></a><br>
+		<font color="#ffffff"><b>Landed a PR to enable GridSearchCV and RandomSearchCV. https://</b></font> <a href=#24598868>#</a><a name=24598868></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -1943,7 +2087,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/https.html"><font color="#403000">#</font>https</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/https.html"><font color="#c3437d">#</font>https</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -1990,12 +2134,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=7f39a35f cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=7f39a35f cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>Interesting concept, but I think Big Query ML [1] has been prov</b></font> <a href=#7f39a35f>#</a><a name=7f39a35f></a><br>
+		<font color="#ffffff"><b>Interesting concept, but I think Big Query ML [1] has been prov</b></font> <a href=#7f39a35f>#</a><a name=7f39a35f></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -2009,7 +2153,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/https.html"><font color="#403000">#</font>https</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/https.html"><font color="#c3437d">#</font>https</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -2056,12 +2200,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=3321d344 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=3321d344 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>Comment(s) added in batch: 70</b></font> <a href=#3321d344>#</a><a name=3321d344></a><br>
+		<font color="#ffffff"><b>Comment(s) added in batch: 70</b></font> <a href=#3321d344>#</a><a name=3321d344></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -2075,7 +2219,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/BatchTag.html"><font color="#403000">#</font>BatchTag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/https.html"><font color="#403000">#</font>https</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/BatchTag.html"><font color="#fb818d">#</font>BatchTag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/https.html"><font color="#c3437d">#</font>https</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -2122,12 +2266,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=5e1d83a8 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=5e1d83a8 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>You should review the PostgreSQL trademark policy: https://www.</b></font> <a href=#5e1d83a8>#</a><a name=5e1d83a8></a><br>
+		<font color="#ffffff"><b>You should review the PostgreSQL trademark policy: https://www.</b></font> <a href=#5e1d83a8>#</a><a name=5e1d83a8></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -2141,7 +2285,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/https.html"><font color="#403000">#</font>https</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/https.html"><font color="#c3437d">#</font>https</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -2188,12 +2332,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=5ed3f7ce cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=5ed3f7ce cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>I don't understand 5he example on the homepage. How does the ex</b></font> <a href=#5ed3f7ce>#</a><a name=5ed3f7ce></a><br>
+		<font color="#ffffff"><b>I don't understand 5he example on the homepage. How does the ex</b></font> <a href=#5ed3f7ce>#</a><a name=5ed3f7ce></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -2207,7 +2351,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -2254,12 +2398,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=52239578 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=52239578 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>Reminds me of https://riverml.xyz/latest/ (which is awesome) bu</b></font> <a href=#52239578>#</a><a name=52239578></a><br>
+		<font color="#ffffff"><b>Reminds me of https://riverml.xyz/latest/ (which is awesome) bu</b></font> <a href=#52239578>#</a><a name=52239578></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -2273,7 +2417,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/https.html"><font color="#403000">#</font>https</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/https.html"><font color="#c3437d">#</font>https</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -2320,12 +2464,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=81f9bb2a cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=81f9bb2a cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>Software Updated to Version b044379e..</b></font> <a href=#81f9bb2a>#</a><a name=81f9bb2a></a><br>
+		<font color="#ffffff"><b>Software Updated to Version b044379e..</b></font> <a href=#81f9bb2a>#</a><a name=81f9bb2a></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -2339,7 +2483,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/changelog.html"><font color="#403000">#</font>changelog</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/changelog.html"><font color="#46e2bf">#</font>changelog</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -2384,12 +2528,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=1ca6677c cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=1ca6677c cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>aa) ensure you have admin tag</b></font> <a href=#1ca6677c>#</a><a name=1ca6677c></a><br>
+		<font color="#ffffff"><b>aa) ensure you have admin tag</b></font> <a href=#1ca6677c>#</a><a name=1ca6677c></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -2403,7 +2547,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -2450,12 +2594,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=ddfeb961 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=ddfeb961 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>How do you deal with different dataset train/validation/test? H</b></font> <a href=#ddfeb961>#</a><a name=ddfeb961></a><br>
+		<font color="#ffffff"><b>How do you deal with different dataset train/validation/test? H</b></font> <a href=#ddfeb961>#</a><a name=ddfeb961></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -2469,7 +2613,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -2516,12 +2660,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=dd7fc0cc cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=dd7fc0cc cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>Do you plan on adding support for managed PostgreSQL services l</b></font> <a href=#dd7fc0cc>#</a><a name=dd7fc0cc></a><br>
+		<font color="#ffffff"><b>Do you plan on adding support for managed PostgreSQL services l</b></font> <a href=#dd7fc0cc>#</a><a name=dd7fc0cc></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -2535,7 +2679,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -2582,12 +2726,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=500fd810 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=500fd810 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>I wonder if/how a PostgreSQL plug-in can provide an optimal mix</b></font> <a href=#500fd810>#</a><a name=500fd810></a><br>
+		<font color="#ffffff"><b>I wonder if/how a PostgreSQL plug-in can provide an optimal mix</b></font> <a href=#500fd810>#</a><a name=500fd810></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -2601,7 +2745,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -2648,12 +2792,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=866514f6 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=866514f6 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>Kliment chat agenda</b></font> <a href=#866514f6>#</a><a name=866514f6></a><br>
+		<font color="#ffffff"><b>Kliment chat agenda</b></font> <a href=#866514f6>#</a><a name=866514f6></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -2702,12 +2846,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=0f43d8d9 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=0f43d8d9 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>operator, please reset this website</b></font> <a href=#0f43d8d9>#</a><a name=0f43d8d9></a><br>
+		<font color="#ffffff"><b>operator, please reset this website</b></font> <a href=#0f43d8d9>#</a><a name=0f43d8d9></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -2721,7 +2865,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -2768,12 +2912,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=3ca2ad6f cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=3ca2ad6f cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>cause: the avatar cache is not aware of monochrome mode, and it</b></font> <a href=#3ca2ad6f>#</a><a name=3ca2ad6f></a><br>
+		<font color="#ffffff"><b>cause: the avatar cache is not aware of monochrome mode, and it</b></font> <a href=#3ca2ad6f>#</a><a name=3ca2ad6f></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -2822,12 +2966,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=61552414 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=61552414 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>This logo and name, to me at least, implied some sort of offici</b></font> <a href=#61552414>#</a><a name=61552414></a><br>
+		<font color="#ffffff"><b>This logo and name, to me at least, implied some sort of offici</b></font> <a href=#61552414>#</a><a name=61552414></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -2841,7 +2985,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -2888,12 +3032,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=4adefb8b cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=4adefb8b cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>The Dataframe is loaded from disk true, but it is possible that</b></font> <a href=#4adefb8b>#</a><a name=4adefb8b></a><br>
+		<font color="#ffffff"><b>The Dataframe is loaded from disk true, but it is possible that</b></font> <a href=#4adefb8b>#</a><a name=4adefb8b></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -2907,7 +3051,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -2954,12 +3098,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=dfd6d675 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=dfd6d675 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>we need some subdomains</b></font> <a href=#dfd6d675>#</a><a name=dfd6d675></a><br>
+		<font color="#ffffff"><b>we need some subdomains</b></font> <a href=#dfd6d675>#</a><a name=dfd6d675></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -3008,12 +3152,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=f8b59e19 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=f8b59e19 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>Yep! traditional hypertuning techniques and automated broader s</b></font> <a href=#f8b59e19>#</a><a name=f8b59e19></a><br>
+		<font color="#ffffff"><b>Yep! traditional hypertuning techniques and automated broader s</b></font> <a href=#f8b59e19>#</a><a name=f8b59e19></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -3027,7 +3171,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -3074,12 +3218,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=f8b76c50 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=f8b76c50 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>Notice: Content was archived by the operator at 1683125825</b></font> <a href=#f8b76c50>#</a><a name=f8b76c50></a><br>
+		<font color="#ffffff"><b>Notice: Content was archived by the operator at 1683125825</b></font> <a href=#f8b76c50>#</a><a name=f8b76c50></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -3128,12 +3272,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=d6f1ca3c cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=d6f1ca3c cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>operator, please add notarization chain</b></font> <a href=#d6f1ca3c>#</a><a name=d6f1ca3c></a><br>
+		<font color="#ffffff"><b>operator, please add notarization chain</b></font> <a href=#d6f1ca3c>#</a><a name=d6f1ca3c></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -3182,12 +3326,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=75ee7799 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=75ee7799 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>This is really cool, running ML workloads on top of SQL is a ve</b></font> <a href=#75ee7799>#</a><a name=75ee7799></a><br>
+		<font color="#ffffff"><b>This is really cool, running ML workloads on top of SQL is a ve</b></font> <a href=#75ee7799>#</a><a name=75ee7799></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -3201,7 +3345,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/http.html"><font color="#403000">#</font>http</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/http.html"><font color="#77b5f8">#</font>http</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -3248,12 +3392,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=75a59b44 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=75a59b44 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>I just gave it a try to install on Crunchy Bridge [1], disclaim</b></font> <a href=#75a59b44>#</a><a name=75a59b44></a><br>
+		<font color="#ffffff"><b>I just gave it a try to install on Crunchy Bridge [1], disclaim</b></font> <a href=#75a59b44>#</a><a name=75a59b44></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -3267,7 +3411,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/https.html"><font color="#403000">#</font>https</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/https.html"><font color="#c3437d">#</font>https</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -3314,12 +3458,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=f1ed13e2 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=f1ed13e2 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>*Outside academia you need to do a lot of data cleaning and fea</b></font> <a href=#f1ed13e2>#</a><a name=f1ed13e2></a><br>
+		<font color="#ffffff"><b>*Outside academia you need to do a lot of data cleaning and fea</b></font> <a href=#f1ed13e2>#</a><a name=f1ed13e2></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -3333,7 +3477,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -3380,12 +3524,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=7c40a7b0 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=7c40a7b0 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>OLAP vs OLTP will depend on your ML use case. Online prediction</b></font> <a href=#7c40a7b0>#</a><a name=7c40a7b0></a><br>
+		<font color="#ffffff"><b>OLAP vs OLTP will depend on your ML use case. Online prediction</b></font> <a href=#7c40a7b0>#</a><a name=7c40a7b0></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -3399,7 +3543,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -3446,12 +3590,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=bd4e3c3c cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=bd4e3c3c cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>never mind. figured it out from github. this is cool.</b></font> <a href=#bd4e3c3c>#</a><a name=bd4e3c3c></a><br>
+		<font color="#ffffff"><b>never mind. figured it out from github. this is cool.</b></font> <a href=#bd4e3c3c>#</a><a name=bd4e3c3c></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -3465,7 +3609,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -3512,12 +3656,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=a4e694a1 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=a4e694a1 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>workaround: rm -vrf cache/b/avatar*</b></font> <a href=#a4e694a1>#</a><a name=a4e694a1></a><br>
+		<font color="#ffffff"><b>workaround: rm -vrf cache/b/avatar*</b></font> <a href=#a4e694a1>#</a><a name=a4e694a1></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -3566,12 +3710,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=0ca09845 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=0ca09845 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>This is awesome. Iâm guessing the models are executed on the da</b></font> <a href=#0ca09845>#</a><a name=0ca09845></a><br>
+		<font color="#ffffff"><b>This is awesome. Iâm guessing the models are executed on the da</b></font> <a href=#0ca09845>#</a><a name=0ca09845></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -3585,7 +3729,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -3632,12 +3776,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=40ca17ba cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=40ca17ba cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>When I was talking about metrics I meant metrics of the model (</b></font> <a href=#40ca17ba>#</a><a name=40ca17ba></a><br>
+		<font color="#ffffff"><b>When I was talking about metrics I meant metrics of the model (</b></font> <a href=#40ca17ba>#</a><a name=40ca17ba></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -3651,7 +3795,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -3698,12 +3842,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=405a580e cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=405a580e cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>Nice! Feel free to file any issues on Github if something doesn</b></font> <a href=#405a580e>#</a><a name=405a580e></a><br>
+		<font color="#ffffff"><b>Nice! Feel free to file any issues on Github if something doesn</b></font> <a href=#405a580e>#</a><a name=405a580e></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -3717,7 +3861,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -3764,12 +3908,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=2cd32925 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=2cd32925 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>make the interface more draggable</b></font> <a href=#2cd32925>#</a><a name=2cd32925></a><br>
+		<font color="#ffffff"><b>make the interface more draggable</b></font> <a href=#2cd32925>#</a><a name=2cd32925></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -3818,12 +3962,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=5934a792 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=5934a792 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>a) it should appear as a new item, and the item template should</b></font> <a href=#5934a792>#</a><a name=5934a792></a><br>
+		<font color="#ffffff"><b>a) it should appear as a new item, and the item template should</b></font> <a href=#5934a792>#</a><a name=5934a792></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -3872,12 +4016,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=6bf436f3 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=6bf436f3 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>#like</b></font> <a href=#6bf436f3>#</a><a name=6bf436f3></a><br>
+		<font color="#ffffff"><b>#like</b></font> <a href=#6bf436f3>#</a><a name=6bf436f3></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -3891,7 +4035,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -3936,12 +4080,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=2f2b914c cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=2f2b914c cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>I feel like a lot of issues out of ML systems came from the fac</b></font> <a href=#2f2b914c>#</a><a name=2f2b914c></a><br>
+		<font color="#ffffff"><b>I feel like a lot of issues out of ML systems came from the fac</b></font> <a href=#2f2b914c>#</a><a name=2f2b914c></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -3955,7 +4099,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -4002,12 +4146,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=284085b4 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=284085b4 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>operator, please add upload feature</b></font> <a href=#284085b4>#</a><a name=284085b4></a><br>
+		<font color="#ffffff"><b>operator, please add upload feature</b></font> <a href=#284085b4>#</a><a name=284085b4></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -4056,12 +4200,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=8c9ec3e5 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=8c9ec3e5 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>This is great - will be experimenting with one weekend soon...</b></font> <a href=#8c9ec3e5>#</a><a name=8c9ec3e5></a><br>
+		<font color="#ffffff"><b>This is great - will be experimenting with one weekend soon...</b></font> <a href=#8c9ec3e5>#</a><a name=8c9ec3e5></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -4075,7 +4219,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -4122,12 +4266,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=13efe919 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=13efe919 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>This looks awesome! Iâm not an expert but wouldnât the typical </b></font> <a href=#13efe919>#</a><a name=13efe919></a><br>
+		<font color="#ffffff"><b>This looks awesome! Iâm not an expert but wouldnât the typical </b></font> <a href=#13efe919>#</a><a name=13efe919></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -4141,7 +4285,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -4188,12 +4332,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=4c28ab3e cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=4c28ab3e cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>settings.html</b></font> <a href=#4c28ab3e>#</a><a name=4c28ab3e></a><br>
+		<font color="#ffffff"><b>settings.html</b></font> <a href=#4c28ab3e>#</a><a name=4c28ab3e></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -4242,12 +4386,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=4c03d946 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=4c03d946 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>dark theme guest avatar is dark red, should be different color</b></font> <a href=#4c03d946>#</a><a name=4c03d946></a><br>
+		<font color="#ffffff"><b>dark theme guest avatar is dark red, should be different color</b></font> <a href=#4c03d946>#</a><a name=4c03d946></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -4261,7 +4405,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/bug.html"><font color="#403000">#</font>bug</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/bug.html"><font color="#688585">#</font>bug</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -4306,12 +4450,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=a2f0336b cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=a2f0336b cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>hike set reply_cart 1</b></font> <a href=#a2f0336b>#</a><a name=a2f0336b></a><br>
+		<font color="#ffffff"><b>hike set reply_cart 1</b></font> <a href=#a2f0336b>#</a><a name=a2f0336b></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -4360,12 +4504,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=27a9927f cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=27a9927f cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>operator, please add profile feature</b></font> <a href=#27a9927f>#</a><a name=27a9927f></a><br>
+		<font color="#ffffff"><b>operator, please add profile feature</b></font> <a href=#27a9927f>#</a><a name=27a9927f></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -4379,7 +4523,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -4426,7 +4570,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=2a5ada21 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=2a5ada21 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 
 		
@@ -4436,7 +4580,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -4483,12 +4627,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=8ee23564 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=8ee23564 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>raw.html</b></font> <a href=#8ee23564>#</a><a name=8ee23564></a><br>
+		<font color="#ffffff"><b>raw.html</b></font> <a href=#8ee23564>#</a><a name=8ee23564></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -4537,12 +4681,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=07c039ae cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=07c039ae cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>b) go to mavo.io, demos, mavo logo</b></font> <a href=#07c039ae>#</a><a name=07c039ae></a><br>
+		<font color="#ffffff"><b>b) go to mavo.io, demos, mavo logo</b></font> <a href=#07c039ae>#</a><a name=07c039ae></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -4591,7 +4735,7 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=01ff9c2d cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=01ff9c2d cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 
 		
@@ -4601,7 +4745,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/blog.html"><font color="#403000">#</font>blog</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/blog.html"><font color="#169254">#</font>blog</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -4646,12 +4790,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=dc3d210c cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=dc3d210c cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>hike set inbox 0</b></font> <a href=#dc3d210c>#</a><a name=dc3d210c></a><br>
+		<font color="#ffffff"><b>hike set inbox 0</b></font> <a href=#dc3d210c>#</a><a name=dc3d210c></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -4665,7 +4809,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -4712,12 +4856,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=6e3f5ad7 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=6e3f5ad7 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>thanks</b></font> <a href=#6e3f5ad7>#</a><a name=6e3f5ad7></a><br>
+		<font color="#ffffff"><b>thanks</b></font> <a href=#6e3f5ad7>#</a><a name=6e3f5ad7></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -4766,12 +4910,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=3c8c7fb6 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=3c8c7fb6 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>aa) ensure you have admin tag</b></font> <a href=#3c8c7fb6>#</a><a name=3c8c7fb6></a><br>
+		<font color="#ffffff"><b>aa) ensure you have admin tag</b></font> <a href=#3c8c7fb6>#</a><a name=3c8c7fb6></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -4820,12 +4964,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=ef3ddedc cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=ef3ddedc cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>operator, please add upload feature</b></font> <a href=#ef3ddedc>#</a><a name=ef3ddedc></a><br>
+		<font color="#ffffff"><b>operator, please add upload feature</b></font> <a href=#ef3ddedc>#</a><a name=ef3ddedc></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -4874,12 +5018,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=85eca0f3 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=85eca0f3 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>operator, please add profile feature</b></font> <a href=#85eca0f3>#</a><a name=85eca0f3></a><br>
+		<font color="#ffffff"><b>operator, please add profile feature</b></font> <a href=#85eca0f3>#</a><a name=85eca0f3></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -4928,12 +5072,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=00507eae cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=00507eae cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>operator, please add cart feature</b></font> <a href=#00507eae>#</a><a name=00507eae></a><br>
+		<font color="#ffffff"><b>operator, please add cart feature</b></font> <a href=#00507eae>#</a><a name=00507eae></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -4982,12 +5126,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=bd325bfc cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=bd325bfc cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>operator, please add javascript support</b></font> <a href=#bd325bfc>#</a><a name=bd325bfc></a><br>
+		<font color="#ffffff"><b>operator, please add javascript support</b></font> <a href=#bd325bfc>#</a><a name=bd325bfc></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -5001,7 +5145,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -5048,12 +5192,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=95e73d9c cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=95e73d9c cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>Kliment chat agenda</b></font> <a href=#95e73d9c>#</a><a name=95e73d9c></a><br>
+		<font color="#ffffff"><b>Kliment chat agenda</b></font> <a href=#95e73d9c>#</a><a name=95e73d9c></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -5102,12 +5246,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=2e9bc25e cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=2e9bc25e cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>steps for mavo test?</b></font> <a href=#2e9bc25e>#</a><a name=2e9bc25e></a><br>
+		<font color="#ffffff"><b>steps for mavo test?</b></font> <a href=#2e9bc25e>#</a><a name=2e9bc25e></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -5156,12 +5300,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=e224b1fd cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=e224b1fd cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>operator, please add cart feature</b></font> <a href=#e224b1fd>#</a><a name=e224b1fd></a><br>
+		<font color="#ffffff"><b>operator, please add cart feature</b></font> <a href=#e224b1fd>#</a><a name=e224b1fd></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -5210,12 +5354,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=81a3eecb cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=81a3eecb cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>qutebrowser how to change delay of status message</b></font> <a href=#81a3eecb>#</a><a name=81a3eecb></a><br>
+		<font color="#ffffff"><b>qutebrowser how to change delay of status message</b></font> <a href=#81a3eecb>#</a><a name=81a3eecb></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -5229,7 +5373,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -5276,12 +5420,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=5a163a47 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=5a163a47 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>hike set titlebar_buttons 1</b></font> <a href=#5a163a47>#</a><a name=5a163a47></a><br>
+		<font color="#ffffff"><b>hike set titlebar_buttons 1</b></font> <a href=#5a163a47>#</a><a name=5a163a47></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -5330,12 +5474,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=bfedbe07 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=bfedbe07 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>operator, please add OpenPGP.js to profile feature</b></font> <a href=#bfedbe07>#</a><a name=bfedbe07></a><br>
+		<font color="#ffffff"><b>operator, please add OpenPGP.js to profile feature</b></font> <a href=#bfedbe07>#</a><a name=bfedbe07></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -5384,12 +5528,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=436af55a cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=436af55a cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>I was looking for information on...</b></font> <a href=#436af55a>#</a><a name=436af55a></a><br>
+		<font color="#ffffff"><b>I was looking for information on...</b></font> <a href=#436af55a>#</a><a name=436af55a></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -5438,12 +5582,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=a9b747b4 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=a9b747b4 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>hypercode_bg.jpg</b></font> <a href=#a9b747b4>#</a><a name=a9b747b4></a><br>
+		<font color="#ffffff"><b>hypercode_bg.jpg</b></font> <a href=#a9b747b4>#</a><a name=a9b747b4></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -5492,12 +5636,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=983a8db2 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=983a8db2 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>operator, please make the interface more draggable</b></font> <a href=#983a8db2>#</a><a name=983a8db2></a><br>
+		<font color="#ffffff"><b>operator, please make the interface more draggable</b></font> <a href=#983a8db2>#</a><a name=983a8db2></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -5546,12 +5690,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=648c70eb cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=648c70eb cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>hike set titlebar_buttons 1</b></font> <a href=#648c70eb>#</a><a name=648c70eb></a><br>
+		<font color="#ffffff"><b>hike set titlebar_buttons 1</b></font> <a href=#648c70eb>#</a><a name=648c70eb></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -5600,12 +5744,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=0fc7d5b9 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=0fc7d5b9 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>taylor.hypercode.com </b></font> <a href=#0fc7d5b9>#</a><a name=0fc7d5b9></a><br>
+		<font color="#ffffff"><b>taylor.hypercode.com </b></font> <a href=#0fc7d5b9>#</a><a name=0fc7d5b9></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -5654,12 +5798,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=b190d5c5 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=b190d5c5 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>operator, please reset this website</b></font> <a href=#b190d5c5>#</a><a name=b190d5c5></a><br>
+		<font color="#ffffff"><b>operator, please reset this website</b></font> <a href=#b190d5c5>#</a><a name=b190d5c5></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -5708,12 +5852,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=25c3f17c cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=25c3f17c cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>upload.php</b></font> <a href=#25c3f17c>#</a><a name=25c3f17c></a><br>
+		<font color="#ffffff"><b>upload.php</b></font> <a href=#25c3f17c>#</a><a name=25c3f17c></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -5762,12 +5906,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=897a1c59 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=897a1c59 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>thank you</b></font> <a href=#897a1c59>#</a><a name=897a1c59></a><br>
+		<font color="#ffffff"><b>thank you</b></font> <a href=#897a1c59>#</a><a name=897a1c59></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -5816,12 +5960,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=d52b0b30 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=d52b0b30 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>operator, please add profile page</b></font> <a href=#d52b0b30>#</a><a name=d52b0b30></a><br>
+		<font color="#ffffff"><b>operator, please add profile page</b></font> <a href=#d52b0b30>#</a><a name=d52b0b30></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -5870,12 +6014,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=1d2356a7 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=1d2356a7 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>qutebrowser how to change delay of status message</b></font> <a href=#1d2356a7>#</a><a name=1d2356a7></a><br>
+		<font color="#ffffff"><b>qutebrowser how to change delay of status message</b></font> <a href=#1d2356a7>#</a><a name=1d2356a7></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -5924,12 +6068,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=6c410db1 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=6c410db1 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>operator, please add inbox feature</b></font> <a href=#6c410db1>#</a><a name=6c410db1></a><br>
+		<font color="#ffffff"><b>operator, please add inbox feature</b></font> <a href=#6c410db1>#</a><a name=6c410db1></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -5978,12 +6122,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=4d680d09 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=4d680d09 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>operator, please add javascript support</b></font> <a href=#4d680d09>#</a><a name=4d680d09></a><br>
+		<font color="#ffffff"><b>operator, please add javascript support</b></font> <a href=#4d680d09>#</a><a name=4d680d09></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -6032,12 +6176,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=1feefa9f cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=1feefa9f cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>operator, please add inbox feature</b></font> <a href=#1feefa9f>#</a><a name=1feefa9f></a><br>
+		<font color="#ffffff"><b>operator, please add inbox feature</b></font> <a href=#1feefa9f>#</a><a name=1feefa9f></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -6051,7 +6195,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -6098,12 +6242,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=5db87f36 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=5db87f36 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>hike set reply_cart 1</b></font> <a href=#5db87f36>#</a><a name=5db87f36></a><br>
+		<font color="#ffffff"><b>hike set reply_cart 1</b></font> <a href=#5db87f36>#</a><a name=5db87f36></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -6152,12 +6296,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=ab0a39d7 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=ab0a39d7 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>#like</b></font> <a href=#ab0a39d7>#</a><a name=ab0a39d7></a><br>
+		<font color="#ffffff"><b>#like</b></font> <a href=#ab0a39d7>#</a><a name=ab0a39d7></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -6171,7 +6315,7 @@ pre time {
 <tr class=heading>
 	
 <!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template --><br></th>
+<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template --><br></th>
 <!-- / header_column.template -->
 
 </tr>
@@ -6216,12 +6360,12 @@ pre time {
 <replies></replies>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=481c7c8f cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=481c7c8f cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>thank you for this computer</b></font> <a href=#481c7c8f>#</a><a name=481c7c8f></a><br>
+		<font color="#ffffff"><b>thank you for this computer</b></font> <a href=#481c7c8f>#</a><a name=481c7c8f></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -6267,125 +6411,17 @@ pre time {
 	</table>
 </font>
 <!-- / default/template/html/window/standard.template -->
-<replies></replies>
-<!-- default/template/html/window/standard.template -->
-<font face=arial>
-	<table id=f7995d84 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
-		
-<!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
-	<td>
-		<font color="#403000"><b>we need some subdomains</b></font> <a href=#f7995d84>#</a><a name=f7995d84></a><br>
-		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
-	</td>
-</tr>
-<!-- / titlebar.template -->
-
-
-		
-
-		
-
-		<tbody class=content><tr class=content><td>
-<!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/50/9e/509e6ffa.html">509e6ffa..</a><br><br>we need some subdomains<br><br></p>
-<!-- / item/item.template -->
-</td></tr></tbody>
-
-		
-<!-- window/status.template -->
-<tr class=statusbar>
-	<td>
-		
-<!-- status_bar.template -->
-<a href="/f7/99/f7995d84.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683226024 title="05/04">05/04</time><!-- / timestamp_time.template --></a>;
-
-<span class=advanced>
-	<span class=fileHashShort>f7995d84</span>;
-</span>
-<!-- vote_button.template -->
-<a
-	href="/post.html?comment=%23like&replyto=f7995d8421be65d576337a31eacad4a4374ee9a5"
-	class="tag-like">like</a>;
-<!-- / vote_button.template --><!-- vote_button.template -->
-<a
-	href="/post.html?comment=%23flag&replyto=f7995d8421be65d576337a31eacad4a4374ee9a5"
-	class="tag-flag">flag</a>
-<!-- / vote_button.template -->
-<!-- status_bar.template -->
-<!-- add_to_reply_cart button requires js, but it is not enabled -->
-	</td>
-</tr>
-<!-- / window/status.template -->
-
-	</table>
-</font>
-<!-- / default/template/html/window/standard.template -->
-<replies></replies>
-<!-- default/template/html/window/standard.template -->
-<font face=arial>
-	<table id=a8ed2b5b cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
-		
-<!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
-	<td>
-		<font color="#403000"><b>a) it should appear as a new item, and the item template should</b></font> <a href=#a8ed2b5b>#</a><a name=a8ed2b5b></a><br>
-		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
-	</td>
-</tr>
-<!-- / titlebar.template -->
-
-
-		
-
-		
-
-		<tbody class=content><tr class=content><td>
-<!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/ca/58/ca58d3e6.html">ca58d3e6..</a><br><br>a) it should appear as a new item, and the item template should display what `zip -l` returns<br><br></p>
-<!-- / item/item.template -->
-</td></tr></tbody>
-
-		
-<!-- window/status.template -->
-<tr class=statusbar>
-	<td>
-		
-<!-- status_bar.template -->
-<a href="/a8/ed/a8ed2b5b.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683225973 title="05/04">05/04</time><!-- / timestamp_time.template --></a>;
-
-<span class=advanced>
-	<span class=fileHashShort>a8ed2b5b</span>;
-</span>
-<!-- vote_button.template -->
-<a
-	href="/post.html?comment=%23like&replyto=a8ed2b5b270c8db19ad26f2776bce0fc2291c399"
-	class="tag-like">like</a>;
-<!-- / vote_button.template --><!-- vote_button.template -->
-<a
-	href="/post.html?comment=%23flag&replyto=a8ed2b5b270c8db19ad26f2776bce0fc2291c399"
-	class="tag-flag">flag</a>
-<!-- / vote_button.template -->
-<!-- status_bar.template -->
-<!-- add_to_reply_cart button requires js, but it is not enabled -->
-	</td>
-</tr>
-<!-- / window/status.template -->
-
-	</table>
-</font>
-<!-- / default/template/html/window/standard.template -->
 <replies></replies></span>
 <!-- / item_list.template -->
 <br>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=Pages cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=Pages cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>Pages</b></font> <a href=#Pages>#</a><a name=Pages></a><br>
+		<font color="#ffffff"><b>Pages</b></font> <a href=#Pages>#</a><a name=Pages></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -6421,12 +6457,12 @@ pre time {
 <span class=advanced>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=readsql cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=readsql cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#403000"><b>read.sql</b></font> <a href=#readsql>#</a><a name=readsql></a><br>
+		<font color="#ffffff"><b>read.sql</b></font> <a href=#readsql>#</a><a name=readsql></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
