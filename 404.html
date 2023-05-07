@@ -247,7 +247,113 @@ pre time {
 -->
 </style>
 </head>
-<body link="#403000" vlink="#403000" text="#403000" bgcolor="#fff0ef" background="/hypercode_bg.jpg">
+<body link="#403000" vlink="#403000" text="#403000" bgcolor="#fff0ef" background="/hypercode_bg.jpg" onbeforeunload="if (window.ShowPreNavigateNotification){ ShowPreNavigateNotification();}" >
+<!-- InjectJs2: loading_begin -->
+
+
+<!-- html/utils/scriptinject.template -->
+<script language=javascript><!--
+// begin loading_begin.js
+
+//var loadingIndicatorWaitToShowMin = 1500;
+//var loadingIndicatorWaitToHideMin = 500;
+
+function addLoadingIndicator (strMessage) { // adds loading indicator bar (to top of page, depending on style)
+// function ShowLoadingIndicator ()
+	//alert('DEBUG: addLoadingIndicator(' + strMessage + ')');
+	if (!strMessage) {
+		//alert('DEBUG: strMessage = ' + strMessage);
+		strMessage = 'Meditate...';
+	}
+	//alert('DEBUG: addLoadingIndicator: strMessage = ' + strMessage);
+
+	if (!document.createElement) {
+		//alert('DEBUG: addLoadingIndicator: warning: no document.createElement');
+		return '';
+		// #todo improve compatibility here
+	}
+
+	if (window.loadingIndicator) {
+	    //alert('DEBUG: addLoadingIndicator: warning: loading indicator already exists');
+	    return '';
+	}
+	window.loadingIndicator = 1;
+
+	//alert('DEBUG: addLoadingIndicator: sanity checks passed!');
+	var spanLoadingIndicator = document.createElement('span');
+	if (spanLoadingIndicator) {
+		spanLoadingIndicator.setAttribute('id', 'loadingIndicator');
+		spanLoadingIndicator.innerHTML = strMessage;
+		spanLoadingIndicator.zIndex = 1337;
+		document.body.appendChild(spanLoadingIndicator);
+		window.loadingIndicator = spanLoadingIndicator;
+	}
+
+	return '';
+
+} // addLoadingIndicator()
+
+function GetMeditateMessage() {
+	var message = 'Meditate...';
+	//return 'Meditate...';
+
+	return message;
+}
+
+function ShowPreNavigateNotification () { // displays 'Meditate...' message
+	// OnUnload ()
+	//alert('DEBUG: ShowPreNavigateNotification() begin');
+
+	if (window.blockPreNavigateNotification) {
+		//alert('DEBUG: ShowPreNavigateNotification() blocked by window.blockPreNavigateNotification');
+		window.blockPreNavigateNotification = 0;
+		return '';
+	}
+
+	if (document.title.indexOf('...') == -1) {
+		document.title = document.title + '...';
+	}
+
+	//document.body.style.opacity="0.8";
+	if (event.target == location.href) {
+	} else {
+		if (document.getElementById) {
+			var ariaAlert;
+			ariaAlert = document.getElementById('ariaAlert');
+
+			if (!ariaAlert) {
+				ariaAlert = document.createElement('p');
+				ariaAlert.setAttribute('role', 'alert');
+				ariaAlert.setAttribute('id', 'ariaAlert');
+				ariaAlert.innerHTML = GetMeditateMessage();
+				ariaAlert.style.opacity = '1';
+				ariaAlert.style.zIndex = '1337';
+				//document.body.appendChild(ariaAlert);
+				document.body.insertBefore(ariaAlert, document.body.firstChild);
+			}
+		} else {
+			//#todo
+		}
+	}
+
+	return ''; // true would show a confirmation
+} // ShowPreNavigateNotification()
+
+if (document.createElement) {
+	//alert('DEBUG: loading_begin.js: createElement feature check PASSED!');
+	var d = new Date();
+	var loadingIndicatorStart = d.getTime() * 1;
+
+	addLoadingIndicator('Meditate...');
+} else {
+	//alert('DEBUG: loading_begin.js: createElement feature check FAILED!');
+}
+// end loading_begin.js
+
+// -->
+</script>
+<!-- / html/utils/scriptinject.template -->
+
 <b>
 <!-- template/topmenu2.template -->
 <table cellspacing=0 cellpadding=3 border=0 bgcolor="#fff0ef" class=dialog id=topmenu>
@@ -263,6 +369,12 @@ pre time {
 
 <!-- menuitem.template -->
 <a accesskey=a href="/active.html"><u>A</u>ctive</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=p href="/profile.html"><u>P</u>rofile</a>
 <!-- / menuitem.template -->
 </big>
 				<span class=advanced></span>
@@ -2401,3 +2513,75 @@ function SortTable (t, sortOrder) {
 </script>
 <!-- / html/utils/scriptinject.template -->
 </body></html>
+<!-- InjectJs2: loading_end -->
+
+
+<!-- html/utils/scriptinject.template -->
+<script language=javascript><!--
+// begin loading_end.js
+
+function HideLoadingIndicator () {
+	var loadingIndicator = window.loadingIndicator;
+
+	if (!loadingIndicator) {
+		if (document.getElementById) {
+			loadingIndicator = document.getElementById('loadingIndicator');
+			if (!loadingIndicator && document.getElementsByClassName) {
+				var allNotificationElements = document.getElementsByClassName('notification');
+				if (allNotificationElements) {
+					loadingIndicator = allNotificationElementsp[0];
+				}
+			}
+		} else {
+		    // #todo forms fallback
+		}
+	}
+
+	if (!loadingIndicator) {
+	    //alert('DEBUG: HideLoadingIndicator: warning: loadingIndicator is FALSE');
+	    return '';
+	}
+
+	if (window.loadingIndicatorShowTimeout) {
+		clearTimeout(loadingIndicatorShowTimeout);
+	}
+
+	loadingIndicator.innerHTML = 'Ready.';
+	loadingIndicator.style.backgroundColor = '#fff0ef';
+
+	setTimeout('window.loadingIndicator.style.opacity = "0.9"', 500);
+	setTimeout('window.loadingIndicator.style.opacity = "0.7"', 2000);
+	setTimeout('window.loadingIndicator.style.opacity = "0.6"', 3000);
+	setTimeout('window.loadingIndicator.style.opacity = "0.5"', 4000);
+
+	window.loadingIndicator = loadingIndicator;
+	//loadingIndicator.setAttribute('onclick', 'this.remove()');
+	setTimeout('if (window.loadingIndicator && window.loadingIndicator.remove) { window.loadingIndicator.remove(); } else { if (window.loadingIndicator.style) { window.loadingIndicator.style.display = "none"; } }', 5000); //#todo fix this long line
+	// #todo this causes a page shift in ie4 and ie6
+
+	// } else {
+	// 	if (loadingIndicator) { loadingIndicator.style.display = 'none' }
+	// }
+	return '';
+} // HideLoadingIndicator()
+
+function WaitForOpenPgp () {
+	//alert('debug: WaitForOpenPgp()');
+	var d = new Date();
+	if (window.openPgpJsLoadBegin && window.openpgp) {
+		HideLoadingIndicator();
+	} else {
+		setTimeout('if (window.WaitForOpenPgp) { WaitForOpenPgp() }', 500);
+	}
+} // WaitForOpenPgp()
+
+// #todo see if this is still necessary
+//if (!window.OnLoadEverything && window.HideLoadingIndicator) {
+//	HideLoadingIndicator();
+//}
+
+// end loading_end.js
+
+// -->
+</script>
+<!-- / html/utils/scriptinject.template -->

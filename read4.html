@@ -247,7 +247,113 @@ pre time {
 -->
 </style>
 </head>
-<body link="#403000" vlink="#403000" text="#403000" bgcolor="#fff0ef" background="/hypercode_bg.jpg" onclick="if (window.ShowPreNavigateNotification && event.target && (event.target.tagName == 'A') && !(event.target.onclick)) { ShowPreNavigateNotification(); }" onload="if (window.OnLoadEverything) { OnLoadEverything(); }" >
+<body link="#403000" vlink="#403000" text="#403000" bgcolor="#fff0ef" background="/hypercode_bg.jpg" onbeforeunload="if (window.ShowPreNavigateNotification){ ShowPreNavigateNotification();}" onclick="if (window.ShowPreNavigateNotification && event.target && (event.target.tagName == 'A') && !(event.target.onclick)) { ShowPreNavigateNotification(); }" onload="if (window.OnLoadEverything) { OnLoadEverything(); }" >
+<!-- InjectJs2: loading_begin -->
+
+
+<!-- html/utils/scriptinject.template -->
+<script language=javascript><!--
+// begin loading_begin.js
+
+//var loadingIndicatorWaitToShowMin = 1500;
+//var loadingIndicatorWaitToHideMin = 500;
+
+function addLoadingIndicator (strMessage) { // adds loading indicator bar (to top of page, depending on style)
+// function ShowLoadingIndicator ()
+	//alert('DEBUG: addLoadingIndicator(' + strMessage + ')');
+	if (!strMessage) {
+		//alert('DEBUG: strMessage = ' + strMessage);
+		strMessage = 'Meditate...';
+	}
+	//alert('DEBUG: addLoadingIndicator: strMessage = ' + strMessage);
+
+	if (!document.createElement) {
+		//alert('DEBUG: addLoadingIndicator: warning: no document.createElement');
+		return '';
+		// #todo improve compatibility here
+	}
+
+	if (window.loadingIndicator) {
+	    //alert('DEBUG: addLoadingIndicator: warning: loading indicator already exists');
+	    return '';
+	}
+	window.loadingIndicator = 1;
+
+	//alert('DEBUG: addLoadingIndicator: sanity checks passed!');
+	var spanLoadingIndicator = document.createElement('span');
+	if (spanLoadingIndicator) {
+		spanLoadingIndicator.setAttribute('id', 'loadingIndicator');
+		spanLoadingIndicator.innerHTML = strMessage;
+		spanLoadingIndicator.zIndex = 1337;
+		document.body.appendChild(spanLoadingIndicator);
+		window.loadingIndicator = spanLoadingIndicator;
+	}
+
+	return '';
+
+} // addLoadingIndicator()
+
+function GetMeditateMessage() {
+	var message = 'Meditate...';
+	//return 'Meditate...';
+
+	return message;
+}
+
+function ShowPreNavigateNotification () { // displays 'Meditate...' message
+	// OnUnload ()
+	//alert('DEBUG: ShowPreNavigateNotification() begin');
+
+	if (window.blockPreNavigateNotification) {
+		//alert('DEBUG: ShowPreNavigateNotification() blocked by window.blockPreNavigateNotification');
+		window.blockPreNavigateNotification = 0;
+		return '';
+	}
+
+	if (document.title.indexOf('...') == -1) {
+		document.title = document.title + '...';
+	}
+
+	//document.body.style.opacity="0.8";
+	if (event.target == location.href) {
+	} else {
+		if (document.getElementById) {
+			var ariaAlert;
+			ariaAlert = document.getElementById('ariaAlert');
+
+			if (!ariaAlert) {
+				ariaAlert = document.createElement('p');
+				ariaAlert.setAttribute('role', 'alert');
+				ariaAlert.setAttribute('id', 'ariaAlert');
+				ariaAlert.innerHTML = GetMeditateMessage();
+				ariaAlert.style.opacity = '1';
+				ariaAlert.style.zIndex = '1337';
+				//document.body.appendChild(ariaAlert);
+				document.body.insertBefore(ariaAlert, document.body.firstChild);
+			}
+		} else {
+			//#todo
+		}
+	}
+
+	return ''; // true would show a confirmation
+} // ShowPreNavigateNotification()
+
+if (document.createElement) {
+	//alert('DEBUG: loading_begin.js: createElement feature check PASSED!');
+	var d = new Date();
+	var loadingIndicatorStart = d.getTime() * 1;
+
+	addLoadingIndicator('Meditate...');
+} else {
+	//alert('DEBUG: loading_begin.js: createElement feature check FAILED!');
+}
+// end loading_begin.js
+
+// -->
+</script>
+<!-- / html/utils/scriptinject.template -->
+
 <b>
 <!-- template/topmenu2.template -->
 <table cellspacing=0 cellpadding=3 border=0 bgcolor="#fff0ef" class=dialog id=topmenu>
@@ -263,6 +369,12 @@ pre time {
 
 <!-- menuitem.template -->
 <a accesskey=a href="/active.html"><u>A</u>ctive</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=p href="/profile.html"><u>P</u>rofile</a>
 <!-- / menuitem.template -->
 </big>
 				<span class=advanced></span>
@@ -358,6 +470,132 @@ pre time {
 <span class=itemList>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
+	<table id=b6f4c358 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/3a/a4/3aa47d66.html">js/debug 0</a><br><br>#like<span class=admin><br>
+-- <br>
+<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/b6/f4/b6f4c358.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443713 title="03:15:13">03:15</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>b6f4c358</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'b6f4c358b056e50f2a0248c3ed4b9139da79efb5\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=b6f4c358b056e50f2a0248c3ed4b9139da79efb5"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'b6f4c358b056e50f2a0248c3ed4b9139da79efb5\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=b6f4c358b056e50f2a0248c3ed4b9139da79efb5"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('b6f4c358b056e50f2a0248c3ed4b9139da79efb5', this); }" item-id=b6f4c358b056e50f2a0248c3ed4b9139da79efb5 class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=ecb83600 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/8c/e6/8ce6fd09.html">dragging 0</a><br><br>#like<span class=admin><br>
+-- <br>
+<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/ec/b8/ecb83600.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443716 title="03:15:16">03:15</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>ecb83600</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'ecb83600340f4b8a9dc79dac4dddab2b68e3dc71\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=ecb83600340f4b8a9dc79dac4dddab2b68e3dc71"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'ecb83600340f4b8a9dc79dac4dddab2b68e3dc71\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=ecb83600340f4b8a9dc79dac4dddab2b68e3dc71"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('ecb83600340f4b8a9dc79dac4dddab2b68e3dc71', this); }" item-id=ecb83600340f4b8a9dc79dac4dddab2b68e3dc71 class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
 	<table id=b2753149 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 
@@ -411,6 +649,258 @@ pre time {
 <!-- / vote_button.template -->
 <!-- status_bar.template -->
 ; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('b2753149cecaf873736623c6ccc35a40b4cfb6d1', this); }" item-id=b2753149cecaf873736623c6ccc35a40b4cfb6d1 class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=cf41c966 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">[Operator]<span class=admin><br>
+-- <br>
+<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/cf/41/cf41c966.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443734 title="03:15:34">03:15</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>cf41c966</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'cf41c9669604530f5999f01331994cbda007bb24\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=cf41c9669604530f5999f01331994cbda007bb24"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'cf41c9669604530f5999f01331994cbda007bb24\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=cf41c9669604530f5999f01331994cbda007bb24"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('cf41c9669604530f5999f01331994cbda007bb24', this); }" item-id=cf41c9669604530f5999f01331994cbda007bb24 class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=67094ba3 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/93/a3/93a324ac.html">add javascript s</a><br><br>#like<span class=admin><br>
+-- <br>
+<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/67/09/67094ba3.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443776 title="03:16:16">03:16</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>67094ba3</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'67094ba390a35866dc80f764134a9589d127668a\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=67094ba390a35866dc80f764134a9589d127668a"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'67094ba390a35866dc80f764134a9589d127668a\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=67094ba390a35866dc80f764134a9589d127668a"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('67094ba390a35866dc80f764134a9589d127668a', this); }" item-id=67094ba390a35866dc80f764134a9589d127668a class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=d619b151 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/operator_please.html"><font color="#403000">#</font>operator_please</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/93/a3/93a324ac.html">add javascript s</a><br><br>[Operator]<span class=admin><br>
+-- <br>
+<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/d6/19/d619b151.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443792 title="03:16:32">03:16</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>d619b151</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'d619b15169ca0be952308ff28a880cd4367df407\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=d619b15169ca0be952308ff28a880cd4367df407"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'d619b15169ca0be952308ff28a880cd4367df407\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=d619b15169ca0be952308ff28a880cd4367df407"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('d619b15169ca0be952308ff28a880cd4367df407', this); }" item-id=d619b15169ca0be952308ff28a880cd4367df407 class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=a0fefe3c cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/57/4e/574e8a96.html">add profile page</a><br><br>#like<span class=admin><br>
+-- <br>
+<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/a0/fe/a0fefe3c.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443802 title="03:16:42">03:16</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>a0fefe3c</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'a0fefe3c42d45687a5df139dae81112675680fa1\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=a0fefe3c42d45687a5df139dae81112675680fa1"
+	class="tag-like">like</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'a0fefe3c42d45687a5df139dae81112675680fa1\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=a0fefe3c42d45687a5df139dae81112675680fa1"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('a0fefe3c42d45687a5df139dae81112675680fa1', this); }" item-id=a0fefe3c42d45687a5df139dae81112675680fa1 class=replyCartButton href=#>+cart</a></span>
 	</td>
 </tr>
 <!-- / window/status.template -->
@@ -4105,3 +4595,75 @@ if (window.EventLoop) {
 </script>
 <!-- / html/utils/scriptinject.template -->
 </body></html>
+<!-- InjectJs2: loading_end -->
+
+
+<!-- html/utils/scriptinject.template -->
+<script language=javascript><!--
+// begin loading_end.js
+
+function HideLoadingIndicator () {
+	var loadingIndicator = window.loadingIndicator;
+
+	if (!loadingIndicator) {
+		if (document.getElementById) {
+			loadingIndicator = document.getElementById('loadingIndicator');
+			if (!loadingIndicator && document.getElementsByClassName) {
+				var allNotificationElements = document.getElementsByClassName('notification');
+				if (allNotificationElements) {
+					loadingIndicator = allNotificationElementsp[0];
+				}
+			}
+		} else {
+		    // #todo forms fallback
+		}
+	}
+
+	if (!loadingIndicator) {
+	    //alert('DEBUG: HideLoadingIndicator: warning: loadingIndicator is FALSE');
+	    return '';
+	}
+
+	if (window.loadingIndicatorShowTimeout) {
+		clearTimeout(loadingIndicatorShowTimeout);
+	}
+
+	loadingIndicator.innerHTML = 'Ready.';
+	loadingIndicator.style.backgroundColor = '#fff0ef';
+
+	setTimeout('window.loadingIndicator.style.opacity = "0.9"', 500);
+	setTimeout('window.loadingIndicator.style.opacity = "0.7"', 2000);
+	setTimeout('window.loadingIndicator.style.opacity = "0.6"', 3000);
+	setTimeout('window.loadingIndicator.style.opacity = "0.5"', 4000);
+
+	window.loadingIndicator = loadingIndicator;
+	//loadingIndicator.setAttribute('onclick', 'this.remove()');
+	setTimeout('if (window.loadingIndicator && window.loadingIndicator.remove) { window.loadingIndicator.remove(); } else { if (window.loadingIndicator.style) { window.loadingIndicator.style.display = "none"; } }', 5000); //#todo fix this long line
+	// #todo this causes a page shift in ie4 and ie6
+
+	// } else {
+	// 	if (loadingIndicator) { loadingIndicator.style.display = 'none' }
+	// }
+	return '';
+} // HideLoadingIndicator()
+
+function WaitForOpenPgp () {
+	//alert('debug: WaitForOpenPgp()');
+	var d = new Date();
+	if (window.openPgpJsLoadBegin && window.openpgp) {
+		HideLoadingIndicator();
+	} else {
+		setTimeout('if (window.WaitForOpenPgp) { WaitForOpenPgp() }', 500);
+	}
+} // WaitForOpenPgp()
+
+// #todo see if this is still necessary
+//if (!window.OnLoadEverything && window.HideLoadingIndicator) {
+//	HideLoadingIndicator();
+//}
+
+// end loading_end.js
+
+// -->
+</script>
+<!-- / html/utils/scriptinject.template -->

@@ -247,7 +247,113 @@ pre time {
 -->
 </style>
 </head>
-<body link="#403000" vlink="#403000" text="#403000" bgcolor="#fff0ef" background="/hypercode_bg.jpg" onclick="if (window.ShowPreNavigateNotification && event.target && (event.target.tagName == 'A') && !(event.target.onclick)) { ShowPreNavigateNotification(); }" onload="if (window.OnLoadEverything) { OnLoadEverything(); }" >
+<body link="#403000" vlink="#403000" text="#403000" bgcolor="#fff0ef" background="/hypercode_bg.jpg" onbeforeunload="if (window.ShowPreNavigateNotification){ ShowPreNavigateNotification();}" onclick="if (window.ShowPreNavigateNotification && event.target && (event.target.tagName == 'A') && !(event.target.onclick)) { ShowPreNavigateNotification(); }" onload="if (window.OnLoadEverything) { OnLoadEverything(); }" >
+<!-- InjectJs2: loading_begin -->
+
+
+<!-- html/utils/scriptinject.template -->
+<script language=javascript><!--
+// begin loading_begin.js
+
+//var loadingIndicatorWaitToShowMin = 1500;
+//var loadingIndicatorWaitToHideMin = 500;
+
+function addLoadingIndicator (strMessage) { // adds loading indicator bar (to top of page, depending on style)
+// function ShowLoadingIndicator ()
+	//alert('DEBUG: addLoadingIndicator(' + strMessage + ')');
+	if (!strMessage) {
+		//alert('DEBUG: strMessage = ' + strMessage);
+		strMessage = 'Meditate...';
+	}
+	//alert('DEBUG: addLoadingIndicator: strMessage = ' + strMessage);
+
+	if (!document.createElement) {
+		//alert('DEBUG: addLoadingIndicator: warning: no document.createElement');
+		return '';
+		// #todo improve compatibility here
+	}
+
+	if (window.loadingIndicator) {
+	    //alert('DEBUG: addLoadingIndicator: warning: loading indicator already exists');
+	    return '';
+	}
+	window.loadingIndicator = 1;
+
+	//alert('DEBUG: addLoadingIndicator: sanity checks passed!');
+	var spanLoadingIndicator = document.createElement('span');
+	if (spanLoadingIndicator) {
+		spanLoadingIndicator.setAttribute('id', 'loadingIndicator');
+		spanLoadingIndicator.innerHTML = strMessage;
+		spanLoadingIndicator.zIndex = 1337;
+		document.body.appendChild(spanLoadingIndicator);
+		window.loadingIndicator = spanLoadingIndicator;
+	}
+
+	return '';
+
+} // addLoadingIndicator()
+
+function GetMeditateMessage() {
+	var message = 'Meditate...';
+	//return 'Meditate...';
+
+	return message;
+}
+
+function ShowPreNavigateNotification () { // displays 'Meditate...' message
+	// OnUnload ()
+	//alert('DEBUG: ShowPreNavigateNotification() begin');
+
+	if (window.blockPreNavigateNotification) {
+		//alert('DEBUG: ShowPreNavigateNotification() blocked by window.blockPreNavigateNotification');
+		window.blockPreNavigateNotification = 0;
+		return '';
+	}
+
+	if (document.title.indexOf('...') == -1) {
+		document.title = document.title + '...';
+	}
+
+	//document.body.style.opacity="0.8";
+	if (event.target == location.href) {
+	} else {
+		if (document.getElementById) {
+			var ariaAlert;
+			ariaAlert = document.getElementById('ariaAlert');
+
+			if (!ariaAlert) {
+				ariaAlert = document.createElement('p');
+				ariaAlert.setAttribute('role', 'alert');
+				ariaAlert.setAttribute('id', 'ariaAlert');
+				ariaAlert.innerHTML = GetMeditateMessage();
+				ariaAlert.style.opacity = '1';
+				ariaAlert.style.zIndex = '1337';
+				//document.body.appendChild(ariaAlert);
+				document.body.insertBefore(ariaAlert, document.body.firstChild);
+			}
+		} else {
+			//#todo
+		}
+	}
+
+	return ''; // true would show a confirmation
+} // ShowPreNavigateNotification()
+
+if (document.createElement) {
+	//alert('DEBUG: loading_begin.js: createElement feature check PASSED!');
+	var d = new Date();
+	var loadingIndicatorStart = d.getTime() * 1;
+
+	addLoadingIndicator('Meditate...');
+} else {
+	//alert('DEBUG: loading_begin.js: createElement feature check FAILED!');
+}
+// end loading_begin.js
+
+// -->
+</script>
+<!-- / html/utils/scriptinject.template -->
+
 <b>
 <!-- template/topmenu2.template -->
 <table cellspacing=0 cellpadding=3 border=0 bgcolor="#fff0ef" class=dialog id=topmenu>
@@ -263,6 +369,12 @@ pre time {
 
 <!-- menuitem.template -->
 <a accesskey=a href="/active.html"><u>A</u>ctive</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=p href="/profile.html"><u>P</u>rofile</a>
 <!-- / menuitem.template -->
 </big>
 				<span class=advanced></span>
@@ -488,6 +600,146 @@ pre time {
 <!-- / vote_button.template -->
 <!-- status_bar.template -->
 ; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('a939dbc1fedf6754710372c43b6147cab4501995', this); }" item-id=a939dbc1fedf6754710372c43b6147cab4501995 class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=574e8a96 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>add profile page</b></font> <a href=#574e8a96>#</a><a name=574e8a96></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/like.html"><font color="#403000">#</font>like</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/d6/19/d619b151.html">d619b151..</a><br><br>add profile page<br><a href="/e1/3e/e13e31e4.html">e13e31e4..</a><br><br>ok, I added profile page with basic cookie authentication.<br><br>===<br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/57/4e/574e8a96.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443794 title="03:16:34">03:16</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>574e8a96</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'574e8a9693c74223fbae034e0820582559c80cf8\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=574e8a9693c74223fbae034e0820582559c80cf8"
+	class="tag-like">like(1)</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'574e8a9693c74223fbae034e0820582559c80cf8\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=574e8a9693c74223fbae034e0820582559c80cf8"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('574e8a9693c74223fbae034e0820582559c80cf8', this); }" item-id=574e8a9693c74223fbae034e0820582559c80cf8 class=replyCartButton href=#>+cart</a></span>
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=93a324ac cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#fff0ef" class=titlebar>
+	<td>
+		<font color="#403000"><b>add javascript support</b></font> <a href=#93a324ac>#</a><a name=93a324ac></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/like.html"><font color="#403000">#</font>like</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/cf/41/cf41c966.html">cf41c966..</a><br><br>add javascript support<br><a href="/d2/c1/d2c1b3f4.html">d2c1b3f4..</a><br><br>ok, I added a basic javascript, including live timestamps, in-place voting buttons. a settings page is available on request.<br><br>===<br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/93/a3/93a324ac.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443750 title="03:15:50">03:15</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>93a324ac</span>;
+</span>
+<!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'93a324acbca3598d51e35c0322a1f17b33ded923\n#like');
+						}" 
+	href="/post.html?comment=%23like&replyto=93a324acbca3598d51e35c0322a1f17b33ded923"
+	class="tag-like">like(1)</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a onclick="if (window.SignVote) {
+							var gt = unescape('%3E');
+							return SignVote(this, gt+gt+'93a324acbca3598d51e35c0322a1f17b33ded923\n#flag');
+						}" 
+	href="/post.html?comment=%23flag&replyto=93a324acbca3598d51e35c0322a1f17b33ded923"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('93a324acbca3598d51e35c0322a1f17b33ded923', this); }" item-id=93a324acbca3598d51e35c0322a1f17b33ded923 class=replyCartButton href=#>+cart</a></span>
 	</td>
 </tr>
 <!-- / window/status.template -->
@@ -7093,138 +7345,6 @@ pre time {
 	</table>
 </font>
 <!-- / default/template/html/window/standard.template -->
-<replies></replies>
-<!-- default/template/html/window/standard.template -->
-<font face=arial>
-	<table id=5cea32a3 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
-		
-<!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
-	<td>
-		<font color="#403000"><b>thank you for this computer</b></font> <a href=#5cea32a3>#</a><a name=5cea32a3></a><br>
-		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
-	</td>
-</tr>
-<!-- / titlebar.template -->
-
-
-		
-
-		
-
-		<tbody class=content><tr class=content><td>
-<!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/a0/8a/a08aa2f1.html">a08aa2f1..</a><br><br>thank you for this computer<br><br></p>
-<!-- / item/item.template -->
-</td></tr></tbody>
-
-		
-<!-- window/status.template -->
-<tr class=statusbar>
-	<td>
-		
-<!-- status_bar.template -->
-<a href="/5c/ea/5cea32a3.html">no timestamp</a>;
-
-<span class=advanced>
-	<span class=fileHashShort></span>;
-</span>
-<!-- vote_button.template -->
-<a onclick="if (window.SignVote) {
-							var gt = unescape('%3E');
-							return SignVote(this, gt+gt+'5cea32a352e8a15ef9903ee9b1949e82bd6623f0\n#like');
-						}" 
-	href="/post.html?comment=%23like&replyto=5cea32a352e8a15ef9903ee9b1949e82bd6623f0"
-	class="tag-like">like</a>;
-<!-- / vote_button.template --><!-- vote_button.template -->
-<a onclick="if (window.SignVote) {
-							var gt = unescape('%3E');
-							return SignVote(this, gt+gt+'5cea32a352e8a15ef9903ee9b1949e82bd6623f0\n#flag');
-						}" 
-	href="/post.html?comment=%23flag&replyto=5cea32a352e8a15ef9903ee9b1949e82bd6623f0"
-	class="tag-flag">flag</a>
-<!-- / vote_button.template -->
-<!-- status_bar.template -->
-; <span class=advanced></span>
-	</td>
-</tr>
-<!-- / window/status.template -->
-
-	</table>
-</font>
-<!-- / default/template/html/window/standard.template -->
-<replies></replies>
-<!-- default/template/html/window/standard.template -->
-<font face=arial>
-	<table id=785622b8 cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
-		
-<!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
-	<td>
-		<font color="#403000"><b>This is an interesting benchmark I'll try to code up. Although,</b></font> <a href=#785622b8>#</a><a name=785622b8></a><br>
-		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
-	</td>
-</tr>
-<!-- / titlebar.template -->
-
-
-		
-
-		
-<!-- header_wrapper.template -->
-<tr class=heading>
-	
-<!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#403000">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#403000">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#403000">#</font>received</a><!-- / tag_link.template --><br></th>
-<!-- / header_column.template -->
-
-</tr>
-<!-- / header_wrapper.template -->
-
-
-		<tbody class=content><tr class=content><td>
-<!-- item/item.template -->
-<p class="txt">This is an interesting benchmark I'll try to code up. Although, it seems a bit like an apples/oranges comparison, since a Dataframe in memory had to come from somewhere, either a CSV or database like Postgres, in which case I have my money on Postgres outcompeting the standalone process parsing CSV.<br>In the end though, it'll be important to have benchmarks for all the key steps in the process, both in terms of memory and compute. Off a hunch, I think the memory inefficiency involved in high level pandas operations is more likely to be a driving force to move operations into lower layers, than CPU runtime.<span class=admin><br>
--- <br>
-#f43e0c4c<br>--- <br>[Received]<br></span><br></p>
-<!-- / item/item.template -->
-</td></tr></tbody>
-
-		
-<!-- window/status.template -->
-<tr class=statusbar>
-	<td>
-		
-<!-- status_bar.template -->
-<a href="/78/56/785622b8.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683126745 title="05/03">05/03</time><!-- / timestamp_time.template --></a>;
-
-<span class=advanced>
-	<span class=fileHashShort>785622b8</span>;
-</span>
-<!-- vote_button.template -->
-<a onclick="if (window.SignVote) {
-							var gt = unescape('%3E');
-							return SignVote(this, gt+gt+'785622b87732f63acb685d755d435f778efafea8\n#like');
-						}" 
-	href="/post.html?comment=%23like&replyto=785622b87732f63acb685d755d435f778efafea8"
-	class="tag-like">like</a>;
-<!-- / vote_button.template --><!-- vote_button.template -->
-<a onclick="if (window.SignVote) {
-							var gt = unescape('%3E');
-							return SignVote(this, gt+gt+'785622b87732f63acb685d755d435f778efafea8\n#flag');
-						}" 
-	href="/post.html?comment=%23flag&replyto=785622b87732f63acb685d755d435f778efafea8"
-	class="tag-flag">flag</a>
-<!-- / vote_button.template -->
-<!-- status_bar.template -->
-; <span class=advanced><a onclick="if (window.addToReplyCartButton) { return addToReplyCartButton('785622b87732f63acb685d755d435f778efafea8', this); }" item-id=785622b87732f63acb685d755d435f778efafea8 class=replyCartButton href=#>+cart</a></span>
-	</td>
-</tr>
-<!-- / window/status.template -->
-
-	</table>
-</font>
-<!-- / default/template/html/window/standard.template -->
 <replies></replies></span>
 <!-- / item_list.template -->
 <br>
@@ -10912,3 +11032,75 @@ if (window.EventLoop) {
 </script>
 <!-- / html/utils/scriptinject.template -->
 </body></html>
+<!-- InjectJs2: loading_end -->
+
+
+<!-- html/utils/scriptinject.template -->
+<script language=javascript><!--
+// begin loading_end.js
+
+function HideLoadingIndicator () {
+	var loadingIndicator = window.loadingIndicator;
+
+	if (!loadingIndicator) {
+		if (document.getElementById) {
+			loadingIndicator = document.getElementById('loadingIndicator');
+			if (!loadingIndicator && document.getElementsByClassName) {
+				var allNotificationElements = document.getElementsByClassName('notification');
+				if (allNotificationElements) {
+					loadingIndicator = allNotificationElementsp[0];
+				}
+			}
+		} else {
+		    // #todo forms fallback
+		}
+	}
+
+	if (!loadingIndicator) {
+	    //alert('DEBUG: HideLoadingIndicator: warning: loadingIndicator is FALSE');
+	    return '';
+	}
+
+	if (window.loadingIndicatorShowTimeout) {
+		clearTimeout(loadingIndicatorShowTimeout);
+	}
+
+	loadingIndicator.innerHTML = 'Ready.';
+	loadingIndicator.style.backgroundColor = '#fff0ef';
+
+	setTimeout('window.loadingIndicator.style.opacity = "0.9"', 500);
+	setTimeout('window.loadingIndicator.style.opacity = "0.7"', 2000);
+	setTimeout('window.loadingIndicator.style.opacity = "0.6"', 3000);
+	setTimeout('window.loadingIndicator.style.opacity = "0.5"', 4000);
+
+	window.loadingIndicator = loadingIndicator;
+	//loadingIndicator.setAttribute('onclick', 'this.remove()');
+	setTimeout('if (window.loadingIndicator && window.loadingIndicator.remove) { window.loadingIndicator.remove(); } else { if (window.loadingIndicator.style) { window.loadingIndicator.style.display = "none"; } }', 5000); //#todo fix this long line
+	// #todo this causes a page shift in ie4 and ie6
+
+	// } else {
+	// 	if (loadingIndicator) { loadingIndicator.style.display = 'none' }
+	// }
+	return '';
+} // HideLoadingIndicator()
+
+function WaitForOpenPgp () {
+	//alert('debug: WaitForOpenPgp()');
+	var d = new Date();
+	if (window.openPgpJsLoadBegin && window.openpgp) {
+		HideLoadingIndicator();
+	} else {
+		setTimeout('if (window.WaitForOpenPgp) { WaitForOpenPgp() }', 500);
+	}
+} // WaitForOpenPgp()
+
+// #todo see if this is still necessary
+//if (!window.OnLoadEverything && window.HideLoadingIndicator) {
+//	HideLoadingIndicator();
+//}
+
+// end loading_end.js
+
+// -->
+</script>
+<!-- / html/utils/scriptinject.template -->
