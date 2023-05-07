@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml"></link>
-<title>Tags</title>
+<title>Profile</title>
 <style type="text/css">
 <!--
 /* begin css/default.css */
@@ -387,31 +387,17 @@ pre time {
 </table>
 <!-- / topmenu2.template -->
 </b>
-<p>
+<p><MAIN ID=maincontent><A NAME=maincontent></A>
+
+
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
-		
-
-		
-
-		
-
-		<tbody class=content><tr class=content><td>This page reserved for future content.</td></tr></tbody>
-
-		
-	</table>
-</font>
-<!-- / default/template/html/window/standard.template -->
-<span class=advanced>
-<!-- default/template/html/window/standard.template -->
-<font face=arial>
-	<table id=tagssql cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
+	<table id=profile cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#ffffff"><b>tags.sql</b></font> <a href=#tagssql>#</a><a name=tagssql></a><br>
+		<font color="#ffffff"><b>Profile</b></font> <a href=#profile>#</a><a name=profile></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -422,33 +408,65 @@ pre time {
 
 		
 
-		<tbody class=content><tr class=content><td><pre>SELECT
-	vote_value,
-	vote_count
-FROM (
-	SELECT
-		vote_value,
-		COUNT(vote_value) AS vote_count
-	FROM
-		vote
-	WHERE
-		file_hash IN (
-			SELECT file_hash
-			FROM item_flat
-			WHERE item_score &gt;= 0
-		)
-	GROUP BY
-		vote.vote_value
-	)
-ORDER BY
-	vote_count DESC
-<br></pre></td></tr></tbody>
+		<tbody class=content><tr class=content><td>
+<!-- form/profile.template -->
+<form action="/profile.html" name=frmProfile class=frmProfile>
+	<fieldset id=fldRegistration>
+		<p id=pRegButton>
+			<input id=btnRegister onclick="if (window.btnRegister_Click) { return btnRegister_Click(this); }" 
+				type=submit
+				name=btnRegister
+				value="Register"
+			>
+			<span class=beginner>
+				<br>Register; Sign In; Create Profile.<br>
+			</span>
+		</p>
+
+		<p id=pSigningIndicator>
+			<span id=lblSigningIndicator>
+				<noscript>*</noscript>
+				<script>
+				<!--
+				document.write('...'); // #todo this should be filled in
+				// -->
+				</script>
+			</span>
+		</p>
+
+		<hr>
+
+		<span>
+
+			<p id=pCurrentProfileIndicator>
+				<b><span id=lblHandle></span></b><br>
+				<span id=lblFingerprint></span><br>
+			</p>
+
+			<p id=spanProfileLink></p>
+
+			<hr id=pCurrentProfileIndicatorSeparator>
+		</span>
+
+		<p id=pExitButton>
+			<input
+				type=submit
+				name=btnSignOut
+				onclick="if (window.btnSignOut_Click) { return btnSignOut_Click(this); }"
+				id=btnSignOut
+				value="Exit"
+			>
+		</p>
+	</fieldset>
+</form>
+<!-- / form/profile.template -->
+</td></tr></tbody>
 
 		
 	</table>
 </font>
 <!-- / default/template/html/window/standard.template -->
-</span></main>
+</main>
 <span id=messages></span>
 <img src="/p.gif" alt="" height=1 width=1>
 <br><noscript>
@@ -477,768 +495,102 @@ ORDER BY
 </font>
 <!-- / default/template/html/window/standard.template -->
 </noscript>
-<!-- InjectJs: utils settings avatar voting table_sort profile timestamp fresh table_sort -->
+<!-- InjectJs: avatar settings utils profile timestamp fresh table_sort -->
 
 
-<!-- html/utils/scriptinject.template (main,config/template/perl/item_listing_page.pl,246) -->
+<!-- html/utils/scriptinject.template (main,config/template/perl/page/profile.pl,80) -->
 <script language=javascript><!--
-// == begin utils.js
+// == begin avatar.js
 
-// begin html escape hack (credit stacko)
-// only works with createElement #backlog
-if (document.createElement) {
-	var escapeTA = document.createElement('textarea');
-}
-function escapeHTML (html) {
-	if (window.escapeTA) {
-		escapeTA.textContent = html;
-		return escapeTA.innerHTML;
-	}
-} // escapeHTML()
-function unescapeHTML (html) {
-	if (window.escapeTA) {
-		escapeTA.innerHTML = html;
-		return escapeTA.textContent;
-	}
-} // unescapeHTML()
-// end html escape hack
-//#todo above hack seems to be broken, because escapeTA is not global?
+var configJsOpenPgp = 1; // this is templated from config/setting/admin/js/openpgp
 
-function LogWarning (text) {
-	if (text.indexOf('warning') != -1) {
-		var hasLogger = !!(window.console && window.console.log);
-		if (hasLogger) {
-			console.log(text);
-		} else {
-			if (document && document.title) {
-				document.title = text;
-			}
-		}
-	}
-} // LogWarning()
+function setAva () { // sets avatar widgets (and italicizes Profile link)
+	//alert('DEBUG: setAva() begins');
 
-function OnLoadEverything () { // checks for each onLoad function and calls it
-// function OnLoadAll () {
-// function BodyOnLoad () {
-// body onload body.onload
-// function OnLoad {
-// typically called from body.onload
-	//alert('DEBUG: OnLoadEverything() begins');
+	if (document.getElementById && String.fromCharCode) {
+		var myidBox = document.getElementById('myid'); // displays username (if preference is set)
+		var signinBox = document.getElementById('signin'); // Profile link
 
-	if ((window.addLoadingIndicator) && (!window.loadingIndicator)) {
-		//alert('DEBUG: OnLoadEverything: addLoadingIndicator()');
-		addLoadingIndicator('Meditate...');
-	} else {
-		//alert('DEBUG: OnLoadEverything: (window.addLoadingIndicator) is FALSE');
-	}
+		//var gt = String.fromCharCode(62);
+		var gt = unescape('%3E');
 
-	if (window.setClock) {
-		//alert('DEBUG: OnLoadEverything: setClock()');
-		window.eventLoopSetClock = 1;
-		setClock();
-	}
-	if (window.ItsYou) {
-		//alert('DEBUG: OnLoadEverything: ItsYou()');
-		ItsYou();
-	}
-	if (window.ShowTimestamps) {
-		//alert('DEBUG: OnLoadEverything: ShowTimestamps()');
-		window.eventLoopShowTimestamps = 1;
-		ShowTimestamps();
-	}
-	if (window.SettingsOnload) {
-		//alert('DEBUG: OnLoadEverything: SettingsOnload()');
-		SettingsOnload();
-	}
-	if (window.ProfileOnLoad) {
-		//alert('DEBUG: OnLoadEverything: ProfileOnLoad()');
-		ProfileOnLoad();
-	}
-	if (window.WriteOnload) {
-		//alert('DEBUG: OnLoadEverything: WriteOnload()');
-		WriteOnload();
-	}
+		if (myidBox && signinBox && window.localStorage) { // check for elements and features
+			var myAvatar = localStorage.getItem('avatar');
 
-	if (window.ShowAdvanced) {
-		//alert('DEBUG: OnLoadEverything: ShowAdvanced()');
-		window.eventLoopShowAdvanced = 1;
-		ShowAdvanced(0, 0);
-	}
-	//alert('DEBUG: OnLoadEverything: ShowAdvanced() finished!');
+			// #todo add provision for cookie auth here too
 
-	if (window.SearchOnload) {
-		//alert('DEBUG: OnLoadEverything: SearchOnload()');
-		SearchOnload();
-	}
-
-	if (window.DesktopOnLoad) {
-		//alert('DEBUG: OnLoadEverything: DesktopOnLoad()');
-		DesktopOnLoad();
-	}
-
-	if (window.UploadAddImagePreviewElement) {
-		//alert('DEBUG: OnLoadEverything: UploadAddImagePreviewElement()');
-		UploadAddImagePreviewElement();
-	}
-
-	//alert('DEBUG: OnLoadEverything: checking for editable field...');
-
-	if (window.location && document.compose && window.location.href.indexOf) {
-		if (
-			window.location &&
-			window.location.href &&
-			window.location.href.indexOf('write') != -1 ||
-			window.location.hash.indexOf('reply') != -1 ||
-			(
-				window.location.href.indexOf('message') != -1 &&
-				window.GetPrefs &&
-				GetPrefs('focus_reply')
-			)
-				&&
-			document.compose &&
-			document.compose.comment &&
-			document.compose.comment.focus
-		) {
-			//alert('DEBUG: OnLoadEverything: document.compose.comment.focus()()');
-			document.compose.comment.focus();
-		}
-	}
-
-	if (window.location.href && (window.location.href.indexOf('search') != -1) && document.search.q) {
-		//alert('DEBUG: OnLoadEverything: document.search.q.focus()');
-		document.search.q.focus();
-	}
-
-	if (0 && window.localStorage) { // #todo improve crumbs
-		var crumbs1 = localStorage.getItem('crumbs');
-		if (crumbs1) {
-			crumbs1 = crumbs1 + '\n' + window.location.href;
-			localStorage.setItem('crumbs', crumbs1);
-		} else {
-			localStorage.setItem('crumbs', window.location.href);
-		}
-	}
-
-	if (window.EventLoop) {
-		//alert('DEBUG: OnLoadEverything: EventLoop()');
-		if (window.CheckIfFresh) {
-			window.eventLoopFresh = 1;
-		}
-		window.eventLoopEnabled = 1;
-		EventLoop();
-	} // if (window.EventLoop)
-
-	// FetchDialog('help');
-
-	if (window.DraggingInit && GetPrefs('draggable')) {
-		//alert('DEBUG: OnLoadEverything: DraggingInit()');
-		if (window.location.href.indexOf('settings') != -1) {
-			// exclude settings page to avoid difficult situations
-			// one day, it will no longer be necessary
-			DraggingInit(1);
-		} else {
-			DraggingInit(1);
-		}
-	} else {
-		if (document.getElementById) {
-			// this gets rid of the style which hides dialogs on
-			// page load so that they can be positioned first
-			// dragging_hide_dialogs.js
-			// #todo optimize this
-			if (document.getElementById('styleHideDialogs')) {
-				UnhideHiddenElements();
-			}
-		}
-	}
-
-	if (window.HideLoadingIndicator) {
-		//alert('DEBUG: OnLoadEverything: HideLoadingIndicator()');
-		HideLoadingIndicator();
-	}
-
-	// everything is set now, start event loop
-	//
-} // OnLoadEverything()
-
-if (!window.performanceOptimization && window.GetPrefs) {
-	// if performanceOptimization setting hasn't been initialized yet,
-	// and we have a way to do it via GetPrefs() go ahead and do it now
-	window.performanceOptimization = GetPrefs('performance_optimization'); // utils.js
-}
-
-function EventLoop () { // for calling things which need to happen on a regular basis
-// sets another timeout for itself when done
-// replaces several independent timeouts
-// #backlog add secondary EventLoopWatcher timer which ensures this one runs when needed
-
-	var d = new Date();
-	var eventLoopBegin = d.getTime(); // eventLoopStart
-
-	if (!window.eventLoopPrevious) {
-		window.eventLoopPrevious = 1;
-	}
-	window.eventLoopBegin = eventLoopBegin;
-
-	if (window.GetPrefs && GetPrefs('draggable') && window.innerWidth && window.innerHeight) {
-		// if viewport size has changed, retile dialogs
-		if (!window.rememberInnerWidth) {
-			window.rememberInnerWidth = window.innerWidth;
-		}
-		if (!window.rememberInnerHeight) {
-			window.rememberInnerHeight = window.innerHeight;
-		}
-		if (window.rememberInnerWidth != window.innerWidth || window.rememberInnerHeight != window.innerHeight) {
-			//alert('DEBUG: window.innerWidth = ' + window.innerWidth + ', window.innerHeight = ' + window.innerHeight);
-			window.rememberInnerWidth = window.innerWidth;
-			window.rememberInnerHeight = window.innerHeight;
-			if (window.DraggingRetile) {
-				DraggingRetile();
-			}
-		}
-	}
-
-	if (window.FetchDialog) {
-		// #todo this may not be the best place for this code
-		var welcomeSeen = GetPrefs('welcome_seen');
-		// try to show this only once
-		if (welcomeSeen) {
-			if (welcomeSeen == 2) {
-				SetPrefs('welcome_seen', 3);
-				//FetchDialog('welcome');
-				//alert('welcome!');
+			if (!myAvatar) { // less error prone than checking for == null, i think
+				// no avatar, probably not signed in
+				signinBox.innerHTML = '<a href="/profile.html"' + gt + 'Register</a' + gt + '';
 			} else {
-				if (welcomeSeen == 1) {
-					SetPrefs('welcome_seen', 2);
+				// there's an avatar, probably signed in
+				signinBox.innerHTML = '';
+				var myFp = localStorage.getItem('fingerprint');
+
+				if (window.location.pathname == '/author/' + myFp + '/' || window.location.pathname == '/author/' + myFp + '/index.html') {
+					var itsYou = document.getElementById('itsyou');
+					itsYou.innerHTML = 'This is your profile!';
 				}
-				// verify it can be read and updated
-			}
-		} else {
-			SetPrefs('welcome_seen', 1);
-			// verify it can be set
-		}
-	}
 
-	if (window.eventLoopSetClock && window.setClock) {
-		// update time displayed in clock
-		setClock();
-	}
+				if (window.GetPrefs) {
+					if (GetPrefs('display_username')) {
+						myidBox.innerHTML = '<a href="/profile.html" class=avatar' + gt + myAvatar + '</a' + gt;
+						signinBox.innerHTML = '';
+					} else {
+						myidBox.innerHTML = '';
+						signinBox.innerHTML = '<a href="/profile.html"' + gt + '<i' + gt + 'Change</i' + gt + '</a' + gt + '';
+					}
+				} else {
+					myidBox.innerHTML = '';
+					signinBox.innerHTML = '<a href="/profile.html"' + gt + '<i' + gt + 'Change</i' + gt + '</a' + gt + '';
+				}
 
-	var m = 500; // multiplier for performance thresholds
-	if (window.performanceOptimization) {
-		if (window.performanceOptimization == 'quicker') {
-			m = 100;
-		}
-		if (window.performanceOptimization == 'none') {
-			// this is the 'None' setting in Settings
-			m = 0;
-			return '';
-		}
-	}
+				var configJsOpenPgp = 1; // this is templated from config/setting/admin/js/openpgp
 
-	//alert('DEBUG: EventLoop: eventLoopBegin = ' + eventLoopBegin + ' - window.eventLoopPrevious = ' + window.eventLoopPrevious + ' = ' + (eventLoopBegin - window.eventLoopPrevious));
+				if (configJsOpenPgp && !window.openpgp && document.head && document.getElementById && window.localStorage) {
+					//alert('DEBUG: setAva: loading openpgp.js');
+					window.openPgpJsLoadBegin = 1;
 
-	if (10*m < (eventLoopBegin - window.eventLoopPrevious)) {
-		// ACTUAL EVENT LOOP WORK BEGINS
-		// ACTUAL EVENT LOOP WORK BEGINS
-		// ACTUAL EVENT LOOP WORK BEGINS
+					var script = document.createElement('script');
+					script.src = '/openpgp.js';
+					script.async = false; // This is required for synchronous execution
+					document.head.appendChild(script);
+				}
 
-		window.eventLoopPrevious = eventLoopBegin; // store begin time
+				if (!window.setAvatar && document.head && document.head.appendChild && document.getElementById && window.localStorage) {
+					//alert('DEBUG: setAva: loading crypto2.js');
 
-		if (window.flagUnloaded) {
-			// show loading indicator if user has started navigating away from page
-			// window.flagUnloaded is set by OnUnload event
-			if (window.ShowPreNavigateNotification) {
-				ShowPreNavigateNotification();
-			}
-		}
-
-		//return;
-		// uncomment to disable event loop
-		// makes js debugging easier
-
-		if (window.eventLoopShowTimestamps && window.ShowTimestamps) {
-			// update timestamp widgets on page
-			if (13*m < (eventLoopBegin - window.eventLoopShowTimestamps)) {
-				// only every 13 seconds in regular performance mode
-				ShowTimestamps();
-				window.eventLoopShowTimestamps = eventLoopBegin;
-			} else {
-				// do nothing
-			}
-		}
-
-		if (window.eventLoopDoAutoSave && window.DoAutoSave) {
-			// autosave
-			if (5*m < (eventLoopBegin - window.eventLoopDoAutoSave)) { // autosave interval
-				// autosave every 5 seconds in normal performance mode
-				DoAutoSave();
-				window.eventLoopDoAutoSave = eventLoopBegin;
-			} else {
-				// do nothing
-			}
-		}
-
-		if (window.localStorage && document.getElementById) {
-			// update reply cart dialog displayed count
-			// #todo move this to separate module
-			if (window.ReplyCartUpdateCount) {
-				ReplyCartUpdateCount();
-			}
-		}
-
-		if (window.eventLoopShowAdvanced && window.ShowAdvanced) {
-			// update visibility of advanced/beginner layers
-			// but only if necessary
-			ShowAdvanced(0, 0);
-		}
-
-		if (window.eventLoopFresh && window.CheckIfFresh) {
-			// check for page changes by sending a HEAD request for current url
-			if (10000 < (eventLoopBegin - window.eventLoopFresh)) {
-			//if (10*m < (eventLoopBegin - window.eventLoopFresh)) {
-			// this is commented because it may hammer the server. uncomment if using localhost
-
-				//window.eventLoopFresh = eventLoopBegin;
-				if (
-					window.eventLoopFresh &&
-					(!window.GetPrefs || GetPrefs('notify_on_change'))
-				) {
-					// notify_on_change client-side setting needs to be on
-					CheckIfFresh();
-					window.eventLoopFresh = eventLoopBegin;
+					var script2 = document.createElement('script');
+					script2.src = '/crypto2.js';
+					script2.async = false; // This is required for synchronous execution
+					document.head.appendChild(script2);
 				}
 			}
-		}
-
-		if (
-			(window.UpdateDialogList) &&
-			(document.getElementById) &&
-			(document.getElementsByClassName)
-		) {
-			// update list of dialogs on page
-			UpdateDialogList();
-		}
-
-		if (window.GetPrefs) {
-			// if performance setting has changed in another window, update it here too
-			window.performanceOptimization = GetPrefs('performance_optimization'); // EventLoop()
-		}
-	} // 10000 < (eventLoopBegin - window.eventLoopPrevious)
-
-	if (window.eventLoopEnabled) {
-		// set the next setTimeout for the next "loop" iteration
-
-		// see how long this last iteration took
-		var d = new Date();
-		var eventLoopEnd = d.getTime();
-		var eventLoopDuration = eventLoopEnd - eventLoopBegin;
-		//document.title = eventLoopDuration; // for debugging performance
-
-		// unset any timeout if already set
-		if (window.timeoutEventLoop) {
-			clearTimeout(window.timeoutEventLoop);
-		}
-
-		if (30 < eventLoopDuration) {
-			// if loop went longer than 100ms, run every 3 seconds or more
-			//document.title = eventLoopDuration;
-			
-			if (GetPrefs('notify_event_loop')) {
-				displayNotification('EventLoop: ' + eventLoopDuration + 'ms');
-			}
-//
-//			// #todo make it known to user that hitting performance limit
-//			if (document.title.substr(0,3) != '/ ') {
-//				// for now we just prepend the title with a slash
-//				document.title = '/ ' + document.title;
-//			}
-
-			// set performance setting to 'faster'
-
-			//SetPrefs('performance_optimization', 'faster');
-			eventLoopDuration = eventLoopDuration * 10;
-		} else {
-			// otherwise run again after 1 interval time
-			eventLoopDuration = 1*m;
-		}
-
-		window.timeoutEventLoop = setTimeout('EventLoop()', eventLoopDuration);
-	} // window.eventLoopEnabled
-
-	return '';
-
-} // EventLoop()
-
-function UrlExists (url) { // checks if url exists
-// #todo use async
-// #todo Q: how to do pre-xhr browsers? A: use img.src = and check the resulting image url
-
-	//alert('DEBUG: UrlExists(' + url + ')');
-
-	if (window.XMLHttpRequest) {
-		//alert('DEBUG: UrlExists: window.XMLHttpRequest check passed');
-
-		var http = new XMLHttpRequest();
-		http.open('HEAD', url, false);
-		//http.timeout = 5000; //#xhr.timeout
-		http.send();
-		var httpStatusReturned = http.status;
-
-		//alert('DEBUG: UrlExists: httpStatusReturned = ' + httpStatusReturned);
-
-		return (httpStatusReturned == 200);
-	}
-} // UrlExists()
-
-function DisplayStatus (status) {
-// #todo this doesn't seem to be used anywhere yet
-	if (document.getElementById) {
-		var statusBar = document.getElementById('status');
-		// #todo finish this
-	}
-} // DisplayStatus()
-
-function DownloadAsTxt (filename, text) {
-	var element = document.createElement('a');
-
-	element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-	element.setAttribute('download', filename);
-
-	element.style.display = 'none';
-	document.body.appendChild(element);
-
-	element.click();
-
-	document.body.removeChild(element);
-} // DownloadAsTxt()
-
-function displayNotificationWithTimeout (strMessage, thisButton) {
-	var spanNotification = displayNotification(strMessage, thisButton);
-
-	if (spanNotification) {
-		var d = new Date();
-		var spanId = d.getTime();
-		spanNotification.setAttribute('id', spanId);
-		setTimeout('document.getElementById(' + spanId + ').remove()', 5000);
-
-		return spanNotification;
-	}
-} // displayNotificationWithTimeout()
-
-function displayNotification (strMessage, thisButton) { // adds notification to page
-// function progressIndicator () { // progress indicator
-// function showNotification () (
-// used for loading indicator bar (to top of page, depending on style)
-// also used for "creating profile" and "already voted" notifications
-	var spanNotification = document.createElement('span');
-	spanNotification.setAttribute('class', 'notification');
-	spanNotification.setAttribute('role', 'alert');
-	spanNotification.setAttribute('onclick', 'this.remove(); return false;');
-	spanNotification.innerHTML = strMessage;
-	spanNotification.style.zIndex = GetFineTime();
-
-	if (window.GetPrefs && GetPrefs('draggable')) {
-		thisButton = 0;
-		// #todo this is a workaround for floating notification being messed up in draggable mode
-	}
-
-	if (thisButton) {
-		thisButton.parentNode.appendChild(spanNotification);
-		if (thisButton.after) {
-			thisButton.after(spanNotification);
-		}
-
-		// set element's position based on its initial box model position
-		var rect = spanNotification.getBoundingClientRect();
-		spanNotification.style.top = (rect.top) + "px";
-		spanNotification.style.left = (rect.left) + "px";
-		spanNotification.style.position = 'absolute';
-
-		return spanNotification;
-	} else {
-		// #todo this should be in stylesheet; floating notification should have different class
-		spanNotification.style.position = 'fixed';
-		spanNotification.style.top = '0';
-		spanNotification.style.right = '0';
-		spanNotification.style.margin = '0';
-
-		document.body.appendChild(spanNotification);
-
-		return spanNotification;
-	}
-} // displayNotification()
-
-function newA (href, target, innerHTML, parent) { // makes new a element and appends to parent
-	var newLink = document.createElement('a');
-	if (href) { newLink.setAttribute('href', href); }
-	if (target) { newLink.setAttribute('target', target); }
-	if (innerHTML) { innernewLink.setAttribute('innerHTML', innerHTML); }
-	parent.appendChild(newLink);
-	return newLink;
-} // newA()
-
-function SetCookie (cname, cvalue, exdays) { // set cookie
-	//alert('DEBUG: SetCookie(' + cname + ', ' + cvalue + ', ' + exdays + ')');
-	var d = new Date();
-	if (!exdays) {
-		exdays = 1;
-	}
-	d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-	var expires = "expires=" + d.toUTCString();
-	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-	var testSetCookie = GetCookie(cname);
-	if (cvalue == testSetCookie) {
-		return 1;
-	} else {
-		return 0;
-	}
-} // SetCookie()
-
-function GetCookie (cname) { // get cookie value
-	// in js, cookies are accessed via one long string of the form
-	// key1=value1; key2=value2;
-	// so we make an array, splitting the string using the ; separator
-	if (document.cookie && document.cookie.split) {
-		//todo add support for ie3, which does not have a split() method on strings
-		var dc = document.cookie;
-		var ca = dc.split(';');
-
-		// the value we are looking for will be prefixed with cname=
-		var name = cname + "=";
-
-		for(var i = 0; i < ca.length; i++) {
-			// loop through ca array until we find prefix we are looking for
-			var c = ca[i];
-			while (c.charAt(0) == ' ') {
-				// remove any spaces at beginning of string
-				c = c.substring(1);
-			}
-			if (c.indexOf(name) == 0) {
-				// if prefix matches, return value
-				return c.substring(name.length, c.length);
-			}
-		}
-	}
-
-	// at this point, nothing left to do but return empty string
-	return "";
-} // GetCookie()
-
-function GetParentElement (el, parentTagName) {
-// #todo maybe make this more flexible?
-	if (el) {
-		var parentElement = el;
-		while (parentElement && (parentElement.tagName != parentTagName)) {
-			parentElement = parentElement.parentElement;
-		}
-		if (parentElement) {
-			return parentElement;
-		}
-	}
-	return '';
-} // GetParentElement()
-
-function UnmaskBlurredImages () {
-	var im = document.images;
-	if (im) {
-		var i = 0;
-		for (i = 0; i < im.length; i++) {
-			if (im[i].getAttribute('src')) {
-				var src = im[i].getAttribute('src');
-				var gPos = src.indexOf('_g_');
-				if (gPos != -1 && 0 < gPos) {
-					im[i].setAttribute('src', src.substr(0, gPos) + '' + src.substr(gPos + 2));
-				}
-			}
-		}
-	}
-	return '';
-} // UnmaskBlurredImages()
-
-
-//https://stackoverflow.com/questions/123999/how-can-i-tell-if-a-dom-element-is-visible-in-the-current-viewport
-
-function elementInViewport (el) {
-	var top = el.offsetTop;
-	var left=el.offsetLeft;
-	var width = el.offsetWidth;
-	var height = el.offsetHeight;
-
-	while (el.offsetParent) {
-		el = el.offsetParent;
-		top += el.offsetTop;
-		left+=el.offsetLeft;
-	}
-
-	return (
-		window.pageYOffset <= top &&
-		window.pageXOffset <= left &&
-		(top + height) <= (window.pageYOffset + window.innerHeight) &&
-		(left + width) <= (window.pageXOffset + window.innerWidth)
-	);
-} // elementInViewport()
-//You could modify this simply to determine if any part of the element is visible in the viewport:
-
-function elementInViewport2 (el) {
-	var top = el.offsetTop;
-	var left=el.offsetLeft;
-	var width = el.offsetWidth;
-	var height = el.offsetHeight;
-
-	while (el.offsetParent) {
-		el = el.offsetParent;
-		top += el.offsetTop;
-		left+=el.offsetLeft;
-	}
-
-	return (
-		top < (window.pageYOffset + window.innerHeight) &&
-		left < (window.pageXOffset + window.innerWidth) &&
-		window.pageYOffset < (top + height) &&
-		window.pageXOffset < (left + width)
-	);
-} // elementInViewport2()
-
-
-function PingUrl (url, ele) { // loads arbitrary url via image or xhr
-// compatible with most js
-	//alert('DEBUG: PingUrl() begins');
-
-	// another option below
-	// var img = document.createElement('img');
-	// img.setAttribute("src", url);
-	// document.body.appendChild(img);
-
-	if (!ele) {
-		ele = 0;
-	}
-
-	if (!url) {
-		// #todo more sanity here
-		//alert('DEBUG: PingUrl: warning: url was FALSE');
-		return '';
-	}
-
-	//alert('DEBUG: PingUrl: url = ' + url);
-
-	if (window.XMLHttpRequest) {
-		//alert('DEBUG: PingUrl: window.XMLHttpRequest was true');
-
-		var xmlhttp;
-		if (window.xmlhttp) {
-			xmlhttp = window.xmlhttp;
-		} else {
-			window.xmlhttp = new XMLHttpRequest();
-			xmlhttp = window.xmlhttp;
-		}
-
-		if (window.GetPrefs && GetPrefs('show_admin')) {
-			// skip callback to save resources
-		} else {
-			xmlhttp.onreadystatechange = window.PingUrlCallback;
-		}
-
-		xmlhttp.open("HEAD", url, true);
-		//xmlhttp.timeout = 5000; //#xhr.timeout
-		xmlhttp.send();
-
-		return false;
-	} else {
-		//alert('DEBUG: PingUrl: using image method, no xhr here');
-
-		if (document.images) {
-			//alert('DEBUG: PingUrl: document.images was true');
-			if (document.images.length) {
-				// use last image on page, if possible. this should be the special pixel image.
-				var img = document.images[document.images.length - 1];
-
-				if (img) {
-					img.setAttribute("src", url);
-					return false;
-				}
-			} else {
-				var img = document.images[0];
-
-				if (img) {
-					img.setAttribute("src", url);
-					return false;
-				}
-			}
-		} else {
-			//alert('DEBUG: PingUrl: warning: document.images was FALSE');
 		}
 	}
 
 	return true;
-} // PingUrl()
+} // setAva()
+if (window.localStorage && document.getElementById) {
+	setAva();
+}
 
-// function EscapeUrl () {
-// function UriEscape () {
-// USE encodeURIComponent()
+function getAvatar () { // retrieve previously built avatar from localStorage (already in html form)
+	if (window.localStorage) {
+		var myAvatar = localStorage.getItem("avatar");
+		if (!myAvatar || myAvatar.length == 0) {
+			return '';
+		} else {
+			return myAvatar;
+		}
+	} else {
+		return 'Anonymous*';
+	}
 
+	return false;
+} // getAvatar()
 
-//function ChangeInputToTextarea (input) { // called by onpaste
-////#input_expand_into_textarea
-//	//#todo more sanity
-//	if (!input) {
-//		return '';
-//	}
-//
-//	if (document.createElement) {
-//		var parent = input.parentElement;
-//		var textarea = document.createElement('textarea');
-//		var cols = input.getAttribute('cols');
-//		var name = input.getAttribute('name');
-//		var id = input.getAttribute('id');
-//		var rows = 5;
-//		var width = cols + 'em';
-//
-//		textarea.setAttribute('name', name);
-//		textarea.setAttribute('id', id);
-//		textarea.setAttribute('cols', cols);
-//		textarea.setAttribute('rows', rows);
-//		//textarea.style.width = width;
-//		textarea.innerHTML = input.value;
-//
-//		//parent.appendChild(t);
-//		parent.insertBefore(textarea, input.nextSibling);
-//		input.style.display = 'none';
-//
-//		textarea.focus();
-//		textarea.selectionStart = textarea.innerHTML.length;
-//		textarea.selectionEnd = textarea.innerHTML.length;
-//
-//		if (window.inputToChange) {
-//			window.inputToChange = '';
-//		}
-//	}
-//
-//	return true;
-//}
-
-//
-//function ConvertSubmitsToButtonsWithAccessKey (parent) {
-//	if (!parent) {
-//		//alert('DEBUG: ConvertSubmitsToButtons: warning: sanity check failed');
-//		return '';
-//	}
-//
-//	if (parent.getElementsByClassName) {
-//		var buttons = parent.getElementsByClassName('btnSubmit');
-//		// convert each submit to button with accesskey
-//	} else {
-//		//todo
-//	}
-//	return ''
-//} // ConvertSubmitsToButtonsWithAccessKey()
-
-
-// developer
-// SetPrefs('notify_event_loop', 1);
-// SetPrefs('notify_event_loop', 0);
-
-
-// == end utils.js
+// == end avatar.js
 
 
 // == begin settings.js
@@ -2014,542 +1366,763 @@ if (window.EventLoop) {
 // == end settings.js
 
 
-// == begin avatar.js
+// == begin utils.js
 
-var configJsOpenPgp = 1; // this is templated from config/setting/admin/js/openpgp
+// begin html escape hack (credit stacko)
+// only works with createElement #backlog
+if (document.createElement) {
+	var escapeTA = document.createElement('textarea');
+}
+function escapeHTML (html) {
+	if (window.escapeTA) {
+		escapeTA.textContent = html;
+		return escapeTA.innerHTML;
+	}
+} // escapeHTML()
+function unescapeHTML (html) {
+	if (window.escapeTA) {
+		escapeTA.innerHTML = html;
+		return escapeTA.textContent;
+	}
+} // unescapeHTML()
+// end html escape hack
+//#todo above hack seems to be broken, because escapeTA is not global?
 
-function setAva () { // sets avatar widgets (and italicizes Profile link)
-	//alert('DEBUG: setAva() begins');
+function LogWarning (text) {
+	if (text.indexOf('warning') != -1) {
+		var hasLogger = !!(window.console && window.console.log);
+		if (hasLogger) {
+			console.log(text);
+		} else {
+			if (document && document.title) {
+				document.title = text;
+			}
+		}
+	}
+} // LogWarning()
 
-	if (document.getElementById && String.fromCharCode) {
-		var myidBox = document.getElementById('myid'); // displays username (if preference is set)
-		var signinBox = document.getElementById('signin'); // Profile link
+function OnLoadEverything () { // checks for each onLoad function and calls it
+// function OnLoadAll () {
+// function BodyOnLoad () {
+// body onload body.onload
+// function OnLoad {
+// typically called from body.onload
+	//alert('DEBUG: OnLoadEverything() begins');
 
-		//var gt = String.fromCharCode(62);
-		var gt = unescape('%3E');
+	if ((window.addLoadingIndicator) && (!window.loadingIndicator)) {
+		//alert('DEBUG: OnLoadEverything: addLoadingIndicator()');
+		addLoadingIndicator('Meditate...');
+	} else {
+		//alert('DEBUG: OnLoadEverything: (window.addLoadingIndicator) is FALSE');
+	}
 
-		if (myidBox && signinBox && window.localStorage) { // check for elements and features
-			var myAvatar = localStorage.getItem('avatar');
+	if (window.setClock) {
+		//alert('DEBUG: OnLoadEverything: setClock()');
+		window.eventLoopSetClock = 1;
+		setClock();
+	}
+	if (window.ItsYou) {
+		//alert('DEBUG: OnLoadEverything: ItsYou()');
+		ItsYou();
+	}
+	if (window.ShowTimestamps) {
+		//alert('DEBUG: OnLoadEverything: ShowTimestamps()');
+		window.eventLoopShowTimestamps = 1;
+		ShowTimestamps();
+	}
+	if (window.SettingsOnload) {
+		//alert('DEBUG: OnLoadEverything: SettingsOnload()');
+		SettingsOnload();
+	}
+	if (window.ProfileOnLoad) {
+		//alert('DEBUG: OnLoadEverything: ProfileOnLoad()');
+		ProfileOnLoad();
+	}
+	if (window.WriteOnload) {
+		//alert('DEBUG: OnLoadEverything: WriteOnload()');
+		WriteOnload();
+	}
 
-			// #todo add provision for cookie auth here too
+	if (window.ShowAdvanced) {
+		//alert('DEBUG: OnLoadEverything: ShowAdvanced()');
+		window.eventLoopShowAdvanced = 1;
+		ShowAdvanced(0, 0);
+	}
+	//alert('DEBUG: OnLoadEverything: ShowAdvanced() finished!');
 
-			if (!myAvatar) { // less error prone than checking for == null, i think
-				// no avatar, probably not signed in
-				signinBox.innerHTML = '<a href="/profile.html"' + gt + 'Register</a' + gt + '';
-			} else {
-				// there's an avatar, probably signed in
-				signinBox.innerHTML = '';
-				var myFp = localStorage.getItem('fingerprint');
+	if (window.SearchOnload) {
+		//alert('DEBUG: OnLoadEverything: SearchOnload()');
+		SearchOnload();
+	}
 
-				if (window.location.pathname == '/author/' + myFp + '/' || window.location.pathname == '/author/' + myFp + '/index.html') {
-					var itsYou = document.getElementById('itsyou');
-					itsYou.innerHTML = 'This is your profile!';
-				}
+	if (window.DesktopOnLoad) {
+		//alert('DEBUG: OnLoadEverything: DesktopOnLoad()');
+		DesktopOnLoad();
+	}
 
-				if (window.GetPrefs) {
-					if (GetPrefs('display_username')) {
-						myidBox.innerHTML = '<a href="/profile.html" class=avatar' + gt + myAvatar + '</a' + gt;
-						signinBox.innerHTML = '';
-					} else {
-						myidBox.innerHTML = '';
-						signinBox.innerHTML = '<a href="/profile.html"' + gt + '<i' + gt + 'Change</i' + gt + '</a' + gt + '';
-					}
-				} else {
-					myidBox.innerHTML = '';
-					signinBox.innerHTML = '<a href="/profile.html"' + gt + '<i' + gt + 'Change</i' + gt + '</a' + gt + '';
-				}
+	if (window.UploadAddImagePreviewElement) {
+		//alert('DEBUG: OnLoadEverything: UploadAddImagePreviewElement()');
+		UploadAddImagePreviewElement();
+	}
 
-				var configJsOpenPgp = 1; // this is templated from config/setting/admin/js/openpgp
+	//alert('DEBUG: OnLoadEverything: checking for editable field...');
 
-				if (configJsOpenPgp && !window.openpgp && document.head && document.getElementById && window.localStorage) {
-					//alert('DEBUG: setAva: loading openpgp.js');
-					window.openPgpJsLoadBegin = 1;
+	if (window.location && document.compose && window.location.href.indexOf) {
+		if (
+			window.location &&
+			window.location.href &&
+			window.location.href.indexOf('write') != -1 ||
+			window.location.hash.indexOf('reply') != -1 ||
+			(
+				window.location.href.indexOf('message') != -1 &&
+				window.GetPrefs &&
+				GetPrefs('focus_reply')
+			)
+				&&
+			document.compose &&
+			document.compose.comment &&
+			document.compose.comment.focus
+		) {
+			//alert('DEBUG: OnLoadEverything: document.compose.comment.focus()()');
+			document.compose.comment.focus();
+		}
+	}
 
-					var script = document.createElement('script');
-					script.src = '/openpgp.js';
-					script.async = false; // This is required for synchronous execution
-					document.head.appendChild(script);
-				}
+	if (window.location.href && (window.location.href.indexOf('search') != -1) && document.search.q) {
+		//alert('DEBUG: OnLoadEverything: document.search.q.focus()');
+		document.search.q.focus();
+	}
 
-				if (!window.setAvatar && document.head && document.head.appendChild && document.getElementById && window.localStorage) {
-					//alert('DEBUG: setAva: loading crypto2.js');
+	if (0 && window.localStorage) { // #todo improve crumbs
+		var crumbs1 = localStorage.getItem('crumbs');
+		if (crumbs1) {
+			crumbs1 = crumbs1 + '\n' + window.location.href;
+			localStorage.setItem('crumbs', crumbs1);
+		} else {
+			localStorage.setItem('crumbs', window.location.href);
+		}
+	}
 
-					var script2 = document.createElement('script');
-					script2.src = '/crypto2.js';
-					script2.async = false; // This is required for synchronous execution
-					document.head.appendChild(script2);
-				}
+	if (window.EventLoop) {
+		//alert('DEBUG: OnLoadEverything: EventLoop()');
+		if (window.CheckIfFresh) {
+			window.eventLoopFresh = 1;
+		}
+		window.eventLoopEnabled = 1;
+		EventLoop();
+	} // if (window.EventLoop)
+
+	// FetchDialog('help');
+
+	if (window.DraggingInit && GetPrefs('draggable')) {
+		//alert('DEBUG: OnLoadEverything: DraggingInit()');
+		if (window.location.href.indexOf('settings') != -1) {
+			// exclude settings page to avoid difficult situations
+			// one day, it will no longer be necessary
+			DraggingInit(1);
+		} else {
+			DraggingInit(1);
+		}
+	} else {
+		if (document.getElementById) {
+			// this gets rid of the style which hides dialogs on
+			// page load so that they can be positioned first
+			// dragging_hide_dialogs.js
+			// #todo optimize this
+			if (document.getElementById('styleHideDialogs')) {
+				UnhideHiddenElements();
 			}
 		}
 	}
 
-	return true;
-} // setAva()
-if (window.localStorage && document.getElementById) {
-	setAva();
+	if (window.HideLoadingIndicator) {
+		//alert('DEBUG: OnLoadEverything: HideLoadingIndicator()');
+		HideLoadingIndicator();
+	}
+
+	// everything is set now, start event loop
+	//
+} // OnLoadEverything()
+
+if (!window.performanceOptimization && window.GetPrefs) {
+	// if performanceOptimization setting hasn't been initialized yet,
+	// and we have a way to do it via GetPrefs() go ahead and do it now
+	window.performanceOptimization = GetPrefs('performance_optimization'); // utils.js
 }
 
-function getAvatar () { // retrieve previously built avatar from localStorage (already in html form)
-	if (window.localStorage) {
-		var myAvatar = localStorage.getItem("avatar");
-		if (!myAvatar || myAvatar.length == 0) {
+function EventLoop () { // for calling things which need to happen on a regular basis
+// sets another timeout for itself when done
+// replaces several independent timeouts
+// #backlog add secondary EventLoopWatcher timer which ensures this one runs when needed
+
+	var d = new Date();
+	var eventLoopBegin = d.getTime(); // eventLoopStart
+
+	if (!window.eventLoopPrevious) {
+		window.eventLoopPrevious = 1;
+	}
+	window.eventLoopBegin = eventLoopBegin;
+
+	if (window.GetPrefs && GetPrefs('draggable') && window.innerWidth && window.innerHeight) {
+		// if viewport size has changed, retile dialogs
+		if (!window.rememberInnerWidth) {
+			window.rememberInnerWidth = window.innerWidth;
+		}
+		if (!window.rememberInnerHeight) {
+			window.rememberInnerHeight = window.innerHeight;
+		}
+		if (window.rememberInnerWidth != window.innerWidth || window.rememberInnerHeight != window.innerHeight) {
+			//alert('DEBUG: window.innerWidth = ' + window.innerWidth + ', window.innerHeight = ' + window.innerHeight);
+			window.rememberInnerWidth = window.innerWidth;
+			window.rememberInnerHeight = window.innerHeight;
+			if (window.DraggingRetile) {
+				DraggingRetile();
+			}
+		}
+	}
+
+	if (window.FetchDialog) {
+		// #todo this may not be the best place for this code
+		var welcomeSeen = GetPrefs('welcome_seen');
+		// try to show this only once
+		if (welcomeSeen) {
+			if (welcomeSeen == 2) {
+				SetPrefs('welcome_seen', 3);
+				//FetchDialog('welcome');
+				//alert('welcome!');
+			} else {
+				if (welcomeSeen == 1) {
+					SetPrefs('welcome_seen', 2);
+				}
+				// verify it can be read and updated
+			}
+		} else {
+			SetPrefs('welcome_seen', 1);
+			// verify it can be set
+		}
+	}
+
+	if (window.eventLoopSetClock && window.setClock) {
+		// update time displayed in clock
+		setClock();
+	}
+
+	var m = 500; // multiplier for performance thresholds
+	if (window.performanceOptimization) {
+		if (window.performanceOptimization == 'quicker') {
+			m = 100;
+		}
+		if (window.performanceOptimization == 'none') {
+			// this is the 'None' setting in Settings
+			m = 0;
 			return '';
-		} else {
-			return myAvatar;
 		}
-	} else {
-		return 'Anonymous*';
 	}
 
-	return false;
-} // getAvatar()
+	//alert('DEBUG: EventLoop: eventLoopBegin = ' + eventLoopBegin + ' - window.eventLoopPrevious = ' + window.eventLoopPrevious + ' = ' + (eventLoopBegin - window.eventLoopPrevious));
 
-// == end avatar.js
+	if (10*m < (eventLoopBegin - window.eventLoopPrevious)) {
+		// ACTUAL EVENT LOOP WORK BEGINS
+		// ACTUAL EVENT LOOP WORK BEGINS
+		// ACTUAL EVENT LOOP WORK BEGINS
 
+		window.eventLoopPrevious = eventLoopBegin; // store begin time
 
-// == begin voting.js
-
-function PingUrlCallback () {
-	var xmlhttp = window.xmlhttp;
-	var xmlhttpElement = window.xmlhttpElement;
-
-	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-		//alert('DEBUG: PingUrlCallback() found status 200!');
-
-		if (xmlhttpElement) {
-			var elemOK = document.createElement('span');
-			//elemOK.setAttribute('disabled', true);
-			elemOK.innerHTML = '&check;'; // checkmark
-			//#todo: get rect, and check if it is too wide,
-			//   which means escaped char didn't work
-			//   and should be replaced (ff 3.x, camino)
-			//elemOK.innerHTML = 'OK';
-			xmlhttpElement.setAttribute('disabled', true);
-			xmlhttpElement.appendChild(elemOK);
-		}
-		// window.location.replace(xmlhttp.responseURL);
-		// document.open();
-		// document.write(xmlhttp.responseText);
-		// document.close();
-		window.xmlhttp = 0;
-	} else if (xmlhttp.readyState == 4 && xmlhttp.status == 401) {
-		// server returned 401, which most likely means that we need a cookie
-		// redirect user to profile.html page so that they can register
-		// this is very basic, jarring, and unfriendly, but it is better than failing silently
-		// relative links setting should also be taken into account
-		// #todo
-		window.location = '/profile.html'; // #todo relativize
-	} else {
-		//alert('DEBUG: PingUrlCallback: warning: unrecognized: xmlhttp.status = ' + xmlhttp.status + '; xmlhttp.readyState = ' + xmlhttp.readyState);
-	}
-}
-
-//function OptionsDefault(token, privKeyObj) {
-//	this.data = token;
-//	this.privateKeys = [privKeyObj];
-//}
-
-function signCallback (signed) {
-    var postUrl = '/post.html';
-	var url = postUrl + '?comment=' + encodeURIComponent(signed.data);
-
-	if (PingUrl(url)) {
-		// todo incrememnt counter
-	}
-}
-
-function IncrementTagLink (t) { // increments number of votes in tag button
-// function IncrementVoteLink () {
-// function AddVote () {
-// adds a number if there isn't one already
-// #todo adapt to accommodate buttons as well
-
-	if (!t) {
-		// if t is missing, return true, so that click event can go through
-		//alert('DEBUG: IncrementTagLink: warning: t is missing');
-		return true;
-	}
-
-	if (t.innerHTML) {
-		// update count in vote link
-		//alert('DEBUG: IncrementTagLink: t.innerHTML');
-		var ih = t.innerHTML;
-		if (ih.indexOf('(') == -1) {
-			// there is no count yet, add a 1
-			//alert('DEBUG: IncrementTagLink: ( not found');
-			t.innerHTML = ih + '(1)';
-		} else {
-			// there is a count already, increment it
-			//alert('DEBUG: IncrementTagLink: ( found');
-
-			var numVal = ih.substring(ih.indexOf('(') + 1, ih.indexOf(')'));
-			var newVal = parseInt(numVal) + 1;
-			var hashTag = ih.substring(0, ih.indexOf('('));
-			t.innerHTML = hashTag + '(' + newVal + ')';
-		}
-
-		var voteValue = t.innerHTML.substring(0, t.innerHTML.indexOf('('));
-
-		//alert('DEBUG: IncrementTagLink: voteValue = "' + voteValue + '"');
-
-		//alert('DEBUG: IncrementTagLink: finished with t.innerHTML');
-
-		return false;
-	} // if (t.innerHTML)
-
-	return true;
-} // IncrementTagLink()
-
-function SignVote (t, token) { // signs a vote from referenced vote button
-// t = reference to calling button's 'this'
-// token = full voting token, in the format (gt)(gt)fileHash\n#tag
-// where (gt) is a greater-than sign, omitted here
-	//alert('DEBUG: SignVote(' + t + ',' + token +')');
-
-	if (
-		t.nextSibling &&
-		t.nextSibling.tagName &&
-		t.nextSibling.getAttribute &&
-		t.nextSibling.getAttribute('class') == 'notification'
-	) {
-		// removes a notification if it is immediately afer this button
-		t.nextSibling.remove();
-	}
-
-	if (window.xmlhttp) {
-		//only allow one vote a time to be happening
-		//unless user is operator
-
-		if (GetPrefs('show_admin')) {
-			// continue
-		} else {
-			if (window.displayNotificationWithTimeout) {
-				displayNotificationWithTimeout('Too fast', t);
+		if (window.flagUnloaded) {
+			// show loading indicator if user has started navigating away from page
+			// window.flagUnloaded is set by OnUnload event
+			if (window.ShowPreNavigateNotification) {
+				ShowPreNavigateNotification();
 			}
-			return false;
 		}
-	}
 
+		//return;
+		// uncomment to disable event loop
+		// makes js debugging easier
 
-	if (document.getElementById) {
-	// basic dumb feature check #todo make smarter feature check ;
-	// needs better compatibility for older browsers
-		// get private key
-
-		if (!GetPrefs('show_admin') && GetPrefs(token)) {
-			// don't let user vote twice -- basic version
-			// the token we'd send to vote is stored as the key to a preference setting
-			// #todo this could be nicer?
-			// doesn't apply if user is showing operator controls
-			if (window.displayNotificationWithTimeout) {
-				window.duplicateVoteTries ? window.duplicateVoteTries++ : window.duplicateVoteTries = 1;
-				if (3 <= window.duplicateVoteTries) {
-					displayNotificationWithTimeout('Hey!', t);
-				} else {
-					displayNotificationWithTimeout('Already voted', t);
-				}
+		if (window.eventLoopShowTimestamps && window.ShowTimestamps) {
+			// update timestamp widgets on page
+			if (13*m < (eventLoopBegin - window.eventLoopShowTimestamps)) {
+				// only every 13 seconds in regular performance mode
+				ShowTimestamps();
+				window.eventLoopShowTimestamps = eventLoopBegin;
 			} else {
-				//alert('DEBUG: window.displayNotificationWithTimeout() was missing');
-			}
-
-			// returning false will keep the link from navigating to non-js fallback
-			return false;
-		}
-
-		IncrementTagLink(t);
-
-		var privkey = 0; //also serves as feature check flag, sorry
-		if (window.getPrivateKey && window.openpgp) {
-			var privkey = getPrivateKey();
-		}
-
-		//alert('DEBUG: SignVote: privkey: ' + !!privkey);
-
-		window.xmlhttpElement = t;
-		
-		if (GetPrefs('show_admin') || !privkey) {
-			//alert('DEBUG: !privkey');
-			// if there is no private key, just do a basic unsigned vote;
-
-			// if user is operator, they also do this for faster voting
-
-			if (PingUrl(t.href)) {
-				return false;
-			}
-		} else {
-			// there is a private key
-			//alert('DEBUG: privkey is true');
-
-			// load the private key into openpgp
-			var privKeyObj = openpgp.key.readArmored(privkey).keys[0];
-			var options;
-			options = new Object();
-			options.data = token;
-			options.privateKeys = privKeyObj;
-			openpgp.config.show_version = false;
-			openpgp.config.show_comment = false;
-
-			// sign the voting token and send to post.html when finished
-			openpgp.sign(options).then(signCallback);
-		}
-
-		// remember that we voted for this already
-		SetPrefs(token, 1);
-
-		if (window.displayNotification) {
-			// displayNotification('Success!', t);
-		} else {
-			//alert('DEBUG: window.displayNotification() was missing');
-		}
-
-		return false; // cancel link click-through
-	} else {
-		//	    if (document.images) {
-		//	        var myUrl = window.location;
-		//	        var postUrl = '/post.html';
-		//	    	document.images[0].src = postUrl + '?mydomain=' + myUrl;
-		//
-		//	    	//alert('DEBUG: t = ' + t);
-		//
-		//	    	return false;
-		//	    }
-	}
-
-	//alert('DEBUG: SignVote: warning: fall-through');
-
-	return true; // allow link click to happen
-} // SignVote()
-
-// == end voting.js
-
-
-/* table_sort.js */
-
-function SortTable (t, sortOrder) {
-// TableSort (
-	//alert('DEBUG: SortTable() begins');
-	//caution: bubble sort inside
-
-	if (! document.body.textContent) {
-		//alert('DEBUG: SortTable: warning: textContent feature check FAILED');
-		return '';
-	}
-
-	var table, rows, switching, i, x, y, shouldSwitch, sortColumn, sortMethod;
-
-	sortColumn = 0;
-	sortMethod = 0;
-
-	// sortMethod = 0 innerHTML
-	// sortMethod = 1 textContent
-	// sortMethod = 2 parseInt(innerHTML)
-
-	if (1 < sortOrder) {
-		return '';
-	}
-
-	var rowColor0 = '#ffffff';
-	var rowColor1 = '#e0e0e0';
-
-	sortOrder = sortOrder ? 1 : 0;
-
-	var anyChanges = 0;
-
-	var tOrig = t;
-
-	if (!t) {
-		//alert('DEBUG: SortTable: warning: t missing');
-		return '';
-	}
-
-	var sortField = t.textContent;
-
-	if (t.cellIndex || t.cellIndex == 0) {
-		sortColumn = t.cellIndex;
-		// default sortMethod is 0, defined above
-		// innerHTML
-
-		if (
-			t.textContent &&
-			t.textContent.indexOf('_title') != -1 ||
-			t.textContent.indexOf('author_key') != -1 ||
-			t.textContent.indexOf('author_id') != -1
-		) {
-			sortMethod = 1; // textContent
-		}
-
-		if (
-			t.textContent &&
-			(
-				t.textContent.indexOf('_count') != -1 ||
-				t.textContent.indexOf('_order') != -1 ||
-				t.textContent.indexOf('_sequence') != -1 ||
-				t.textContent.indexOf('_score') != -1
-			)
-		) {
-			sortMethod = 2; // parseInt(innerHTML)
-		}
-
-		if (
-			t.textContent &&
-			(
-				t.textContent.indexOf('_timestamp') != -1
-			)
-		) {
-			sortMethod = 3; // timestamp widget
-		}
-	}
-
-	while (!table && t.parentNode) {
-		t = t.parentNode;
-		if (t.tagName == 'TABLE') {
-			table = t;
-		}
-	}
-
-	if (!table) {
-		//alert('DEBUG: SortTable: warning: table missing');
-		return '';
-	} else {
-		//alert('DEBUG: SortTable: table exists, proceeding');
-	}
-
-	if (table && table.getAttribute) {
-		var tableId = table.getAttribute('id');
-		if (tableId) {
-			if (window.SetPrefs) {
-				SetPrefs('TableSort:' + tableId, sortField + ':' + sortOrder + ':' + sortMethod);
+				// do nothing
 			}
 		}
-	} else {
-		//alert('DEBUG: SortTable: warning: table is missing');
-		return '';
-	}
 
-	//alert('DEBUG: SortTable: sortOrder = ' + sortOrder + '; sortMethod = ' + sortMethod);
+		if (window.eventLoopDoAutoSave && window.DoAutoSave) {
+			// autosave
+			if (5*m < (eventLoopBegin - window.eventLoopDoAutoSave)) { // autosave interval
+				// autosave every 5 seconds in normal performance mode
+				DoAutoSave();
+				window.eventLoopDoAutoSave = eventLoopBegin;
+			} else {
+				// do nothing
+			}
+		}
 
-	// bubble sort below by some website...
+		if (window.localStorage && document.getElementById) {
+			// update reply cart dialog displayed count
+			// #todo move this to separate module
+			if (window.ReplyCartUpdateCount) {
+				ReplyCartUpdateCount();
+			}
+		}
 
-	switching = true;
+		if (window.eventLoopShowAdvanced && window.ShowAdvanced) {
+			// update visibility of advanced/beginner layers
+			// but only if necessary
+			ShowAdvanced(0, 0);
+		}
 
-	/* Make a loop that will continue until
-	no switching has been done: */
-	while (switching) {
-		// Start by saying: no switching is done:
-		switching = false;
-		rows = table.rows;
+		if (window.eventLoopFresh && window.CheckIfFresh) {
+			// check for page changes by sending a HEAD request for current url
+			if (10000 < (eventLoopBegin - window.eventLoopFresh)) {
+			//if (10*m < (eventLoopBegin - window.eventLoopFresh)) {
+			// this is commented because it may hammer the server. uncomment if using localhost
 
-		/* Loop through all table rows (except the
-		first, which contains table headers): */
-		for (i = 1; i < (rows.length - 2); i++) {
-			// Start by saying there should be no switching:
-			shouldSwitch = false;
-			/* Get the two elements you want to compare,
-			one from current row and one from the next: */
-
-			x = rows[i].getElementsByTagName("TD")[sortColumn];
-			y = rows[i + 1].getElementsByTagName("TD")[sortColumn];
-			// Check if the two rows should switch place:
-
-			if (
-				x &&
-				y &&
-				x.innerHTML &&
-				y.innerHTML
-			) {
-				var xValue = 0;
-				var yValue = 0;
-
-				if (sortMethod == 0) {
-					xValue = x.innerHTML;
-					yValue = y.innerHTML;
-				}
-				if (sortMethod == 1) {
-					xValue = x.textContent; // #todo lowercase
-					yValue = y.textContent; // #todo lowercase
-				}
-				if (sortMethod == 2) {
-					if (x.textContent == '-') {
-						xValue = 0;
-					} else {
-						xValue = parseInt(x.innerHTML);
-					}
-					if (y.textContent == '-') {
-						yValue = 0;
-					} else {
-						yValue = parseInt(y.innerHTML);
-					}
-				}
-				if (sortMethod == 3) {
-					var xWidget = x.getElementsByClassName('timestamp');
-					xValue = xWidget[0].getAttribute('datetime');
-					var yWidget = y.getElementsByClassName('timestamp');
-					yValue = yWidget[0].getAttribute('datetime');
-				}
-
-				//////
-
+				//window.eventLoopFresh = eventLoopBegin;
 				if (
-					(
-						sortOrder == 0
-						&&
-						xValue < yValue
-					)
-					||
-					(
-						sortOrder == 1
-						&&
-						yValue < xValue
-					)
+					window.eventLoopFresh &&
+					(!window.GetPrefs || GetPrefs('notify_on_change'))
 				) {
-					// If so, mark as a switch and break the loop:
-					shouldSwitch = true;
-					anyChanges++;
-					break;
+					// notify_on_change client-side setting needs to be on
+					CheckIfFresh();
+					window.eventLoopFresh = eventLoopBegin;
 				}
 			}
 		}
-		if (shouldSwitch) {
-			/* If a switch has been marked, make the switch
-			and mark that a switch has been done: */
-			rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-			switching = true;
+
+		if (
+			(window.UpdateDialogList) &&
+			(document.getElementById) &&
+			(document.getElementsByClassName)
+		) {
+			// update list of dialogs on page
+			UpdateDialogList();
 		}
-	} // while (switching)
 
-	if (!anyChanges) {
-		sortOrder++
-		return SortTable(tOrig, sortOrder);
-	}
+		if (window.GetPrefs) {
+			// if performance setting has changed in another window, update it here too
+			window.performanceOptimization = GetPrefs('performance_optimization'); // EventLoop()
+		}
+	} // 10000 < (eventLoopBegin - window.eventLoopPrevious)
 
-	if (anyChanges) {
-		rows = table.rows;
-		var rowsLength = rows.length;
+	if (window.eventLoopEnabled) {
+		// set the next setTimeout for the next "loop" iteration
 
-		for (i = 2; i < rowsLength - 1; i++) {
-			if (
-				rows[i] &&
-				rows[i].style.backgroundColor == rowColor0 ||
-				rows[i].style.backgroundColor == rowColor1 ||
-				rows[i].getAttribute('bgcolor') == rowColor0 ||
-				rows[i].getAttribute('bgcolor') == rowColor1
-			) {
-				// the above check avoids changing the color of highlighted rows
-				if (i % 2) {
-					rows[i].style.backgroundColor = rowColor0;
-				} else {
-					rows[i].style.backgroundColor = rowColor1;
-				}
+		// see how long this last iteration took
+		var d = new Date();
+		var eventLoopEnd = d.getTime();
+		var eventLoopDuration = eventLoopEnd - eventLoopBegin;
+		//document.title = eventLoopDuration; // for debugging performance
+
+		// unset any timeout if already set
+		if (window.timeoutEventLoop) {
+			clearTimeout(window.timeoutEventLoop);
+		}
+
+		if (30 < eventLoopDuration) {
+			// if loop went longer than 100ms, run every 3 seconds or more
+			//document.title = eventLoopDuration;
+			
+			if (GetPrefs('notify_event_loop')) {
+				displayNotification('EventLoop: ' + eventLoopDuration + 'ms');
 			}
-		}
-	}
+//
+//			// #todo make it known to user that hitting performance limit
+//			if (document.title.substr(0,3) != '/ ') {
+//				// for now we just prepend the title with a slash
+//				document.title = '/ ' + document.title;
+//			}
 
-	//alert('DEBUG: SortTable() finished');
+			// set performance setting to 'faster'
+
+			//SetPrefs('performance_optimization', 'faster');
+			eventLoopDuration = eventLoopDuration * 10;
+		} else {
+			// otherwise run again after 1 interval time
+			eventLoopDuration = 1*m;
+		}
+
+		window.timeoutEventLoop = setTimeout('EventLoop()', eventLoopDuration);
+	} // window.eventLoopEnabled
 
 	return '';
-} // SortTable()
 
-/* / table_sort.js */
+} // EventLoop()
+
+function UrlExists (url) { // checks if url exists
+// #todo use async
+// #todo Q: how to do pre-xhr browsers? A: use img.src = and check the resulting image url
+
+	//alert('DEBUG: UrlExists(' + url + ')');
+
+	if (window.XMLHttpRequest) {
+		//alert('DEBUG: UrlExists: window.XMLHttpRequest check passed');
+
+		var http = new XMLHttpRequest();
+		http.open('HEAD', url, false);
+		//http.timeout = 5000; //#xhr.timeout
+		http.send();
+		var httpStatusReturned = http.status;
+
+		//alert('DEBUG: UrlExists: httpStatusReturned = ' + httpStatusReturned);
+
+		return (httpStatusReturned == 200);
+	}
+} // UrlExists()
+
+function DisplayStatus (status) {
+// #todo this doesn't seem to be used anywhere yet
+	if (document.getElementById) {
+		var statusBar = document.getElementById('status');
+		// #todo finish this
+	}
+} // DisplayStatus()
+
+function DownloadAsTxt (filename, text) {
+	var element = document.createElement('a');
+
+	element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+	element.setAttribute('download', filename);
+
+	element.style.display = 'none';
+	document.body.appendChild(element);
+
+	element.click();
+
+	document.body.removeChild(element);
+} // DownloadAsTxt()
+
+function displayNotificationWithTimeout (strMessage, thisButton) {
+	var spanNotification = displayNotification(strMessage, thisButton);
+
+	if (spanNotification) {
+		var d = new Date();
+		var spanId = d.getTime();
+		spanNotification.setAttribute('id', spanId);
+		setTimeout('document.getElementById(' + spanId + ').remove()', 5000);
+
+		return spanNotification;
+	}
+} // displayNotificationWithTimeout()
+
+function displayNotification (strMessage, thisButton) { // adds notification to page
+// function progressIndicator () { // progress indicator
+// function showNotification () (
+// used for loading indicator bar (to top of page, depending on style)
+// also used for "creating profile" and "already voted" notifications
+	var spanNotification = document.createElement('span');
+	spanNotification.setAttribute('class', 'notification');
+	spanNotification.setAttribute('role', 'alert');
+	spanNotification.setAttribute('onclick', 'this.remove(); return false;');
+	spanNotification.innerHTML = strMessage;
+	spanNotification.style.zIndex = GetFineTime();
+
+	if (window.GetPrefs && GetPrefs('draggable')) {
+		thisButton = 0;
+		// #todo this is a workaround for floating notification being messed up in draggable mode
+	}
+
+	if (thisButton) {
+		thisButton.parentNode.appendChild(spanNotification);
+		if (thisButton.after) {
+			thisButton.after(spanNotification);
+		}
+
+		// set element's position based on its initial box model position
+		var rect = spanNotification.getBoundingClientRect();
+		spanNotification.style.top = (rect.top) + "px";
+		spanNotification.style.left = (rect.left) + "px";
+		spanNotification.style.position = 'absolute';
+
+		return spanNotification;
+	} else {
+		// #todo this should be in stylesheet; floating notification should have different class
+		spanNotification.style.position = 'fixed';
+		spanNotification.style.top = '0';
+		spanNotification.style.right = '0';
+		spanNotification.style.margin = '0';
+
+		document.body.appendChild(spanNotification);
+
+		return spanNotification;
+	}
+} // displayNotification()
+
+function newA (href, target, innerHTML, parent) { // makes new a element and appends to parent
+	var newLink = document.createElement('a');
+	if (href) { newLink.setAttribute('href', href); }
+	if (target) { newLink.setAttribute('target', target); }
+	if (innerHTML) { innernewLink.setAttribute('innerHTML', innerHTML); }
+	parent.appendChild(newLink);
+	return newLink;
+} // newA()
+
+function SetCookie (cname, cvalue, exdays) { // set cookie
+	//alert('DEBUG: SetCookie(' + cname + ', ' + cvalue + ', ' + exdays + ')');
+	var d = new Date();
+	if (!exdays) {
+		exdays = 1;
+	}
+	d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+	var expires = "expires=" + d.toUTCString();
+	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+	var testSetCookie = GetCookie(cname);
+	if (cvalue == testSetCookie) {
+		return 1;
+	} else {
+		return 0;
+	}
+} // SetCookie()
+
+function GetCookie (cname) { // get cookie value
+	// in js, cookies are accessed via one long string of the form
+	// key1=value1; key2=value2;
+	// so we make an array, splitting the string using the ; separator
+	if (document.cookie && document.cookie.split) {
+		//todo add support for ie3, which does not have a split() method on strings
+		var dc = document.cookie;
+		var ca = dc.split(';');
+
+		// the value we are looking for will be prefixed with cname=
+		var name = cname + "=";
+
+		for(var i = 0; i < ca.length; i++) {
+			// loop through ca array until we find prefix we are looking for
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+				// remove any spaces at beginning of string
+				c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+				// if prefix matches, return value
+				return c.substring(name.length, c.length);
+			}
+		}
+	}
+
+	// at this point, nothing left to do but return empty string
+	return "";
+} // GetCookie()
+
+function GetParentElement (el, parentTagName) {
+// #todo maybe make this more flexible?
+	if (el) {
+		var parentElement = el;
+		while (parentElement && (parentElement.tagName != parentTagName)) {
+			parentElement = parentElement.parentElement;
+		}
+		if (parentElement) {
+			return parentElement;
+		}
+	}
+	return '';
+} // GetParentElement()
+
+function UnmaskBlurredImages () {
+	var im = document.images;
+	if (im) {
+		var i = 0;
+		for (i = 0; i < im.length; i++) {
+			if (im[i].getAttribute('src')) {
+				var src = im[i].getAttribute('src');
+				var gPos = src.indexOf('_g_');
+				if (gPos != -1 && 0 < gPos) {
+					im[i].setAttribute('src', src.substr(0, gPos) + '' + src.substr(gPos + 2));
+				}
+			}
+		}
+	}
+	return '';
+} // UnmaskBlurredImages()
+
+
+//https://stackoverflow.com/questions/123999/how-can-i-tell-if-a-dom-element-is-visible-in-the-current-viewport
+
+function elementInViewport (el) {
+	var top = el.offsetTop;
+	var left=el.offsetLeft;
+	var width = el.offsetWidth;
+	var height = el.offsetHeight;
+
+	while (el.offsetParent) {
+		el = el.offsetParent;
+		top += el.offsetTop;
+		left+=el.offsetLeft;
+	}
+
+	return (
+		window.pageYOffset <= top &&
+		window.pageXOffset <= left &&
+		(top + height) <= (window.pageYOffset + window.innerHeight) &&
+		(left + width) <= (window.pageXOffset + window.innerWidth)
+	);
+} // elementInViewport()
+//You could modify this simply to determine if any part of the element is visible in the viewport:
+
+function elementInViewport2 (el) {
+	var top = el.offsetTop;
+	var left=el.offsetLeft;
+	var width = el.offsetWidth;
+	var height = el.offsetHeight;
+
+	while (el.offsetParent) {
+		el = el.offsetParent;
+		top += el.offsetTop;
+		left+=el.offsetLeft;
+	}
+
+	return (
+		top < (window.pageYOffset + window.innerHeight) &&
+		left < (window.pageXOffset + window.innerWidth) &&
+		window.pageYOffset < (top + height) &&
+		window.pageXOffset < (left + width)
+	);
+} // elementInViewport2()
+
+
+function PingUrl (url, ele) { // loads arbitrary url via image or xhr
+// compatible with most js
+	//alert('DEBUG: PingUrl() begins');
+
+	// another option below
+	// var img = document.createElement('img');
+	// img.setAttribute("src", url);
+	// document.body.appendChild(img);
+
+	if (!ele) {
+		ele = 0;
+	}
+
+	if (!url) {
+		// #todo more sanity here
+		//alert('DEBUG: PingUrl: warning: url was FALSE');
+		return '';
+	}
+
+	//alert('DEBUG: PingUrl: url = ' + url);
+
+	if (window.XMLHttpRequest) {
+		//alert('DEBUG: PingUrl: window.XMLHttpRequest was true');
+
+		var xmlhttp;
+		if (window.xmlhttp) {
+			xmlhttp = window.xmlhttp;
+		} else {
+			window.xmlhttp = new XMLHttpRequest();
+			xmlhttp = window.xmlhttp;
+		}
+
+		if (window.GetPrefs && GetPrefs('show_admin')) {
+			// skip callback to save resources
+		} else {
+			xmlhttp.onreadystatechange = window.PingUrlCallback;
+		}
+
+		xmlhttp.open("HEAD", url, true);
+		//xmlhttp.timeout = 5000; //#xhr.timeout
+		xmlhttp.send();
+
+		return false;
+	} else {
+		//alert('DEBUG: PingUrl: using image method, no xhr here');
+
+		if (document.images) {
+			//alert('DEBUG: PingUrl: document.images was true');
+			if (document.images.length) {
+				// use last image on page, if possible. this should be the special pixel image.
+				var img = document.images[document.images.length - 1];
+
+				if (img) {
+					img.setAttribute("src", url);
+					return false;
+				}
+			} else {
+				var img = document.images[0];
+
+				if (img) {
+					img.setAttribute("src", url);
+					return false;
+				}
+			}
+		} else {
+			//alert('DEBUG: PingUrl: warning: document.images was FALSE');
+		}
+	}
+
+	return true;
+} // PingUrl()
+
+// function EscapeUrl () {
+// function UriEscape () {
+// USE encodeURIComponent()
+
+
+//function ChangeInputToTextarea (input) { // called by onpaste
+////#input_expand_into_textarea
+//	//#todo more sanity
+//	if (!input) {
+//		return '';
+//	}
+//
+//	if (document.createElement) {
+//		var parent = input.parentElement;
+//		var textarea = document.createElement('textarea');
+//		var cols = input.getAttribute('cols');
+//		var name = input.getAttribute('name');
+//		var id = input.getAttribute('id');
+//		var rows = 5;
+//		var width = cols + 'em';
+//
+//		textarea.setAttribute('name', name);
+//		textarea.setAttribute('id', id);
+//		textarea.setAttribute('cols', cols);
+//		textarea.setAttribute('rows', rows);
+//		//textarea.style.width = width;
+//		textarea.innerHTML = input.value;
+//
+//		//parent.appendChild(t);
+//		parent.insertBefore(textarea, input.nextSibling);
+//		input.style.display = 'none';
+//
+//		textarea.focus();
+//		textarea.selectionStart = textarea.innerHTML.length;
+//		textarea.selectionEnd = textarea.innerHTML.length;
+//
+//		if (window.inputToChange) {
+//			window.inputToChange = '';
+//		}
+//	}
+//
+//	return true;
+//}
+
+//
+//function ConvertSubmitsToButtonsWithAccessKey (parent) {
+//	if (!parent) {
+//		//alert('DEBUG: ConvertSubmitsToButtons: warning: sanity check failed');
+//		return '';
+//	}
+//
+//	if (parent.getElementsByClassName) {
+//		var buttons = parent.getElementsByClassName('btnSubmit');
+//		// convert each submit to button with accesskey
+//	} else {
+//		//todo
+//	}
+//	return ''
+//} // ConvertSubmitsToButtonsWithAccessKey()
+
+
+// developer
+// SetPrefs('notify_event_loop', 1);
+// SetPrefs('notify_event_loop', 0);
+
+
+// == end utils.js
 
 
 // profile.js
@@ -3870,7 +3443,236 @@ if (window.EventLoop) {
 
 // == end fresh.js
 
+
+/* table_sort.js */
+
+function SortTable (t, sortOrder) {
+// TableSort (
+	//alert('DEBUG: SortTable() begins');
+	//caution: bubble sort inside
+
+	if (! document.body.textContent) {
+		//alert('DEBUG: SortTable: warning: textContent feature check FAILED');
+		return '';
+	}
+
+	var table, rows, switching, i, x, y, shouldSwitch, sortColumn, sortMethod;
+
+	sortColumn = 0;
+	sortMethod = 0;
+
+	// sortMethod = 0 innerHTML
+	// sortMethod = 1 textContent
+	// sortMethod = 2 parseInt(innerHTML)
+
+	if (1 < sortOrder) {
+		return '';
+	}
+
+	var rowColor0 = '#ffffff';
+	var rowColor1 = '#e0e0e0';
+
+	sortOrder = sortOrder ? 1 : 0;
+
+	var anyChanges = 0;
+
+	var tOrig = t;
+
+	if (!t) {
+		//alert('DEBUG: SortTable: warning: t missing');
+		return '';
+	}
+
+	var sortField = t.textContent;
+
+	if (t.cellIndex || t.cellIndex == 0) {
+		sortColumn = t.cellIndex;
+		// default sortMethod is 0, defined above
+		// innerHTML
+
+		if (
+			t.textContent &&
+			t.textContent.indexOf('_title') != -1 ||
+			t.textContent.indexOf('author_key') != -1 ||
+			t.textContent.indexOf('author_id') != -1
+		) {
+			sortMethod = 1; // textContent
+		}
+
+		if (
+			t.textContent &&
+			(
+				t.textContent.indexOf('_count') != -1 ||
+				t.textContent.indexOf('_order') != -1 ||
+				t.textContent.indexOf('_sequence') != -1 ||
+				t.textContent.indexOf('_score') != -1
+			)
+		) {
+			sortMethod = 2; // parseInt(innerHTML)
+		}
+
+		if (
+			t.textContent &&
+			(
+				t.textContent.indexOf('_timestamp') != -1
+			)
+		) {
+			sortMethod = 3; // timestamp widget
+		}
+	}
+
+	while (!table && t.parentNode) {
+		t = t.parentNode;
+		if (t.tagName == 'TABLE') {
+			table = t;
+		}
+	}
+
+	if (!table) {
+		//alert('DEBUG: SortTable: warning: table missing');
+		return '';
+	} else {
+		//alert('DEBUG: SortTable: table exists, proceeding');
+	}
+
+	if (table && table.getAttribute) {
+		var tableId = table.getAttribute('id');
+		if (tableId) {
+			if (window.SetPrefs) {
+				SetPrefs('TableSort:' + tableId, sortField + ':' + sortOrder + ':' + sortMethod);
+			}
+		}
+	} else {
+		//alert('DEBUG: SortTable: warning: table is missing');
+		return '';
+	}
+
+	//alert('DEBUG: SortTable: sortOrder = ' + sortOrder + '; sortMethod = ' + sortMethod);
+
+	// bubble sort below by some website...
+
+	switching = true;
+
+	/* Make a loop that will continue until
+	no switching has been done: */
+	while (switching) {
+		// Start by saying: no switching is done:
+		switching = false;
+		rows = table.rows;
+
+		/* Loop through all table rows (except the
+		first, which contains table headers): */
+		for (i = 1; i < (rows.length - 2); i++) {
+			// Start by saying there should be no switching:
+			shouldSwitch = false;
+			/* Get the two elements you want to compare,
+			one from current row and one from the next: */
+
+			x = rows[i].getElementsByTagName("TD")[sortColumn];
+			y = rows[i + 1].getElementsByTagName("TD")[sortColumn];
+			// Check if the two rows should switch place:
+
+			if (
+				x &&
+				y &&
+				x.innerHTML &&
+				y.innerHTML
+			) {
+				var xValue = 0;
+				var yValue = 0;
+
+				if (sortMethod == 0) {
+					xValue = x.innerHTML;
+					yValue = y.innerHTML;
+				}
+				if (sortMethod == 1) {
+					xValue = x.textContent; // #todo lowercase
+					yValue = y.textContent; // #todo lowercase
+				}
+				if (sortMethod == 2) {
+					if (x.textContent == '-') {
+						xValue = 0;
+					} else {
+						xValue = parseInt(x.innerHTML);
+					}
+					if (y.textContent == '-') {
+						yValue = 0;
+					} else {
+						yValue = parseInt(y.innerHTML);
+					}
+				}
+				if (sortMethod == 3) {
+					var xWidget = x.getElementsByClassName('timestamp');
+					xValue = xWidget[0].getAttribute('datetime');
+					var yWidget = y.getElementsByClassName('timestamp');
+					yValue = yWidget[0].getAttribute('datetime');
+				}
+
+				//////
+
+				if (
+					(
+						sortOrder == 0
+						&&
+						xValue < yValue
+					)
+					||
+					(
+						sortOrder == 1
+						&&
+						yValue < xValue
+					)
+				) {
+					// If so, mark as a switch and break the loop:
+					shouldSwitch = true;
+					anyChanges++;
+					break;
+				}
+			}
+		}
+		if (shouldSwitch) {
+			/* If a switch has been marked, make the switch
+			and mark that a switch has been done: */
+			rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+			switching = true;
+		}
+	} // while (switching)
+
+	if (!anyChanges) {
+		sortOrder++
+		return SortTable(tOrig, sortOrder);
+	}
+
+	if (anyChanges) {
+		rows = table.rows;
+		var rowsLength = rows.length;
+
+		for (i = 2; i < rowsLength - 1; i++) {
+			if (
+				rows[i] &&
+				rows[i].style.backgroundColor == rowColor0 ||
+				rows[i].style.backgroundColor == rowColor1 ||
+				rows[i].getAttribute('bgcolor') == rowColor0 ||
+				rows[i].getAttribute('bgcolor') == rowColor1
+			) {
+				// the above check avoids changing the color of highlighted rows
+				if (i % 2) {
+					rows[i].style.backgroundColor = rowColor0;
+				} else {
+					rows[i].style.backgroundColor = rowColor1;
+				}
+			}
+		}
+	}
+
+	//alert('DEBUG: SortTable() finished');
+
+	return '';
+} // SortTable()
+
+/* / table_sort.js */
+
 // -->
 </script>
-<!-- / html/utils/scriptinject.template (main,config/template/perl/item_listing_page.pl,246) -->
+<!-- / html/utils/scriptinject.template (main,config/template/perl/page/profile.pl,80) -->
 </body></html>

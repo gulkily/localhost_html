@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml"></link>
-<title>Tags</title>
+<title>authors</title>
 <style type="text/css">
 <!--
 /* begin css/default.css */
@@ -406,12 +406,12 @@ pre time {
 <span class=advanced>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=tagssql cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
+	<table id=authorssql cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#ffffff"><b>tags.sql</b></font> <a href=#tagssql>#</a><a name=tagssql></a><br>
+		<font color="#ffffff"><b>authors.sql</b></font> <a href=#authorssql>#</a><a name=authorssql></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -423,25 +423,17 @@ pre time {
 		
 
 		<tbody class=content><tr class=content><td><pre>SELECT
-	vote_value,
-	vote_count
-FROM (
-	SELECT
-		vote_value,
-		COUNT(vote_value) AS vote_count
-	FROM
-		vote
-	WHERE
-		file_hash IN (
-			SELECT file_hash
-			FROM item_flat
-			WHERE item_score &gt;= 0
-		)
-	GROUP BY
-		vote.vote_value
-	)
+	author_key,
+	author_key author_id,
+	last_seen,
+	item_count,
+	author_score,
+	'' AS tagset_author,
+	file_hash
+FROM
+	author_flat
 ORDER BY
-	vote_count DESC
+	item_count DESC
 <br></pre></td></tr></tbody>
 
 		

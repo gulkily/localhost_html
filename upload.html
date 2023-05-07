@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml"></link>
-<title>Tags</title>
+<title>upload</title>
 <style type="text/css">
 <!--
 /* begin css/default.css */
@@ -387,31 +387,17 @@ pre time {
 </table>
 <!-- / topmenu2.template -->
 </b>
-<p>
+<p><MAIN ID=maincontent><A NAME=maincontent></A>
+
+
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
-		
-
-		
-
-		
-
-		<tbody class=content><tr class=content><td>This page reserved for future content.</td></tr></tbody>
-
-		
-	</table>
-</font>
-<!-- / default/template/html/window/standard.template -->
-<span class=advanced>
-<!-- default/template/html/window/standard.template -->
-<font face=arial>
-	<table id=tagssql cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
+	<table id=upload cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#ffffff"><b>tags.sql</b></font> <a href=#tagssql>#</a><a name=tagssql></a><br>
+		<font color="#ffffff"><b>Upload</b></font> <a href=#upload>#</a><a name=upload></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -422,33 +408,70 @@ pre time {
 
 		
 
-		<tbody class=content><tr class=content><td><pre>SELECT
-	vote_value,
-	vote_count
-FROM (
-	SELECT
-		vote_value,
-		COUNT(vote_value) AS vote_count
-	FROM
-		vote
-	WHERE
-		file_hash IN (
-			SELECT file_hash
-			FROM item_flat
-			WHERE item_score &gt;= 0
-		)
-	GROUP BY
-		vote.vote_value
-	)
-ORDER BY
-	vote_count DESC
-<br></pre></td></tr></tbody>
+		<tbody class=content><tr class=content><td>
+<!-- form/upload.template ; file upload form -->
+<form enctype="multipart/form-data" action="/upload.php" method="POST" name=upload id=upload>
+	<p>Upload one file.</p>
+	<p class=beginner>
+		Remember to press Upload button.
+	</p>
+	<p><input name=uploaded_file onchange="if (window.UploadedFileOnChange) { UploadedFileOnChange(this); }" type=file id=uploaded_file></p>
+	<p><input name=submit onclick="this.value='Meditate...';" type=submit value=Upload id=submit></p>
+	<span id=spanImagePreview></span>
+	<p>Allowed files: <span id=allowFiles>jpg jpeg gif png bmp svg jfif webp py zip</span></p>
+	<p>Only images supported, video support later</p>
+	<span id=spanStripMetaData class=advanced>
+		<label for=chkStripMetaData>
+			<input type=checkbox name=chkStripMetaData id=chkStripMetaData checked>
+			Strip image metadata (doesn't work yet)
+		</label>
+	</span>
+</form>
+<!-- / form/upload.template -->
+</td></tr></tbody>
 
 		
 	</table>
 </font>
 <!-- / default/template/html/window/standard.template -->
-</span></main>
+
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=Paste cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#000080" class=titlebar>
+	<td>
+		<font color="#ffffff"><b>Paste</b></font> <a href=#Paste>#</a><a name=Paste></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+
+		<tbody class=content><tr class=content><td>
+<!-- form/paste.template ; file paste form -->
+<form enctype="multipart/form-data" action="/upload.php" method="POST" name=upload id=upload>
+	<p>
+		Paste one picture:<br>
+		<input name=iospaste id=iospaste type=text value="Paste here"><br>
+		Paste may not work on all platforms.
+	</p>
+
+	<span id=spanImagePreview></span>
+</form>
+<!-- / form/paste.template -->
+</td></tr></tbody>
+
+		
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+</main>
 <span id=messages></span>
 <img src="/p.gif" alt="" height=1 width=1>
 <br><noscript>
@@ -477,10 +500,10 @@ ORDER BY
 </font>
 <!-- / default/template/html/window/standard.template -->
 </noscript>
-<!-- InjectJs: utils settings avatar voting table_sort profile timestamp fresh table_sort -->
+<!-- InjectJs: utils settings avatar profile upload paste fresh table_sort -->
 
 
-<!-- html/utils/scriptinject.template (main,config/template/perl/item_listing_page.pl,246) -->
+<!-- html/utils/scriptinject.template (main,config/template/perl/page/upload.pl,88) -->
 <script language=javascript><!--
 // == begin utils.js
 
@@ -2107,451 +2130,6 @@ function getAvatar () { // retrieve previously built avatar from localStorage (a
 // == end avatar.js
 
 
-// == begin voting.js
-
-function PingUrlCallback () {
-	var xmlhttp = window.xmlhttp;
-	var xmlhttpElement = window.xmlhttpElement;
-
-	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-		//alert('DEBUG: PingUrlCallback() found status 200!');
-
-		if (xmlhttpElement) {
-			var elemOK = document.createElement('span');
-			//elemOK.setAttribute('disabled', true);
-			elemOK.innerHTML = '&check;'; // checkmark
-			//#todo: get rect, and check if it is too wide,
-			//   which means escaped char didn't work
-			//   and should be replaced (ff 3.x, camino)
-			//elemOK.innerHTML = 'OK';
-			xmlhttpElement.setAttribute('disabled', true);
-			xmlhttpElement.appendChild(elemOK);
-		}
-		// window.location.replace(xmlhttp.responseURL);
-		// document.open();
-		// document.write(xmlhttp.responseText);
-		// document.close();
-		window.xmlhttp = 0;
-	} else if (xmlhttp.readyState == 4 && xmlhttp.status == 401) {
-		// server returned 401, which most likely means that we need a cookie
-		// redirect user to profile.html page so that they can register
-		// this is very basic, jarring, and unfriendly, but it is better than failing silently
-		// relative links setting should also be taken into account
-		// #todo
-		window.location = '/profile.html'; // #todo relativize
-	} else {
-		//alert('DEBUG: PingUrlCallback: warning: unrecognized: xmlhttp.status = ' + xmlhttp.status + '; xmlhttp.readyState = ' + xmlhttp.readyState);
-	}
-}
-
-//function OptionsDefault(token, privKeyObj) {
-//	this.data = token;
-//	this.privateKeys = [privKeyObj];
-//}
-
-function signCallback (signed) {
-    var postUrl = '/post.html';
-	var url = postUrl + '?comment=' + encodeURIComponent(signed.data);
-
-	if (PingUrl(url)) {
-		// todo incrememnt counter
-	}
-}
-
-function IncrementTagLink (t) { // increments number of votes in tag button
-// function IncrementVoteLink () {
-// function AddVote () {
-// adds a number if there isn't one already
-// #todo adapt to accommodate buttons as well
-
-	if (!t) {
-		// if t is missing, return true, so that click event can go through
-		//alert('DEBUG: IncrementTagLink: warning: t is missing');
-		return true;
-	}
-
-	if (t.innerHTML) {
-		// update count in vote link
-		//alert('DEBUG: IncrementTagLink: t.innerHTML');
-		var ih = t.innerHTML;
-		if (ih.indexOf('(') == -1) {
-			// there is no count yet, add a 1
-			//alert('DEBUG: IncrementTagLink: ( not found');
-			t.innerHTML = ih + '(1)';
-		} else {
-			// there is a count already, increment it
-			//alert('DEBUG: IncrementTagLink: ( found');
-
-			var numVal = ih.substring(ih.indexOf('(') + 1, ih.indexOf(')'));
-			var newVal = parseInt(numVal) + 1;
-			var hashTag = ih.substring(0, ih.indexOf('('));
-			t.innerHTML = hashTag + '(' + newVal + ')';
-		}
-
-		var voteValue = t.innerHTML.substring(0, t.innerHTML.indexOf('('));
-
-		//alert('DEBUG: IncrementTagLink: voteValue = "' + voteValue + '"');
-
-		//alert('DEBUG: IncrementTagLink: finished with t.innerHTML');
-
-		return false;
-	} // if (t.innerHTML)
-
-	return true;
-} // IncrementTagLink()
-
-function SignVote (t, token) { // signs a vote from referenced vote button
-// t = reference to calling button's 'this'
-// token = full voting token, in the format (gt)(gt)fileHash\n#tag
-// where (gt) is a greater-than sign, omitted here
-	//alert('DEBUG: SignVote(' + t + ',' + token +')');
-
-	if (
-		t.nextSibling &&
-		t.nextSibling.tagName &&
-		t.nextSibling.getAttribute &&
-		t.nextSibling.getAttribute('class') == 'notification'
-	) {
-		// removes a notification if it is immediately afer this button
-		t.nextSibling.remove();
-	}
-
-	if (window.xmlhttp) {
-		//only allow one vote a time to be happening
-		//unless user is operator
-
-		if (GetPrefs('show_admin')) {
-			// continue
-		} else {
-			if (window.displayNotificationWithTimeout) {
-				displayNotificationWithTimeout('Too fast', t);
-			}
-			return false;
-		}
-	}
-
-
-	if (document.getElementById) {
-	// basic dumb feature check #todo make smarter feature check ;
-	// needs better compatibility for older browsers
-		// get private key
-
-		if (!GetPrefs('show_admin') && GetPrefs(token)) {
-			// don't let user vote twice -- basic version
-			// the token we'd send to vote is stored as the key to a preference setting
-			// #todo this could be nicer?
-			// doesn't apply if user is showing operator controls
-			if (window.displayNotificationWithTimeout) {
-				window.duplicateVoteTries ? window.duplicateVoteTries++ : window.duplicateVoteTries = 1;
-				if (3 <= window.duplicateVoteTries) {
-					displayNotificationWithTimeout('Hey!', t);
-				} else {
-					displayNotificationWithTimeout('Already voted', t);
-				}
-			} else {
-				//alert('DEBUG: window.displayNotificationWithTimeout() was missing');
-			}
-
-			// returning false will keep the link from navigating to non-js fallback
-			return false;
-		}
-
-		IncrementTagLink(t);
-
-		var privkey = 0; //also serves as feature check flag, sorry
-		if (window.getPrivateKey && window.openpgp) {
-			var privkey = getPrivateKey();
-		}
-
-		//alert('DEBUG: SignVote: privkey: ' + !!privkey);
-
-		window.xmlhttpElement = t;
-		
-		if (GetPrefs('show_admin') || !privkey) {
-			//alert('DEBUG: !privkey');
-			// if there is no private key, just do a basic unsigned vote;
-
-			// if user is operator, they also do this for faster voting
-
-			if (PingUrl(t.href)) {
-				return false;
-			}
-		} else {
-			// there is a private key
-			//alert('DEBUG: privkey is true');
-
-			// load the private key into openpgp
-			var privKeyObj = openpgp.key.readArmored(privkey).keys[0];
-			var options;
-			options = new Object();
-			options.data = token;
-			options.privateKeys = privKeyObj;
-			openpgp.config.show_version = false;
-			openpgp.config.show_comment = false;
-
-			// sign the voting token and send to post.html when finished
-			openpgp.sign(options).then(signCallback);
-		}
-
-		// remember that we voted for this already
-		SetPrefs(token, 1);
-
-		if (window.displayNotification) {
-			// displayNotification('Success!', t);
-		} else {
-			//alert('DEBUG: window.displayNotification() was missing');
-		}
-
-		return false; // cancel link click-through
-	} else {
-		//	    if (document.images) {
-		//	        var myUrl = window.location;
-		//	        var postUrl = '/post.html';
-		//	    	document.images[0].src = postUrl + '?mydomain=' + myUrl;
-		//
-		//	    	//alert('DEBUG: t = ' + t);
-		//
-		//	    	return false;
-		//	    }
-	}
-
-	//alert('DEBUG: SignVote: warning: fall-through');
-
-	return true; // allow link click to happen
-} // SignVote()
-
-// == end voting.js
-
-
-/* table_sort.js */
-
-function SortTable (t, sortOrder) {
-// TableSort (
-	//alert('DEBUG: SortTable() begins');
-	//caution: bubble sort inside
-
-	if (! document.body.textContent) {
-		//alert('DEBUG: SortTable: warning: textContent feature check FAILED');
-		return '';
-	}
-
-	var table, rows, switching, i, x, y, shouldSwitch, sortColumn, sortMethod;
-
-	sortColumn = 0;
-	sortMethod = 0;
-
-	// sortMethod = 0 innerHTML
-	// sortMethod = 1 textContent
-	// sortMethod = 2 parseInt(innerHTML)
-
-	if (1 < sortOrder) {
-		return '';
-	}
-
-	var rowColor0 = '#ffffff';
-	var rowColor1 = '#e0e0e0';
-
-	sortOrder = sortOrder ? 1 : 0;
-
-	var anyChanges = 0;
-
-	var tOrig = t;
-
-	if (!t) {
-		//alert('DEBUG: SortTable: warning: t missing');
-		return '';
-	}
-
-	var sortField = t.textContent;
-
-	if (t.cellIndex || t.cellIndex == 0) {
-		sortColumn = t.cellIndex;
-		// default sortMethod is 0, defined above
-		// innerHTML
-
-		if (
-			t.textContent &&
-			t.textContent.indexOf('_title') != -1 ||
-			t.textContent.indexOf('author_key') != -1 ||
-			t.textContent.indexOf('author_id') != -1
-		) {
-			sortMethod = 1; // textContent
-		}
-
-		if (
-			t.textContent &&
-			(
-				t.textContent.indexOf('_count') != -1 ||
-				t.textContent.indexOf('_order') != -1 ||
-				t.textContent.indexOf('_sequence') != -1 ||
-				t.textContent.indexOf('_score') != -1
-			)
-		) {
-			sortMethod = 2; // parseInt(innerHTML)
-		}
-
-		if (
-			t.textContent &&
-			(
-				t.textContent.indexOf('_timestamp') != -1
-			)
-		) {
-			sortMethod = 3; // timestamp widget
-		}
-	}
-
-	while (!table && t.parentNode) {
-		t = t.parentNode;
-		if (t.tagName == 'TABLE') {
-			table = t;
-		}
-	}
-
-	if (!table) {
-		//alert('DEBUG: SortTable: warning: table missing');
-		return '';
-	} else {
-		//alert('DEBUG: SortTable: table exists, proceeding');
-	}
-
-	if (table && table.getAttribute) {
-		var tableId = table.getAttribute('id');
-		if (tableId) {
-			if (window.SetPrefs) {
-				SetPrefs('TableSort:' + tableId, sortField + ':' + sortOrder + ':' + sortMethod);
-			}
-		}
-	} else {
-		//alert('DEBUG: SortTable: warning: table is missing');
-		return '';
-	}
-
-	//alert('DEBUG: SortTable: sortOrder = ' + sortOrder + '; sortMethod = ' + sortMethod);
-
-	// bubble sort below by some website...
-
-	switching = true;
-
-	/* Make a loop that will continue until
-	no switching has been done: */
-	while (switching) {
-		// Start by saying: no switching is done:
-		switching = false;
-		rows = table.rows;
-
-		/* Loop through all table rows (except the
-		first, which contains table headers): */
-		for (i = 1; i < (rows.length - 2); i++) {
-			// Start by saying there should be no switching:
-			shouldSwitch = false;
-			/* Get the two elements you want to compare,
-			one from current row and one from the next: */
-
-			x = rows[i].getElementsByTagName("TD")[sortColumn];
-			y = rows[i + 1].getElementsByTagName("TD")[sortColumn];
-			// Check if the two rows should switch place:
-
-			if (
-				x &&
-				y &&
-				x.innerHTML &&
-				y.innerHTML
-			) {
-				var xValue = 0;
-				var yValue = 0;
-
-				if (sortMethod == 0) {
-					xValue = x.innerHTML;
-					yValue = y.innerHTML;
-				}
-				if (sortMethod == 1) {
-					xValue = x.textContent; // #todo lowercase
-					yValue = y.textContent; // #todo lowercase
-				}
-				if (sortMethod == 2) {
-					if (x.textContent == '-') {
-						xValue = 0;
-					} else {
-						xValue = parseInt(x.innerHTML);
-					}
-					if (y.textContent == '-') {
-						yValue = 0;
-					} else {
-						yValue = parseInt(y.innerHTML);
-					}
-				}
-				if (sortMethod == 3) {
-					var xWidget = x.getElementsByClassName('timestamp');
-					xValue = xWidget[0].getAttribute('datetime');
-					var yWidget = y.getElementsByClassName('timestamp');
-					yValue = yWidget[0].getAttribute('datetime');
-				}
-
-				//////
-
-				if (
-					(
-						sortOrder == 0
-						&&
-						xValue < yValue
-					)
-					||
-					(
-						sortOrder == 1
-						&&
-						yValue < xValue
-					)
-				) {
-					// If so, mark as a switch and break the loop:
-					shouldSwitch = true;
-					anyChanges++;
-					break;
-				}
-			}
-		}
-		if (shouldSwitch) {
-			/* If a switch has been marked, make the switch
-			and mark that a switch has been done: */
-			rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-			switching = true;
-		}
-	} // while (switching)
-
-	if (!anyChanges) {
-		sortOrder++
-		return SortTable(tOrig, sortOrder);
-	}
-
-	if (anyChanges) {
-		rows = table.rows;
-		var rowsLength = rows.length;
-
-		for (i = 2; i < rowsLength - 1; i++) {
-			if (
-				rows[i] &&
-				rows[i].style.backgroundColor == rowColor0 ||
-				rows[i].style.backgroundColor == rowColor1 ||
-				rows[i].getAttribute('bgcolor') == rowColor0 ||
-				rows[i].getAttribute('bgcolor') == rowColor1
-			) {
-				// the above check avoids changing the color of highlighted rows
-				if (i % 2) {
-					rows[i].style.backgroundColor = rowColor0;
-				} else {
-					rows[i].style.backgroundColor = rowColor1;
-				}
-			}
-		}
-	}
-
-	//alert('DEBUG: SortTable() finished');
-
-	return '';
-} // SortTable()
-
-/* / table_sort.js */
-
-
 // profile.js
 
 var configJsOpenPgp = 1; // this is templated from config/setting/admin/js/openpgp
@@ -3305,290 +2883,119 @@ function ProfileOnLoad () { // onload event for profile page
 // / profile.js
 
 
-// == begin timestamp.js
+// begin upload.js
 
-function RoundNumber (num) {
-	var ret = Math.floor(num);
+function FileReaderCallback (event) { // sets image to visible once ready
+	//alert('debug: FileReaderCallback()');
+	if (document.getElementById) {
+		var imgImagePreview = document.getElementById('imgImagePreview');
+		if (imgImagePreview) {
+			imgImagePreview.style.display = 'inline';
+			imgImagePreview.setAttribute('src', event.target.result);
+		}
+	}
+} // FileReaderCallback()
 
-	//var ret = Math.floor(num * 10) / 10;
-	//leave one digit after the decimal point
+function UploadedFileOnChange (t) { // t=this; called when file selector is changed
+	//alert('debug: UploadedFileOnChange()');
+	if (t && window.FileReader && document.getElementById) {
+		var reader = new FileReader();
+		reader.onload = window.FileReaderCallback;
 
-	////alert('DEBUG: RoundNumber: num = ' + num + '; ret = ' + ret + '');
+		if (t.files && t.files[0]) {
+			reader.readAsDataURL(t.files[0]);
+		}
 
-	return ret;
+		var submit = document.getElementById('submit');
+		if (submit && submit.style) {
+			//submit.setAttribute('value', 'Upload');
+			submit.style.border = "5pt solid orange";
+		}
+	}
+} // UploadedFileOnChange()
+
+function UploadAddImagePreviewElement () { // add image preview element, hidden until needed
+	if (document.getElementById && document.createElement) {
+		var spanImagePreview = document.getElementById('spanImagePreview');
+		if (spanImagePreview) {
+			var imgImagePreview = document.createElement('img');
+			imgImagePreview.setAttribute('src', '');
+			imgImagePreview.setAttribute('id', 'imgImagePreview');
+			imgImagePreview.setAttribute('alt', 'Preview of image to upload');
+			imgImagePreview.setAttribute('width', '50%');
+			imgImagePreview.style.display = 'none';
+			spanImagePreview.appendChild(imgImagePreview);
+		}
+	}
+} // UploadAddImagePreviewElement()
+
+// end upload.js
+
+
+// paste.js
+
+// handles pasting of images on the upload page
+
+function PasteEvent (e) {
+    // takes an image from the clipboard,
+    // creates a form on the page and attaches the image,
+    // and makes a POST request to the upload handler
+
+	var uploadAllowed = 1;
+	// this can be used for template-based feature allowing and disallowing
+	
+	if (uploadAllowed) {
+		//var textData = event.clipboardData.getData('text');
+		// this can later be used to differentiate text clipboard data from image clipboard data #todo
+		
+		if (e.clipboardData.files) {
+		    // there were some files in the clipboard
+
+			if (document.createElement) {
+			    // browser supports basic DOM things, including document.createElement()
+
+			    // create a form
+				var form1 = document.createElement('form');
+				form1.setAttribute('method', 'POST');
+				form1.setAttribute('action', '/upload.php');
+				form1.setAttribute('enctype', 'multipart/form-data');
+				form1.style.display = 'none';
+
+				// create an input element of type=file
+				var up1 = document.createElement('input');
+				up1.setAttribute('type', 'file');
+				up1.setAttribute('name', 'uploaded_file');
+				up1.files = e.clipboardData.files;
+
+				// add input to form and form to document.body
+				form1.appendChild(up1);
+				document.body.appendChild(form1);
+
+				// show notification that upload is beginning
+				if (window.displayNotification) {
+					displayNotification('Uploading...');
+				}
+
+                // if there is an input element for pasting, show notification there too
+				if (document.getElementById('iospaste')) {
+					document.getElementById('iospaste').value = 'Uploading...';
+				}
+
+				// submit the form to begin upload process
+				form1.submit();
+			}
+		}
+	}
+} // PasteEvent()
+
+// add listener for paste event to page
+// this affects all pasting done on the page, so should be used sparingly
+// paste.js should only be included on the upload page until this is improved
+if (window.addEventListener && window.PasteEvent) {
+	window.addEventListener('paste', window.PasteEvent);
 }
 
-function LongAgo (seconds) { // returns string with time units
-// takes seconds as parameter
-// returns a string like "3 days ago" or "3 days from now"
-
-	var flip = 0; // default is '... ago'
-	if (seconds < 0) {
-		flip = 1; // '... from now' instead of '... ago'
-		seconds = 0 - seconds;
-	}
-
-	var unit = '';
-	var number = seconds;
-
-	if (seconds < 5) { // seconds should always be positive because of flip above
-		returnValue = 'just now!'
-		return returnValue;
-	}
-
-	if (number < 60) {
-		number = number;
-
-		if (RoundNumber(number) != 1) {
-			unit = ' seconds';
-		} else {
-			unit = ' second';
-		}
-	} else {
-		number = number / 60;
-
-		if (number < 60) {
-			if (RoundNumber(number) != 1) {
-				unit = ' minutes';
-			} else {
-				unit = ' minute';
-			}
-		} else {
-			number = number / 60;
-
-			if (number < 24) {
-				if (RoundNumber(number) != 1) {
-					unit =  ' hours';
-				} else {
-					unit =  ' hour';
-				}
-			} else {
-				number = number / 24;
-
-				if (number < 7) {
-					if (RoundNumber(number) != 1) {
-						unit =  ' days';
-					} else {
-						unit =  ' day';
-					}
-				} else {
-					if (number < 30) {
-						number = number / 7;
-						if (RoundNumber(number) != 1) {
-							unit =  ' weeks';
-						} else {
-							unit =  ' week';
-						}
-					} else {
-						if (number < 365) {
-							number = number / 30;
-
-							if (RoundNumber(number) != 1) {
-								unit =  ' months';
-							} else {
-								unit =  ' month';
-							}
-						} else {
-							number = number / 365;
-							if (RoundNumber(number) != 1) {
-								unit =  ' years';
-							} else {
-								unit =  ' year';
-							}
-						} // years
-					} // months
-				} // weeks
-			} // days
-		} // hours
-	} // minutes
-
-	//number = RoundNumber(number);
-
-	var returnValue = '';
-	if (seconds % 1 == 0) {
-		returnValue = RoundNumber(number) + ' ' + unit;
-	} else {
-		returnValue = number + ' ' + unit;
-	}
-
-	if (flip) {
-		returnValue = returnValue + ' ago';
-	} else {
-		returnValue = returnValue + ' from now';
-	}
-
-	//alert(returnValue);
-
-	return returnValue;
-} // LongAgo()
-
-function ShowTimestamps () { // finds any class=timestamp, updates its displayed time as needed
-// currently requires getElementsByClassName()
-// in the future, ie4+, nn4+, and others compat can be improved
-	//alert('DEBUG: ShowTimestamps()');
-// function FormatTimestamps () {
-
-	var restAfter = 100; // stop after this many changes to avoid slowing things down
-	if (
-		window.GetPrefs &&
-		(GetPrefs('performance_optimization') == 'faster')
-	) {
-		restAfter = 30;
-	}
-	//alert('DEBUG: ShowTimestamps() BEGIN');
-
-	if (document.getElementsByClassName) {
-		//alert('DEBUG: ShowTimestamps: document.getElementsByClassName feature check passed');
-		var d = new Date();
-		var curTime = d.getTime() / 1000;
-		//var curTime = Math.floor(d.getTime() / 1000);
-		var changeLogged = 0;
-		var showTimestampsFormat = 0;
-
-		if (window.GetPrefs) {
-			if (GetPrefs('timestamps_format')) {
-				showTimestampsFormat = GetPrefs('timestamps_format');
-			} else {
-				showTimestampsFormat = 0;
-			}
-		}
-
-		// find elements with class=timestamp
-		var te = document.getElementsByClassName("timestamp"); //#timestampTagFormat
-		//var te = document.getElementsByTagName("time"); //#timestampTagFormat
-
-		//alert('DEBUG: ShowTimestamps: class=timestamp elements found: ' + te.length);
-		for (var i = 0; i < te.length; i++) {
-			// loop through all the timestamp elements on the page
-
-			var timeValue = te[i].getAttribute('datetime');  //#timestampTagFormat
-			if (!timeValue) {
-				var timeValue = te[i].getAttribute('epoch');  //#timestampTagFormat
-			}
-
-			if (!isNaN(timeValue)) {
-			//if (!isNaN(te[i].getAttribute('epoch'))) { //#timestampTagFormat
-				// element also has an attribute called 'epoch', and it is
-				// a number, which would represent epoch seconds
-				var secs = 0 - (curTime - timeValue); // number of seconds since epoch begin
-				var longAgo = '';
-				if (timeValue % 1 == 0) {
-					secs = RoundNumber(secs);
-				}
-
-				//alert(showTimestampsFormat);
-
-				//if (te[i].getAttribute('format')) {
-					//showTimestampsFormat = te[i].getAttribute('format');
-				//}
-
-
-				if (showTimestampsFormat) {
-					if (showTimestampsFormat == 'exact') { //#todo
-						longAgo = te[i].getAttribute('title');
-					}
-					if (showTimestampsFormat == 'exact_full') {
-						var date = new Date(timeValue * 1000);
-
-						var year = date.getFullYear();
-						var month = date.getMonth() + 1;
-						var day = date.getDate();
-						var hours = date.getHours();
-						var minutes = date.getMinutes();
-
-						if (month < 10) { month = '0' + month; }
-						if (day < 10) { day = '0' + day; }
-						if (hours < 10) { hours = '0' + hours; }
-						if (minutes < 10) { minutes = '0' + minutes; }
-
-						longAgo = year + "-" + month + "-" + day + " " + hours + ":" + minutes;
-					}
-					if (showTimestampsFormat == 'adjusted') {
-						longAgo = LongAgo(RoundNumber(secs)); // what the element's displayed value should be
-					}
-					if (showTimestampsFormat == 'seconds') {
-						longAgo = secs; // what the element's displayed value should be
-					}
-					if (showTimestampsFormat == 'epoch') {
-						longAgo = RoundNumber(timeValue);
-					}
-					if (showTimestampsFormat == 'iso') {
-						if (d.toISOString) {
-							var dd = new Date(timeValue * 1000);
-							longAgo = dd.toISOString();
-							var gt = unescape('%3E');
-							longAgo = longAgo.substr(0,10) + '<wbr' + gt + longAgo.substr(10); // wrapping hint
-						}
-					}
-					if (!longAgo) {
-						showTimestampsFormat = 'adjusted';
-						longAgo = LongAgo(RoundNumber(secs));
-					}
-				} else {
-					longAgo = secs;
-				}
-
-				//longAgo = secs;
-
-				if (te[i].innerHTML != longAgo) {
-					// element's content does not already equal what it should equal
-					te[i].innerHTML = longAgo;
-					if ((secs * (-1)) < 3600) {
-						// less than an hour ago = bold
-						te[i].style.fontWeight = 'bold';
-					} else {
-						te[i].style.fontWeight = '';
-					}
-					if ((secs * (-1)) < 86400) {
-						// less than a day ago = highlight
-						var colorHighlightAlert = '#ffc080'; // templated
-						if (colorHighlightAlert) {
-						    te[i].style.backgroundColor = colorHighlightAlert;
-                        }
-					} else {
-						te[i].style.backgroundColor = '';
-					}
-					
-					//var rect = te[i].getBoundingClientRect();
-					//if (!te[i].getAttribute('maxw') || (te[i].getAttribute('maxw') < rect.width)) {
-					//	te[i].setAttribute('maxw', rect.width);
-					//	te[i].style.width = (rect.width) + 'px';
-					//	document.title = te[i].getAttribute('maxw') + ',' + te[i].style.width;
-					//}
-					changeLogged++; // count change logged
-				}
-			}
-			if (restAfter < changeLogged) {
-				setTimeout('ShowTimestamps()', 500);
-				i = te.length;
-				
-				return changeLogged;
-			}
-		} // for (var i = 0; i < te.length; i++)
-
-		if (window.EventLoop) {
-			// do nothing, EventLoop() will call us when needed
-		} else {
-			// allow ShowTimestamps() to run decoupled from EventLoop()
-			if (changeLogged) {
-				setTimeout('ShowTimestamps()', 5000);
-			} else {
-				setTimeout('ShowTimestamps()', 15000);
-			}
-		}
-		
-		return changeLogged;
-	}
-} // ShowTimestamps()
-//
-//if (window.EventLoop) {
-//	// do nothing, EventLoop() will take care of us
-//} else {
-//	// if no EventLoop(), we do it ourselves
-//	ShowTimestamps();
-//}
-
-// == end timestamp.js
+// paste.js
 
 
 // == begin fresh.js
@@ -3870,7 +3277,236 @@ if (window.EventLoop) {
 
 // == end fresh.js
 
+
+/* table_sort.js */
+
+function SortTable (t, sortOrder) {
+// TableSort (
+	//alert('DEBUG: SortTable() begins');
+	//caution: bubble sort inside
+
+	if (! document.body.textContent) {
+		//alert('DEBUG: SortTable: warning: textContent feature check FAILED');
+		return '';
+	}
+
+	var table, rows, switching, i, x, y, shouldSwitch, sortColumn, sortMethod;
+
+	sortColumn = 0;
+	sortMethod = 0;
+
+	// sortMethod = 0 innerHTML
+	// sortMethod = 1 textContent
+	// sortMethod = 2 parseInt(innerHTML)
+
+	if (1 < sortOrder) {
+		return '';
+	}
+
+	var rowColor0 = '#ffffff';
+	var rowColor1 = '#e0e0e0';
+
+	sortOrder = sortOrder ? 1 : 0;
+
+	var anyChanges = 0;
+
+	var tOrig = t;
+
+	if (!t) {
+		//alert('DEBUG: SortTable: warning: t missing');
+		return '';
+	}
+
+	var sortField = t.textContent;
+
+	if (t.cellIndex || t.cellIndex == 0) {
+		sortColumn = t.cellIndex;
+		// default sortMethod is 0, defined above
+		// innerHTML
+
+		if (
+			t.textContent &&
+			t.textContent.indexOf('_title') != -1 ||
+			t.textContent.indexOf('author_key') != -1 ||
+			t.textContent.indexOf('author_id') != -1
+		) {
+			sortMethod = 1; // textContent
+		}
+
+		if (
+			t.textContent &&
+			(
+				t.textContent.indexOf('_count') != -1 ||
+				t.textContent.indexOf('_order') != -1 ||
+				t.textContent.indexOf('_sequence') != -1 ||
+				t.textContent.indexOf('_score') != -1
+			)
+		) {
+			sortMethod = 2; // parseInt(innerHTML)
+		}
+
+		if (
+			t.textContent &&
+			(
+				t.textContent.indexOf('_timestamp') != -1
+			)
+		) {
+			sortMethod = 3; // timestamp widget
+		}
+	}
+
+	while (!table && t.parentNode) {
+		t = t.parentNode;
+		if (t.tagName == 'TABLE') {
+			table = t;
+		}
+	}
+
+	if (!table) {
+		//alert('DEBUG: SortTable: warning: table missing');
+		return '';
+	} else {
+		//alert('DEBUG: SortTable: table exists, proceeding');
+	}
+
+	if (table && table.getAttribute) {
+		var tableId = table.getAttribute('id');
+		if (tableId) {
+			if (window.SetPrefs) {
+				SetPrefs('TableSort:' + tableId, sortField + ':' + sortOrder + ':' + sortMethod);
+			}
+		}
+	} else {
+		//alert('DEBUG: SortTable: warning: table is missing');
+		return '';
+	}
+
+	//alert('DEBUG: SortTable: sortOrder = ' + sortOrder + '; sortMethod = ' + sortMethod);
+
+	// bubble sort below by some website...
+
+	switching = true;
+
+	/* Make a loop that will continue until
+	no switching has been done: */
+	while (switching) {
+		// Start by saying: no switching is done:
+		switching = false;
+		rows = table.rows;
+
+		/* Loop through all table rows (except the
+		first, which contains table headers): */
+		for (i = 1; i < (rows.length - 2); i++) {
+			// Start by saying there should be no switching:
+			shouldSwitch = false;
+			/* Get the two elements you want to compare,
+			one from current row and one from the next: */
+
+			x = rows[i].getElementsByTagName("TD")[sortColumn];
+			y = rows[i + 1].getElementsByTagName("TD")[sortColumn];
+			// Check if the two rows should switch place:
+
+			if (
+				x &&
+				y &&
+				x.innerHTML &&
+				y.innerHTML
+			) {
+				var xValue = 0;
+				var yValue = 0;
+
+				if (sortMethod == 0) {
+					xValue = x.innerHTML;
+					yValue = y.innerHTML;
+				}
+				if (sortMethod == 1) {
+					xValue = x.textContent; // #todo lowercase
+					yValue = y.textContent; // #todo lowercase
+				}
+				if (sortMethod == 2) {
+					if (x.textContent == '-') {
+						xValue = 0;
+					} else {
+						xValue = parseInt(x.innerHTML);
+					}
+					if (y.textContent == '-') {
+						yValue = 0;
+					} else {
+						yValue = parseInt(y.innerHTML);
+					}
+				}
+				if (sortMethod == 3) {
+					var xWidget = x.getElementsByClassName('timestamp');
+					xValue = xWidget[0].getAttribute('datetime');
+					var yWidget = y.getElementsByClassName('timestamp');
+					yValue = yWidget[0].getAttribute('datetime');
+				}
+
+				//////
+
+				if (
+					(
+						sortOrder == 0
+						&&
+						xValue < yValue
+					)
+					||
+					(
+						sortOrder == 1
+						&&
+						yValue < xValue
+					)
+				) {
+					// If so, mark as a switch and break the loop:
+					shouldSwitch = true;
+					anyChanges++;
+					break;
+				}
+			}
+		}
+		if (shouldSwitch) {
+			/* If a switch has been marked, make the switch
+			and mark that a switch has been done: */
+			rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+			switching = true;
+		}
+	} // while (switching)
+
+	if (!anyChanges) {
+		sortOrder++
+		return SortTable(tOrig, sortOrder);
+	}
+
+	if (anyChanges) {
+		rows = table.rows;
+		var rowsLength = rows.length;
+
+		for (i = 2; i < rowsLength - 1; i++) {
+			if (
+				rows[i] &&
+				rows[i].style.backgroundColor == rowColor0 ||
+				rows[i].style.backgroundColor == rowColor1 ||
+				rows[i].getAttribute('bgcolor') == rowColor0 ||
+				rows[i].getAttribute('bgcolor') == rowColor1
+			) {
+				// the above check avoids changing the color of highlighted rows
+				if (i % 2) {
+					rows[i].style.backgroundColor = rowColor0;
+				} else {
+					rows[i].style.backgroundColor = rowColor1;
+				}
+			}
+		}
+	}
+
+	//alert('DEBUG: SortTable() finished');
+
+	return '';
+} // SortTable()
+
+/* / table_sort.js */
+
 // -->
 </script>
-<!-- / html/utils/scriptinject.template (main,config/template/perl/item_listing_page.pl,246) -->
+<!-- / html/utils/scriptinject.template (main,config/template/perl/page/upload.pl,88) -->
 </body></html>

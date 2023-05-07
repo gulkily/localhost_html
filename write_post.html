@@ -15,7 +15,7 @@
 .tag-slash,
 .tag-abuse {
 /* negative (red) tags */
-	color: #aa4040;
+	color: #c00000;
 	font-weight: bold;
 }
 
@@ -31,7 +31,7 @@
 .tag-like,
 .tag-vouch {
 /* positive (green) tags */
-	color: #60c060;
+	color: #008000;
 	font-weight: bold;
 }
 
@@ -74,19 +74,19 @@ div.txt {
 
 #eventLocation {
 /* event form */
-	background-color: #202020;
+	background-color: #ffffff;
 	padding: 5pt;
 }
 
 #eventDate {
 /* event form */
-	background-color: #282828;
+	background-color: #e0e0e0;
 	padding: 5pt;
 }
 
 #loadingIndicator, #spanLoadingIndicator, #ariaAlert {
-	color: #aaaaaa;
-	background-color: #484830;
+	color: #000000;
+	background-color: #f0f0d0;
 	padding: 3pt;
 	position: fixed;
 	top: 0;
@@ -99,8 +99,8 @@ div.txt {
 	/* style for links in loading indicator */
 }
 .notification {
-	color: #aaaaaa;
-	background-color: #484830;
+	color: #000000;
+	background-color: #f0f0d0;
 	padding: 3pt;
 	font-weight: bold;
 	padding: 3pt;
@@ -110,14 +110,14 @@ noscript, .noscript {
 }
 .menubar a, .titlebar a, .topmenubar a {
 	text-decoration: none;
-	color: #aaaaaa;
+	color: #000000;
 }
 nobr {
 	white-space:nowrap;
 }
 input[type=button], button, input[type=submit] {
-	color: #aaaaaa;
-	background-color: #202020
+	color: #000000;
+	background-color: #c0c0c0
 }
 /* end css/default.css */
 
@@ -159,76 +159,71 @@ form {
 
 /* / inbox_top.css */
 
-/* theme/dark/additional.css */
+/* theme/chicago/additional.css */
 body {
-	font-family: helvetica;
-	font-size: 14pt;
-	background-color: #222222;
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	background-color: #008080;
 }
-fieldset {
-	border-color: #666666;
-}
-.dialog {
-	border-radius: 5pt;
-	background-color: #202020;
-	font-family: tahoma, helvetica, arial, sans-serif;
-	font-size: 10pt;
-	box-shadow: 0 0 15pt #335555;
-	margin-bottom: 5pt;
-}
-button, input[type=button], input[type=submit], input[type=checkbox] {
-	background-color: #202020;
-	color: #aaaaaa;
-	border-color: #555555;
-	box-shadow: 0 0 5pt #335555;
+input {
 }
 input[type=text], input[type=password], select, option, textarea {
-	background-color: #222222;
-	color: #c0c0c0;
-	border-color: #555555;
+	background-color: #ffffff;
+	color: #000000;
 }
 #txtClock {
-	border: 0;
-	color: #8080c0;
+	border: 1pt inset #c0c0c0;
 }
-.statusbar td {
-	border: 1pt inset #202020;
+@media (prefers-color-scheme: dark) {
+
+}
+.beginner {
+}
+.dialog {
+	box-shadow: 5pt 5pt 0 rgba(0, 20, 20, 0.3);
+	border: #c0c0c0 outset 2pt;
+	background-color: #c0c0c0;
+	border-radius: 1pt;
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	margin-right: 8pt;
+	margin-bottom: 8pt;
 }
 textarea {
-    font-family: serif;
+    font-family: Fixedsys, "Courier New", Courier, monospace;
     font-size: 12pt;
 }
-fieldset {
-    border-radius: 3pt;
+
+.txt {
+/* regular text */
+	font-family: "Times New Roman", Times, sans-serif;
+	/*font-family: Tahoma, Arial, Helvetica, sans-serif;*/
+	font-size: 14pt;
 }
-.titlebar, .titlebar td {
-    border-radius: 3pt;
+a:focus, a:active {
+    color: red !important;
+    border-radius: 1pt;
 }
-*:focus, *:active {
-/* focused items are orange for visibility */
-    background-color: #402010 !important;
-    color: orange !important;
+textarea:focus {
+}
+input:focus {
 }
 #serverResponse {
-/* response from server */
-    background-color: #402820;
-    color: #aaaaaa;
+/* response messages from the server */
+    background-color: #ffc080;
+    color: #000000;
     padding: 5pt;
-    spacing: 5pt;
-    border: 2pt #202030 double;
-    display: block
+    border: 0;
+	box-shadow: 5pt 5pt 0 rgba(0, 20, 20, 0.5);
 }
-@media only screen and (min-width : 40em) {
-	.item-textart {
-		max-width: 90%;
-		background-color: #808080;
-	}
-	.dialog .txt {
-		max-width: 40em;
-	}
+#txtClock {
+	border: 1pt inset #c0c0c0;
+	background-color: #c0c0c0;
 }
 .fileHashShort {
 	text-decoration: underline dotted;
+}
+#spanDialogControls a {
+	color: #000080Text;
 }
 .titlebarButtons {
 	float: right;
@@ -236,8 +231,15 @@ fieldset {
 button.close, button.skip {
 	border: 0;
 	margin: 0;
+	font-weight: bold;
 }
-/* / theme/dark/additional.css */
+button:hover {
+	color: red;
+}
+#spanDialogControls a {
+	color: #ffffff;
+}
+/* / theme/chicago/additional.css */
 /* pre_time_sans.css */
 
 pre time {
@@ -249,11 +251,11 @@ pre time {
 -->
 </style>
 </head>
-<body link="#8888cc" vlink="#cc88cc" text="#aaaaaa" bgcolor="#404040" onclick="if (window.ShowPreNavigateNotification && event.target && (event.target.tagName == 'A') && !(event.target.onclick)) { ShowPreNavigateNotification(); }" onload="if (window.OnLoadEverything) { OnLoadEverything(); }" >
+<body link="#0000cc" vlink="#6000c0" text="#000000" bgcolor="#008080" onclick="if (window.ShowPreNavigateNotification && event.target && (event.target.tagName == 'A') && !(event.target.onclick)) { ShowPreNavigateNotification(); }" onload="if (window.OnLoadEverything) { OnLoadEverything(); }" >
 <b>
 <!-- template/topmenu2.template -->
-<table cellspacing=0 cellpadding=3 border=0 bgcolor="#202020" class=dialog id=topmenu>
-	<tr bgcolor="#202020" class=topmenubar>
+<table cellspacing=0 cellpadding=3 border=0 bgcolor="#c0c0c0" class=dialog id=topmenu>
+	<tr bgcolor="#c0c0c0" class=topmenubar>
 		<td colspan=2>
 			<big>
 				<big>
@@ -294,13 +296,13 @@ pre time {
 
 
 <!-- menuitem.template -->
-<a accesskey=a href="/authors.html"><u>A</u>uthors(3)</a>
+<a accesskey=a href="/authors.html"><u>A</u>uthors</a>
 <!-- / menuitem.template -->
 ;
 
 
 <!-- menuitem.template -->
-<a accesskey=g href="/tags.html">Ta<u>g</u>s(9)</a>
+<a accesskey=g href="/tags.html">Ta<u>g</u>s</a>
 <!-- / menuitem.template -->
 ;
 
@@ -316,10 +318,10 @@ pre time {
 			</big>
 		</td>
 	</tr>
-	<tr bgcolor="#202030" class=titlebar>
+	<tr bgcolor="#000080" class=titlebar>
 		<td>
 			<small>
-				<font color="#aaaaaa"><b>Welcome</b></font>
+				<font color="#ffffff"><b>Welcome</b></font>
 			</small>
 		</td>
 		<td align=right>
@@ -390,12 +392,12 @@ pre time {
 
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=write cellspacing=0 cellpadding=6 border=0 bgcolor="#202020" class=dialog>
+	<table id=write cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#202040" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#aaaaaa"><b>Write</b></font> <a href=#write>#</a><a name=write></a><br>
+		<font color="#ffffff"><b>Write</b></font> <a href=#write>#</a><a name=write></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -455,18 +457,53 @@ pre time {
 	</table>
 </font>
 <!-- / default/template/html/window/standard.template -->
-</main>
+<span class=advanced>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=Cart cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#000080" class=titlebar>
+	<td>
+		<font color="#ffffff"><b>Cart</b></font> <a href=#Cart>#</a><a name=Cart></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+
+		<tbody class=content><tr class=content><td>
+<!-- reply_cart.template -->
+<fieldset>
+	<span id=replyCartCount></span>
+	<noscript><b>*</b></noscript>
+</fieldset>
+<fieldset>
+	<a id=replyCartInsert onclick="if (window.insertReplyCart) { return insertReplyCart() + clearReplyCart(); }" href=#>Paste</a>
+</fieldset>
+<!-- / reply_cart.template -->
+</td></tr></tbody>
+
+		
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+</span></main>
 <span id=messages></span>
 <img src="/p.gif" alt="" height=1 width=1>
 <br><noscript>
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=Notice cellspacing=0 cellpadding=6 border=0 bgcolor="#202020" class=dialog>
+	<table id=Notice cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
 		
 <!-- titlebar.template -->
-<tr bgcolor="#202040" class=titlebar>
+<tr bgcolor="#000080" class=titlebar>
 	<td>
-		<font color="#aaaaaa"><b>Notice</b></font> <a href=#Notice>#</a><a name=Notice></a><br>
+		<font color="#ffffff"><b>Notice</b></font> <a href=#Notice>#</a><a name=Notice></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -484,10 +521,10 @@ pre time {
 </font>
 <!-- / default/template/html/window/standard.template -->
 </noscript>
-<!-- InjectJs: settings avatar write profile utils timestamp write_php puzzle translit voting fresh table_sort -->
+<!-- InjectJs: settings avatar write profile utils timestamp write_php puzzle translit voting reply_cart fresh table_sort -->
 
 
-<!-- html/utils/scriptinject.template -->
+<!-- html/utils/scriptinject.template (main,config/template/perl/page/write.pl,117) -->
 <script language=javascript><!--
 // == begin settings.js
 
@@ -519,7 +556,7 @@ function SetElementVisible (element, displayValue, bgColor, borderStyle) { // se
 	if (bgColor && (element.tagName != 'SPAN')) {
 		// background color
 		if (bgColor == 'initial') {
-			bgColor = '#202020';
+			bgColor = '#c0c0c0';
 		}
 
 		if (element.style.backgroundColor != bgColor) {
@@ -641,26 +678,26 @@ function ShowAll (t, container) { // t = clicked link ; container = document by 
 
 		var elements = container.getElementsByClassName('advanced');
 		for (var i = 0; i < elements.length; i++) {
-			SetElementVisible(elements[i], display, '#504040', 0);
+			SetElementVisible(elements[i], display, '#ffe0e0', 0);
 		}
 
 		if (0) { // #todo
 			var elements = container.getElementsByClassName('heading');
 			for (var i = 0; i < elements.length; i++) {
-				SetElementVisible(elements[i], display, '#504040', 0);
+				SetElementVisible(elements[i], display, '#ffe0e0', 0);
 			}
 			var elements = container.getElementsByClassName('menubar');
 			for (var i = 0; i < elements.length; i++) {
-				SetElementVisible(elements[i], display, '#504040', 0);
+				SetElementVisible(elements[i], display, '#ffe0e0', 0);
 			}
 			//var elements = container.getElementsByClassName('statusbar');
 			//for (var i = 0; i < elements.length; i++) {
-			//    SetElementVisible(elements[i], display, '#504040', 0);
+			//    SetElementVisible(elements[i], display, '#ffe0e0', 0);
 			//}
 		}
 		elements = container.getElementsByClassName('beginner');
 		for (var i = 0; i < elements.length; i++) {
-			SetElementVisible(elements[i], display, '#484830', 0);
+			SetElementVisible(elements[i], display, '#f0f0d0', 0);
 		}
 		elements = container.getElementsByClassName('expand');
 		for (var i = 0; i < elements.length; i++) {
@@ -764,7 +801,7 @@ function ShowAdvanced (force, container) { // show or hide controls based on pre
 
 			var bgColor = 'initial';
 			if (GetPrefs('advanced_highlight') == 1) { // check value of advanced_highlight preference
-				bgColor = '#504040'; // advanced_highlight
+				bgColor = '#ffe0e0'; // advanced_highlight
 			}
 
 			if (force || showAdvancedLastAction != (displayValue + bgColor)) {
@@ -810,7 +847,7 @@ function ShowAdvanced (force, container) { // show or hide controls based on pre
 
 			bgColor = 'initial';
 			if (GetPrefs('beginner_highlight') == 1) { // check value of beginner preference
-				bgColor = '#484830'; // beginner_highlight
+				bgColor = '#f0f0d0'; // beginner_highlight
 			}
 
 			if (force || showBeginnerLastAction != displayValue + bgColor) {
@@ -3386,7 +3423,7 @@ function ShowTimestamps () { // finds any class=timestamp, updates its displayed
 					}
 					if ((secs * (-1)) < 86400) {
 						// less than a day ago = highlight
-						var colorHighlightAlert = '#402820'; // templated
+						var colorHighlightAlert = '#ffc080'; // templated
 						if (colorHighlightAlert) {
 						    te[i].style.backgroundColor = colorHighlightAlert;
                         }
@@ -4351,6 +4388,183 @@ function SignVote (t, token) { // signs a vote from referenced vote button
 // == end voting.js
 
 
+// reply_cart.js
+
+// #todo fix name formatting case etc
+
+function insertReplyCart () {
+// function addItemToReplyCart () {
+// function ReplyCartAddItem () {
+	// #todo split this off into separate module
+
+	if (window.localStorage) {
+		var existingList = window.localStorage.getItem('replyCart') || '';
+
+		if (existingList) {
+			if (document.compose && document.compose.comment) {
+				if (document.compose.comment.value.indexOf(existingList) == -1) {
+					document.compose.comment.value = existingList + ' ' + document.compose.comment.value;
+				}
+			}
+		}
+		return false;
+	}
+} // insertReplyCart()
+
+function clearReplyCart () {
+	if (window.localStorage) {
+		window.localStorage.setItem('replyCart', '');
+	}
+
+	if (window.localStorage) {
+		if (document.getElementById('replyCartCount')) {
+			if (window.localStorage.getItem('replyCart')) {
+				document.getElementById('replyCartCount').innerHTML =
+					window.localStorage.getItem('replyCart').split('\n').length - 1;
+				//document.getElementById('replyCartCount').innerHTML = window.localStorage.getItem('replyCart').split(/\r\n|\r|\n/).length - 1;
+				// #todo fix overcount without assuming
+			} else {
+				document.getElementById('replyCartCount').innerHTML = 0;
+			}
+		}
+	}
+} // clearReplyCart()
+
+function addToReplyCartButton (fileHash, ths) { // also removes ;|
+// function addToReplyCart {
+// #todo should be called add or remove
+	// #todo split this off into separate module
+
+	if (window.localStorage) {
+		if (ths.innerHTML == '+cart') {
+			var existingList = window.localStorage.getItem('replyCart') || '';
+			var gt = unescape('%3E');
+			var newLine = gt + gt + fileHash + '\n';
+
+			if (existingList.indexOf(newLine) == -1) {
+				var newList = existingList + newLine;
+				window.localStorage.setItem('replyCart', newList);
+			}
+
+			if (window.displayNotification) {
+				var itemCount = window.localStorage.getItem('replyCart').split('\n').length - 1;
+				//displayNotification('Added to cart. (' + itemCount + ')', ths);
+				//displayNotification('Added to cart.', ths);
+			} else {
+			}
+
+			if (ths && ths.innerHTML) {
+				ths.innerHTML = '–cart';
+			}
+		} else {
+			var existingList = window.localStorage.getItem('replyCart') || '';
+			var gt = unescape('%3E');
+			var lineToRemove = gt + gt + fileHash + '\n';
+
+			if (existingList.indexOf(lineToRemove) != -1) {
+				//var newList = existingList + newLine;
+				var newList = existingList.replace(lineToRemove, '');
+				window.localStorage.setItem('replyCart', newList);
+			}
+
+			if (window.displayNotification) {
+				var itemCount = window.localStorage.getItem('replyCart').split('\n').length - 1;
+				//displayNotification('Removed from cart.', ths);
+				//displayNotification('Removed from cart. (' + itemCount + ')', ths);
+			} else {
+
+			}
+			if (ths && ths.innerHTML) {
+				ths.innerHTML = '+cart';
+			}
+		}
+
+		if (window.ReplyCartUpdateCount) {
+			ReplyCartUpdateCount();
+		}
+
+//		if (ths) {
+//			if (ths.remove) {
+//				ths.remove();
+//			}
+//		}
+
+		return false;
+	}
+} //addToReplyCartButton()
+
+function ReplyCartUpdateCount () {
+// function UpdateCart ()
+// function CartUpdate ()
+// function ReplyCartUpdate ()
+	if (document.getElementById && document.getElementById('replyCartCount')) {
+		if (window.localStorage.getItem('replyCart')) {
+			document.getElementById('replyCartCount').innerHTML =
+				window.localStorage.getItem('replyCart').split('\n').length - 1; //#cartCount
+			//document.getElementById('replyCartCount').innerHTML = window.localStorage.getItem('replyCart').split(/\r\n|\r|\n/).length - 1;
+			// #todo do not assume there's an extra line #bug
+		} else {
+			document.getElementById('replyCartCount').innerHTML = 0;
+		}
+	}
+
+	if (document.getElementsByClassName && document.getElementsByClassName('replyCartButton')) {
+		// update +/- buttons on page
+		// very basic
+
+		var cartButtons = document.getElementsByClassName('replyCartButton');
+		var existingList = window.localStorage.getItem('replyCart') || '';
+
+		if (existingList) {
+			for (var b = 0; b < cartButtons.length; b++) {
+				var fileHash = cartButtons[b].getAttribute('item-id');
+
+				if (fileHash) {
+					var gt = unescape('%3E');
+					var cartLine = gt + gt + fileHash + '\n';
+					var newCaption = '';
+
+					if (existingList.indexOf(cartLine) != -1) {
+						newCaption = '–cart';
+					} else {
+						newCaption = '+cart';
+					}
+					if (newCaption != cartButtons[b].innerHTML) {
+						cartButtons[b].innerHTML = newCaption;
+					}
+				}
+			}
+		} // existingList
+	} // feature check
+} // ReplyCartUpdateCount()
+
+function ReplyCartAddAll () {
+	//alert('DEBUG: ReplyCartAddAll()');
+
+	if (document.getElementsByClassName && document.getElementsByClassName('replyCartButton')) {
+		// update +/- buttons on page
+		// very basic
+
+		var cartButtons = document.getElementsByClassName('replyCartButton');
+		var existingList = window.localStorage.getItem('replyCart') || '';
+
+		if (existingList) {
+			for (var b = 0; b < cartButtons.length; b++) {
+				var fileHash = cartButtons[b].getAttribute('item-id');
+
+				if (fileHash) {
+					addToReplyCartButton(fileHash, cartButtons[b]);
+				}
+			}
+		} // existingList
+
+		ReplyCartUpdateCount();
+	} // feature check
+}
+
+// / reply_cart.js
+
+
 // == begin fresh.js
 var freshClient;
 //
@@ -4656,8 +4870,8 @@ function SortTable (t, sortOrder) {
 		return '';
 	}
 
-	var rowColor0 = '#202020';
-	var rowColor1 = '#282828';
+	var rowColor0 = '#ffffff';
+	var rowColor1 = '#e0e0e0';
 
 	sortOrder = sortOrder ? 1 : 0;
 
@@ -4861,5 +5075,5 @@ function SortTable (t, sortOrder) {
 
 // -->
 </script>
-<!-- / html/utils/scriptinject.template -->
+<!-- / html/utils/scriptinject.template (main,config/template/perl/page/write.pl,117) -->
 </body></html>
