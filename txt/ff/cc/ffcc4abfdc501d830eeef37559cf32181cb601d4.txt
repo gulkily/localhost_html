@@ -1,0 +1,9 @@
+#bug
+
+rest button does not work in netscape
+-- 
+
+--- 
+Cookie: B8C4384C992ED2F5
+Received: 1683444250
+Client: 85F8F334BBAA8992
