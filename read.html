@@ -121,40 +121,47 @@ input[type=button], button, input[type=submit] {
 }
 /* end css/default.css */
 
+/* dragging.css */
+
+/* should be called inline-block.css ? */
+
+/* makes some dialogs horizontal */
+table.dialog { /* inline-table table-block */
+	display: inline-block;
+	vertical-align: top;
+}
+form {
+	display: inline;
+}
+
+/*
+#topmenu.dialog {
+	position: fixed !important;
+	top: 0;
+	right: 0;
+}
+*/
+
+/* / dragging.css */
+
+.dialog .txt {
+	max-width: 30em;
+}
+
 /* inbox_top.css */
 
 #messages {
 	position: absolute !important;
-	top: 0 !important;
-	right: 0 !important;
 	margin-top: 5pt !important;
 }
 
+/* todo add option for this:
+	right: 0 !important;
+	top: 0 !important;
+*/
+
 /* / inbox_top.css */
 
-/* theme/hypercode/additional.css */
-
-* {
-	border-radius: 5pt !important;
-	font-family: georgia, "times new roman", serif !important;
-}
-input, textarea {
-	background-color: white !important;
-	border: 2pt solid #404040 !important;
-	margin-top: 2pt !important;
-}
-#serverResponse {
-	display: none;
-}
-#loadingIndicator, #ariaAlert {
-	background-color: yellow;
-	border-radius: 0 !important;
-}
-#spanSignAs {
-	float: right;
-}
-
-/* / theme/hypercode/additional.css */
 /* theme/chicago/additional.css */
 body {
 	font-family: Tahoma, Arial, Helvetica, sans-serif;
@@ -183,6 +190,9 @@ input[type=text], input[type=password], select, option, textarea {
 	font-size: 10pt;
 	margin-right: 8pt;
 	margin-bottom: 8pt;
+}
+.statusbar td {
+	border: 1pt inset #c0c0c0;
 }
 textarea {
     font-family: Fixedsys, "Courier New", Courier, monospace;
@@ -247,7 +257,7 @@ pre time {
 -->
 </style>
 </head>
-<body link="#0000cc" vlink="#6000c0" text="#000000" bgcolor="#008080" background="/hypercode_bg.jpg">
+<body link="#0000cc" vlink="#6000c0" text="#000000" bgcolor="#008080">
 <b>
 <!-- template/topmenu2.template -->
 <table cellspacing=0 cellpadding=3 border=0 bgcolor="#c0c0c0" class=dialog id=topmenu>
@@ -256,19 +266,49 @@ pre time {
 			<big>
 				<big>
 <!-- menuitem.template -->
-<a accesskey=w href="/write.html"><u>W</u>rite</a>
+<a accesskey=w href="/welcome.html"><u>W</u>elcome</a>
 <!-- / menuitem.template -->
 ;
 
 
 <!-- menuitem.template -->
-<a accesskey=a href="/active.html"><u>A</u>ctive</a>
+<a accesskey=t href="/threads.html"><u>T</u>hreads(49)</a>
 <!-- / menuitem.template -->
 ;
 
 
 <!-- menuitem.template -->
-<a accesskey=c href="/chain.html"><u>C</u>hain</a>
+<a accesskey=i href="/write.html">Wr<u>i</u>te</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=s href="/settings.html"><u>S</u>ettings</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=a href="/authors.html"><u>A</u>uthors(11)</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=p href="/people.html"><u>P</u>eople(3)</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=g href="/tags.html">Ta<u>g</u>s(23)</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=h href="/help.html"><u>H</u>elp</a>
 <!-- / menuitem.template -->
 </big>
 				<span class=advanced></span>
@@ -286,7 +326,122 @@ pre time {
 		</td>
 		<td align=right>
 			<small>
-				
+				<span id=spanDialogControls>
+<!-- layer_controls.template -->
+
+<noscript>*</noscript>
+
+<span>
+	<a id=btnAdvanced href=#
+		accesskey=o
+		onclick="
+			if (window.SetPrefs) {
+				SetPrefs('show_advanced', 1);
+				SetPrefs('advanced_highlight', 0);
+				SetPrefs('beginner', 0);
+				SetPrefs('beginner_highlight', 0);
+				SetPrefs('notify_on_change', 1);
+			}
+			if (window.ShowAdvanced) {
+				ShowAdvanced(0, 0);
+				return false;
+			}
+		"
+	>Expand</a>;
+
+	<a id=btnMinimal href=#
+		accesskey=n
+		onclick="
+			if (window.SetPrefs) {
+				SetPrefs('show_advanced', 0);
+				SetPrefs('admin', 0);
+			}
+			if (window.ShowAdvanced) {
+				ShowAdvanced(0, 0);
+				return false;
+			}
+		"
+	title=Minimal>Minimal</a>;
+
+	<a id=btnReprint href=# accesskey=r onclick="
+		var winLoc = window.location.href;
+		if (winLoc.indexOf('?')) {
+			winLoc = winLoc.substr(0, winLoc.indexOf('?'));
+		}
+		var d = new Date();
+		var n = d.getTime();
+		n = Math.ceil(n / 1000);
+		n = n + 86400;
+		winLoc = winLoc + '?time=' + n;
+		window.location = winLoc;
+		return false;
+	" title="Reprint">Reprint</a>;
+
+</span>
+
+<!-- / layer_controls.template -->
+
+<!-- dialog_controls.template 'Interface Controls' -->
+
+<span class=advanced>
+	<a id=btnCascade href=# onclick="
+		if (window.DraggingCascade) {
+			SetPrefs('draggable', 1);
+			DraggingInit(0);
+			DraggingMakeFit(0);
+			DraggingCascade();
+			DraggingInit(0);
+		}
+	" title=Cascade>Cascade</a>;
+
+	<a id=btnArrange href=# onclick="
+		if (window.DraggingRetile) {
+			SetPrefs('draggable', 1);
+			DraggingInit(0);
+			DraggingMakeFit(0);
+			DraggingRetile();
+			DraggingInit(0);
+		}
+	" title=Arrange>Arrange</a>;
+</span>
+
+<a id=btnAnnoy href=# onclick="
+	if (window.DraggingRetile) {
+		SetPrefs('draggable', 1);
+		SetPrefs('draggable_activate', 1);
+		SetPrefs('draggable_spawn', 1);
+		SetPrefs('draggable_spawn_focus', 1);
+		SetPrefs('draggable', 1);
+		SetPrefs('draggable_restore', 1);
+		SetPrefs('draggable_restore_collapsed', 1);
+		SetActiveDialog(GetParentDialog(this));
+		DraggingInit(0);
+		DraggingMakeFit(0);
+		DraggingInit(0);
+	}
+" title=Annoy>Annoy</a>;
+
+<a id=btnDraggingReset href=# onclick="
+	if (window.DraggingReset && window.SetPrefs) {
+		SetPrefs('beginner', 1);
+		SetPrefs('show_advanced', 0);
+		SetPrefs('show_admin', 0);
+		SetPrefs('draggable_activate', 0);
+		SetPrefs('draggable_spawn', 0);
+		SetPrefs('draggable_spawn_focus', 0);
+		SetPrefs('draggable', 0);
+		SetPrefs('draggable_restore', 0);
+		SetPrefs('draggable_scale', 0);
+		SetPrefs('draggable_restore_collapsed', 0);
+		DraggingReset();
+		//window.location = '/help.html'; #option
+		window.location.reload(false);
+	}
+" title="Reset">Reset</a>
+
+<!-- #todo redo this whole template -->
+<!-- / dialog_controls.template -->
+</span>
 			</small>
 		</td>
 	</tr>
@@ -466,7 +621,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/a9/39/a939dbc1.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683433790 title="00:29:50">00:29</time><!-- / timestamp_time.template --></a>;
+<a href="/a9/39/a939dbc1.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683433790 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>a939dbc1</span>;
@@ -478,6 +633,328 @@ pre time {
 <!-- / vote_button.template --><!-- vote_button.template -->
 <a
 	href="/post.html?comment=%23flag&replyto=a939dbc1fedf6754710372c43b6147cab4501995"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+<!-- add_to_reply_cart button requires js, but it is not enabled -->
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=f0c3ed78 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#000080" class=titlebar>
+	<td>
+		<font color="#ffffff"><b>make the interface more draggable</b></font> <a href=#f0c3ed78>#</a><a name=f0c3ed78></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/like.html"><font color="#c4eb7d">#</font>like</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/a5/b8/a5b8fd13.html">a5b8fd13..</a><br><br>make the interface more draggable<br><a href="/cb/36/cb366949.html">cb366949..</a><br><br>ok, I added some javascript for draggable dialogs.<br><br>===<br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/f0/c3/f0c3ed78.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683453579 title="05:59:39">05:59</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>f0c3ed78</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=f0c3ed78120c6d0e552aa9288500e04128bcde85"
+	class="tag-like">like(1)</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=f0c3ed78120c6d0e552aa9288500e04128bcde85"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+<!-- add_to_reply_cart button requires js, but it is not enabled -->
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=ae3a5940 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#000080" class=titlebar>
+	<td>
+		<font color="#ffffff"><b>asdfasdf</b></font> <a href=#ae3a5940>#</a><a name=ae3a5940></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/like.html"><font color="#c4eb7d">#</font>like</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">asdfasdf<br>ads<br>f<br>asdf<span class=admin><br>
+-- <br>
+<br>--- <br>[Cookie]<br>[Received]<br>[Client]<br></span><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/ae/3a/ae3a5940.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683453546 title="05:59:06">05:59</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>ae3a5940</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=ae3a59405aaffaa3792767b3f0f1da7da52d8e25"
+	class="tag-like">like(1)</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=ae3a59405aaffaa3792767b3f0f1da7da52d8e25"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+<!-- add_to_reply_cart button requires js, but it is not enabled -->
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=f8c47c69 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#000080" class=titlebar>
+	<td>
+		<font color="#ffffff"><b>add notarization chain</b></font> <a href=#f8c47c69>#</a><a name=f8c47c69></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/like.html"><font color="#c4eb7d">#</font>like</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/bd/48/bd481fd3.html">bd481fd3..</a><br><br>add notarization chain<br><a href="/8f/db/8fdb1234.html">8fdb1234..</a><br><br>ok, I added a notarization chain page.<br><br>===<br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/f8/c4/f8c47c69.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683453403 title="05:56:43">05:56</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>f8c47c69</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=f8c47c69dae0817eb941ff64631428a9e1d1f99e"
+	class="tag-like">like(1)</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=f8c47c69dae0817eb941ff64631428a9e1d1f99e"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+<!-- add_to_reply_cart button requires js, but it is not enabled -->
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=4368a9ef cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#000080" class=titlebar>
+	<td>
+		<font color="#ffffff"><b>monochrome 0</b></font> <a href=#4368a9ef>#</a><a name=4368a9ef></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/like.html"><font color="#c4eb7d">#</font>like</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/be/80/be800b78.html">be800b78..</a><br><br>monochrome 0<br><a href="/d3/4e/d34e476c.html">d34e476c..</a><br><br>=================<br>Rejoice always<br>Pray without ceasing<br>Give thanks in all circumstances<br>=================<br>pollyanna b044379e<br>=================<br>echo 0 &gt; config/setting/html/monochrome<br><br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/43/68/4368a9ef.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683453360 title="05:56:00">05:56</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>4368a9ef</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=4368a9ef7aa472286cba940b9e4bdf7877307afb"
+	class="tag-like">like(1)</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=4368a9ef7aa472286cba940b9e4bdf7877307afb"
+	class="tag-flag">flag</a>
+<!-- / vote_button.template -->
+<!-- status_bar.template -->
+<!-- add_to_reply_cart button requires js, but it is not enabled -->
+	</td>
+</tr>
+<!-- / window/status.template -->
+
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+<replies></replies>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table id=1dcf0aa7 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#000080" class=titlebar>
+	<td>
+		<font color="#ffffff"><b>add profile page</b></font> <a href=#1dcf0aa7>#</a><a name=1dcf0aa7></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+<!-- header_wrapper.template -->
+<tr class=heading>
+	
+<!-- header_column.template -->
+<th align=left><!-- tag_link.template --><a href="/tag/like.html"><font color="#c4eb7d">#</font>like</a><!-- / tag_link.template --><br></th>
+<!-- / header_column.template -->
+
+</tr>
+<!-- / header_wrapper.template -->
+
+
+		<tbody class=content><tr class=content><td>
+<!-- item/item.template -->
+<p class="txt">&gt;&gt;<a href="/2f/26/2f2635c1.html">2f2635c1..</a><br><br>add profile page<br><a href="/e1/3e/e13e31e4.html">e13e31e4..</a><br><br>ok, I added profile page with basic cookie authentication.<br><br>===<br></p>
+<!-- / item/item.template -->
+</td></tr></tbody>
+
+		
+<!-- window/status.template -->
+<tr class=statusbar>
+	<td>
+		
+<!-- status_bar.template -->
+<a href="/1d/cf/1dcf0aa7.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683453336 title="05:55:36">05:55</time><!-- / timestamp_time.template --></a>;
+
+<span class=advanced>
+	<span class=fileHashShort>1dcf0aa7</span>;
+</span>
+<!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23like&replyto=1dcf0aa7f91c932d26d302851fd0bb4e81fa3b90"
+	class="tag-like">like(1)</a>;
+<!-- / vote_button.template --><!-- vote_button.template -->
+<a
+	href="/post.html?comment=%23flag&replyto=1dcf0aa7f91c932d26d302851fd0bb4e81fa3b90"
 	class="tag-flag">flag</a>
 <!-- / vote_button.template -->
 <!-- status_bar.template -->
@@ -658,7 +1135,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/79/04/79043076.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446523 title="04:02:03">04:02</time><!-- / timestamp_time.template --></a>;
+<a href="/79/04/79043076.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446523 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>79043076</span>;
@@ -722,7 +1199,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/e4/83/e48301e0.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446434 title="04:00:34">04:00</time><!-- / timestamp_time.template --></a>;
+<a href="/e4/83/e48301e0.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446434 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>e48301e0</span>;
@@ -786,7 +1263,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/7a/c0/7ac061be.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446415 title="04:00:15">04:00</time><!-- / timestamp_time.template --></a>;
+<a href="/7a/c0/7ac061be.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446415 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>7ac061be</span>;
@@ -850,7 +1327,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/ac/37/ac377551.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446350 title="03:59:10">03:59</time><!-- / timestamp_time.template --></a>;
+<a href="/ac/37/ac377551.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446350 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>ac377551</span>;
@@ -914,7 +1391,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/85/c2/85c2d7a9.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446316 title="03:58:36">03:58</time><!-- / timestamp_time.template --></a>;
+<a href="/85/c2/85c2d7a9.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446316 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>85c2d7a9</span>;
@@ -978,7 +1455,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/2c/44/2c445351.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446149 title="03:55:49">03:55</time><!-- / timestamp_time.template --></a>;
+<a href="/2c/44/2c445351.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446149 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>2c445351</span>;
@@ -1042,7 +1519,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/e2/32/e2325f0e.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446145 title="03:55:45">03:55</time><!-- / timestamp_time.template --></a>;
+<a href="/e2/32/e2325f0e.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446145 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>e2325f0e</span>;
@@ -1106,7 +1583,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/2b/9e/2b9e2848.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446095 title="03:54:55">03:54</time><!-- / timestamp_time.template --></a>;
+<a href="/2b/9e/2b9e2848.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446095 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>2b9e2848</span>;
@@ -1170,7 +1647,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/63/7c/637c4182.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446082 title="03:54:42">03:54</time><!-- / timestamp_time.template --></a>;
+<a href="/63/7c/637c4182.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683446082 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>637c4182</span>;
@@ -1236,7 +1713,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/09/c1/09c1c727.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683445977 title="03:52:57">03:52</time><!-- / timestamp_time.template --></a>;
+<a href="/09/c1/09c1c727.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683445977 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>09c1c727</span>;
@@ -1300,7 +1777,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/21/a4/21a431f9.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443952 title="03:19:12">03:19</time><!-- / timestamp_time.template --></a>;
+<a href="/21/a4/21a431f9.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443952 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>21a431f9</span>;
@@ -1364,7 +1841,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/eb/c5/ebc5c48e.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443896 title="03:18:16">03:18</time><!-- / timestamp_time.template --></a>;
+<a href="/eb/c5/ebc5c48e.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443896 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>ebc5c48e</span>;
@@ -1428,7 +1905,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/3d/6c/3d6cc58a.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443832 title="03:17:12">03:17</time><!-- / timestamp_time.template --></a>;
+<a href="/3d/6c/3d6cc58a.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443832 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>3d6cc58a</span>;
@@ -1492,7 +1969,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/57/4e/574e8a96.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443794 title="03:16:34">03:16</time><!-- / timestamp_time.template --></a>;
+<a href="/57/4e/574e8a96.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443794 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>574e8a96</span>;
@@ -1556,7 +2033,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/93/a3/93a324ac.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443750 title="03:15:50">03:15</time><!-- / timestamp_time.template --></a>;
+<a href="/93/a3/93a324ac.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443750 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>93a324ac</span>;
@@ -1620,7 +2097,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/ca/7f/ca7f5de4.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443697 title="03:14:57">03:14</time><!-- / timestamp_time.template --></a>;
+<a href="/ca/7f/ca7f5de4.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443697 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>ca7f5de4</span>;
@@ -1684,7 +2161,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/3a/a4/3aa47d66.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443069 title="03:04:29">03:04</time><!-- / timestamp_time.template --></a>;
+<a href="/3a/a4/3aa47d66.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443069 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>3aa47d66</span>;
@@ -1748,7 +2225,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/8c/e6/8ce6fd09.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443060 title="03:04:20">03:04</time><!-- / timestamp_time.template --></a>;
+<a href="/8c/e6/8ce6fd09.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683443060 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>8ce6fd09</span>;
@@ -1814,7 +2291,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/2d/7e/2d7efdce.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683442756 title="02:59:16">02:59</time><!-- / timestamp_time.template --></a>;
+<a href="/2d/7e/2d7efdce.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683442756 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>2d7efdce</span>;
@@ -1878,7 +2355,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/f4/5a/f45afada.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683442141 title="02:49:01">02:49</time><!-- / timestamp_time.template --></a>;
+<a href="/f4/5a/f45afada.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683442141 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>f45afada</span>;
@@ -1944,7 +2421,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/e8/cf/e8cf2e35.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683441809 title="02:43:29">02:43</time><!-- / timestamp_time.template --></a>;
+<a href="/e8/cf/e8cf2e35.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683441809 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>e8cf2e35</span>;
@@ -2008,7 +2485,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/ee/58/ee58f4cd.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683440784 title="02:26:24">02:26</time><!-- / timestamp_time.template --></a>;
+<a href="/ee/58/ee58f4cd.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683440784 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>ee58f4cd</span>;
@@ -2072,7 +2549,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/ce/55/ce557d3b.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683438649 title="01:50:49">01:50</time><!-- / timestamp_time.template --></a>;
+<a href="/ce/55/ce557d3b.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683438649 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>ce557d3b</span>;
@@ -2507,7 +2984,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/39/2e/392ea2d8.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683434549 title="00:42:29">00:42</time><!-- / timestamp_time.template --></a>;
+<a href="/39/2e/392ea2d8.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683434549 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>392ea2d8</span>;
@@ -3260,7 +3737,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/cb/69/cb693d92.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683433988 title="00:33:08">00:33</time><!-- / timestamp_time.template --></a>;
+<a href="/cb/69/cb693d92.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683433988 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>cb693d92</span>;
@@ -3698,7 +4175,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/1b/3a/1b3a2245.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683434476 title="00:41:16">00:41</time><!-- / timestamp_time.template --></a>;
+<a href="/1b/3a/1b3a2245.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683434476 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>1b3a2245</span>;
@@ -4886,7 +5363,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/64/38/643826ca.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683433865 title="00:31:05">00:31</time><!-- / timestamp_time.template --></a>;
+<a href="/64/38/643826ca.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683433865 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>643826ca</span>;
@@ -5006,7 +5483,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/d4/8e/d48e8b4a.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683433905 title="00:31:45">00:31</time><!-- / timestamp_time.template --></a>;
+<a href="/d4/8e/d48e8b4a.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683433905 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>d48e8b4a</span>;
@@ -5324,7 +5801,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/2b/17/2b170d6c.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683434790 title="00:46:30">00:46</time><!-- / timestamp_time.template --></a>;
+<a href="/2b/17/2b170d6c.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683434790 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>2b170d6c</span>;
@@ -6146,7 +6623,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/f2/29/f2295c40.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683433933 title="00:32:13">00:32</time><!-- / timestamp_time.template --></a>;
+<a href="/f2/29/f2295c40.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683433933 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>f2295c40</span>;
@@ -6332,7 +6809,7 @@ pre time {
 	<td>
 		
 <!-- status_bar.template -->
-<a href="/4e/71/4e71ff92.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683433840 title="00:30:40">00:30</time><!-- / timestamp_time.template --></a>;
+<a href="/4e/71/4e71ff92.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683433840 title="05/07">05/07</time><!-- / timestamp_time.template --></a>;
 
 <span class=advanced>
 	<span class=fileHashShort>4e71ff92</span>;
@@ -6344,324 +6821,6 @@ pre time {
 <!-- / vote_button.template --><!-- vote_button.template -->
 <a
 	href="/post.html?comment=%23flag&replyto=4e71ff926e378c9105c54e2151279c1e28f1fbe8"
-	class="tag-flag">flag</a>
-<!-- / vote_button.template -->
-<!-- status_bar.template -->
-<!-- add_to_reply_cart button requires js, but it is not enabled -->
-	</td>
-</tr>
-<!-- / window/status.template -->
-
-	</table>
-</font>
-<!-- / default/template/html/window/standard.template -->
-<replies></replies>
-<!-- default/template/html/window/standard.template -->
-<font face=arial>
-	<table id=fc818a30 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
-		
-<!-- titlebar.template -->
-<tr bgcolor="#000080" class=titlebar>
-	<td>
-		<font color="#ffffff"><b>Cool approach. This nicely fits in the trend of SQL-as-much-as-</b></font> <a href=#fc818a30>#</a><a name=fc818a30></a><br>
-		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
-	</td>
-</tr>
-<!-- / titlebar.template -->
-
-
-		
-
-		
-<!-- header_wrapper.template -->
-<tr class=heading>
-	
-<!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
-<!-- / header_column.template -->
-
-</tr>
-<!-- / header_wrapper.template -->
-
-
-		<tbody class=content><tr class=content><td>
-<!-- item/item.template -->
-<p class="txt">Cool approach. This nicely fits in the trend of SQL-as-much-as-possible because that makes it just a tiny bit more accessible. Definitely going to play with this in the next few days.<br>(edit:)<br>Being able to get training data from a SQL view is by far the nicest. Keep it up!<span class=admin><br>
--- <br>
-#f43e0c4c<br>--- <br>[Received]<br></span><br></p>
-<!-- / item/item.template -->
-</td></tr></tbody>
-
-		
-<!-- window/status.template -->
-<tr class=statusbar>
-	<td>
-		
-<!-- status_bar.template -->
-<a href="/fc/81/fc818a30.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683126730 title="05/03">05/03</time><!-- / timestamp_time.template --></a>;
-
-<span class=advanced>
-	<span class=fileHashShort>fc818a30</span>;
-</span>
-<!-- vote_button.template -->
-<a
-	href="/post.html?comment=%23like&replyto=fc818a3080f2d4a5323b5bbc81722336156a4c96"
-	class="tag-like">like</a>;
-<!-- / vote_button.template --><!-- vote_button.template -->
-<a
-	href="/post.html?comment=%23flag&replyto=fc818a3080f2d4a5323b5bbc81722336156a4c96"
-	class="tag-flag">flag</a>
-<!-- / vote_button.template -->
-<!-- status_bar.template -->
-<!-- add_to_reply_cart button requires js, but it is not enabled -->
-	</td>
-</tr>
-<!-- / window/status.template -->
-
-	</table>
-</font>
-<!-- / default/template/html/window/standard.template -->
-<replies></replies>
-<!-- default/template/html/window/standard.template -->
-<font face=arial>
-	<table id=fc573821 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
-		
-<!-- titlebar.template -->
-<tr bgcolor="#000080" class=titlebar>
-	<td>
-		<font color="#ffffff"><b>It looks like this is running Python to do the actual ML?</b></font> <a href=#fc573821>#</a><a name=fc573821></a><br>
-		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
-	</td>
-</tr>
-<!-- / titlebar.template -->
-
-
-		
-
-		
-<!-- header_wrapper.template -->
-<tr class=heading>
-	
-<!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
-<!-- / header_column.template -->
-
-</tr>
-<!-- / header_wrapper.template -->
-
-
-		<tbody class=content><tr class=content><td>
-<!-- item/item.template -->
-<p class="txt">It looks like this is running Python to do the actual ML?<br>There’s nothing stopping you from reading database table structures directly into memory in Python or R now.  You don’t need an intermediate data store.<br>I agree that running training on production instances would be a bad idea.  First, you need to denormalise data for ML, and secondly you typically don’t want your training data to be constantly changing.<span class=admin><br>
--- <br>
-#f43e0c4c<br>--- <br>[Received]<br></span><br></p>
-<!-- / item/item.template -->
-</td></tr></tbody>
-
-		
-<!-- window/status.template -->
-<tr class=statusbar>
-	<td>
-		
-<!-- status_bar.template -->
-<a href="/fc/57/fc573821.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683126727 title="05/03">05/03</time><!-- / timestamp_time.template --></a>;
-
-<span class=advanced>
-	<span class=fileHashShort>fc573821</span>;
-</span>
-<!-- vote_button.template -->
-<a
-	href="/post.html?comment=%23like&replyto=fc573821c7b6e41bbdad7d131a06d8332fb65848"
-	class="tag-like">like</a>;
-<!-- / vote_button.template --><!-- vote_button.template -->
-<a
-	href="/post.html?comment=%23flag&replyto=fc573821c7b6e41bbdad7d131a06d8332fb65848"
-	class="tag-flag">flag</a>
-<!-- / vote_button.template -->
-<!-- status_bar.template -->
-<!-- add_to_reply_cart button requires js, but it is not enabled -->
-	</td>
-</tr>
-<!-- / window/status.template -->
-
-	</table>
-</font>
-<!-- / default/template/html/window/standard.template -->
-<replies></replies>
-<!-- default/template/html/window/standard.template -->
-<font face=arial>
-	<table id=60db9fbd cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
-		
-<!-- titlebar.template -->
-<tr bgcolor="#000080" class=titlebar>
-	<td>
-		<font color="#ffffff"><b>why did you add the tags page?</b></font> <a href=#60db9fbd>#</a><a name=60db9fbd></a><br>
-		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
-	</td>
-</tr>
-<!-- / titlebar.template -->
-
-
-		
-
-		
-
-		<tbody class=content><tr class=content><td>
-<!-- item/item.template -->
-<p class="txt">&gt;&gt;<a href="/d6/61/d6614ef2.html">d6614ef2..</a><br><br>why did you add the tags page?<br><br></p>
-<!-- / item/item.template -->
-</td></tr></tbody>
-
-		
-<!-- window/status.template -->
-<tr class=statusbar>
-	<td>
-		
-<!-- status_bar.template -->
-<a href="/60/db/60db9fbd.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683126456 title="05/03">05/03</time><!-- / timestamp_time.template --></a>;
-
-<span class=advanced>
-	<span class=fileHashShort>60db9fbd</span>;
-</span>
-<!-- vote_button.template -->
-<a
-	href="/post.html?comment=%23like&replyto=60db9fbda66ad46a52cecff394c35dd17b4ae44c"
-	class="tag-like">like</a>;
-<!-- / vote_button.template --><!-- vote_button.template -->
-<a
-	href="/post.html?comment=%23flag&replyto=60db9fbda66ad46a52cecff394c35dd17b4ae44c"
-	class="tag-flag">flag</a>
-<!-- / vote_button.template -->
-<!-- status_bar.template -->
-<!-- add_to_reply_cart button requires js, but it is not enabled -->
-	</td>
-</tr>
-<!-- / window/status.template -->
-
-	</table>
-</font>
-<!-- / default/template/html/window/standard.template -->
-<replies></replies>
-<!-- default/template/html/window/standard.template -->
-<font face=arial>
-	<table id=181f0dde cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
-		
-<!-- titlebar.template -->
-<tr bgcolor="#000080" class=titlebar>
-	<td>
-		<font color="#ffffff"><b>Seems like a great idea. When you look at many ML frameworks ha</b></font> <a href=#181f0dde>#</a><a name=181f0dde></a><br>
-		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
-	</td>
-</tr>
-<!-- / titlebar.template -->
-
-
-		
-
-		
-<!-- header_wrapper.template -->
-<tr class=heading>
-	
-<!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
-<!-- / header_column.template -->
-
-</tr>
-<!-- / header_wrapper.template -->
-
-
-		<tbody class=content><tr class=content><td>
-<!-- item/item.template -->
-<p class="txt">Seems like a great idea. When you look at many ML frameworks half the code and learning overhead is data schlepping code and table like structures that &quot;reinvent&quot; the schema that already exists inside a database. Not to mention, there can be security concerns from dumping large amounts of data out of the primary store (how are you going to GDPR delete that stuff later on?). So why not use it natively where the data already is?<br>For anything substantive it seems like a bad idea to run this on your primary store since the last thing you want to do is eat up precious CPU and RAM needed by your OLTP database. But in a data warehouse or similar replicated setup, it seems like a really neat idea.<span class=admin><br>
--- <br>
-#f43e0c4c<br>--- <br>[Received]<br></span><br></p>
-<!-- / item/item.template -->
-</td></tr></tbody>
-
-		
-<!-- window/status.template -->
-<tr class=statusbar>
-	<td>
-		
-<!-- status_bar.template -->
-<a href="/18/1f/181f0dde.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683126726 title="05/03">05/03</time><!-- / timestamp_time.template --></a>;
-
-<span class=advanced>
-	<span class=fileHashShort>181f0dde</span>;
-</span>
-<!-- vote_button.template -->
-<a
-	href="/post.html?comment=%23like&replyto=181f0dde082d41ecf96afbae693b1c580e629158"
-	class="tag-like">like</a>;
-<!-- / vote_button.template --><!-- vote_button.template -->
-<a
-	href="/post.html?comment=%23flag&replyto=181f0dde082d41ecf96afbae693b1c580e629158"
-	class="tag-flag">flag</a>
-<!-- / vote_button.template -->
-<!-- status_bar.template -->
-<!-- add_to_reply_cart button requires js, but it is not enabled -->
-	</td>
-</tr>
-<!-- / window/status.template -->
-
-	</table>
-</font>
-<!-- / default/template/html/window/standard.template -->
-<replies></replies>
-<!-- default/template/html/window/standard.template -->
-<font face=arial>
-	<table id=c4f88776 cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
-		
-<!-- titlebar.template -->
-<tr bgcolor="#000080" class=titlebar>
-	<td>
-		<font color="#ffffff"><b>Congratulations on the launch!</b></font> <a href=#c4f88776>#</a><a name=c4f88776></a><br>
-		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
-	</td>
-</tr>
-<!-- / titlebar.template -->
-
-
-		
-
-		
-<!-- header_wrapper.template -->
-<tr class=heading>
-	
-<!-- header_column.template -->
-<th align=left><!-- tag_link.template --><a href="/tag/f43e0c4c.html"><font color="#64425f">#</font>f43e0c4c</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/hashtag.html"><font color="#e3dde1">#</font>hashtag</a><!-- / tag_link.template -->; <!-- tag_link.template --><a href="/tag/received.html"><font color="#38428a">#</font>received</a><!-- / tag_link.template --><br></th>
-<!-- / header_column.template -->
-
-</tr>
-<!-- / header_wrapper.template -->
-
-
-		<tbody class=content><tr class=content><td>
-<!-- item/item.template -->
-<p class="txt">Congratulations on the launch!<br>This is the most exciting ML related project I've seen in a while, Mainly because the barrier for entry seems low as anyone with PG database could apply a model on them using PostgresML if I understood the premise correctly.<br>Most of the comments here seems to regarding separating the compute from the database machine which it seems isn't possible right now with PostgresML, But the GitHub reads at the start:<br>&gt; The system runs Postgres with the pgml-extension installed on port 5433 by default, *just in case you happen to be running Postgres already*:<br><br>  $ psql -U postgres -h 127.0.0.1 -p 5433 -d pgml_development<br><br><br>I think the second part needs to be clarified better, Is it installing PGML extension on a machine running a existing PG database and connecting to it (or) does it mean just starting the postgres session of the PGML docker package?<span class=admin><br>
--- <br>
-#f43e0c4c<br>--- <br>[Received]<br></span><br></p>
-<!-- / item/item.template -->
-</td></tr></tbody>
-
-		
-<!-- window/status.template -->
-<tr class=statusbar>
-	<td>
-		
-<!-- status_bar.template -->
-<a href="/c4/f8/c4f88776.html"><!-- timestamp_time.template --><time class=timestamp datetime=1683126691 title="05/03">05/03</time><!-- / timestamp_time.template --></a>;
-
-<span class=advanced>
-	<span class=fileHashShort>c4f88776</span>;
-</span>
-<!-- vote_button.template -->
-<a
-	href="/post.html?comment=%23like&replyto=c4f88776bf599c6774c6eea8d67124b828fa9a1d"
-	class="tag-like">like</a>;
-<!-- / vote_button.template --><!-- vote_button.template -->
-<a
-	href="/post.html?comment=%23flag&replyto=c4f88776bf599c6774c6eea8d67124b828fa9a1d"
 	class="tag-flag">flag</a>
 <!-- / vote_button.template -->
 <!-- status_bar.template -->

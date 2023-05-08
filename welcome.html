@@ -121,40 +121,47 @@ input[type=button], button, input[type=submit] {
 }
 /* end css/default.css */
 
+/* dragging.css */
+
+/* should be called inline-block.css ? */
+
+/* makes some dialogs horizontal */
+table.dialog { /* inline-table table-block */
+	display: inline-block;
+	vertical-align: top;
+}
+form {
+	display: inline;
+}
+
+/*
+#topmenu.dialog {
+	position: fixed !important;
+	top: 0;
+	right: 0;
+}
+*/
+
+/* / dragging.css */
+
+.dialog .txt {
+	max-width: 30em;
+}
+
 /* inbox_top.css */
 
 #messages {
 	position: absolute !important;
-	top: 0 !important;
-	right: 0 !important;
 	margin-top: 5pt !important;
 }
 
+/* todo add option for this:
+	right: 0 !important;
+	top: 0 !important;
+*/
+
 /* / inbox_top.css */
 
-/* theme/hypercode/additional.css */
-
-* {
-	border-radius: 5pt !important;
-	font-family: georgia, "times new roman", serif !important;
-}
-input, textarea {
-	background-color: white !important;
-	border: 2pt solid #404040 !important;
-	margin-top: 2pt !important;
-}
-#serverResponse {
-	display: none;
-}
-#loadingIndicator, #ariaAlert {
-	background-color: yellow;
-	border-radius: 0 !important;
-}
-#spanSignAs {
-	float: right;
-}
-
-/* / theme/hypercode/additional.css */
 /* theme/chicago/additional.css */
 body {
 	font-family: Tahoma, Arial, Helvetica, sans-serif;
@@ -183,6 +190,9 @@ input[type=text], input[type=password], select, option, textarea {
 	font-size: 10pt;
 	margin-right: 8pt;
 	margin-bottom: 8pt;
+}
+.statusbar td {
+	border: 1pt inset #c0c0c0;
 }
 textarea {
     font-family: Fixedsys, "Courier New", Courier, monospace;
@@ -247,7 +257,7 @@ pre time {
 -->
 </style>
 </head>
-<body link="#0000cc" vlink="#6000c0" text="#000000" bgcolor="#008080" background="/hypercode_bg.jpg">
+<body link="#0000cc" vlink="#6000c0" text="#000000" bgcolor="#008080">
 <b>
 <!-- template/topmenu2.template -->
 <table cellspacing=0 cellpadding=3 border=0 bgcolor="#c0c0c0" class=dialog id=topmenu>
@@ -256,19 +266,49 @@ pre time {
 			<big>
 				<big>
 <!-- menuitem.template -->
-<a accesskey=w href="/write.html"><u>W</u>rite</a>
+<a accesskey=w href="/welcome.html"><u>W</u>elcome</a>
 <!-- / menuitem.template -->
 ;
 
 
 <!-- menuitem.template -->
-<a accesskey=a href="/active.html"><u>A</u>ctive</a>
+<a accesskey=t href="/threads.html"><u>T</u>hreads(49)</a>
 <!-- / menuitem.template -->
 ;
 
 
 <!-- menuitem.template -->
-<a accesskey=c href="/chain.html"><u>C</u>hain</a>
+<a accesskey=i href="/write.html">Wr<u>i</u>te</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=s href="/settings.html"><u>S</u>ettings</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=a href="/authors.html"><u>A</u>uthors(11)</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=p href="/people.html"><u>P</u>eople(3)</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=g href="/tags.html">Ta<u>g</u>s(23)</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=h href="/help.html"><u>H</u>elp</a>
 <!-- / menuitem.template -->
 </big>
 				<span class=advanced></span>
@@ -286,7 +326,122 @@ pre time {
 		</td>
 		<td align=right>
 			<small>
-				
+				<span id=spanDialogControls>
+<!-- layer_controls.template -->
+
+<noscript>*</noscript>
+
+<span>
+	<a id=btnAdvanced href=#
+		accesskey=o
+		onclick="
+			if (window.SetPrefs) {
+				SetPrefs('show_advanced', 1);
+				SetPrefs('advanced_highlight', 0);
+				SetPrefs('beginner', 0);
+				SetPrefs('beginner_highlight', 0);
+				SetPrefs('notify_on_change', 1);
+			}
+			if (window.ShowAdvanced) {
+				ShowAdvanced(0, 0);
+				return false;
+			}
+		"
+	>Expand</a>;
+
+	<a id=btnMinimal href=#
+		accesskey=n
+		onclick="
+			if (window.SetPrefs) {
+				SetPrefs('show_advanced', 0);
+				SetPrefs('admin', 0);
+			}
+			if (window.ShowAdvanced) {
+				ShowAdvanced(0, 0);
+				return false;
+			}
+		"
+	title=Minimal>Minimal</a>;
+
+	<a id=btnReprint href=# accesskey=r onclick="
+		var winLoc = window.location.href;
+		if (winLoc.indexOf('?')) {
+			winLoc = winLoc.substr(0, winLoc.indexOf('?'));
+		}
+		var d = new Date();
+		var n = d.getTime();
+		n = Math.ceil(n / 1000);
+		n = n + 86400;
+		winLoc = winLoc + '?time=' + n;
+		window.location = winLoc;
+		return false;
+	" title="Reprint">Reprint</a>;
+
+</span>
+
+<!-- / layer_controls.template -->
+
+<!-- dialog_controls.template 'Interface Controls' -->
+
+<span class=advanced>
+	<a id=btnCascade href=# onclick="
+		if (window.DraggingCascade) {
+			SetPrefs('draggable', 1);
+			DraggingInit(0);
+			DraggingMakeFit(0);
+			DraggingCascade();
+			DraggingInit(0);
+		}
+	" title=Cascade>Cascade</a>;
+
+	<a id=btnArrange href=# onclick="
+		if (window.DraggingRetile) {
+			SetPrefs('draggable', 1);
+			DraggingInit(0);
+			DraggingMakeFit(0);
+			DraggingRetile();
+			DraggingInit(0);
+		}
+	" title=Arrange>Arrange</a>;
+</span>
+
+<a id=btnAnnoy href=# onclick="
+	if (window.DraggingRetile) {
+		SetPrefs('draggable', 1);
+		SetPrefs('draggable_activate', 1);
+		SetPrefs('draggable_spawn', 1);
+		SetPrefs('draggable_spawn_focus', 1);
+		SetPrefs('draggable', 1);
+		SetPrefs('draggable_restore', 1);
+		SetPrefs('draggable_restore_collapsed', 1);
+		SetActiveDialog(GetParentDialog(this));
+		DraggingInit(0);
+		DraggingMakeFit(0);
+		DraggingInit(0);
+	}
+" title=Annoy>Annoy</a>;
+
+<a id=btnDraggingReset href=# onclick="
+	if (window.DraggingReset && window.SetPrefs) {
+		SetPrefs('beginner', 1);
+		SetPrefs('show_advanced', 0);
+		SetPrefs('show_admin', 0);
+		SetPrefs('draggable_activate', 0);
+		SetPrefs('draggable_spawn', 0);
+		SetPrefs('draggable_spawn_focus', 0);
+		SetPrefs('draggable', 0);
+		SetPrefs('draggable_restore', 0);
+		SetPrefs('draggable_scale', 0);
+		SetPrefs('draggable_restore_collapsed', 0);
+		DraggingReset();
+		//window.location = '/help.html'; #option
+		window.location.reload(false);
+	}
+" title="Reset">Reset</a>
+
+<!-- #todo redo this whole template -->
+<!-- / dialog_controls.template -->
+</span>
 			</small>
 		</td>
 	</tr>
@@ -314,9 +469,15 @@ pre time {
 
 		<tbody class=content><tr class=content><td>
 <!-- welcome.template -->
-Welcome to HyperCode, <br> 
-an experimental web space for you. <br> 
-Please, <a href="/write.html" onclick="InjectDialog('write'); return false;">be nice</a>.
+
+<p>
+	Welcome to welcome page.<br>
+	<br>
+	This message is designed to welcome you.<br>
+	<br>
+	Operator, please enhance this message.
+</p>
+
 <!-- / welcome.template -->
 </td></tr></tbody>
 
