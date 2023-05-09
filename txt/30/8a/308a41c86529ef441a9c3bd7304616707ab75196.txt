@@ -1,0 +1,13 @@
+>>77f9333c53fb8752f289fd868682209f40e179bc
+
+table_sort 1
+ca8e1331a11044711525aedf7df98df8abd612b0
+
+=================
+Rejoice always
+Pray without ceasing
+Give thanks in all circumstances
+=================
+pollyanna 2e3631a6
+=================
+echo 1 > config/setting/admin/js/table_sort

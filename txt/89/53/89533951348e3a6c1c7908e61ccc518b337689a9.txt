@@ -1,0 +1,14 @@
+>>2c0d520a6df97b1091d2024dacf12e3dde909dcf
+
+table_sort
+429158a5861b9f269812f8ec002f274605981dda
+
+=================
+Rejoice always
+Pray without ceasing
+Give thanks in all circumstances
+=================
+pollyanna 2e3631a6
+=================
+config/setting/admin/js/table_sort=1
+New value: warning

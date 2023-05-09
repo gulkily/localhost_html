@@ -1,0 +1,14 @@
+>>1646885ab9ff42c8885f77cdcfb89660388186dd
+
+thread
+c283e375ed8cebf3b8d1b5101fd51bb522961656
+
+=================
+Rejoice always
+Pray without ceasing
+Give thanks in all circumstances
+=================
+pollyanna 2e3631a6
+=================
+config/setting/html/item_page/include_notext_in_thread_list = 0
+config/setting/html/item_page/thread_listing = 1
