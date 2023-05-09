@@ -1,5 +1,0 @@
-Yep! Part of the power of being inside the OLTP is that you can just create a VIEW of your training data, which could be anything from customer purchases, search results, whatever, and that VIEW can be re-scanned every time you do the training run to pickup the latest data.
--- 
-#f43e0c4c
---- 
-Received: 1683126654

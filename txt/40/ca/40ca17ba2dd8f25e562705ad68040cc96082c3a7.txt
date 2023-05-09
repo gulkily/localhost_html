@@ -1,5 +1,0 @@
-When I was talking about metrics I meant metrics of the model (accuracy, precission, recall, mean square error, etc), not performance.
--- 
-#f43e0c4c
---- 
-Received: 1683126654

@@ -1,8 +1,0 @@
->>bb0e65e58be6b1d4c790300be23ba85f8ff4dcf6
-
-add authors page
-c63008ce44889d160a96df780406df1bb3a02d1b
-
-ok, I added an authors page. there may not be much on it at first.
-
-===

@@ -1,7 +1,0 @@
-my name is netscape
--- 
-
---- 
-Cookie: 948FFCD793ADDA0C
-Received: 1683443162
-Client: 85F8F334BBAA8992

@@ -1,5 +1,0 @@
-I don't understand 5he example on the homepage. How does the extension know what is "buy it again"?
--- 
-#f43e0c4c
---- 
-Received: 1683126654

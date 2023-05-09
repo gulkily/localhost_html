@@ -1,8 +1,0 @@
->>cdae0f630df7dd6ad18dbc037f6fafdd00a3046e
-
-add settings page
-9adf5108a145ca50e9e4c5b1f89c65f99ff91dea
-
-I did not understand that query
-
-===

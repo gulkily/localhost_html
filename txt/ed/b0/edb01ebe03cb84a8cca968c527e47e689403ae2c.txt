@@ -1,6 +1,0 @@
-Outside academia you need to do a lot of data cleaning and feature engineering, and if you’re constantly changing the model as well as the data you’ll never be able to attribute changes to either.
-Chances are a DBA wouldn’t consider letting you do data engineering in a live production database anyway, so this really is all academic.
--- 
-#f43e0c4c
---- 
-Received: 1683126654

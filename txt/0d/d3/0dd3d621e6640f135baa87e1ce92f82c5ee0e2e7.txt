@@ -1,5 +1,0 @@
-Yeah — seems like all you need is Snowflake-esque separation of storage and compute and bob’s your uncle.
--- 
-#f43e0c4c
---- 
-Received: 1683126654

@@ -1,6 +1,0 @@
-None, it's just an extension.
-Which is part of what is so awesome about PostgreSQL, everyone can build extensions that look and feel native and can do almost anything.
--- 
-#f43e0c4c
---- 
-Received: 1683126654

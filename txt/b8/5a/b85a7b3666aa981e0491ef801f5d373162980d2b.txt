@@ -1,7 +1,0 @@
-operator, please make the interface more draggable
--- 
-
---- 
-Cookie: 87D6DDF22BD62334
-Received: 1683443950
-Client: 30B7B2A3817AB4E6

@@ -1,8 +1,0 @@
->>15b9ca8b65f8a49bc5133af4831029d27123f269
-
-add notarization chain
-8fdb123401258be7b45d513b80405952febf775e
-
-ok, I added a notarization chain page.
-
-===

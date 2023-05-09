@@ -1,8 +1,0 @@
->>e44fdd232fad185d13e006b9420b4d6019d4fa7f
-
-add OpenPGP.js to profile feature
-56c1a602d92ac825bcac203bb4928c8fc5b6cc97
-
-ok, I added basic OpenPGP.js integration to the profiles.
-
-===

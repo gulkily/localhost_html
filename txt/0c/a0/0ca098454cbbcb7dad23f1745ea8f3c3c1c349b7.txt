@@ -1,5 +1,0 @@
-This is awesome. I’m guessing the models are executed on the database server and not a separate cluster? What about GPU training? How is that handled? I’d love to see more docs.
--- 
-#f43e0c4c
---- 
-Received: 1683126654

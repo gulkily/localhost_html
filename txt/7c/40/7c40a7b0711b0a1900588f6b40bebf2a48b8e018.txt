@@ -1,6 +1,0 @@
-OLAP vs OLTP will depend on your ML use case. Online predictions will likely be better served by an OLTP vs offline batch predictions being better served by OLAP.
-OLAP use cases often involve a lot of extra complexity out of the gate, and something we're targeting is to help startups maintain the simplest possible tech stack early on while they are still growing and exploring PMF. At a high enough level, it should just work with any database that supports Postgres extensions, since it's all just tables going into algos, but the devil in big data is always in evaluating the performance tradeoffs for the different workloads. Maybe we'll eventually need an "enterprise" edition.
--- 
-#f43e0c4c
---- 
-Received: 1683126654

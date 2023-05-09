@@ -1,6 +1,0 @@
-I just gave it a try to install on Crunchy Bridge [1], disclaimer I work at Crunchy Data. I did this as a standard user vs. anything special about access. I got quite close, but looks like I'm limited by Python version, we give you plpython3u with Python 3.6. Is there any chance of supporting an earlier 3.x version? If so I'm pretty sure could give a guide on how to self-install on top of us.
-[1] https://www.crunchydata.com/products/crunchy-bridge/
--- 
-#f43e0c4c
---- 
-Received: 1683126654

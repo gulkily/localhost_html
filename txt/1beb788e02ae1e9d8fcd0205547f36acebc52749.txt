@@ -1,7 +1,0 @@
-in dragging mode, what is the easiest way to make some links open in a new window (while others add dialogs to the current page)
--- 
-
---- 
-Cookie: 6EE49C71D198BA4B
-Received: 1683440431
-Client: 30B7B2A3817AB4E6

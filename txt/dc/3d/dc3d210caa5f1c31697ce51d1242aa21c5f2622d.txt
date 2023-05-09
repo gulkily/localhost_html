@@ -1,6 +1,0 @@
-hike set inbox 0
--- 
---- 
-Received: 1683434547
-Cookie: 6EE49C71D198BA4B
-Client: 30B7B2A3817AB4E6

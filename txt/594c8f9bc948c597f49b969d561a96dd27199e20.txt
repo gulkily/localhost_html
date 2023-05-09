@@ -1,9 +1,0 @@
-#todo
-
-hike set should describe what known settings do
--- 
-
---- 
-Cookie: 6EE49C71D198BA4B
-Received: 1683441459
-Client: 30B7B2A3817AB4E6

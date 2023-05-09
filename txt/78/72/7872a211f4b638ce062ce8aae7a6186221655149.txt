@@ -1,1 +1,0 @@
-hike set inbox 0

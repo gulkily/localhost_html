@@ -1,6 +1,0 @@
-You might want to use a different elephant logo... the branding implies that it is an official part of the project.
-E.g. Postico uses an elephant but not the _same_ elephant - https://eggerapps.at/postico/
--- 
-#f43e0c4c
---- 
-Received: 1683126654

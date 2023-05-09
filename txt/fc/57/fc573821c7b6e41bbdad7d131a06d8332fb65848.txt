@@ -1,7 +1,0 @@
-It looks like this is running Python to do the actual ML?
-There’s nothing stopping you from reading database table structures directly into memory in Python or R now.  You don’t need an intermediate data store.
-I agree that running training on production instances would be a bad idea.  First, you need to denormalise data for ML, and secondly you typically don’t want your training data to be constantly changing.
--- 
-#f43e0c4c
---- 
-Received: 1683126654

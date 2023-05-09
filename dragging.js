@@ -310,11 +310,11 @@ function SetActiveDialog (ths) {
 	}
 
 	//draggable_activate
-	var colorWindow = '#403000'; // for templating
-	var colorTitlebar = '#fff0ef'; // for templating
-	var colorTitlebarInactive = '#fff0ef'; // for templating
-	var colorSecondary = '#fff0ef'; // for templating
-	var colorTitlebarText = '#403000'; // for templating
+	var colorWindow = '#c0c0c0'; // for templating
+	var colorTitlebar = '#000080'; // for templating
+	var colorTitlebarInactive = '#808080'; // for templating
+	var colorSecondary = '#808080'; // for templating
+	var colorTitlebarText = '#ffffff'; // for templating
 
 	var doScale = GetPrefs('draggable_scale') ? 1 : 0; // SetActiveDialog()
 	var scaleLarge = '1.9';

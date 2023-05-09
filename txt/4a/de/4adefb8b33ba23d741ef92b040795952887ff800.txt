@@ -1,7 +1,0 @@
-The Dataframe is loaded from disk true, but it is possible that batch loading is faster (esp. with structured data) than row-by-row translation Postgres types into Python types. Would be interesting to see the benchmark results.
-> I think the memory inefficiency involved in high level pandas operations is more likely to be a driving force to move operations into lower layers, than CPU runtime.
-Indeed. Not only memory but also inefficiency related to Python itself. It would be great if feature engineering pipelines can be pushed down to lower layers as well. But for now, the usability of Python is still unparallel.
--- 
-#f43e0c4c
---- 
-Received: 1683126654

@@ -1,5 +1,0 @@
-Just in case you were not aware, Python 3.6 reached end of life ~4 months ago: https://endoflife.date/python
--- 
-#f43e0c4c
---- 
-Received: 1683126654

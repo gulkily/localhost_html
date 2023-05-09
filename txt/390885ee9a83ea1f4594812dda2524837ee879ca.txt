@@ -1,9 +1,0 @@
-#bug
-
-chain dialog is different from chain page
--- 
-
---- 
-Cookie: 87D6DDF22BD62334
-Received: 1683442755
-Client: 30B7B2A3817AB4E6

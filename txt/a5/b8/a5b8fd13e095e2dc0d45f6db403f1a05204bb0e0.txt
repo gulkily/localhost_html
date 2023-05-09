@@ -1,9 +1,0 @@
->>cb2f6af5b5c1316127981b07b8c3430d31763dbe
-
-operator, please make the interface more draggable
--- 
-
---- 
-Cookie: 5FC40A0CA5640E8D
-Received: 1683453577
-Client: 3526F8383C7609EF

@@ -1,9 +1,0 @@
-*Outside academia you need to do a lot of data cleaning and feature engineering, and if you’re constantly changing the model as well as the data you’ll never be able to attribute changes to either.*
-I get the concern but sometimes I really just do want a black box regressor or classifier. Model performance monitoring is important, but I don't care about attribution.
-*Chances are a DBA wouldn’t consider letting you do data engineering in a live production database anyway, so this really is all academic.*
-Maybe it isn't data engineering, but I'm curious what you'd call using Google's BigQuery ML? "BigQuery ML enables users to create and execute machine learning models in BigQuery by using standard SQL queries."
-I haven't used it in production, but I'd use it in a heartbeat if I was on BigQuery.
--- 
-#f43e0c4c
---- 
-Received: 1683126654

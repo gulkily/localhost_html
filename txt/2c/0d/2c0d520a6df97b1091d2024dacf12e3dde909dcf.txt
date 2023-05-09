@@ -1,7 +1,0 @@
-hike set table_sort
--- 
-
---- 
-Cookie: 5FC40A0CA5640E8D
-Received: 1683535017
-Client: 3526F8383C7609EF

@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml"></link>
-<title>post</title>
+<title>upload</title>
 <style type="text/css">
 <!--
 /* begin css/default.css */
@@ -249,7 +249,7 @@ pre time {
 -->
 </style>
 </head>
-<body link="#0000cc" vlink="#6000c0" text="#000000" bgcolor="#008080" onload="makeRefLink();">
+<body link="#0000cc" vlink="#6000c0" text="#000000" bgcolor="#008080" onclick="if (window.ShowPreNavigateNotification && event.target && (event.target.tagName == 'A') && !(event.target.onclick)) { ShowPreNavigateNotification(); }" onload="if (window.OnLoadEverything) { OnLoadEverything(); }" >
 <b>
 <!-- template/topmenu2.template -->
 <table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialog) { return SetActiveDialog(this); }" cellspacing=0 cellpadding=3 border=0 bgcolor="#c0c0c0" class=dialog id=topmenu>
@@ -449,47 +449,49 @@ pre time {
 <p><MAIN ID=maincontent><A NAME=maincontent></A>
 
 
-<!-- post.template -->
+<!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
-		<tr bgcolor="#000080" class=titlebar>
-			<td>
-				<font color="#ffffff"><b>Submission Received!</b></font>
-			</td>
-		</tr>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=upload cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#000080" class=titlebar>
+	<td>
+		<font color="#ffffff"><b>Upload</b></font> <a href=#upload>#</a><a name=upload></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
 
-		<tr class=body>
-			<td class=content>
-				<p>Thank you!
-				<p>Your submission has been received.
-				<p>You may not see it appear on the site immediately.
-				<p>Once the server has caught up, you should see it on the <br>
-				<a href="/new.html">New Items Page.</a>
-				<p><b><span id=retRef></span></b>
-				<p><span><!-- submitted_text --></span>
-				<p><hr>
-				<span class=advanced>
-					<br>
-					<p>Operator: If you see this message, run <br>
-					<code>./hike.sh alog</code>
-					<br>
-					or
-					<br>
-					<br>
-					<code>hike alog</code>
-				</span>
-			</td>
-		</tr>
 
-		<tr class=statusbar>
-			<td>
-				<p>Ready
-			</td>
-		</tr>
+		
+
+		
+
+		<tbody class=content><tr class=content><td>
+<!-- upload_no.template -->
+<p>Upload feature is not available. Apologies.</p>
+<p class=advanced>
+	<code>
+		<b>Operator: Here are some settings to take a look at:</b><br>
+		<br>
+		config/setting/admin/php/enable
+		<br>
+		config/setting/admin/upload/enable
+		<br>
+		config/setting/admin/php/upload
+		<br>
+		config/setting/admin/js/enable
+		<br>
+		config/setting/admin/convert/enable
+	</code>
+</p>
+<!-- / upload_no.template -->
+</td></tr></tbody>
+
+		
 	</table>
 </font>
-
-<!-- / post.template -->
+<!-- / default/template/html/window/standard.template -->
 </main>
 <span id=messages></span>
 <img src="/p.gif" alt="" height=1 width=1>
@@ -545,11 +547,770 @@ pre time {
 </font>
 <!-- / default/template/html/window/standard.template -->
 </noscript>
-<!-- InjectJs: settings avatar post fresh dragging table_sort -->
+<!-- InjectJs: utils settings avatar profile fresh dragging table_sort -->
 
 
-<!-- html/utils/scriptinject.template (main,config/template/perl/page/post.pl,13) -->
+<!-- html/utils/scriptinject.template (main,config/template/perl/page/upload.pl,98) -->
 <script language=javascript><!--
+// == begin utils.js
+
+// begin html escape hack (credit stacko)
+// only works with createElement #backlog
+if (document.createElement) {
+	var escapeTA = document.createElement('textarea');
+}
+function escapeHTML (html) {
+	if (window.escapeTA) {
+		escapeTA.textContent = html;
+		return escapeTA.innerHTML;
+	}
+} // escapeHTML()
+function unescapeHTML (html) {
+	if (window.escapeTA) {
+		escapeTA.innerHTML = html;
+		return escapeTA.textContent;
+	}
+} // unescapeHTML()
+// end html escape hack
+//#todo above hack seems to be broken, because escapeTA is not global?
+
+function LogWarning (text) {
+	if (text.indexOf('warning') != -1) {
+		var hasLogger = !!(window.console && window.console.log);
+		if (hasLogger) {
+			console.log(text);
+		} else {
+			if (document && document.title) {
+				document.title = text;
+			}
+		}
+	}
+} // LogWarning()
+
+function OnLoadEverything () { // checks for each onLoad function and calls it
+// function OnLoadAll () {
+// function BodyOnLoad () {
+// body onload body.onload
+// function OnLoad {
+// typically called from body.onload
+	//alert('DEBUG: OnLoadEverything() begins');
+
+	if ((window.addLoadingIndicator) && (!window.loadingIndicator)) {
+		//alert('DEBUG: OnLoadEverything: addLoadingIndicator()');
+		addLoadingIndicator('Meditate...');
+	} else {
+		//alert('DEBUG: OnLoadEverything: (window.addLoadingIndicator) is FALSE');
+	}
+
+	if (window.setClock) {
+		//alert('DEBUG: OnLoadEverything: setClock()');
+		window.eventLoopSetClock = 1;
+		setClock();
+	}
+	if (window.ItsYou) {
+		//alert('DEBUG: OnLoadEverything: ItsYou()');
+		ItsYou();
+	}
+	if (window.ShowTimestamps) {
+		//alert('DEBUG: OnLoadEverything: ShowTimestamps()');
+		window.eventLoopShowTimestamps = 1;
+		ShowTimestamps();
+	}
+	if (window.SettingsOnload) {
+		//alert('DEBUG: OnLoadEverything: SettingsOnload()');
+		SettingsOnload();
+	}
+	if (window.ProfileOnLoad) {
+		//alert('DEBUG: OnLoadEverything: ProfileOnLoad()');
+		ProfileOnLoad();
+	}
+	if (window.WriteOnload) {
+		//alert('DEBUG: OnLoadEverything: WriteOnload()');
+		WriteOnload();
+	}
+
+	if (window.ShowAdvanced) {
+		//alert('DEBUG: OnLoadEverything: ShowAdvanced()');
+		window.eventLoopShowAdvanced = 1;
+		ShowAdvanced(0, 0);
+	}
+	//alert('DEBUG: OnLoadEverything: ShowAdvanced() finished!');
+
+	if (window.SearchOnload) {
+		//alert('DEBUG: OnLoadEverything: SearchOnload()');
+		SearchOnload();
+	}
+
+	if (window.DesktopOnLoad) {
+		//alert('DEBUG: OnLoadEverything: DesktopOnLoad()');
+		DesktopOnLoad();
+	}
+
+	if (window.UploadAddImagePreviewElement) {
+		//alert('DEBUG: OnLoadEverything: UploadAddImagePreviewElement()');
+		UploadAddImagePreviewElement();
+	}
+
+	//alert('DEBUG: OnLoadEverything: checking for editable field...');
+
+	if (window.location && document.compose && window.location.href.indexOf) {
+		if (
+			window.location &&
+			window.location.href &&
+			window.location.href.indexOf('write') != -1 ||
+			window.location.hash.indexOf('reply') != -1 ||
+			(
+				window.location.href.indexOf('message') != -1 &&
+				window.GetPrefs &&
+				GetPrefs('focus_reply')
+			)
+				&&
+			document.compose &&
+			document.compose.comment &&
+			document.compose.comment.focus
+		) {
+			//alert('DEBUG: OnLoadEverything: document.compose.comment.focus()()');
+			document.compose.comment.focus();
+		}
+	}
+
+	if (window.location.href && (window.location.href.indexOf('search') != -1) && document.search.q) {
+		//alert('DEBUG: OnLoadEverything: document.search.q.focus()');
+		document.search.q.focus();
+	}
+
+	if (0 && window.localStorage) { // #todo improve crumbs
+		var crumbs1 = localStorage.getItem('crumbs');
+		if (crumbs1) {
+			crumbs1 = crumbs1 + '\n' + window.location.href;
+			localStorage.setItem('crumbs', crumbs1);
+		} else {
+			localStorage.setItem('crumbs', window.location.href);
+		}
+	}
+
+	if (window.EventLoop) {
+		//alert('DEBUG: OnLoadEverything: EventLoop()');
+		if (window.CheckIfFresh) {
+			window.eventLoopFresh = 1;
+		}
+		window.eventLoopEnabled = 1;
+		EventLoop();
+	} // if (window.EventLoop)
+
+	// FetchDialog('help');
+
+	if (window.DraggingInit && GetPrefs('draggable')) {
+		//alert('DEBUG: OnLoadEverything: DraggingInit()');
+		if (window.location.href.indexOf('settings') != -1) {
+			// exclude settings page to avoid difficult situations
+			// one day, it will no longer be necessary
+			DraggingInit(1);
+		} else {
+			DraggingInit(1);
+		}
+	} else {
+		if (document.getElementById) {
+			// this gets rid of the style which hides dialogs on
+			// page load so that they can be positioned first
+			// dragging_hide_dialogs.js
+			// #todo optimize this
+			if (document.getElementById('styleHideDialogs')) {
+				UnhideHiddenElements();
+			}
+		}
+	}
+
+	if (window.HideLoadingIndicator) {
+		//alert('DEBUG: OnLoadEverything: HideLoadingIndicator()');
+		HideLoadingIndicator();
+	}
+
+	// everything is set now, start event loop
+	//
+} // OnLoadEverything()
+
+if (!window.performanceOptimization && window.GetPrefs) {
+	// if performanceOptimization setting hasn't been initialized yet,
+	// and we have a way to do it via GetPrefs() go ahead and do it now
+	window.performanceOptimization = GetPrefs('performance_optimization'); // utils.js
+}
+
+function EventLoop () { // for calling things which need to happen on a regular basis
+// sets another timeout for itself when done
+// replaces several independent timeouts
+// #backlog add secondary EventLoopWatcher timer which ensures this one runs when needed
+
+	var d = new Date();
+	var eventLoopBegin = d.getTime(); // eventLoopStart
+
+	if (!window.eventLoopPrevious) {
+		window.eventLoopPrevious = 1;
+	}
+	window.eventLoopBegin = eventLoopBegin;
+
+	if (window.GetPrefs && GetPrefs('draggable') && window.innerWidth && window.innerHeight) {
+		// if viewport size has changed, retile dialogs
+		if (!window.rememberInnerWidth) {
+			window.rememberInnerWidth = window.innerWidth;
+		}
+		if (!window.rememberInnerHeight) {
+			window.rememberInnerHeight = window.innerHeight;
+		}
+		if (window.rememberInnerWidth != window.innerWidth || window.rememberInnerHeight != window.innerHeight) {
+			//alert('DEBUG: window.innerWidth = ' + window.innerWidth + ', window.innerHeight = ' + window.innerHeight);
+			window.rememberInnerWidth = window.innerWidth;
+			window.rememberInnerHeight = window.innerHeight;
+			if (window.DraggingRetile) {
+				DraggingRetile();
+			}
+		}
+	}
+
+	if (window.FetchDialog) {
+		// #todo this may not be the best place for this code
+		var welcomeSeen = GetPrefs('welcome_seen');
+		// try to show this only once
+		if (welcomeSeen) {
+			if (welcomeSeen == 2) {
+				SetPrefs('welcome_seen', 3);
+				//FetchDialog('welcome');
+				//alert('welcome!');
+			} else {
+				if (welcomeSeen == 1) {
+					SetPrefs('welcome_seen', 2);
+				}
+				// verify it can be read and updated
+			}
+		} else {
+			SetPrefs('welcome_seen', 1);
+			// verify it can be set
+		}
+	}
+
+	if (window.eventLoopSetClock && window.setClock) {
+		// update time displayed in clock
+		setClock();
+	}
+
+	var m = 500; // multiplier for performance thresholds
+	if (window.performanceOptimization) {
+		if (window.performanceOptimization == 'quicker') {
+			m = 100;
+		}
+		if (window.performanceOptimization == 'none') {
+			// this is the 'None' setting in Settings
+			m = 0;
+			return '';
+		}
+	}
+
+	//alert('DEBUG: EventLoop: eventLoopBegin = ' + eventLoopBegin + ' - window.eventLoopPrevious = ' + window.eventLoopPrevious + ' = ' + (eventLoopBegin - window.eventLoopPrevious));
+
+	if (10*m < (eventLoopBegin - window.eventLoopPrevious)) {
+		// ACTUAL EVENT LOOP WORK BEGINS
+		// ACTUAL EVENT LOOP WORK BEGINS
+		// ACTUAL EVENT LOOP WORK BEGINS
+
+		window.eventLoopPrevious = eventLoopBegin; // store begin time
+
+		if (window.flagUnloaded) {
+			// show loading indicator if user has started navigating away from page
+			// window.flagUnloaded is set by OnUnload event
+			if (window.ShowPreNavigateNotification) {
+				ShowPreNavigateNotification();
+			}
+		}
+
+		//return;
+		// uncomment to disable event loop
+		// makes js debugging easier
+
+		if (window.eventLoopShowTimestamps && window.ShowTimestamps) {
+			// update timestamp widgets on page
+			if (13*m < (eventLoopBegin - window.eventLoopShowTimestamps)) {
+				// only every 13 seconds in regular performance mode
+				ShowTimestamps();
+				window.eventLoopShowTimestamps = eventLoopBegin;
+			} else {
+				// do nothing
+			}
+		}
+
+		if (window.eventLoopDoAutoSave && window.DoAutoSave) {
+			// autosave
+			if (5*m < (eventLoopBegin - window.eventLoopDoAutoSave)) { // autosave interval
+				// autosave every 5 seconds in normal performance mode
+				DoAutoSave();
+				window.eventLoopDoAutoSave = eventLoopBegin;
+			} else {
+				// do nothing
+			}
+		}
+
+		if (window.localStorage && document.getElementById) {
+			// update reply cart dialog displayed count
+			// #todo move this to separate module
+			if (window.ReplyCartUpdateCount) {
+				ReplyCartUpdateCount();
+			}
+		}
+
+		if (window.eventLoopShowAdvanced && window.ShowAdvanced) {
+			// update visibility of advanced/beginner layers
+			// but only if necessary
+			ShowAdvanced(0, 0);
+		}
+
+		if (window.eventLoopFresh && window.CheckIfFresh) {
+			// check for page changes by sending a HEAD request for current url
+			if (10000 < (eventLoopBegin - window.eventLoopFresh)) {
+			//if (10*m < (eventLoopBegin - window.eventLoopFresh)) {
+			// this is commented because it may hammer the server. uncomment if using localhost
+
+				//window.eventLoopFresh = eventLoopBegin;
+				if (
+					window.eventLoopFresh &&
+					(!window.GetPrefs || GetPrefs('notify_on_change'))
+				) {
+					// notify_on_change client-side setting needs to be on
+					CheckIfFresh();
+					window.eventLoopFresh = eventLoopBegin;
+				}
+			}
+		}
+
+		if (
+			(window.UpdateDialogList) &&
+			(document.getElementById) &&
+			(document.getElementsByClassName)
+		) {
+			// update list of dialogs on page
+			UpdateDialogList();
+		}
+
+		if (window.GetPrefs) {
+			// if performance setting has changed in another window, update it here too
+			window.performanceOptimization = GetPrefs('performance_optimization'); // EventLoop()
+		}
+	} // 10000 < (eventLoopBegin - window.eventLoopPrevious)
+
+	if (window.eventLoopEnabled) {
+		// set the next setTimeout for the next "loop" iteration
+
+		// see how long this last iteration took
+		var d = new Date();
+		var eventLoopEnd = d.getTime();
+		var eventLoopDuration = eventLoopEnd - eventLoopBegin;
+		//document.title = eventLoopDuration; // for debugging performance
+
+		// unset any timeout if already set
+		if (window.timeoutEventLoop) {
+			clearTimeout(window.timeoutEventLoop);
+		}
+
+		if (30 < eventLoopDuration) {
+			// if loop went longer than 100ms, run every 3 seconds or more
+			//document.title = eventLoopDuration;
+			
+			if (GetPrefs('notify_event_loop')) {
+				displayNotification('EventLoop: ' + eventLoopDuration + 'ms');
+			}
+//
+//			// #todo make it known to user that hitting performance limit
+//			if (document.title.substr(0,3) != '/ ') {
+//				// for now we just prepend the title with a slash
+//				document.title = '/ ' + document.title;
+//			}
+
+			// set performance setting to 'faster'
+
+			//SetPrefs('performance_optimization', 'faster');
+			eventLoopDuration = eventLoopDuration * 10;
+		} else {
+			// otherwise run again after 1 interval time
+			eventLoopDuration = 1*m;
+		}
+
+		window.timeoutEventLoop = setTimeout('EventLoop()', eventLoopDuration);
+	} // window.eventLoopEnabled
+
+	return '';
+
+} // EventLoop()
+
+function UrlExists (url) { // checks if url exists
+// #todo use async
+// #todo Q: how to do pre-xhr browsers? A: use img.src = and check the resulting image url
+
+	//alert('DEBUG: UrlExists(' + url + ')');
+
+	if (window.XMLHttpRequest) {
+		//alert('DEBUG: UrlExists: window.XMLHttpRequest check passed');
+
+		var http = new XMLHttpRequest();
+		http.open('HEAD', url, false);
+		//http.timeout = 5000; //#xhr.timeout
+		http.send();
+		var httpStatusReturned = http.status;
+
+		//alert('DEBUG: UrlExists: httpStatusReturned = ' + httpStatusReturned);
+
+		return (httpStatusReturned == 200);
+	}
+} // UrlExists()
+
+function DisplayStatus (status) {
+// #todo this doesn't seem to be used anywhere yet
+	if (document.getElementById) {
+		var statusBar = document.getElementById('status');
+		// #todo finish this
+	}
+} // DisplayStatus()
+
+function DownloadAsTxt (filename, text) {
+	var element = document.createElement('a');
+
+	element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+	element.setAttribute('download', filename);
+
+	element.style.display = 'none';
+	document.body.appendChild(element);
+
+	element.click();
+
+	document.body.removeChild(element);
+} // DownloadAsTxt()
+
+function displayNotificationWithTimeout (strMessage, thisButton) {
+	var spanNotification = displayNotification(strMessage, thisButton);
+
+	if (spanNotification) {
+		var d = new Date();
+		var spanId = d.getTime();
+		spanNotification.setAttribute('id', spanId);
+		setTimeout('document.getElementById(' + spanId + ').remove()', 5000);
+
+		return spanNotification;
+	}
+} // displayNotificationWithTimeout()
+
+function displayNotification (strMessage, thisButton) { // adds notification to page
+// function progressIndicator () { // progress indicator
+// function showNotification () (
+// used for loading indicator bar (to top of page, depending on style)
+// also used for "creating profile" and "already voted" notifications
+	var spanNotification = document.createElement('span');
+	spanNotification.setAttribute('class', 'notification');
+	spanNotification.setAttribute('role', 'alert');
+	spanNotification.setAttribute('onclick', 'this.remove(); return false;');
+	spanNotification.innerHTML = strMessage;
+	spanNotification.style.zIndex = GetFineTime();
+
+	if (window.GetPrefs && GetPrefs('draggable')) {
+		thisButton = 0;
+		// #todo this is a workaround for floating notification being messed up in draggable mode
+	}
+
+	if (thisButton) {
+		thisButton.parentNode.appendChild(spanNotification);
+		if (thisButton.after) {
+			thisButton.after(spanNotification);
+		}
+
+		// set element's position based on its initial box model position
+		var rect = spanNotification.getBoundingClientRect();
+		spanNotification.style.top = (rect.top) + "px";
+		spanNotification.style.left = (rect.left) + "px";
+		spanNotification.style.position = 'absolute';
+
+		return spanNotification;
+	} else {
+		// #todo this should be in stylesheet; floating notification should have different class
+		spanNotification.style.position = 'fixed';
+		spanNotification.style.top = '0';
+		spanNotification.style.right = '0';
+		spanNotification.style.margin = '0';
+
+		document.body.appendChild(spanNotification);
+
+		return spanNotification;
+	}
+} // displayNotification()
+
+function newA (href, target, innerHTML, parent) { // makes new a element and appends to parent
+	var newLink = document.createElement('a');
+	if (href) { newLink.setAttribute('href', href); }
+	if (target) { newLink.setAttribute('target', target); }
+	if (innerHTML) { innernewLink.setAttribute('innerHTML', innerHTML); }
+	parent.appendChild(newLink);
+	return newLink;
+} // newA()
+
+function SetCookie (cname, cvalue, exdays) { // set cookie
+	//alert('DEBUG: SetCookie(' + cname + ', ' + cvalue + ', ' + exdays + ')');
+	var d = new Date();
+	if (!exdays) {
+		exdays = 1;
+	}
+	d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+	var expires = "expires=" + d.toUTCString();
+	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+	var testSetCookie = GetCookie(cname);
+	if (cvalue == testSetCookie) {
+		return 1;
+	} else {
+		return 0;
+	}
+} // SetCookie()
+
+function GetCookie (cname) { // get cookie value
+	// in js, cookies are accessed via one long string of the form
+	// key1=value1; key2=value2;
+	// so we make an array, splitting the string using the ; separator
+	if (document.cookie && document.cookie.split) {
+		//todo add support for ie3, which does not have a split() method on strings
+		var dc = document.cookie;
+		var ca = dc.split(';');
+
+		// the value we are looking for will be prefixed with cname=
+		var name = cname + "=";
+
+		for(var i = 0; i < ca.length; i++) {
+			// loop through ca array until we find prefix we are looking for
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+				// remove any spaces at beginning of string
+				c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+				// if prefix matches, return value
+				return c.substring(name.length, c.length);
+			}
+		}
+	}
+
+	// at this point, nothing left to do but return empty string
+	return "";
+} // GetCookie()
+
+function GetParentElement (el, parentTagName) {
+// #todo maybe make this more flexible?
+	if (el) {
+		var parentElement = el;
+		while (parentElement && (parentElement.tagName != parentTagName)) {
+			parentElement = parentElement.parentElement;
+		}
+		if (parentElement) {
+			return parentElement;
+		}
+	}
+	return '';
+} // GetParentElement()
+
+function UnmaskBlurredImages () {
+	var im = document.images;
+	if (im) {
+		var i = 0;
+		for (i = 0; i < im.length; i++) {
+			if (im[i].getAttribute('src')) {
+				var src = im[i].getAttribute('src');
+				var gPos = src.indexOf('_g_');
+				if (gPos != -1 && 0 < gPos) {
+					im[i].setAttribute('src', src.substr(0, gPos) + '' + src.substr(gPos + 2));
+				}
+			}
+		}
+	}
+	return '';
+} // UnmaskBlurredImages()
+
+
+//https://stackoverflow.com/questions/123999/how-can-i-tell-if-a-dom-element-is-visible-in-the-current-viewport
+
+function elementInViewport (el) {
+	var top = el.offsetTop;
+	var left=el.offsetLeft;
+	var width = el.offsetWidth;
+	var height = el.offsetHeight;
+
+	while (el.offsetParent) {
+		el = el.offsetParent;
+		top += el.offsetTop;
+		left+=el.offsetLeft;
+	}
+
+	return (
+		window.pageYOffset <= top &&
+		window.pageXOffset <= left &&
+		(top + height) <= (window.pageYOffset + window.innerHeight) &&
+		(left + width) <= (window.pageXOffset + window.innerWidth)
+	);
+} // elementInViewport()
+//You could modify this simply to determine if any part of the element is visible in the viewport:
+
+function elementInViewport2 (el) {
+	var top = el.offsetTop;
+	var left=el.offsetLeft;
+	var width = el.offsetWidth;
+	var height = el.offsetHeight;
+
+	while (el.offsetParent) {
+		el = el.offsetParent;
+		top += el.offsetTop;
+		left+=el.offsetLeft;
+	}
+
+	return (
+		top < (window.pageYOffset + window.innerHeight) &&
+		left < (window.pageXOffset + window.innerWidth) &&
+		window.pageYOffset < (top + height) &&
+		window.pageXOffset < (left + width)
+	);
+} // elementInViewport2()
+
+
+function PingUrl (url, ele) { // loads arbitrary url via image or xhr
+// compatible with most js
+	//alert('DEBUG: PingUrl() begins');
+
+	// another option below
+	// var img = document.createElement('img');
+	// img.setAttribute("src", url);
+	// document.body.appendChild(img);
+
+	if (!ele) {
+		ele = 0;
+	}
+
+	if (!url) {
+		// #todo more sanity here
+		//alert('DEBUG: PingUrl: warning: url was FALSE');
+		return '';
+	}
+
+	//alert('DEBUG: PingUrl: url = ' + url);
+
+	if (window.XMLHttpRequest) {
+		//alert('DEBUG: PingUrl: window.XMLHttpRequest was true');
+
+		var xmlhttp;
+		if (window.xmlhttp) {
+			xmlhttp = window.xmlhttp;
+		} else {
+			window.xmlhttp = new XMLHttpRequest();
+			xmlhttp = window.xmlhttp;
+		}
+
+		if (window.GetPrefs && GetPrefs('show_admin')) {
+			// skip callback to save resources
+		} else {
+			xmlhttp.onreadystatechange = window.PingUrlCallback;
+		}
+
+		xmlhttp.open("HEAD", url, true);
+		//xmlhttp.timeout = 5000; //#xhr.timeout
+		xmlhttp.send();
+
+		return false;
+	} else {
+		//alert('DEBUG: PingUrl: using image method, no xhr here');
+
+		if (document.images) {
+			//alert('DEBUG: PingUrl: document.images was true');
+			if (document.images.length) {
+				// use last image on page, if possible. this should be the special pixel image.
+				var img = document.images[document.images.length - 1];
+
+				if (img) {
+					img.setAttribute("src", url);
+					return false;
+				}
+			} else {
+				var img = document.images[0];
+
+				if (img) {
+					img.setAttribute("src", url);
+					return false;
+				}
+			}
+		} else {
+			//alert('DEBUG: PingUrl: warning: document.images was FALSE');
+		}
+	}
+
+	return true;
+} // PingUrl()
+
+// function EscapeUrl () {
+// function UriEscape () {
+// USE encodeURIComponent()
+
+
+//function ChangeInputToTextarea (input) { // called by onpaste
+////#input_expand_into_textarea
+//	//#todo more sanity
+//	if (!input) {
+//		return '';
+//	}
+//
+//	if (document.createElement) {
+//		var parent = input.parentElement;
+//		var textarea = document.createElement('textarea');
+//		var cols = input.getAttribute('cols');
+//		var name = input.getAttribute('name');
+//		var id = input.getAttribute('id');
+//		var rows = 5;
+//		var width = cols + 'em';
+//
+//		textarea.setAttribute('name', name);
+//		textarea.setAttribute('id', id);
+//		textarea.setAttribute('cols', cols);
+//		textarea.setAttribute('rows', rows);
+//		//textarea.style.width = width;
+//		textarea.innerHTML = input.value;
+//
+//		//parent.appendChild(t);
+//		parent.insertBefore(textarea, input.nextSibling);
+//		input.style.display = 'none';
+//
+//		textarea.focus();
+//		textarea.selectionStart = textarea.innerHTML.length;
+//		textarea.selectionEnd = textarea.innerHTML.length;
+//
+//		if (window.inputToChange) {
+//			window.inputToChange = '';
+//		}
+//	}
+//
+//	return true;
+//}
+
+//
+//function ConvertSubmitsToButtonsWithAccessKey (parent) {
+//	if (!parent) {
+//		//alert('DEBUG: ConvertSubmitsToButtons: warning: sanity check failed');
+//		return '';
+//	}
+//
+//	if (parent.getElementsByClassName) {
+//		var buttons = parent.getElementsByClassName('btnSubmit');
+//		// convert each submit to button with accesskey
+//	} else {
+//		//todo
+//	}
+//	return ''
+//} // ConvertSubmitsToButtonsWithAccessKey()
+
+
+// developer
+// SetPrefs('notify_event_loop', 1);
+// SetPrefs('notify_event_loop', 0);
+
+
+// == end utils.js
+
+
 // == begin settings.js
 
 var showAdvancedLastAction = '';
@@ -1416,17 +2177,757 @@ function getAvatar () { // retrieve previously built avatar from localStorage (a
 // == end avatar.js
 
 
-// == begin post.js
-function makeRefLink() {
-	if (document.getElementById && document.referrer) {
-		var retRef = document.getElementById('retRef');
-		if (retRef) {
-			retRef.innerHTML = '<a href=\"' + document.referrer + '\"' + String.fromCharCode(62) + 'Return to Previous Page</a' + String.fromCharCode(62) + ' ';
-//			window.open(document.referrer + '?', '_self');
+// profile.js
+
+var configJsOpenPgp = 0; // this is templated from config/setting/admin/js/openpgp
+
+if (configJsOpenPgp && !window.openpgp && document.head && document.head.appendChild && document.getElementById && window.localStorage) {
+	//alert('DEBUG: loading openpgp.js');
+	window.openPgpJsLoadBegin = 1;
+
+	var script = document.createElement('script');
+	script.src = '/openpgp.js';
+	script.async = false; // This is required for synchronous execution
+	document.head.appendChild(script);
+	//alert('DEBUG: finished loading openpgp.js; window.openpgp: ' + !!window.openpgp);
+} else {
+	//alert('DEBUG: not loading openpgp.js; window.openpgp: ' + !!window.openpgp + ' document.getElementById: ' + !!document.getElementById + ' window.localStorage: ' + !!window.localStorage + ' window.Promise: ' + !!window.Promise);
+}
+
+if (!(window.MakeKey) && document.head && document.head.appendChild && document.getElementById && window.localStorage) {
+	//alert('DEBUG: loading crypto2.js');
+
+	var script2 = document.createElement('script');
+	script2.src = '/crypto2.js';
+	script2.async = false; // This is required for synchronous execution
+	document.head.appendChild(script2);
+
+	//alert('DEBUG: finished loading crypto2.js; window.cryptoJs: ' + !!window.cryptoJs + '; document.getPrivateKey: ' + !!document.getPrivateKey + '; window.openpgp: ' + !!window.openpgp);
+} else {
+	//alert('DEBUG: not loading crypto2.js; ' + ' window.MakeKey = ' + window.MakeKey + '; document.getElementById = ' + document.getElementById + ' window.localStorage = ' + window.localStorage );
+}
+
+function btnSignOut_Click (t) { // event for 'Sign Out' button's click
+	//alert('DEBUG: btnSignOut_Click() begin');
+
+	if (window.localStorage) {
+		//alert('DEBUG: btnSignOut_Click: localStorage is true');
+
+		var ls = window.localStorage;
+		ls.removeItem('privatekey');
+		ls.removeItem('publickey');
+		ls.removeItem('fingerprint');
+		ls.removeItem('avatar');
+		ls.removeItem('settings');
+		ls.removeItem('dialogPosition');
+		ls.removeItem('voted');
+		ls.removeItem('replyCart');
+
+		SetPrefs('latest_pubkey_ping', 0);
+	}
+
+	if (window.SetCookie) {
+		SetCookie('cookie', 0);
+		SetCookie('checksum', 0);
+	}
+
+	if (0) { //#todo
+		// postmessage
+
+		var form = document.createElement('form');
+		form.setAttribute("action", "/post.html");
+		form.setAttribute("method", "get");
+		//form.setAttribute("target", "ifrSharePubKey");
+
+		//alert('DEBUG: sharePubKey: creating input');
+
+		var txtComment = document.createElement('input');
+		txtComment.setAttribute("type", "hidden");
+		txtComment.setAttribute("value", 'exiting... ' + GetTime());
+		txtComment.setAttribute("name", "comment");
+
+		//alert('DEBUG: sharePubKey: adding txtComment to form');
+
+		form.appendChild(txtComment);
+		//alert('DEBUG: sharePubKey: adding form to body');
+		//document.getElementsByTagName('body')[0].appendChild(form);
+		document.body.appendChild(form);
+		//alert('DEBUG: submitting form');
+		signMessage();
+		//form.submit();
+	}
+
+	return true;
+} // btnSignOut_Click()
+
+function btnRegister_Click (t) { // event for 'Register' button's click
+// t is clicked button's "this" object
+	//alert('DEBUG: btnRegister_Click() begin');
+	if (t) {
+		if (t.value) {
+			t.value = 'Meditate...';
 		}
 	}
+
+	//if (window.localStorage && window.Promise) { // this extra check is disabled for some reason, I think IE?
+	if (window.localStorage && document.getElementById) {
+		//alert('DEBUG: btnRegister_Click: localStorage and Promise feature check pass');
+		if (window.MakeKey) {
+			//alert('DEBUG: btnRegister_Click: window.MakeKey exists, calling MakeKey()');
+
+			var chkEnablePGP = document.getElementById('chkEnablePGP');
+			if (chkEnablePGP && chkEnablePGP.checked) {
+				//alert('DEBUG: chkEnablePGP is present and checked');
+				var intKeyGenResult = MakeKey(t);
+				//alert('DEBUG: btnRegister_Click: intKeyGenResult = ' + intKeyGenResult);
+				SetPrefs('latest_pubkey_ping', 1);
+				//alert('DEBUG: returning intKeyGenResult = ' + intKeyGenResult);
+				myFingerprint = window.localStorage.getItem('fingerprint');
+				if (myFingerprint) {
+					//window.location = '/profile.html?' + myFingerprint;
+				} else {
+					//window.location = '/profile.html'; // #todo this needs to be fixed to work with relativized urls
+				}
+				//return intKeyGenResult; // TRUE if failed, FALSE if failed,
+				//alert('Registration success.\nYou may need to reload the page.\nPlease forgive us for not being better at JavaScript.');
+				setTimeout("window.location.reload()", 1000);
+				return false;
+				//return true;
+				//return false;
+				// because it is used to determine whether to submit the form to get a cookie
+			}
+		}
+	} else {
+		return true;
+	}
+
+	return true;
+} // btnRegister_Click()
+
+function getUserFp () { // retrieve stored user fingerprint from LocalStorage
+	//alert('DEBUG: getUserFp() begin');
+
+	if (window.localStorage) {
+		// LocalStorage mode
+		var fingerprint = localStorage.getItem('fingerprint');
+		if (fingerprint) {
+			return fingerprint;
+		}
+	} else {
+		// fallback to cookie mode
+		var fingerprint = GetCookie('cookie');
+
+		if (fingerprint) {
+			return fingerprint;
+		}
+	}
+
+	// nothing found, we looked everywhere
+	return '';
+} // getUserFp()
+
+function sharePubKey (t) { // shares current user's public key via injected form and iframe
+	// t is the clicked link's "this", which is used to display a notification next to it
+
+	//alert('DEBUG: profile.js: sharePubKey() begins');
+
+	if (window.getPublicKey) {
+		var pubKey = getPublicKey();
+
+		//alert('DEBUG: sharePubKey: pubKey = ' + (pubKey ? pubKey : '(false)'));
+
+		if (pubKey) {
+			if (window.displayNotification) {
+				if (t) {
+					displayNotification('Profile created', t);
+				} else {
+					// #todo this appears at the bottom of the page
+					// probably not visible to most users
+					// so the redirect is a surprise
+					displayNotification('Profile created');
+				}
+			}
+
+			if (0) {
+
+				//alert('DEBUG: sharePubKey: creating form');
+
+				var form = document.createElement('form');
+				form.setAttribute("action", "/post.html");
+				form.setAttribute("method", "GET");
+				//form.setAttribute("target", "ifrSharePubKey");
+
+				//alert('DEBUG: sharePubKey: creating input');
+
+				var txtComment = document.createElement('input');
+				txtComment.setAttribute("type", "hidden");
+				txtComment.setAttribute("value", pubKey);
+				txtComment.setAttribute("name", "comment");
+
+				//alert('DEBUG: sharePubKey: adding txtComment to form');
+
+				form.appendChild(txtComment);
+
+				//alert('DEBUG: sharePubKey: adding form to body');
+
+				//document.getElementsByTagName('body')[0].appendChild(form);
+
+				document.body.appendChild(form);
+
+				//alert('DEBUG: submitting form');
+
+				form.submit();
+
+				return false;
+			} // if (0)
+
+			if (1) {
+				var postPubKeyUrl = '/post.html?comment=' + encodeURIComponent(pubKey);
+				PingUrl(postPubKeyUrl);
+			}
+		} else {
+			//alert('DEBUG: sharePubKey: pubKey was FALSE');
+
+			return true;
+		}
+	}
+
+///// alternative method 1
+//	window.open('/write.html#inspubkey', '_self');
+
+///// alternative method 2
+//	var iframe = document.createElement("iframe");
+//	iframe.src = '/write.html#inspubkey';
+//	iframe.name = "inspubkey"
+//	iframe.style.display = 'none';
+//	document.body.appendChild(iframe);
+
+	return true;
+} // sharePubKey()
+
+function AddPrivateKeyLinks () { // adds save/load links to profile page if features are available
+// #todo make it so that this can be called repeatedly and hide/show appropriate links
+// this will allow to avoid having to reload profile page on status change
+
+	//alert('DEBUG: AddPrivateKeyLinks() begin');
+	if (document.getElementById && window.getPrivateKey) {
+		//alert('DEBUG: AddPrivateKeyLinks: document.getElementById && window.getPrivateKey');
+		var privateKey = getPrivateKey();
+		var fieldset = document.getElementById('fldRegistration');
+
+		if (fieldset && document.createElement) {
+			//alert('DEBUG: AddPrivateKeyLinks: fieldset && document.createElement');
+
+			if (privateKey) {
+				//alert('DEBUG: AddPrivateKeyLinks: privateKey: true');
+
+
+				// [go to profile]
+				var pProfileLink = document.getElementById('spanProfileLink');
+				if (!pProfileLink) {
+					// profile link not there or the p is empty
+					pProfileLink = document.createElement('p');
+					pProfileLink.setAttribute('id', 'spanProfileLink');
+					fieldset.appendChild(pProfileLink);
+				}
+
+				if (pProfileLink && !pProfileLink.innerHTML) {
+					// ATTENTION!
+					// THERE IS A GOTCHA HERE: THIS LINK MAY ALSO BE
+					// ADDED BY PHP; THEN THIS CODE WILL NOT EXECUTE!
+					// BECAUSE pProfileLink WILL ALREADY BE TRUE ABOVE
+
+					// "Go to profile" link
+					var aProfile = document.createElement('a');
+					aProfile.setAttribute('href', '/author/' + getUserFp() + '/index.html');
+					aProfile.setAttribute('onclick', 'if (window.sharePubKey) { return sharePubKey(this); }');
+					aProfile.setAttribute('id', 'linkGoToProfile');
+					aProfile.innerHTML = 'Go to profile';
+					// 'Go to profile' "Go to profile"
+
+					// Append both to fieldset
+					pProfileLink.appendChild(aProfile);
+				}
+
+				if (0) {
+
+					// [save as file]
+					var pSaveKeyAsTxt = document.createElement('p');
+					var aSaveKeyAsTxt = document.createElement('a');
+					aSaveKeyAsTxt.setAttribute('href', '#');
+					aSaveKeyAsTxt.setAttribute('id', 'linkSavePrivateKey');
+					aSaveKeyAsTxt.setAttribute('onclick', 'if (window.SavePrivateKeyAsTxt) { return SavePrivateKeyAsTxt(); }');
+					aSaveKeyAsTxt.innerHTML = 'Save as file';
+
+					// hint for [save as file]
+					var hintSaveKeyAsTxt = document.createElement('span');
+					hintSaveKeyAsTxt.setAttribute('class', 'beginner');
+					hintSaveKeyAsTxt.innerHTML = 'Save key to use again later';
+
+					// insert [save as file] link into dom
+					pSaveKeyAsTxt.appendChild(aSaveKeyAsTxt);
+					var brSaveKeyAs = document.createElement('br');
+					pSaveKeyAsTxt.appendChild(brSaveKeyAs);
+					pSaveKeyAsTxt.appendChild(hintSaveKeyAsTxt);
+					fieldset.appendChild(pSaveKeyAsTxt);
+				}
+
+				// [show private key]
+				var linkShowPrivateKey = document.getElementById('linkShowPrivateKey');
+				if (!linkShowPrivateKey) {
+					var pShowPrivateKey = document.createElement('p');
+					var aShowPrivateKey = document.createElement('a');
+					pShowPrivateKey.setAttribute('class', 'advanced');
+
+					aShowPrivateKey.setAttribute('href', '#');
+					aShowPrivateKey.setAttribute('id', 'linkShowPrivateKey');
+					aShowPrivateKey.setAttribute('onclick', 'if (window.ShowPrivateKey) { return ShowPrivateKey(); }');
+					aShowPrivateKey.innerHTML = 'Show private key';
+
+					// hint for [show private key]
+					var hintShowPrivateKey = document.createElement('span');
+					hintShowPrivateKey.setAttribute('class', 'beginner');
+					hintShowPrivateKey.innerHTML = 'Display as text you can copy';
+
+					pShowPrivateKey.appendChild(aShowPrivateKey);
+					brElement = document.createElement('br');
+					pShowPrivateKey.appendChild(brElement);
+					pShowPrivateKey.appendChild(hintShowPrivateKey);
+					fieldset.appendChild(pShowPrivateKey);
+				}
+			} // privateKey is true
+			else {
+				//alert('DEBUG: AddPrivateKeyLinks: privateKey: false');
+
+				var pLoadKeyFromTxt = document.createElement('p');
+
+				//alert('DEBUG: AddPrivateKeyLinks: creating file input...');
+
+			} // privateKey is FALSE
+
+			if (window.ShowAdvanced) {
+				ShowAdvanced(1, 0);
+			}
+		} // if (fieldset && document.createElement)
+		else {
+			//alert('DEBUG: AddPrivateKeyLinks: checks FAILED (fieldset && document.createElement)');
+		}
+	} else {
+		//alert('DEBUG: AddPrivateKeyLinks: checks FAILED (document.getElementById && window.getPrivateKey)');
+	}
+
+	return true;
+} // AddPrivateKeyLinks()
+
+function ShowPrivateKey () { // displays private key in textarea
+	//alert('DEBUG: ShowPrivateKey() begin');
+	if (document.getElementById) {
+		//alert('DEBUG: ShowPrivateKey: document.getElementById is true');
+
+		var txtPrivateKey = document.getElementById('txtPrivateKey');
+		if (txtPrivateKey) {
+			//alert('DEBUG: ShowPrivateKey: txtPrivateKey is true');
+
+			if (txtPrivateKey.style.display == 'none') {
+				//alert('DEBUG: style is none, set to block');
+				txtPrivateKey.style.display = 'block';
+			} else {
+				//alert('DEBUG: style is block, set to none');
+				txtPrivateKey.style.display = 'none';
+			}
+
+			var linkShowPrivateKey = document.getElementById('linkShowPrivateKey');
+			if (linkShowPrivateKey) {
+				if (txtPrivateKey.style.display == 'none') {
+					linkShowPrivateKey.innerHTML = 'Show private key';
+				} else {
+					linkShowPrivateKey.innerHTML = 'Hide private key';
+				}
+			}
+
+			return false;
+		}
+	}
+
+	if (window.getPrivateKey) {
+		var privateKey = getPrivateKey();
+		if (privateKey && document.createElement) {
+			var txtPrivKey = document.createElement('textarea');
+			txtPrivKey.setAttribute('cols', 80);
+			txtPrivKey.setAttribute('rows', 24);
+			txtPrivKey.setAttribute('id', 'txtPrivateKey');
+			txtPrivKey.innerHTML = privateKey;
+
+			var fldRegistration = document.getElementById('fldRegistration');
+			if (fldRegistration) {
+				fldRegistration.appendChild(txtPrivKey);
+			} else {
+				document.body.appendChild(txtPrivKey);
+			}
+
+			var linkShowPrivateKey = document.getElementById('linkShowPrivateKey');
+			if (linkShowPrivateKey) {
+				linkShowPrivateKey.innerHTML = 'Hide private key';
+			}
+
+			txtPrivKey.focus();
+
+			return false;
+		}
+	}
+
+	return true;
+} // ShowPrivateKey()
+
+function openFile (event) {
+	//alert('DEBUG: openFile() begin');
+
+	var input = event.target;
+
+	if (window.FileReader) {
+		reader = new FileReader();
+
+		// this eval is for hiding the "=function(){}" syntax from incompatible browsers
+		// they shouldn't try to execute it because they don't make it here due to other tests
+		eval('reader.onload = function() { var text = reader.result; LoadPrivateKeyFromTxt(text); }');
+		reader.readAsText(input.files[0]);
+	}
+
+	return true;
+} // openFile()
+
+function LoadPrivateKeyFromTxt (text) {
+	if (window.setPrivateKeyFromTxt) {
+		setPrivateKeyFromTxt(text);
+	}
+
+	return true;
+} // LoadPrivateKeyFromTxt()
+
+function StripToFilename (text) { // strips provided text to only filename-valid characters
+	if (!text) return '';
+
+	text = text.trim();
+
+	if (!text) return '';
+
+	var charsAllowed = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_';
+
+	for (var i = 0; i < text.length; i++) {
+		if (-1 < charsAllowed.indexOf(text.substr(i, 1))) {
+			// ok
+		} else {
+			text = text.substr(0, i) + '' + text.substr(i + 1);
+			i = i - 1;
+		}
+	}
+
+	return text;
+} // StripToFilename()
+
+function getUsername2 () { // returns pgp username
+// can be optimized with caching, but would also need to be
+// un-cached when it changes. at this time, caching seems
+// like over-optimization here
+	var openpgp = window.openpgp;
+	if (openpgp) {
+		// read it into pgp object
+		var privKeyObj = openpgp.key.readArmored(getPrivateKey());
+		// get the public key out of it
+		var pubKeyObj = privKeyObj.keys[0].toPublic();
+		var myUsername = pubKeyObj.users[0].userId.userid;
+		return myUsername;
+	}
+	return '';
+} // getUsername2()
+
+function SavePrivateKeyAsTxt () { // initiates "download" of private key as text file
+	var myFp = getUserFp();
+	var myUsername = getUsername2();
+	var text = getPrivateKey();
+
+	myUsername = StripToFilename(myUsername);
+
+	window.blockPreNavigateNotification = 1;
+
+	return DownloadAsTxt(myUsername + '_' + myFp + '.txt', text);
+} // SavePrivateKeyAsTxt()
+
+// override cookie if we have a profile in LocalStorage
+//if (document.cookie) {
+if (window.GetCookie) {
+	if (GetCookie('cookie')) {
+		//alert('DEBUG: cookie=' + document.cookie);
+	} else {
+		//alert('DEBUG: document.cookie missing');
+		if (window.localStorage) {
+			//alert('DEBUG: window.localStorage exists');
+			var fp = localStorage.getItem('fingerprint');
+			if (fp) {
+				//alert('DEBUG: fp exists, setting cookie via js');
+				document.cookie = 'test=' + fp;
+			}
+		}
+	}
+} else {
+	//alert('DEBUG: profile.js: warning: GetCookie() is missing');
 }
-// == end post.js
+
+function PubkeyCheckProfileExists (fp) { // check if profile exists on server
+	//alert('DEBUG: PubkeyCheckProfileExists() begin');
+
+	//alert('DEBUG: PubkeyCheckProfileExists: fp = ' + fp);
+
+	//var profileUrl = '/author/' + fp + '/';
+	var profileUrl = '/author/' + fp + '.zip';
+
+	//alert('DEBUG: profileUrl = ' + profileUrl);
+
+	if (UrlExists(profileUrl)) {
+		//alert('DEBUG: lastPubKeyPing: profile exists');
+		return true;
+	} else {
+		//alert('DEBUG: lastPubKeyPing: profile NOT FOUND');
+		return false;
+	}
+
+	return true;
+} // PubkeyCheckProfileExists()
+
+function GetTime () {
+	var d = new Date();
+	var n = d.getTime();
+	n = Math.ceil(n / 1000);
+	return n;
+} // GetTime()
+
+function GetFineTime () { // returns epoch in 10th of seconds
+	var d = new Date();
+	var n = d.getTime();
+	n = Math.ceil(n / 100);
+	return n;
+} // GetFineTime()
+
+function PubKeyPing () { // checks if user's public key is on server
+// function PingProfile ()
+// function PingPubKey ()
+// function PingPublicKey ()
+// uploads it to server if it is missing
+//
+	//alert('DEBUG: PubKeyPing() begin');
+
+	var latestPing = GetPrefs('latest_pubkey_ping');
+
+	if (latestPing && (GetTime() < (latestPing + 3600))) {
+		//alert('DEBUG: PubKeyPing: latestPing+10 = ' + (latestPing+10) + ' < time() = ' + time());
+	} else {
+		//alert('DEBUG: PubKeyPing: latestPing was false or stale, doing a check at ' + time());
+
+		if (window.location.href.indexOf('profile') != -1 && window.getUserFp) {
+			//alert('DEBUG; PubKeyPing: window.getUserFp check passed');
+
+			var myFingerprint = getUserFp();
+
+			//alert('DEBUG: PubKeyPing: myFingerprint = ' + myFingerprint);
+
+			if (myFingerprint) {
+				if (PubkeyCheckProfileExists(myFingerprint)) {
+					//alert('DEBUG: PubKeyPing: profile already exists');
+				} else {
+					if (window.sharePubKey) {
+						//alert('DEBUG: PubKeyPing: latestPing: (window.sharePubKey) check passed, doing it...');
+						sharePubKey();
+
+						latestPing = GetTime();
+						SetPrefs('latest_pubkey_ping', latestPing);
+					} else {
+						//alert('DEBUG: PubKeyPing: latestPing: (window.sharePubKey) check FAILED');
+					}
+				}
+			} else {
+				//alert('DEBUG: PubKeyPing: myFingerprint: false');
+			}
+
+			//alert('DEBUG: PubKeyPing: latestPing check complete, saving time');
+		} else {
+			//alert('DEBUG: PubKeyPing: window.getUserFp check FAILED');
+		}
+	}
+
+	return true;
+} // PubKeyPing()
+
+function selectKeyPopulate () {
+	if (document.formSelectKey && document.formSelectKey.selectKey) {
+		if (1 < document.formSelectKey.selectKey.length) {
+			// already populated
+		} else { // #todo put this in event loop?
+			if (window.SetPrefs && window.GetPrefs) {
+				var iPrivKey = 0;
+				while (GetPrefs('pk' + iPrivKey, 'PrivateKey1')) {
+					//if (GetPrefs('pk' + iPrivKey, 'PrivateKey1') == keyArmored) {
+					//	return 1; // already stored
+					//}
+					var o = new Option('pk' + iPrivKey, 'pk' + iPrivKey);
+					document.formSelectKey.selectKey.add(o);
+					iPrivKey++;
+				}
+				//SetPrefs('pk' + iPrivKey, keyArmored, 'PrivateKey1');
+			}
+		}
+	}
+
+	//alert(document.formSelectKey.selectKey.value);
+}
+
+function selectLoadKey (keyName) {
+	var newKey = GetPrefs(keyName, 'PrivateKey1');
+	if (newKey) {
+		 setPrivateKeyFromTxt(newKey);
+	}
+}
+
+function ProfileOnLoad () { // onload event for profile page
+	//alert('DEBUG: ProfileOnLoad() begin');
+	if (document.getElementById) {
+		//alert('DEBUG: ProfileOnLoad: document.getElementById check passed');
+
+		var lblSigningIndicator = document.getElementById('lblSigningIndicator');
+
+		selectKeyPopulate();
+
+		if (window.getPrivateKey) {
+			//alert('DEBUG: ProfileOnLoad: window.getPrivateKey check passed');
+
+			if (window.localStorage) {
+				//alert('DEBUG: ProfileOnLoad: window.localStorage check passed, calling getPrivateKey()...');
+
+				var configJsOpenPgp = 0; // this is templated from config/setting/admin/js/openpgp
+
+				var pk = getPrivateKey();
+
+				if (configJsOpenPgp && pk) {
+					//alert('DEBUG: ProfileOnLoad: pk = GetPrivateKey() = ' + !!pk);
+					// span used to indicate whether openpgp signing is available
+					if (lblSigningIndicator) {
+						//alert('DEBUG: lblSigningIndicator TRUE');
+						// display value of "algorithm" which openpgp gives us
+						// in reality, this only give us rsa/not-rsa, and formatted poorly
+						// there's the bit count and the actual algo for non-rsa which needs
+						// to be displayed more nicely here
+						var privKeyObj = openpgp.key.readArmored(pk);
+						var pubKeyObj = privKeyObj.keys[0].toPublic();
+
+						var myAlgo = pubKeyObj.primaryKey.algorithm.toString();
+						if (myAlgo) {
+							//lblSigningIndicator.innerHTML = myAlgo;
+							var gt = unescape('%3E');
+							lblSigningIndicator.innerHTML = 'Signed in with private key.';
+							//lblSigningIndicator.innerHTML = 'Signed in with private key. <a href="/profile.html" onclick="return btnSignOut_Click()"' + gt + 'Delete</a' + gt;
+							//#todo this is a hack, make it less hacky
+						} else {
+							lblSigningIndicator.innerHTML = 'Signed in.';
+						}
+						AddPrivateKeyLinks(); // ProfileOnLoad()
+
+						var pRegButton = document.getElementById('pRegButton');
+						if (pRegButton) {
+							pRegButton.style.display = 'none';
+						}
+					} else {
+						//alert('DEBUG: lblSigningIndicator FALSE');
+					}
+
+
+					lblHandle = document.getElementById('lblHandle');
+
+					if (lblHandle) {
+						var strHandle = localStorage.getItem('avatar');
+						if (strHandle) {
+							lblHandle.innerHTML = strHandle;
+						}
+					}
+
+					lblFingerprint = document.getElementById('lblFingerprint');
+
+					if (lblFingerprint) {
+						var strFingerprint = localStorage.getItem('fingerprint');
+						if (strFingerprint) {
+							lblFingerprint.innerHTML = strFingerprint;
+						}
+					}
+
+					//alert('DEBUG: ProfileOnLoad: calling PubKeyPing()');
+					PubKeyPing();
+				} // pk is true
+				else {
+					//alert('DEBUG: pk = false')
+					if (configJsOpenPgp && lblSigningIndicator) {
+						//alert('DEBUG: lblSigningIndicator check passed');
+						if (window.openpgp) {
+							var lblFingerprint = document.getElementById('lblFingerprint');
+							////alert('DEBUG: lblFingerprint = ' + lblFingerprint.innerHTML);
+							if (lblFingerprint && lblFingerprint.innerHTML && (lblFingerprint.innerHTML != '')) { //#todo ...
+								//pgp is available, but we're already logged in via cookies
+
+								lblSigningIndicator.innerHTML = 'Signed in with cookie.';
+							} else {
+								// #todo why is window.openpgp false here??
+								//alert('DEBUG: window.openpgp check passed, setting no (available)');
+
+								var pExitButton = document.getElementById('pExitButton');
+								if (pExitButton) {
+									pExitButton.style.display = 'none';
+								}
+
+								lblSigningIndicator.innerHTML = '';
+
+								var lblEnablePGP = document.createElement('label');
+								var chkEnablePGP = document.createElement('input');
+								var txtEnablePGP = document.createTextNode('Create private key (PGP)');
+
+								var chkEnablePgpOn = 1;
+								// this flag is set based on config setting/admin/js/openpgp_checked
+
+								chkEnablePGP.setAttribute('type', 'checkbox');
+								chkEnablePGP.setAttribute('name', 'chkEnablePGP');
+								chkEnablePGP.setAttribute('id', 'chkEnablePGP');
+
+								if (chkEnablePgpOn) {
+									chkEnablePGP.setAttribute('checked', '1');
+								}
+
+								lblEnablePGP.setAttribute('for', 'chkEnablePGP');
+
+								lblEnablePGP.appendChild(chkEnablePGP);
+								lblEnablePGP.appendChild(txtEnablePGP);
+								lblSigningIndicator.appendChild(lblEnablePGP);
+
+								AddPrivateKeyLinks(); // ProfileOnLoad()
+							}
+						} else {
+							//alert('DEBUG: warning: window.openpgp check FAILED');
+							lblSigningIndicator.innerHTML = 'Unavailable';
+						}
+					} else {
+						//alert('DEBUG: lblSigningIndicator check FAILED');
+					}
+					//AddPrivateKeyLinks();
+				}
+			} else {
+				//alert('DEBUG: ProfileOnLoad: window.localStorage check FAILED');
+			}
+		} else {
+			//alert('debug: ProfileOnLoad: window.getPrivateKey check FAILED');
+		}
+	} else {
+		//alert('DEBUG: ProfileOnLoad: document.getElementById check FAILED');
+	}
+
+	return true;
+} // ProfileOnLoad()
+
+// / profile.js
 
 
 // == begin fresh.js
@@ -3206,5 +4707,5 @@ function SortTable (t, sortOrder) {
 
 // -->
 </script>
-<!-- / html/utils/scriptinject.template (main,config/template/perl/page/post.pl,13) -->
+<!-- / html/utils/scriptinject.template (main,config/template/perl/page/upload.pl,98) -->
 </body></html>

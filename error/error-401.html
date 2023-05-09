@@ -1,0 +1,538 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml"></link>
+<title>401</title>
+<style type="text/css">
+<!--
+/* begin css/default.css */
+.tag-flag,
+.tag-troll,
+.tag-spam,
+.tag-remove,
+.tag-slash,
+.tag-abuse {
+/* negative (red) tags */
+	color: #c00000;
+	font-weight: bold;
+}
+
+.tag-remove {
+/* remove tag */
+	font-weight: bold;
+}
+
+.tag-approve,
+.tag-accept,
+.tag-friend,
+.tag-attend,
+.tag-like,
+.tag-vouch {
+/* positive (green) tags */
+	color: #008000;
+	font-weight: bold;
+}
+
+.tag-hide {
+	color: gray;
+}
+
+div.reply {
+/* creates indented effect for sub-replies */
+	margin-left: 2%;
+	padding-left: 3em;
+}
+
+.item-textart {
+/* textart items get monospace font */
+	font-family: monospace;
+	font-size: 12pt;
+}
+
+.tag-aolart {
+/* aol art in 10-point arial font */
+    font-family: Arial;
+    font-size: 10pt;
+}
+
+div.txt {
+	padding-left: 1em;
+}
+
+.byadmin {
+/* text by admin, displayed in red for users' sake */
+	color: red;
+}
+
+.signed {
+/* signed things are displayed in gold */
+    border-color: gold;
+}
+
+
+#eventLocation {
+/* event form */
+	background-color: #ffffff;
+	padding: 5pt;
+}
+
+#eventDate {
+/* event form */
+	background-color: #e0e0e0;
+	padding: 5pt;
+}
+
+#loadingIndicator, #spanLoadingIndicator, #ariaAlert {
+	color: #000000;
+	background-color: #f0f0d0;
+	padding: 3pt;
+	position: fixed;
+	top: 0;
+	left: 0;
+	margin: 0;
+	font-family: tahoma, arial, sans-serif;
+	font-weight: bold;
+}
+#loadingIndicator a {
+	/* style for links in loading indicator */
+}
+.notification {
+	color: #000000;
+	background-color: #f0f0d0;
+	padding: 3pt;
+	font-weight: bold;
+	padding: 3pt;
+}
+noscript, .noscript {
+	color: red;
+}
+.menubar a, .titlebar a, .topmenubar a {
+	text-decoration: none;
+	color: #000000;
+}
+nobr {
+	white-space:nowrap;
+}
+input[type=button], button, input[type=submit] {
+	color: #000000;
+	background-color: #c0c0c0
+}
+/* end css/default.css */
+
+/* dragging.css */
+
+/* should be called inline-block.css ? */
+
+/* makes some dialogs horizontal */
+table.dialog { /* inline-table table-block */
+	display: inline-block;
+	vertical-align: top;
+}
+form {
+	display: inline;
+}
+
+/*
+#topmenu.dialog {
+	position: fixed !important;
+	top: 0;
+	right: 0;
+}
+*/
+
+/* / dragging.css */
+
+.dialog .txt {
+	max-width: 30em;
+}
+
+/* inbox_top.css */
+
+#messages {
+	position: absolute;
+	margin-top: 5pt;
+}
+
+/* / inbox_top.css */
+
+/* theme/chicago/additional.css */
+body {
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	background-color: #008080;
+}
+input {
+}
+input[type=text], input[type=password], select, option, textarea {
+	background-color: #ffffff;
+	color: #000000;
+}
+#txtClock {
+	border: 1pt inset #c0c0c0;
+}
+@media (prefers-color-scheme: dark) {
+
+}
+.beginner {
+}
+.dialog {
+	box-shadow: 5pt 5pt 0 rgba(0, 20, 20, 0.3);
+	border: #c0c0c0 outset 2pt;
+	background-color: #c0c0c0;
+	border-radius: 1pt;
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	margin-right: 8pt;
+	margin-bottom: 8pt;
+}
+textarea {
+    font-family: Fixedsys, "Courier New", Courier, monospace;
+    font-size: 12pt;
+}
+
+.txt {
+/* regular text */
+	font-family: "Times New Roman", Times, sans-serif;
+	/*font-family: Tahoma, Arial, Helvetica, sans-serif;*/
+	font-size: 14pt;
+}
+a:focus, a:active {
+    color: red !important;
+    border-radius: 1pt;
+}
+textarea:focus {
+}
+input:focus {
+}
+#serverResponse {
+/* response messages from the server */
+    background-color: #ffc080;
+    color: #000000;
+    padding: 5pt;
+    border: 0;
+	box-shadow: 5pt 5pt 0 rgba(0, 20, 20, 0.5);
+}
+#txtClock {
+	border: 1pt inset #c0c0c0;
+	background-color: #c0c0c0;
+}
+.fileHashShort {
+	text-decoration: underline dotted;
+}
+#spanDialogControls a {
+	color: #000080Text;
+}
+.titlebarButtons {
+	float: right;
+}
+button.close, button.skip {
+	border: 0;
+	margin: 0;
+	font-weight: bold;
+}
+button:hover {
+	color: red;
+}
+#spanDialogControls a {
+	color: #ffffff;
+}
+/* / theme/chicago/additional.css */
+/* pre_time_sans.css */
+
+pre time {
+	font-family: helvetica, arial, sans-serif;
+}
+
+/* /pre_time_sans.css */
+
+-->
+</style>
+</head>
+<body link="#0000cc" vlink="#6000c0" text="#000000" bgcolor="#008080">
+<b>
+<!-- template/topmenu2.template -->
+<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialog) { return SetActiveDialog(this); }" cellspacing=0 cellpadding=3 border=0 bgcolor="#c0c0c0" class=dialog id=topmenu>
+	<tr bgcolor="#c0c0c0" class=topmenubar>
+		<td colspan=2>
+			<big>
+				<big>
+<!-- menuitem.template -->
+<a  onclick="if ((!window.GetPrefs || GetPrefs('draggable_spawn'))) { return FetchDialog('welcome'); }" accesskey=w href="/welcome.html"><u>W</u>elcome</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a  onclick="if ((!window.GetPrefs || GetPrefs('draggable_spawn'))) { return FetchDialog('threads'); }" accesskey=t href="/threads.html"><u>T</u>hreads</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a  onclick="if ((!window.GetPrefs || GetPrefs('draggable_spawn'))) { return FetchDialog('write'); }" accesskey=i href="/write.html">Wr<u>i</u>te</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a  onclick="if ((!window.GetPrefs || GetPrefs('draggable_spawn'))) { return FetchDialog('settings'); }" accesskey=s href="/settings.html"><u>S</u>ettings</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a  onclick="if ((!window.GetPrefs || GetPrefs('draggable_spawn'))) { return FetchDialog('profile'); }" accesskey=p href="/profile.html"><u>P</u>rofile</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a  onclick="if ((!window.GetPrefs || GetPrefs('draggable_spawn'))) { return FetchDialog('authors'); }" accesskey=a href="/authors.html"><u>A</u>uthors</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=e href="/people.html">P<u>e</u>ople</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a  onclick="if ((!window.GetPrefs || GetPrefs('draggable_spawn'))) { return FetchDialog('tags'); }" accesskey=g href="/tags.html">Ta<u>g</u>s</a>
+<!-- / menuitem.template -->
+;
+
+
+<!-- menuitem.template -->
+<a accesskey=h href="/help.html"><u>H</u>elp</a>
+<!-- / menuitem.template -->
+</big>
+				<span class=advanced></span>
+				<span class=admin> </span>
+				<span id=controls></span>
+				<span id=spnClock></span>
+			</big>
+		</td>
+	</tr>
+	<tr bgcolor="#000080" class=titlebar>
+		<td>
+			<small>
+				<font color="#ffffff"><b>Welcome</b></font>
+			</small>
+		</td>
+		<td align=right>
+			<small>
+				<span id=spanDialogControls>
+<!-- layer_controls.template -->
+
+<noscript>*</noscript>
+
+<span>
+	<a id=btnAdvanced href=#
+		accesskey=o
+		onclick="
+			if (window.SetPrefs) {
+				SetPrefs('show_advanced', 1);
+				SetPrefs('advanced_highlight', 0);
+				SetPrefs('beginner', 0);
+				SetPrefs('beginner_highlight', 0);
+				SetPrefs('notify_on_change', 1);
+			}
+			if (window.ShowAdvanced) {
+				ShowAdvanced(0, 0);
+				return false;
+			}
+		"
+	>Expand</a>;
+
+	<a id=btnMinimal href=#
+		accesskey=n
+		onclick="
+			if (window.SetPrefs) {
+				SetPrefs('show_advanced', 0);
+				SetPrefs('admin', 0);
+			}
+			if (window.ShowAdvanced) {
+				ShowAdvanced(0, 0);
+				return false;
+			}
+		"
+	title=Minimal>Minimal</a>;
+
+	<a id=btnReprint href=# accesskey=r onclick="
+		var winLoc = window.location.href;
+		if (winLoc.indexOf('?')) {
+			winLoc = winLoc.substr(0, winLoc.indexOf('?'));
+		}
+		var d = new Date();
+		var n = d.getTime();
+		n = Math.ceil(n / 1000);
+		n = n + 86400;
+		winLoc = winLoc + '?time=' + n;
+		window.location = winLoc;
+		return false;
+	" title="Reprint">Reprint</a>;
+
+</span>
+
+<!-- / layer_controls.template -->
+
+<!-- dialog_controls.template 'Interface Controls' -->
+
+<span class=advanced>
+	<a id=btnCascade href=# onclick="
+		if (window.DraggingCascade) {
+			SetPrefs('draggable', 1);
+			DraggingInit(0);
+			DraggingMakeFit(0);
+			DraggingCascade();
+			DraggingInit(0);
+		}
+	" title=Cascade>Cascade</a>;
+
+	<a id=btnArrange href=# onclick="
+		if (window.DraggingRetile) {
+			SetPrefs('draggable', 1);
+			DraggingInit(0);
+			DraggingMakeFit(0);
+			DraggingRetile();
+			DraggingInit(0);
+		}
+	" title=Arrange>Arrange</a>;
+</span>
+
+<a id=btnAnnoy href=# onclick="
+	if (window.DraggingRetile) {
+		SetPrefs('draggable', 1);
+		SetPrefs('draggable_activate', 1);
+		SetPrefs('draggable_spawn', 1);
+		SetPrefs('draggable_spawn_focus', 1);
+		SetPrefs('draggable', 1);
+		SetPrefs('draggable_restore', 1);
+		SetPrefs('draggable_restore_collapsed', 1);
+		SetActiveDialog(GetParentDialog(this));
+		DraggingInit(0);
+		DraggingMakeFit(0);
+		DraggingInit(0);
+	}
+" title=Annoy>Annoy</a>;
+
+<a id=btnDraggingReset href=# onclick="
+	if (window.DraggingReset && window.SetPrefs) {
+		SetPrefs('beginner', 1);
+		SetPrefs('show_advanced', 0);
+		SetPrefs('show_admin', 0);
+		SetPrefs('draggable_activate', 0);
+		SetPrefs('draggable_spawn', 0);
+		SetPrefs('draggable_spawn_focus', 0);
+		SetPrefs('draggable', 0);
+		SetPrefs('draggable_restore', 0);
+		SetPrefs('draggable_scale', 0);
+		SetPrefs('draggable_restore_collapsed', 0);
+		DraggingReset();
+		//window.location = '/help.html'; #option
+		window.location.reload(false);
+	}
+" title="Reset">Reset</a>
+
+<!-- #todo redo this whole template -->
+<!-- / dialog_controls.template -->
+</span>
+			</small>
+		</td>
+	</tr>
+</table>
+<!-- / topmenu2.template -->
+</b>
+<p><MAIN ID=maincontent><A NAME=maincontent></A>
+
+
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
+		
+
+		
+
+		
+
+		<tbody class=content><title>Welcome to Authorization Required</title>
+
+<table width="99%" height="99%" border="0">
+
+<tr><td align=center valign=middle>
+
+<h1>Welcome to Authorization Required</h1>
+
+<p>It looks like you may be trying to log in?</p>
+
+<p id=message>Please contact an administrator to access this resource.</p>
+
+</td></tr>
+
+</table>
+
+<!-- 401.template -->
+</tbody>
+
+		
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+</main>
+<span id=messages></span>
+<img src="/p.gif" alt="" height=1 width=1>
+
+<!-- reset_button.template -->
+<a href="/help.html?light=0&time=9999999999&ui=Beginner" onclick="
+	if (window.DraggingReset && window.SetPrefs) {
+		SetPrefs('beginner', 1);
+		SetPrefs('show_advanced', 0);
+		SetPrefs('show_admin', 0);
+		SetPrefs('draggable_activate', 0);
+		SetPrefs('draggable_spawn', 0);
+		SetPrefs('draggable_spawn_focus', 0);
+		SetPrefs('draggable', 0);
+		SetPrefs('draggable_restore', 0);
+		SetPrefs('draggable_restore_collapsed', 0);
+		DraggingReset();
+		//window.location.reload();
+
+		var winLoc = window.location.href;
+		//var winLoc = '/help.html'; #option
+		if (winLoc.indexOf('?')) {
+			winLoc = winLoc.substr(0, winLoc.indexOf('?'));
+		}
+		winLoc = winLoc + '?time=9999999999';
+		window.location = winLoc;
+		return false;
+	}
+" style="float:right; z-index: 99999;"><button>RESET</button></a>
+<!-- / reset_button.template --><br><noscript>
+<!-- default/template/html/window/standard.template -->
+<font face=arial>
+	<table onmousedown="if (window.SetActiveDialog) { return SetActiveDialog(this); }" onmouseenter="if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }" id=Notice cellspacing=0 cellpadding=6 border=0 bgcolor="#c0c0c0" class=dialog>
+		
+<!-- titlebar.template -->
+<tr bgcolor="#000080" class=titlebar>
+	<td>
+		<font color="#ffffff"><b>Notice</b></font> <a href=#Notice>#</a><a name=Notice></a><br>
+		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
+	</td>
+</tr>
+<!-- / titlebar.template -->
+
+
+		
+
+		
+
+		<tbody class=content><tr class=content><td><b class=noscript>*</b> Some features may require JavaScript</td></tr></tbody>
+
+		
+	</table>
+</font>
+<!-- / default/template/html/window/standard.template -->
+</noscript></body></html>

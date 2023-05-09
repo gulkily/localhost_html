@@ -1,7 +1,0 @@
-You can already do that by using the pl/python or pl/java extensions with the right environment. However, the interface between SQL and model inference is typically narrow enough that IMO it's better to:
-read from Postgres --> process in an external Python/Java process --> persist to Postgres.
-Maybe enhance this with a FDW to an external inference process to allow triggering of inference from Postgresql itself.
--- 
-#f43e0c4c
---- 
-Received: 1683126654

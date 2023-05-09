@@ -1,6 +1,0 @@
-Interesting concept, but I think Big Query ML [1] has been providing similar features for years now. Curious to learn what are the differences, other than offering this as a Postgres plugin.
-[1] https://cloud.google.com/bigquery-ml/docs/introduction
--- 
-#f43e0c4c
---- 
-Received: 1683126654

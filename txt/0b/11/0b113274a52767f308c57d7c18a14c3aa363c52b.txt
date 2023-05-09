@@ -1,8 +1,0 @@
->>bbcbd11eced98b6d51b1b478faeef5ea36e8ea68
-
-add cart feature
-52beed7776b13dc7199a006d5ab63d42db5b1470
-
-I did not understand that query
-
-===

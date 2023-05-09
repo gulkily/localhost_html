@@ -1,5 +1,0 @@
-It’s probably a stretch to run GPT-3 inside a db, but most of the “deep learning” models I’ve run in more traditional environments are a few megabytes. That’s millions of params, but Morre’s law has been generous enough to us over the decades that I think there is a good case to spend a few megabytes of DB ram on ML. I would think this idea has really landed though, when we start hearing about Postgres deployments with GPUs on board though :)
--- 
-#f43e0c4c
---- 
-Received: 1683126654

@@ -1,1 +1,0 @@
-qutebrowser how to change delay of status message

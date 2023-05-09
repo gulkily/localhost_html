@@ -1,9 +1,0 @@
->>f70a1b18466186db2bd89545930fb383fdd46b8e
-
-i've been working on this codebase long enough for it to be 300k+ lines of code, and it's still manageable, and i'd still rather keep working on it than have a guaranteed indoors place to sleep
--- 
-
---- 
-Cookie: 87D6DDF22BD62334
-Received: 1683441944
-Client: 30B7B2A3817AB4E6

@@ -1,6 +1,0 @@
-Seems like a great idea. When you look at many ML frameworks half the code and learning overhead is data schlepping code and table like structures that "reinvent" the schema that already exists inside a database. Not to mention, there can be security concerns from dumping large amounts of data out of the primary store (how are you going to GDPR delete that stuff later on?). So why not use it natively where the data already is?
-For anything substantive it seems like a bad idea to run this on your primary store since the last thing you want to do is eat up precious CPU and RAM needed by your OLTP database. But in a data warehouse or similar replicated setup, it seems like a really neat idea.
--- 
-#f43e0c4c
---- 
-Received: 1683126654

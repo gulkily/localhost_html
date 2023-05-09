@@ -1,5 +1,0 @@
-I found this to be very confusing and took some sorting out that this is not an official project of postgresql. I personally think a name change and logo redo is in order here.
--- 
-#f43e0c4c
---- 
-Received: 1683126654

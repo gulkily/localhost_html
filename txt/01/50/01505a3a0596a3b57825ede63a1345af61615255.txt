@@ -1,5 +1,0 @@
-This is great! FYI for those who haven't seen, BigQuery can also run statistical learning methods directly on your data as part of the query. Really cool to see ML going this direction.
--- 
-#f43e0c4c
---- 
-Received: 1683126654

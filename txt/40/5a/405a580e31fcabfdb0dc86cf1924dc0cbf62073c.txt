@@ -1,5 +1,0 @@
-Nice! Feel free to file any issues on Github if something doesn't work. I'd love to understand more about the internals of the hydra architecture.
--- 
-#f43e0c4c
---- 
-Received: 1683126654

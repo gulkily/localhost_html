@@ -1,5 +1,0 @@
-How do you deal with different dataset train/validation/test? How do you measure the degradation of the model? Is there any way to select the metric you target (accuracy, f1-score or any other)?
--- 
-#f43e0c4c
---- 
-Received: 1683126654

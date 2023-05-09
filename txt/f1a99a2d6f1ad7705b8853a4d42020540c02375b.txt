@@ -1,7 +1,0 @@
-#bug even in annoy mode, the status dialog jumps down to second row after page load on settings page
--- 
-
---- 
-Cookie: 6EE49C71D198BA4B
-Received: 1683441250
-Client: 30B7B2A3817AB4E6

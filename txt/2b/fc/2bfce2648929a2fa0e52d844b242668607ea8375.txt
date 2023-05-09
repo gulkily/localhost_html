@@ -1,5 +1,0 @@
-Stateful services like Postgres cannot be rapidly scaled up/down to adjust to daily loads, even when those loads are very predictably busy at noon, but often sit idle overnight. Scheduling ML jobs while the db is typically wasting resources might be an efficient strategy.
--- 
-#f43e0c4c
---- 
-Received: 1683126654
