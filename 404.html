@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml"></link>
-<title>welcome</title>
+<title>404</title>
 <style type="text/css">
 <!--
 /* begin css/default.css */
@@ -245,7 +245,7 @@ pre time {
 -->
 </style>
 </head>
-<body link="#403000" vlink="#403000" text="#403000" bgcolor="#fff0ef" background="/hypercode_bg.jpg" link="#403000" vlink="#403000" text="#403000" bgcolor="#fff0ef" background="/hypercode_bg.jpg">
+<body link="#403000" vlink="#403000" text="#403000" bgcolor="#fff0ef" background="/hypercode_bg.jpg">
 <b>
 <!-- template/topmenu2.template -->
 <table cellspacing=0 cellpadding=3 border=0 bgcolor="#fff0ef" class=dialog id=topmenu>
@@ -279,31 +279,42 @@ pre time {
 </table>
 <!-- / topmenu2.template -->
 </b>
-<p>
+<p><MAIN ID=maincontent><A NAME=maincontent></A>
+
+
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=Welcome cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
-<!-- titlebar.template -->
-<tr bgcolor="#fff0ef" class=titlebar>
-	<td>
-		<font color="#403000"><b>Welcome</b></font> <a href=#Welcome>#</a><a name=Welcome></a><br>
-		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
-	</td>
-</tr>
-<!-- / titlebar.template -->
-
 
 		
 
 		
 
-		<tbody class=content><tr class=content><td>
-<!-- welcome.template -->
-Welcome to HyperCode, <br> 
-an experimental web space for you. <br> 
-Please, <a href="/write.html" onclick="InjectDialog('write'); return false;">be nice</a>.
-<!-- / welcome.template -->
+		<tbody class=content><tr class=content><td><title>404 Message Received</title>
+
+<h1>Welcome to Area 404</h1>
+
+<p>This page does not exist. It may still be in preparation.</p>
+
+<span id=lookingFor></span><form action=/post.html>
+	<label for=comment>
+		<b></b><big>What were you looking for?</big></b><br>
+		<input type=text size=42 id=comment name=comment value="I was looking for information on...">
+	</label>
+	<input type=submit value=Send onclick="this.value='Wait...'; return true;">
+</form>
+</span>
+
+<noscript><p>Please use your browser's Back button to return to the previous page.</p></noscript>
+
+<h2><a href="#" onclick="if (window.history && window.history.back) { window.history.back(); return false; }">Back</a></h2>
+
+<h2><a href="/">Home Page</a></h2>
+
+<h2><a href="/help.html">Help</a></h2>
+
+<h2><a href="/stats.html">Status</a></h2>
 </td></tr></tbody>
 
 		

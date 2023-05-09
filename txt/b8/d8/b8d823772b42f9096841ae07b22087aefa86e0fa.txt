@@ -1,0 +1,8 @@
+>>bfb777acd42a049acaecedf7e7a4cde4ea9719ac
+
+add tags page
+11727d955eb93a4b3e813f9ced0816a1fe6c7986
+
+ok, I added a basic tags page, including item-descriptive tags and hashtags
+
+===
