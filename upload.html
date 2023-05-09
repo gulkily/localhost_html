@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="alternate" title="RSS Feed" href="/rss.xml" type="application/rss+xml"></link>
-<title>Write</title>
+<title>upload</title>
 <style type="text/css">
 <!--
 /* begin css/default.css */
@@ -290,12 +290,12 @@ pre time {
 
 <!-- default/template/html/window/standard.template -->
 <font face=arial>
-	<table id=write cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
+	<table id=upload cellspacing=0 cellpadding=6 border=0 bgcolor="#fff0ef" class=dialog>
 		
 <!-- titlebar.template -->
 <tr bgcolor="#fff0ef" class=titlebar>
 	<td>
-		<font color="#403000"><b>Write</b></font> <a href=#write>#</a><a name=write></a><br>
+		<font color="#403000"><b>Upload</b></font> <a href=#upload>#</a><a name=upload></a><br>
 		<!-- note! dragging.js looks for a "b" inside of a class=titlebar -->
 	</td>
 </tr>
@@ -307,48 +307,24 @@ pre time {
 		
 
 		<tbody class=content><tr class=content><td>
-<!-- write.template -->
-<fieldset>
-    <form method=post action="/post.html" method=GET id=compose class=submit name=compose target=_top>
-        <span id=writeintro></span>
-        <span class=beginner><label for="comment" class=beginner>Write something here:</label><br></span>
-        <textarea
-            class=txtarea
-            id=comment
-            title="Enter some text to share."
-            rows=15
-            cols=50
-            name=comment
-            autofocus
-            wrap=soft
-        ></textarea><br>
-        <p>
-            <input type=submit value="Send Now" name=addtext id=addtext>
-            <span id=spanSignAs></span>
-        </p>
-        <p>
-            <span id=spanEncrypt></span>
-            <p id=spanWriteAdvanced class=advanced></p>
-            <span class=advanced>
-                <label for=recfing>
-                    <input name=recfing id=recfing type=checkbox>
-                    Identify with device
-                </label>
-            </span>
-        </p>
-        <span id=writefooter>
-<!-- long_message.template -->
-<noscript>
-	<p>
-		<b>*</b>
-		<a href="/write_post.html">To write a longer text over 2000 characters, click here.</a>
-	</p>
-</noscript>
-<!-- / long_message.template -->
-</span>
-    </form>
-</fieldset>
-<!--/ write.template -->
+<!-- upload_no.template -->
+<p>Upload feature is not available. Apologies.</p>
+<p class=advanced>
+	<code>
+		<b>Operator: Here are some settings to take a look at:</b><br>
+		<br>
+		config/setting/admin/php/enable
+		<br>
+		config/setting/admin/upload/enable
+		<br>
+		config/setting/admin/php/upload
+		<br>
+		config/setting/admin/js/enable
+		<br>
+		config/setting/admin/convert/enable
+	</code>
+</p>
+<!-- / upload_no.template -->
 </td></tr></tbody>
 
 		
